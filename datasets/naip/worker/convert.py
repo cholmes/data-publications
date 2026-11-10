@@ -7,6 +7,10 @@ output's SHA-256). A quad whose receipt exists is skipped, so a task stopped by 
 interruption is repeated by launching the same shard again. The receipt's request count
 leaves out one request: the PUT of the receipt itself.
 
+The next quad's source files download on a second thread while the current quad converts
+(OVERLAP_DOWNLOADS=0 turns that off). Conversion is single-threaded and the first run spent a
+quarter of its task time waiting on downloads with the CPU idle.
+
 Reads are whole-object downloads, not GDAL range reads, so the request count per quad
 is fixed by the part size and not by GDAL's read pattern.
 
@@ -14,6 +18,7 @@ Local check, no S3:  convert.py --local <source raster> <output.tif>
 """
 
 import collections
+import concurrent.futures
 import hashlib
 import json
 import os
@@ -33,6 +38,7 @@ QUALITY = int(os.environ.get("QUALITY", "85"))
 BLOCKSIZE = int(os.environ.get("BLOCKSIZE", "512"))
 OVERVIEW_RESAMPLING = os.environ.get("OVERVIEW_RESAMPLING", "AVERAGE")
 PART_BYTES = 32 * 1024 * 1024
+OVERLAP_DOWNLOADS = os.environ.get("OVERLAP_DOWNLOADS", "1") != "0"
 
 
 def cpu_seconds():
@@ -188,17 +194,38 @@ def sha256_of(path):
     return digest.hexdigest()
 
 
-def one_quad(store, out_bucket, out_prefix, quad, sample, workdir):
-    """Convert one quad and return its receipt. `sample` adds the pixel comparison."""
-    timing, sizes = {}, {}
-    started = time.monotonic()
+def fetch_quad(fetcher, work_bucket, receipt_key, quad):
+    """Download one quad's source files. Returns None when its receipt already exists.
 
-    mark = time.monotonic()
+    Runs on the download thread with its own Store, so its request count is this quad's alone.
+    """
+    fetcher.requests.clear()
+    if fetcher.exists(work_bucket, receipt_key):
+        return None
+    workdir = tempfile.mkdtemp(prefix="quad-")
+    try:
+        mark, sizes = time.monotonic(), {}
+        for part in ("mrf", "idx", "lrc"):
+            path = os.path.join(workdir, os.path.basename(quad[part]))
+            sizes[part] = fetcher.fetch(quad["src_bucket"], quad[part], path)
+        return {"workdir": workdir, "sizes": sizes, "download_s": time.monotonic() - mark,
+                "requests": collections.Counter(fetcher.requests)}
+    except BaseException:
+        shutil.rmtree(workdir, ignore_errors=True)
+        raise
+
+
+def one_quad(store, out_bucket, out_prefix, quad, sample, fetched, wait_s):
+    """Convert one downloaded quad and return its receipt. `sample` adds the pixel comparison.
+
+    `wait_s` is how long the main thread waited for the download; with overlap it is less than
+    `download_s`, and `total_s` counts only the wait.
+    """
+    workdir, sizes = fetched["workdir"], fetched["sizes"]
+    timing = {"download_s": fetched["download_s"], "download_wait_s": wait_s}
+    started = time.monotonic() - wait_s
+    store.requests.clear()
     source = os.path.join(workdir, os.path.basename(quad["mrf"]))
-    for part in ("mrf", "idx", "lrc"):
-        path = os.path.join(workdir, os.path.basename(quad[part]))
-        sizes[part] = store.fetch(quad["src_bucket"], quad[part], path)
-    timing["download_s"] = time.monotonic() - mark
 
     target = os.path.join(workdir, "out.tif")
     timing["convert_wall_s"], timing["convert_cpu_s"] = convert(source, target)
@@ -247,7 +274,7 @@ def one_quad(store, out_bucket, out_prefix, quad, sample, workdir):
     timing["total_s"] = time.monotonic() - started
     receipt["seconds"] = {name: round(value, 3) for name, value in timing.items()}
     receipt["megapixels_per_cpu_s"] = round(megapixels / timing["convert_cpu_s"], 2)
-    receipt["requests"] = dict(store.requests)
+    receipt["requests"] = dict(fetched["requests"] + store.requests)
     receipt["max_rss_kb"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     return receipt
 
@@ -274,24 +301,46 @@ def main():
     print(f"run {run_id} shard {shard_index}/{shard_count}: {len(mine)} quads, gdal {gdal.__version__}",
           flush=True)
 
+    # One download runs ahead of the conversion, on its own client and request counter.
+    fetcher = Store()
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    queue = iter(mine)
+
+    def start_next():
+        following = next(queue, None)
+        if following is None:
+            return None
+        position, quad = following
+        receipt_key = f"_receipts/{run_id}/{quad['id']}.json"
+        return position, quad, receipt_key, pool.submit(
+            fetch_quad, fetcher, work_bucket, receipt_key, quad)
+
     done = skipped = failed = 0
     out_of_time = False
-    for position, quad in mine:
+    current = start_next()
+    while current:
+        position, quad, receipt_key, download = current
         if time.monotonic() > deadline:
             print("deadline reached, stopping", flush=True)
             out_of_time = True
             break
-        receipt_key = f"_receipts/{run_id}/{quad['id']}.json"
-        store.requests.clear()
-        if store.exists(work_bucket, receipt_key):
-            skipped += 1
-            continue
-        workdir = tempfile.mkdtemp(prefix="quad-")
+        current = None
+        workdir = None
         try:
+            mark = time.monotonic()
+            fetched = download.result()
+            wait_s = time.monotonic() - mark
+            if OVERLAP_DOWNLOADS:
+                current = start_next()
+            if fetched is None:
+                skipped += 1
+                continue
+            workdir = fetched["workdir"]
             sample = bool(sample_every) and position % sample_every == 0
-            receipt = one_quad(store, out_bucket, out_prefix, quad, sample, workdir)
+            receipt = one_quad(store, out_bucket, out_prefix, quad, sample, fetched, wait_s)
             receipt.update({"run_id": run_id, "shard": shard_index, "host": host,
                             "gdal": gdal.__version__, "quality": QUALITY,
+                            "overlap_downloads": OVERLAP_DOWNLOADS,
                             "finished_unix": round(time.time(), 3)})
             store.put_json(work_bucket, receipt_key, receipt)
             done += 1
@@ -304,7 +353,19 @@ def main():
                            {"id": quad["id"], "run_id": run_id, "shard": shard_index,
                             "error": repr(error)})
         finally:
-            shutil.rmtree(workdir, ignore_errors=True)
+            if workdir:
+                shutil.rmtree(workdir, ignore_errors=True)
+            if current is None and not out_of_time:
+                current = start_next()
+
+    if current:  # stopped at the deadline with a download under way: let it end, then drop it
+        try:
+            unused = current[3].result()
+            if unused:
+                shutil.rmtree(unused["workdir"], ignore_errors=True)
+        except Exception:
+            pass
+    pool.shutdown()
 
     print(f"shard {shard_index} finished: {done} converted, {skipped} already done, {failed} failed",
           flush=True)

@@ -43,7 +43,8 @@ after 2023 in `naip-analytic`.
 downloads the `.mrf`, `.idx` and `.lrc`, writes bands 1 to 3 with GDAL's COG driver
 (`COMPRESS=JPEG QUALITY=85 BLOCKSIZE=512 OVERVIEW_RESAMPLING=AVERAGE`), checks the result against
 the source, uploads it and writes a receipt with sizes, timings, request counts and the file's
-SHA-256. [VALIDATION.md](VALIDATION.md) has the checks and what they found.
+SHA-256. The next quad downloads while the current one converts (`OVERLAP_DOWNLOADS=0` turns that
+off). [VALIDATION.md](VALIDATION.md) has the checks and what they found.
 
 Try it on one file without any cloud account:
 
@@ -62,6 +63,8 @@ Fargate Spot in us-west-2, next to the source, where reading it costs requests b
 
 - 23.6 minutes on 48 one-vCPU tasks; about 9 seconds per quad.
 - $0.51 billed for that day's Fargate Spot, addresses and S3 requests.
+- Peak memory 837 MiB per task, so 60 cm runs fit `--memory-mib 2048`, the least Fargate allows
+  for one vCPU. The pilot ran with 4 GiB.
 - At the same rate per byte, all 52 state-years are about $37, plus more memory for 30 cm quads.
 
 ## Source and license
