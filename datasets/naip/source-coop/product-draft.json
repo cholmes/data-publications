@@ -1,0 +1,69 @@
+{
+  "assets": [],
+  "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
+  "blockers": [
+    "Source Cooperative account verification is not recorded",
+    "canonical publication status is candidate, not prepared or published"
+  ],
+  "created": false,
+  "creation_ready": false,
+  "dataset_id": "naip",
+  "dataset_title": "NAIP display copies, 2024 onward",
+  "display_publication": null,
+  "draft_type": "source_coop_product_draft",
+  "hosted": false,
+  "independent_maintainer_proposal": {
+    "owner": "nthh",
+    "relationship": "new Source Cooperative product proposal; immutable package metadata is unchanged",
+    "status": "confirmed"
+  },
+  "license_note": "NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.",
+  "limitations": [
+    "Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
+    "Only Utah 2024 is converted so far, and it sits in a private bucket. It is not on Source Cooperative.",
+    "Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.",
+    "Adjacent quarter quads overlap, as they do in the source."
+  ],
+  "local_readiness": "blocked",
+  "owner": "nthh",
+  "owner_status": "confirmed",
+  "product_id": "naip",
+  "proposed_source_proxy": {
+    "status": "proposed",
+    "uri": "s3://nthh/naip"
+  },
+  "publication_status": "candidate",
+  "ready_for_creation": false,
+  "ready_for_review": true,
+  "related_dataset_links": [],
+  "release": null,
+  "release_files": [],
+  "review_context": {
+    "asset_integrity": null,
+    "local_followup": [],
+    "public_followup": [],
+    "stage": null,
+    "status_basis": "canonical publication status plus local manifest/snapshot hashes; this tool does not rerun scientific or public-host validation"
+  },
+  "schema_version": 1,
+  "snapshot_binding": {
+    "manifest_path": null,
+    "manifest_sha256": null,
+    "release": null,
+    "snapshot_path": null,
+    "snapshot_sha256": null
+  },
+  "snapshot_collection": null,
+  "source_links": [],
+  "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads for the state-years that the AWS naip-visualization bucket does not hold, converted from the naip-analytic MRF files with the same settings, file names and key layout.",
+  "supplements": [],
+  "tags": [
+    "naip",
+    "aerial-imagery",
+    "usda",
+    "united-states",
+    "cog"
+  ],
+  "temporal_note": "One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.",
+  "title": "NAIP display copies, 2024 onward"
+}
