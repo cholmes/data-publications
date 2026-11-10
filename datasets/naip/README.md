@@ -64,7 +64,8 @@ Fargate Spot in us-west-2, next to the source, where reading it costs requests b
 - 23.6 minutes on 48 one-vCPU tasks; about 9 seconds per quad.
 - $0.51 billed for that day's Fargate Spot, addresses and S3 requests.
 - Peak memory 837 MiB per task, so 60 cm runs fit `--memory-mib 2048`, the least Fargate allows
-  for one vCPU. The pilot ran with 4 GiB.
+  for one vCPU. The pilot ran with 4 GiB; New Hampshire 2025 then ran on 2 GiB.
+- Downloading the next quad during conversion took 21% off the time per quad in New Hampshire.
 - At the same rate per byte, all 52 state-years are about $37, plus more memory for 30 cm quads.
 
 ## Source and license

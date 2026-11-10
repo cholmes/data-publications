@@ -48,15 +48,31 @@ setting to test; its figures are not kept in this repository.
   comparison peaked near 540 MiB.
 - Task time, summed over the receipts: 67% converting, 26% downloading, 5% uploading.
 
+### New Hampshire 2025, 771 quads (run `nh2025-1`)
+
+`evidence/new-hampshire-2025-summary.json`, `evidence/new-hampshire-2025-overlap.json`.
+
+First run of the converter that downloads the next quad while the current one converts, and
+first run on 2 GiB tasks.
+
+- 771 of 771 quads converted, none with a check problem. One task was interrupted by Spot; its
+  shard was launched again and skipped the quads already done.
+- 47,401,872,192 bytes written from 353,433,330,595 bytes read (13.4%).
+- Sampled error against the source, 16 quads: median 31.0 dB, lowest 29.9 dB. That is about
+  4 dB below Utah at the same JPEG quality, with larger files. New Hampshire is mostly forest;
+  no published display copy of a forested state was compared to say whether this matches it.
+- Peak memory 821 MiB on 2 GiB tasks.
+- Overlapped downloads: 6.72 s per quad over 15 shards, against 8.46 s over two shards that
+  repeated the same quads with overlap off, 21% less. The wait for downloads fell from 2.2 s to
+  under 0.1 s per quad; conversion CPU time rose from 5.5 s to 5.9 s because the download shares
+  the one vCPU. Two comparison shards are a small sample and hosts differ in speed.
+
 ## What this does not establish
 
 - No output file from the Utah pilot has a recorded SHA-256. The converter records one from the
   next run on; the pilot's files need a pass that reads and hashes them.
 - 30 cm state-years have not been converted. They have four times the pixels per file, and
   their memory use is not measured.
-- After the pilot the converter was changed to download the next quad while the current one
-  converts. Tested without S3 only: the output bytes are the same with it on and off, and the
-  skip, failure and deadline paths behave as before. Its effect on task time is not measured.
 - The control covers one state and one year. Other states' published files were not compared.
 - Overview levels were checked for presence, not compared pixel for pixel with anything.
 - Nothing here assesses the imagery itself (cloud, seamlines, colour balance). These files carry

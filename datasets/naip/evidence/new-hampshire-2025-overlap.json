@@ -1,0 +1,157 @@
+{
+ "schema": "naip-overlap-comparison@1",
+ "state_year": "nh-2025-60cm",
+ "task": "1 vCPU, 2 GiB, Linux/ARM64, Fargate Spot",
+ "overlap_on": {
+  "shards": 15,
+  "mean_total_s_per_quad": 6.72,
+  "mean_convert_cpu_s_per_quad": 5.9,
+  "rows": [
+   {
+    "shard": 1,
+    "quads": 49,
+    "total_s_per_quad": 7.3,
+    "download_wait_s_per_quad": 0.05,
+    "convert_cpu_s_per_quad": 6.47,
+    "max_rss_mib": 352
+   },
+   {
+    "shard": 2,
+    "quads": 49,
+    "total_s_per_quad": 7.46,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 6.49,
+    "max_rss_mib": 604
+   },
+   {
+    "shard": 3,
+    "quads": 48,
+    "total_s_per_quad": 6.26,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 5.48,
+    "max_rss_mib": 351
+   },
+   {
+    "shard": 4,
+    "quads": 48,
+    "total_s_per_quad": 6.49,
+    "download_wait_s_per_quad": 0.05,
+    "convert_cpu_s_per_quad": 5.57,
+    "max_rss_mib": 603
+   },
+   {
+    "shard": 5,
+    "quads": 48,
+    "total_s_per_quad": 7.11,
+    "download_wait_s_per_quad": 0.05,
+    "convert_cpu_s_per_quad": 6.47,
+    "max_rss_mib": 568
+   },
+   {
+    "shard": 6,
+    "quads": 48,
+    "total_s_per_quad": 6.54,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 5.61,
+    "max_rss_mib": 565
+   },
+   {
+    "shard": 7,
+    "quads": 48,
+    "total_s_per_quad": 7.29,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 6.48,
+    "max_rss_mib": 349
+   },
+   {
+    "shard": 8,
+    "quads": 48,
+    "total_s_per_quad": 6.28,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 5.42,
+    "max_rss_mib": 617
+   },
+   {
+    "shard": 9,
+    "quads": 48,
+    "total_s_per_quad": 6.05,
+    "download_wait_s_per_quad": 0.03,
+    "convert_cpu_s_per_quad": 5.35,
+    "max_rss_mib": 552
+   },
+   {
+    "shard": 10,
+    "quads": 48,
+    "total_s_per_quad": 7.23,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 6.45,
+    "max_rss_mib": 821
+   },
+   {
+    "shard": 11,
+    "quads": 48,
+    "total_s_per_quad": 6.13,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 5.37,
+    "max_rss_mib": 350
+   },
+   {
+    "shard": 12,
+    "quads": 48,
+    "total_s_per_quad": 7.19,
+    "download_wait_s_per_quad": 0.04,
+    "convert_cpu_s_per_quad": 6.42,
+    "max_rss_mib": 821
+   },
+   {
+    "shard": 13,
+    "quads": 48,
+    "total_s_per_quad": 6.38,
+    "download_wait_s_per_quad": 0.05,
+    "convert_cpu_s_per_quad": 5.57,
+    "max_rss_mib": 350
+   },
+   {
+    "shard": 14,
+    "quads": 48,
+    "total_s_per_quad": 6.48,
+    "download_wait_s_per_quad": 0.05,
+    "convert_cpu_s_per_quad": 5.57,
+    "max_rss_mib": 603
+   },
+   {
+    "shard": 15,
+    "quads": 48,
+    "total_s_per_quad": 6.55,
+    "download_wait_s_per_quad": 0.06,
+    "convert_cpu_s_per_quad": 5.73,
+    "max_rss_mib": 350
+   }
+  ]
+ },
+ "overlap_off": {
+  "shards": 2,
+  "mean_total_s_per_quad": 8.46,
+  "mean_convert_cpu_s_per_quad": 5.54,
+  "rows": [
+   {
+    "shard": 0,
+    "quads": 49,
+    "total_s_per_quad": 8.55,
+    "download_wait_s_per_quad": 2.21,
+    "convert_cpu_s_per_quad": 5.6,
+    "max_rss_mib": 588
+   },
+   {
+    "shard": 1,
+    "quads": 49,
+    "total_s_per_quad": 8.37,
+    "download_wait_s_per_quad": 2.15,
+    "convert_cpu_s_per_quad": 5.48,
+    "max_rss_mib": 340
+   }
+  ]
+ },
+ "note": "Shards with overlap off repeat the quads of shards 0 and 1. Shard 0 with overlap on was interrupted by Spot and finished on a second host, so it is left out.",
+ "less_time_per_quad": 0.206
+}
