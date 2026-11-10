@@ -146,6 +146,7 @@ def launch(args):
         "RUN_ID": args.run_id, "MANIFEST_KEY": args.manifest_key, "SHARD_COUNT": args.shards,
         "DEADLINE_SECONDS": args.deadline, "SAMPLE_EVERY": args.sample_every, "LIMIT": args.limit,
         "OUT_BUCKET": out_bucket, "OUT_PREFIX": args.out_prefix, "WORK_BUCKET": stack["bucket_name"],
+        "OVERLAP_DOWNLOADS": 0 if args.no_overlap else 1,
     }
     network = {"awsvpcConfiguration": {"subnets": stack["subnet_ids"],
                                        "securityGroups": [stack["security_group_id"]],
@@ -300,6 +301,8 @@ def main():
     p.add_argument("--task-definition", help="default the stack's task_definition_arn")
     p.add_argument("--cpu", type=int, help="CPU units per task; default the task definition's")
     p.add_argument("--memory-mib", type=int, help="memory per task; default the task definition's")
+    p.add_argument("--no-overlap", action="store_true",
+                   help="download each quad only after the previous one is done (for comparison)")
     p = sub.add_parser("status")
     p.add_argument("run_id")
     p.add_argument("manifest_file")
