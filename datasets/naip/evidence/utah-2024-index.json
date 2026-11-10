@@ -1,0 +1,17 @@
+{
+ "file": "ut-2024-60cm.parquet",
+ "rows": 6032,
+ "bytes": 791347,
+ "sha256": "044604fdc792dbae79360cf6d91dc7f0a64280005fb98350487abdec5a92ab2f",
+ "data_bytes": 249594785306,
+ "bounds": [
+  -114.06787,
+  36.93408,
+  -108.99566,
+  42.06534
+ ],
+ "flown_first": "2024-06-23",
+ "flown_last": "2024-08-31",
+ "rows_with_sha256": 0,
+ "rows_with_psnr": 121
+}

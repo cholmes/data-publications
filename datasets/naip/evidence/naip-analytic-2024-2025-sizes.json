@@ -1,0 +1,370 @@
+{
+ "schema": "naip-analytic-2024-2025-sizes@1",
+ "listed": "2026-11-10T21:23:19Z",
+ "groups": [
+  {
+   "state": "al",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3477,
+   "lrc_bytes": 6361892982789
+  },
+  {
+   "state": "ar",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 3600,
+   "lrc_bytes": 1700593722168
+  },
+  {
+   "state": "az",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 7629,
+   "lrc_bytes": 2979257230625
+  },
+  {
+   "state": "ca",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 11042,
+   "lrc_bytes": 4907569446462
+  },
+  {
+   "state": "ct",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 413,
+   "lrc_bytes": 185189916036
+  },
+  {
+   "state": "fl",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3806,
+   "lrc_bytes": 6861711929323
+  },
+  {
+   "state": "ga",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3913,
+   "lrc_bytes": 7178417727116
+  },
+  {
+   "state": "ia",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 4239,
+   "lrc_bytes": 1402139452368
+  },
+  {
+   "state": "id",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 80,
+   "lrc_bytes": 32855470474
+  },
+  {
+   "state": "id",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 6553,
+   "lrc_bytes": 9224832815431
+  },
+  {
+   "state": "il",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 4131,
+   "lrc_bytes": 1465298752716
+  },
+  {
+   "state": "in",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 2689,
+   "lrc_bytes": 989124451157
+  },
+  {
+   "state": "in",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 2688,
+   "lrc_bytes": 1144308155647
+  },
+  {
+   "state": "ks",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 5902,
+   "lrc_bytes": 7631359635231
+  },
+  {
+   "state": "ky",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 2930,
+   "lrc_bytes": 1312366218707
+  },
+  {
+   "state": "la",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 3288,
+   "lrc_bytes": 1587339502529
+  },
+  {
+   "state": "ma",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 744,
+   "lrc_bytes": 322238878552
+  },
+  {
+   "state": "me",
+   "year": "2024",
+   "resolution": "30cm",
+   "quads": 839,
+   "lrc_bytes": 1261078053962
+  },
+  {
+   "state": "me",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 1,
+   "lrc_bytes": 1609342087
+  },
+  {
+   "state": "me",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 2754,
+   "lrc_bytes": 4358160912724
+  },
+  {
+   "state": "mi",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 4846,
+   "lrc_bytes": 1939892727577
+  },
+  {
+   "state": "mn",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 6791,
+   "lrc_bytes": 2364686255290
+  },
+  {
+   "state": "mo",
+   "year": "2024",
+   "resolution": "30cm",
+   "quads": 5018,
+   "lrc_bytes": 7419763716013
+  },
+  {
+   "state": "ms",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3154,
+   "lrc_bytes": 5679405224513
+  },
+  {
+   "state": "mt",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 1666,
+   "lrc_bytes": 666009968032
+  },
+  {
+   "state": "mt",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 11745,
+   "lrc_bytes": 14778207462196
+  },
+  {
+   "state": "nc",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 3582,
+   "lrc_bytes": 1565791765794
+  },
+  {
+   "state": "nc",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3575,
+   "lrc_bytes": 6238656426628
+  },
+  {
+   "state": "nd",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 5689,
+   "lrc_bytes": 1966933807059
+  },
+  {
+   "state": "nd",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 5711,
+   "lrc_bytes": 6534093037122
+  },
+  {
+   "state": "ne",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 5626,
+   "lrc_bytes": 2049768593934
+  },
+  {
+   "state": "ne",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 5635,
+   "lrc_bytes": 7404187968279
+  },
+  {
+   "state": "nh",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 771,
+   "lrc_bytes": 353425390518
+  },
+  {
+   "state": "nj",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 634,
+   "lrc_bytes": 268058296102
+  },
+  {
+   "state": "nm",
+   "year": "2024",
+   "resolution": "30cm",
+   "quads": 8027,
+   "lrc_bytes": 12095830895152
+  },
+  {
+   "state": "nv",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 7397,
+   "lrc_bytes": 3150612788915
+  },
+  {
+   "state": "ny",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 3882,
+   "lrc_bytes": 1635226765107
+  },
+  {
+   "state": "oh",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 3049,
+   "lrc_bytes": 1076273118765
+  },
+  {
+   "state": "ok",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 4815,
+   "lrc_bytes": 1824404119408
+  },
+  {
+   "state": "or",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 7454,
+   "lrc_bytes": 2925644674071
+  },
+  {
+   "state": "pa",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 1118,
+   "lrc_bytes": 396682898161
+  },
+  {
+   "state": "ri",
+   "year": "2025",
+   "resolution": "60cm",
+   "quads": 116,
+   "lrc_bytes": 50784530942
+  },
+  {
+   "state": "sc",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 2152,
+   "lrc_bytes": 3729550710079
+  },
+  {
+   "state": "sd",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 5991,
+   "lrc_bytes": 7486159034238
+  },
+  {
+   "state": "tn",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3000,
+   "lrc_bytes": 5226614274696
+  },
+  {
+   "state": "tx",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 17276,
+   "lrc_bytes": 7855403669490
+  },
+  {
+   "state": "ut",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 6032,
+   "lrc_bytes": 2490330584939
+  },
+  {
+   "state": "va",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 3031,
+   "lrc_bytes": 4249315935928
+  },
+  {
+   "state": "vt",
+   "year": "2025",
+   "resolution": "30cm",
+   "quads": 812,
+   "lrc_bytes": 1329974542121
+  },
+  {
+   "state": "wi",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 4484,
+   "lrc_bytes": 1737290692420
+  },
+  {
+   "state": "wv",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 101,
+   "lrc_bytes": 40848943355
+  },
+  {
+   "state": "wy",
+   "year": "2024",
+   "resolution": "60cm",
+   "quads": 7357,
+   "lrc_bytes": 2669318292534
+  }
+ ]
+}

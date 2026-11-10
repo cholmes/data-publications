@@ -1,0 +1,14 @@
+{
+ "schema": "naip-display-copies-billed@1",
+ "read": "2026-11-10T20:22:14Z",
+ "source": "AWS Cost Explorer, account-wide usage lines for 2026-11-10 (UTC), us-west-2",
+ "note": "The Fargate lines are only this work (a 3-quad smoke task, 4 control tasks, 48 Utah tasks). The request and address lines include whatever else the account did that day.",
+ "lines": [
+  {"usage_type": "USW2-SpotUsage-Fargate-ARM-vCPU-Hours", "quantity": 15.485, "usd": 0.1572},
+  {"usage_type": "USW2-SpotUsage-Fargate-ARM-GB-Hours", "quantity": 61.941, "usd": 0.0691},
+  {"usage_type": "USW2-PublicIPv4:InUseAddress", "quantity": 18.085, "usd": 0.0904},
+  {"usage_type": "USW2-Requests-Tier1", "quantity": 26984, "usd": 0.1349},
+  {"usage_type": "USW2-Requests-Tier2", "quantity": 140357, "usd": 0.0561}
+ ],
+ "usd_total": 0.5077
+}

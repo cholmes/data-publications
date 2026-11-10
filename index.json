@@ -10676,6 +10676,46 @@
       }
     },
     {
+      "id": "naip",
+      "record_path": "datasets/naip/dataset.yaml",
+      "title": "NAIP display copies, 2024 onward",
+      "community_url": null,
+      "family_key": null,
+      "decision": "publish_conversion",
+      "priority": "pilot_review",
+      "publication_status": "candidate",
+      "intake": {
+        "kind": "producer",
+        "reference_url": "https://registry.opendata.aws/naip/",
+        "added_on": "2026-11-10"
+      },
+      "source_coop": {
+        "owner": "nthh",
+        "owner_status": "confirmed",
+        "account_verification": null,
+        "product_id": "naip",
+        "title": "NAIP display copies, 2024 onward",
+        "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads for the state-years that the AWS naip-visualization bucket does not hold, converted from the naip-analytic MRF files with the same settings, file names and key layout.",
+        "tags": [
+          "naip",
+          "aerial-imagery",
+          "usda",
+          "united-states",
+          "cog"
+        ],
+        "license_note": "NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.",
+        "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
+        "temporal_note": "One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.",
+        "limitations": [
+          "Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
+          "Only Utah 2024 is converted so far, and it sits in a private bucket. It is not on Source Cooperative.",
+          "Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.",
+          "Adjacent quarter quads overlap, as they do in the source."
+        ],
+        "supplements": []
+      }
+    },
+    {
       "id": "naip_chm_conus",
       "record_path": "candidates/naip_chm_conus/dataset.yaml",
       "title": "NAIP-CHM 0.6-meter Resolution Canopy Height Model for CONUS",
