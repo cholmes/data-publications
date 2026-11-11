@@ -192,3 +192,49 @@ publishes for the same quad. Runs `control-v4-ut21`, `control-v4-nh21`, `control
    GDAL from our files and from the published files, shows no line along a quad edge: along
    each shared edge, the mean of the two pixel rows or columns on the seam is within 10% of
    the mean of the ten on either side. One case crosses a UTM zone line.
+
+### Results for image `v4` (2026-11-11)
+
+Runs `control-v4-ut21`, `control-v4-nh21`, `control-v4-nh23` (60 quads, none with a check
+problem; two 30 cm tasks were interrupted by Spot and launched again) and `seam-v4-ut24`
+(four adjacent Utah 2024 quads across the UTM 11/12 line, in a test prefix of the work bucket).
+Compared with `compare_published.py` and `seam_check.py`:
+`evidence/control-v4-compare-published.json`, `evidence/seam-utah-2024-before.json`,
+`evidence/seam-utah-2024-v4.json`.
+
+1. **Overview sizes: pass.** Equal to the published file's at every level on 60 of 60 quads.
+2. **Overview edges: pass.** Our lowest ratio is 0.951 (Utah 2021), 0.934 (New Hampshire 2021)
+   and 0.970 (New Hampshire 2023); the published files' lowest are 0.928, 0.939 and 0.977. The
+   source MRF pyramids are as low as 0.03.
+3. **Overview pixels: the pass mark was mis-set; figures reported.** It was written as a
+   margin below the full-resolution figure, on the assumption that full resolution would differ
+   between our file and the published one. It does not: on the centre 4096 px window the two
+   are pixel for pixel identical on 60 of 60 quads. The overview levels differ: median 37.9 to
+   39.2 dB (Utah 2021), 34.8 to 36.0 dB (New Hampshire 2021), 34.5 to 37.1 dB (New Hampshire
+   2023), lowest single quad-level 32.5 dB, above the 25 dB floor. On one quad
+   (`ut_m_3710928_se_12_060_20210822`) both were compared with a lossless average of the
+   source: ours 32.10, 32.85, 33.01, 33.90, 35.66 dB by level, published 31.94, 32.71, 32.77,
+   33.63, 35.41 dB. Rebuilding that published file's overviews from its own decoded full
+   resolution with AVERAGE reproduces its first level to 62 dB, so the published overviews
+   look to have been made from the compressed image and ours from the source. One quad only.
+4. **Everything GDAL reports: no difference that changes what a reader gets.** Listed in full:
+   the published files carry vendor TIFF tags (software, artist, host, date, document name,
+   image description, resolution unit) that the source MRF does not hold, so ours lack them;
+   ours report `LAYOUT=COG` and `OVERVIEW_RESAMPLING=AVERAGE` and the published files report
+   neither; on 16 New Hampshire 2021 and 8 New Hampshire 2023 quads our pixel height is
+   -0.6000000000000288 or -0.3000000000000145 where the published file has -0.6 or -0.3,
+   which comes from the source's bounding box (under a nanometre over a quad).
+5. **Full resolution unchanged: pass.** Error against the source equals the first control's
+   to four decimals on all 60 quads. File sizes are 98.4% to 100.3% of the first control's.
+6. **Drawn: pass.** With each quad drawn over its neighbours at 2 to 32 times the pixel size,
+   the 20 edges that have a neighbour beneath them measure 0.976 to 1.029, including the two
+   zone 11 quads drawn over zone 12 neighbours. The same edges of the faulty files in the
+   product measure down to 0.573.
+
+Cost: building overviews instead of copying them makes conversion slower. Convert time per
+quad went from 6.0 to 10.1 s (Utah 2021), 7.4 to 10.2 s (New Hampshire 2021) and 33 to 60 s
+(30 cm). The national estimate of about $20 is therefore low; a rough scaling of its compute
+share gives about $30 to $35. It is to be redone from the first full `v4` state-year.
+
+Still not established: the overview comparison against a lossless average covers one quad;
+the seam check covers one place; no full state-year has run on `v4`.

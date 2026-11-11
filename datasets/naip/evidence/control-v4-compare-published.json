@@ -1,0 +1,276 @@
+{
+ "control-v4-ut21": {
+  "quads": 20,
+  "sizes_equal": true,
+  "lowest_edge_ratio": 0.951,
+  "lowest_published_edge_ratio": 0.928,
+  "full_resolution_window_median_psnr_db": 99.0,
+  "by_level": {
+   "1": {
+    "compared": 20,
+    "median_psnr_db": 37.917,
+    "lowest_psnr_db": 35.383
+   },
+   "2": {
+    "compared": 20,
+    "median_psnr_db": 38.111999999999995,
+    "lowest_psnr_db": 34.653
+   },
+   "3": {
+    "compared": 20,
+    "median_psnr_db": 38.155,
+    "lowest_psnr_db": 34.524
+   },
+   "4": {
+    "compared": 20,
+    "median_psnr_db": 38.454,
+    "lowest_psnr_db": 36.212
+   },
+   "5": {
+    "compared": 20,
+    "median_psnr_db": 39.1525,
+    "lowest_psnr_db": 36.324
+   }
+  },
+  "info_differences": {
+   "/metadata//TIFFTAG_IMAGEDESCRIPTION": {
+    "quads": 20,
+    "example": [
+     null,
+     "OrthoVista"
+    ]
+   },
+   "/metadata//TIFFTAG_RESOLUTIONUNIT": {
+    "quads": 20,
+    "example": [
+     null,
+     "1 (unitless)"
+    ]
+   },
+   "/metadata//TIFFTAG_SOFTWARE": {
+    "quads": 20,
+    "example": [
+     null,
+     "Trimble Germany GmbH"
+    ]
+   },
+   "/metadata//TIFFTAG_XRESOLUTION": {
+    "quads": 20,
+    "example": [
+     null,
+     "1"
+    ]
+   },
+   "/metadata//TIFFTAG_YRESOLUTION": {
+    "quads": 20,
+    "example": [
+     null,
+     "1"
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/LAYOUT": {
+    "quads": 20,
+    "example": [
+     "COG",
+     null
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/OVERVIEW_RESAMPLING": {
+    "quads": 20,
+    "example": [
+     "AVERAGE",
+     null
+    ]
+   }
+  }
+ },
+ "control-v4-nh21": {
+  "quads": 20,
+  "sizes_equal": true,
+  "lowest_edge_ratio": 0.934,
+  "lowest_published_edge_ratio": 0.939,
+  "full_resolution_window_median_psnr_db": 99.0,
+  "by_level": {
+   "1": {
+    "compared": 20,
+    "median_psnr_db": 35.933499999999995,
+    "lowest_psnr_db": 34.086
+   },
+   "2": {
+    "compared": 20,
+    "median_psnr_db": 34.772000000000006,
+    "lowest_psnr_db": 32.686
+   },
+   "3": {
+    "compared": 20,
+    "median_psnr_db": 34.763999999999996,
+    "lowest_psnr_db": 33.368
+   },
+   "4": {
+    "compared": 20,
+    "median_psnr_db": 35.318,
+    "lowest_psnr_db": 33.848
+   },
+   "5": {
+    "compared": 20,
+    "median_psnr_db": 36.0175,
+    "lowest_psnr_db": 34.807
+   }
+  },
+  "info_differences": {
+   "/geoTransform[5]": {
+    "quads": 16,
+    "example": [
+     -0.6000000000000288,
+     -0.6
+    ]
+   },
+   "/metadata//TIFFTAG_ARTIST": {
+    "quads": 20,
+    "example": [
+     null,
+     "Surdex Corporation, 636-368-4400, www.surdex.com"
+    ]
+   },
+   "/metadata//TIFFTAG_DATETIME": {
+    "quads": 20,
+    "example": [
+     null,
+     "2021:12:13 06:41:38"
+    ]
+   },
+   "/metadata//TIFFTAG_DOCUMENTNAME": {
+    "quads": 20,
+    "example": [
+     null,
+     "Greenfield SE 4207102"
+    ]
+   },
+   "/metadata//TIFFTAG_HOSTCOMPUTER": {
+    "quads": 20,
+    "example": [
+     null,
+     "AMDNODE4"
+    ]
+   },
+   "/metadata//TIFFTAG_IMAGEDESCRIPTION": {
+    "quads": 20,
+    "example": [
+     null,
+     "Image courtesy of USDA Farm Service Agency's National Agriculture Imagery Program (NAIP) under Aerial Photography Field Office contract 47QTCA18D00J5. Imagery has been placed in the public domain and may be used and reproduced without permission or fee. Please credit 'NAIP imagery provided by USDA Farm Service Agency' on any use."
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/LAYOUT": {
+    "quads": 20,
+    "example": [
+     "COG",
+     null
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/OVERVIEW_RESAMPLING": {
+    "quads": 20,
+    "example": [
+     "AVERAGE",
+     null
+    ]
+   }
+  }
+ },
+ "control-v4-nh23": {
+  "quads": 20,
+  "sizes_equal": true,
+  "lowest_edge_ratio": 0.97,
+  "lowest_published_edge_ratio": 0.977,
+  "full_resolution_window_median_psnr_db": 99.0,
+  "by_level": {
+   "1": {
+    "compared": 20,
+    "median_psnr_db": 36.282,
+    "lowest_psnr_db": 34.842
+   },
+   "2": {
+    "compared": 20,
+    "median_psnr_db": 35.0285,
+    "lowest_psnr_db": 33.154
+   },
+   "3": {
+    "compared": 20,
+    "median_psnr_db": 34.5355,
+    "lowest_psnr_db": 32.533
+   },
+   "4": {
+    "compared": 20,
+    "median_psnr_db": 35.17,
+    "lowest_psnr_db": 33.572
+   },
+   "5": {
+    "compared": 20,
+    "median_psnr_db": 35.525999999999996,
+    "lowest_psnr_db": 34.18
+   },
+   "6": {
+    "compared": 20,
+    "median_psnr_db": 37.14,
+    "lowest_psnr_db": 35.638
+   }
+  },
+  "info_differences": {
+   "/metadata//TIFFTAG_ARTIST": {
+    "quads": 20,
+    "example": [
+     null,
+     "Surdex Corporation, 636-368-4400, www.surdex.com"
+    ]
+   },
+   "/metadata//TIFFTAG_DATETIME": {
+    "quads": 20,
+    "example": [
+     null,
+     "2023:11:01 17:21:33"
+    ]
+   },
+   "/metadata//TIFFTAG_DOCUMENTNAME": {
+    "quads": 20,
+    "example": [
+     null,
+     "Greenfield SE 4207102"
+    ]
+   },
+   "/metadata//TIFFTAG_HOSTCOMPUTER": {
+    "quads": 20,
+    "example": [
+     null,
+     "AMDNODE11"
+    ]
+   },
+   "/metadata//TIFFTAG_IMAGEDESCRIPTION": {
+    "quads": 20,
+    "example": [
+     null,
+     "Image courtesy of USDA Farm Service Agency's National Agriculture Imagery Program (NAIP) under FPAC-Geo, Farm Production and Conservation contract 12FPC222A0007. Imagery has been placed in the public domain and may be used and reproduced without permission or fee. Please credit 'NAIP imagery provided by USDA Farm Service Agency' on any use."
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/LAYOUT": {
+    "quads": 20,
+    "example": [
+     "COG",
+     null
+    ]
+   },
+   "/metadata/IMAGE_STRUCTURE/OVERVIEW_RESAMPLING": {
+    "quads": 20,
+    "example": [
+     "AVERAGE",
+     null
+    ]
+   },
+   "/geoTransform[5]": {
+    "quads": 8,
+    "example": [
+     -0.3000000000000145,
+     -0.3
+    ]
+   }
+  }
+ }
+}
