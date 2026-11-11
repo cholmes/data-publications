@@ -67,6 +67,17 @@ first run on 2 GiB tasks.
   under 0.1 s per quad; conversion CPU time rose from 5.5 s to 5.9 s because the download shares
   the one vCPU. Two comparison shards are a small sample and hosts differ in speed.
 
+### Rhode Island 2025, 116 quads (run `ri2025-1`)
+
+`evidence/rhode-island-2025-summary.json`. First run with one-request uploads and 128 MiB
+download parts.
+
+- 116 of 116 quads converted on four 2 GiB tasks, none with a check problem.
+- Requests per quad: 5.9 GET, 2 HEAD, 1 PUT for the file, plus the receipt's PUT. Utah averaged
+  about 23 download and 4.5 upload requests per quad.
+- 6.12 s per quad; the wait for downloads stayed near 0.1 s with the larger parts.
+- Sampled error against the source, 6 quads: median 31.25 dB.
+
 ### Control: New Hampshire 2021, 20 quads (run `control-nh-1`)
 
 `evidence/control-nh-2021-summary.json`. Run because New Hampshire 2025 measured about 4 dB
