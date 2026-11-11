@@ -1,0 +1,782 @@
+{
+ "schema": "folia.naip-display-pilot-summary@1",
+ "quads": 20,
+ "megapixels": 10015.5,
+ "source_bytes": 39921514634,
+ "output_bytes": 4651928175,
+ "seconds_summed": {
+  "convert_cpu_s": 663.2,
+  "convert_wall_s": 663.8,
+  "download_s": 214.3,
+  "download_wait_s": 36.4,
+  "pixel_check_s": 381.1,
+  "published_compare_s": 440.6,
+  "total_s": 1569.5,
+  "upload_s": 44.4
+ },
+ "megapixels_per_cpu_s": {
+  "p10": 12.83,
+  "median": 16.1,
+  "p90": 19.39
+ },
+ "requests": {
+  "GetObject": 397,
+  "HeadObject": 60,
+  "PutObject": 20
+ },
+ "max_rss_kb": 1547212,
+ "quads_with_problems": 0,
+ "output_share_of_source": 0.1165,
+ "psnr_db": {
+  "quads": 20,
+  "min": 32.97,
+  "median": 35.38
+ },
+ "control": [
+  {
+   "id": "nh_m_4207102_se_19_030_20230831_20231113",
+   "our_bytes": 243262338,
+   "published_bytes": 281069167,
+   "our_psnr_db": [
+    35.49,
+    35.872,
+    33.408
+   ],
+   "published_psnr_db": [
+    35.489,
+    35.871,
+    33.406
+   ],
+   "published": {
+    "width": 19774,
+    "height": 25699,
+    "bands": 3,
+    "geotransform": [
+     269986.8,
+     0.3,
+     0.0,
+     4758012.3,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4207112_ne_19_030_20230831_20231113",
+   "our_bytes": 221128994,
+   "published_bytes": 262556034,
+   "our_psnr_db": [
+    36.315,
+    36.715,
+    34.498
+   ],
+   "published_psnr_db": [
+    36.314,
+    36.714,
+    34.496
+   ],
+   "published": {
+    "width": 19721,
+    "height": 25648,
+    "bands": 3,
+    "geotransform": [
+     290195.7,
+     0.3,
+     0.0,
+     4750419.0,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4207205_se_18_030_20230823_20231113",
+   "our_bytes": 243970440,
+   "published_bytes": 263939304,
+   "our_psnr_db": [
+    36.092,
+    36.366,
+    33.802
+   ],
+   "published_psnr_db": [
+    36.092,
+    36.366,
+    33.8
+   ],
+   "published": {
+    "width": 19721,
+    "height": 25661,
+    "bands": 3,
+    "geotransform": [
+     708782.1,
+     0.3,
+     0.0,
+     4757517.6,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26918",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4207224_ne_18_030_20230831_20231113",
+   "our_bytes": 230109617,
+   "published_bytes": 288106927,
+   "our_psnr_db": [
+    36.307,
+    36.727,
+    33.863
+   ],
+   "published_psnr_db": [
+    36.307,
+    36.726,
+    33.862
+   ],
+   "published": {
+    "width": 19874,
+    "height": 25736,
+    "bands": 3,
+    "geotransform": [
+     740107.8,
+     0.3,
+     0.0,
+     4737718.2,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26918",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307102_ne_19_030_20230823_20231113",
+   "our_bytes": 264697670,
+   "published_bytes": 277116634,
+   "our_psnr_db": [
+    34.981,
+    35.244,
+    31.866
+   ],
+   "published_psnr_db": [
+    34.981,
+    35.244,
+    31.865
+   ],
+   "published": {
+    "width": 19493,
+    "height": 25703,
+    "bands": 3,
+    "geotransform": [
+     273970.5,
+     0.3,
+     0.0,
+     4876018.5,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307111_se_19_030_20230823_20231113",
+   "our_bytes": 236933768,
+   "published_bytes": 283633207,
+   "our_psnr_db": [
+    36.055,
+    36.381,
+    33.678
+   ],
+   "published_psnr_db": [
+    36.054,
+    36.381,
+    33.676
+   ],
+   "published": {
+    "width": 19508,
+    "height": 25677,
+    "bands": 3,
+    "geotransform": [
+     283326.0,
+     0.3,
+     0.0,
+     4854858.3,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307121_ne_19_030_20230623_20231113",
+   "our_bytes": 213972895,
+   "published_bytes": 245266323,
+   "our_psnr_db": [
+    35.807,
+    36.253,
+    33.628
+   ],
+   "published_psnr_db": [
+    35.807,
+    36.253,
+    33.626
+   ],
+   "published": {
+    "width": 19455,
+    "height": 25626,
+    "bands": 3,
+    "geotransform": [
+     303250.2,
+     0.3,
+     0.0,
+     4847293.5,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307130_se_19_030_20230823_20231113",
+   "our_bytes": 195560693,
+   "published_bytes": 232279762,
+   "our_psnr_db": [
+    36.57,
+    36.828,
+    34.688
+   ],
+   "published_psnr_db": [
+    36.569,
+    36.828,
+    34.687
+   ],
+   "published": {
+    "width": 19469,
+    "height": 25600,
+    "bands": 3,
+    "geotransform": [
+     312745.2,
+     0.3,
+     0.0,
+     4826180.1,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307140_ne_19_030_20230823_20231113",
+   "our_bytes": 227433169,
+   "published_bytes": 248185815,
+   "our_psnr_db": [
+    36.011,
+    36.356,
+    33.787
+   ],
+   "published_psnr_db": [
+    36.01,
+    36.355,
+    33.785
+   ],
+   "published": {
+    "width": 19417,
+    "height": 25549,
+    "bands": 3,
+    "geotransform": [
+     332784.9,
+     0.3,
+     0.0,
+     4818707.4,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307149_se_19_030_20230622_20231113",
+   "our_bytes": 241515033,
+   "published_bytes": 270017388,
+   "our_psnr_db": [
+    35.661,
+    36.168,
+    32.466
+   ],
+   "published_psnr_db": [
+    35.66,
+    36.167,
+    32.464
+   ],
+   "published": {
+    "width": 19743,
+    "height": 25726,
+    "bands": 3,
+    "geotransform": [
+     260748.3,
+     0.3,
+     0.0,
+     4786126.2,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307159_ne_19_030_20230823_20231113",
+   "our_bytes": 227105331,
+   "published_bytes": 264312818,
+   "our_psnr_db": [
+    36.469,
+    36.774,
+    33.949
+   ],
+   "published_psnr_db": [
+    36.468,
+    36.773,
+    33.948
+   ],
+   "published": {
+    "width": 19689,
+    "height": 25674,
+    "bands": 3,
+    "geotransform": [
+     280863.3,
+     0.3,
+     0.0,
+     4778501.7,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307222_se_18_030_20230622_20231113",
+   "our_bytes": 199925766,
+   "published_bytes": 219051558,
+   "our_psnr_db": [
+    37.518,
+    37.909,
+    35.094
+   ],
+   "published_psnr_db": [
+    37.517,
+    37.908,
+    35.092
+   ],
+   "published": {
+    "width": 19559,
+    "height": 25690,
+    "bands": 3,
+    "geotransform": [
+     716299.5,
+     0.3,
+     0.0,
+     4841140.2,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26918",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307245_ne_18_030_20230622_20231113",
+   "our_bytes": 208549824,
+   "published_bytes": 213246672,
+   "our_psnr_db": [
+    36.936,
+    37.506,
+    35.157
+   ],
+   "published_psnr_db": [
+    36.935,
+    37.505,
+    35.154
+   ],
+   "published": {
+    "width": 19607,
+    "height": 25663,
+    "bands": 3,
+    "geotransform": [
+     707294.7,
+     0.3,
+     0.0,
+     4806105.6,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26918",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4307262_sw_18_030_20230622_20231113",
+   "our_bytes": 223074105,
+   "published_bytes": 250538682,
+   "our_psnr_db": [
+    36.68,
+    37.168,
+    34.776
+   ],
+   "published_psnr_db": [
+    36.679,
+    37.168,
+    34.773
+   ],
+   "published": {
+    "width": 19707,
+    "height": 25674,
+    "bands": 3,
+    "geotransform": [
+     713447.7,
+     0.3,
+     0.0,
+     4771560.6,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26918",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4407113_sw_19_030_20230917_20231113",
+   "our_bytes": 269435288,
+   "published_bytes": 284794691,
+   "our_psnr_db": [
+    34.123,
+    35.035,
+    29.758
+   ],
+   "published_psnr_db": [
+    34.122,
+    35.035,
+    29.756
+   ],
+   "published": {
+    "width": 19185,
+    "height": 25643,
+    "bands": 3,
+    "geotransform": [
+     301806.3,
+     0.3,
+     0.0,
+     4965462.0,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4407129_ne_19_030_20230926_20231113",
+   "our_bytes": 229032416,
+   "published_bytes": 257937149,
+   "our_psnr_db": [
+    35.845,
+    36.585,
+    32.36
+   ],
+   "published_psnr_db": [
+    35.844,
+    36.585,
+    32.359
+   ],
+   "published": {
+    "width": 19219,
+    "height": 25630,
+    "bands": 3,
+    "geotransform": [
+     306130.5,
+     0.3,
+     0.0,
+     4944483.9,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4407140_nw_19_030_20230917_20231113",
+   "our_bytes": 267885905,
+   "published_bytes": 307479515,
+   "our_psnr_db": [
+    34.79,
+    34.997,
+    31.154
+   ],
+   "published_psnr_db": [
+    34.789,
+    34.997,
+    31.152
+   ],
+   "published": {
+    "width": 19163,
+    "height": 25566,
+    "bands": 3,
+    "geotransform": [
+     330586.5,
+     0.3,
+     0.0,
+     4929905.1,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4407149_sw_19_030_20230623_20231113",
+   "our_bytes": 204380426,
+   "published_bytes": 207334304,
+   "our_psnr_db": [
+    36.891,
+    37.17,
+    33.622
+   ],
+   "published_psnr_db": [
+    36.89,
+    37.169,
+    33.619
+   ],
+   "published": {
+    "width": 19495,
+    "height": 25743,
+    "bands": 3,
+    "geotransform": [
+     259680.0,
+     0.3,
+     0.0,
+     4897375.2,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4407159_nw_19_030_20230623_20231113",
+   "our_bytes": 248841575,
+   "published_bytes": 290481741,
+   "our_psnr_db": [
+    35.188,
+    35.395,
+    33.447
+   ],
+   "published_psnr_db": [
+    35.187,
+    35.395,
+    33.445
+   ],
+   "published": {
+    "width": 19442,
+    "height": 25691,
+    "bands": 3,
+    "geotransform": [
+     279450.0,
+     0.3,
+     0.0,
+     4889733.6,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  },
+  {
+   "id": "nh_m_4507153_ne_19_030_20230922_20231113",
+   "our_bytes": 255112922,
+   "published_bytes": 296556875,
+   "our_psnr_db": [
+    35.027,
+    35.593,
+    31.445
+   ],
+   "published_psnr_db": [
+    35.027,
+    35.593,
+    31.444
+   ],
+   "published": {
+    "width": 19047,
+    "height": 25632,
+    "bands": 3,
+    "geotransform": [
+     308215.8,
+     0.3,
+     0.0,
+     5013912.9,
+     0.0,
+     -0.3
+    ],
+    "epsg": "26919",
+    "block": [
+     512,
+     512
+    ],
+    "overviews": 6,
+    "compression": "YCbCr JPEG",
+    "layout": null,
+    "jpeg_quality": "85"
+   }
+  }
+ ],
+ "tasks": {
+  "started": 4,
+  "with_end_record": 0,
+  "spot_interruptions": 0
+ }
+}

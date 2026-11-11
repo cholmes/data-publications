@@ -78,6 +78,22 @@ download parts.
 - 6.12 s per quad; the wait for downloads stayed near 0.1 s with the larger parts.
 - Sampled error against the source, 6 quads: median 31.25 dB.
 
+### 30 cm: New Hampshire 2023 control and Vermont 2025 sample, 20 quads each
+
+`evidence/control-nh-2023-30cm-summary.json`, `evidence/vermont-2025-30cm-sample-summary.json`.
+Runs `control-nh30-1` and `vt2025-sample-1`, on 8 GiB tasks so the real memory peak would show.
+
+- 40 of 40 quads converted, none with a check problem. A 30 cm quad is about 420 to 500
+  megapixels, 1.7 to 2.0 GB of source and 206 to 233 MB of output (11.7% of the source).
+- Control: error against the source is 33.65 dB (median, lowest band) for both our files and
+  the published 2023 display copies; per quad they differ by 0.001 to 0.003 dB. Our files are
+  88% of the published size (80% to 99%).
+- Peak memory 1,510 MiB. 4 GiB tasks are enough; 2 GiB would be tight.
+- Vermont 2025: about 31 s per quad once the pixel check is counted at one quad in 50, which is
+  4.9 task-hours per source TB against 3.9 to 4.1 for 60 cm.
+- Vermont 2025 sampled error: median 29.48 dB, lowest 27.66 dB (10 quads). Forest again.
+- Each file went up in one request (largest 300 MB).
+
 ### Control: New Hampshire 2021, 20 quads (run `control-nh-1`)
 
 `evidence/control-nh-2021-summary.json`. Run because New Hampshire 2025 measured about 4 dB
@@ -94,8 +110,7 @@ below Utah; New Hampshire is mostly forest.
 
 - No output file from the Utah pilot has a recorded SHA-256. The converter records one from the
   next run on; the pilot's files need a pass that reads and hashes them.
-- 30 cm state-years have not been converted. They have four times the pixels per file, and
-  their memory use is not measured.
+- Only 40 quads of 30 cm have been converted. No full 30 cm state-year has run.
 - The controls cover two states (Utah 2021, New Hampshire 2021). Other states' published files
   were not compared.
 - Overview levels were checked for presence, not compared pixel for pixel with anything.

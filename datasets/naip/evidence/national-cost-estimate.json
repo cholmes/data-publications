@@ -1,7 +1,7 @@
 {
- "schema": "naip-national-cost-estimate@1",
+ "schema": "naip-national-cost-estimate@2",
  "made": "2026-11-10",
- "basis": "Rates from the Utah 2024 bill; hours per source TB from New Hampshire 2025 with overlapped downloads (4.1) and Utah 2024 scaled by the same gain (4.9); request counts from the part sizes in worker/convert.py. 30 cm quads have not been converted: their time per byte and memory are assumptions.",
+ "basis": "Rates from the Utah 2024 bill. Hours per source TB measured with overlapped downloads: 60 cm 3.9 (Rhode Island 2025) and 4.1 (New Hampshire 2025); 30 cm 4.9 (Vermont 2025 sample, 20 quads, with the pixel check counted at one quad in 50). 2 GiB tasks for 60 cm, 4 GiB for 30 cm (measured peak 1.5 GiB). Request counts measured on Rhode Island and Vermont. The high case uses Utah-like speed for 60 cm and 20% slower 30 cm.",
  "source_tb": {
   "60cm": 55.06,
   "30cm": 125.05
@@ -12,71 +12,62 @@
  },
  "cases": {
   "low": {
-   "hours_per_source_tb": 4.1,
-   "slowdown_30cm": 1.0,
-   "memory_gib_30cm": 4,
+   "hours_per_source_tb": {
+    "60cm": 3.9,
+    "30cm": 4.9
+   },
    "spot_rework": 0.0,
+   "task_hours": {
+    "60cm": 219,
+    "30cm": 625
+   },
    "usd": {
-    "vcpu": 7.65,
-    "memory": 2.85,
-    "address": 3.77,
+    "vcpu": 8.57,
+    "memory": 3.28,
+    "address": 4.22,
     "uploads": 2.21,
     "downloads": 0.95
    },
-   "usd_total": 17.42,
-   "task_hours": {
-    "60cm": 230,
-    "30cm": 523
-   },
-   "downloads_per_quad": {
-    "60cm": 8.0,
-    "30cm": 15.0
-   }
+   "usd_total": 19.22
   },
   "central": {
-   "hours_per_source_tb": 4.5,
-   "slowdown_30cm": 1.0,
-   "memory_gib_30cm": 4,
+   "hours_per_source_tb": {
+    "60cm": 4.0,
+    "30cm": 4.9
+   },
    "spot_rework": 0.03,
+   "task_hours": {
+    "60cm": 231,
+    "30cm": 644
+   },
    "usd": {
-    "vcpu": 8.64,
-    "memory": 3.22,
-    "address": 4.26,
+    "vcpu": 8.88,
+    "memory": 3.39,
+    "address": 4.38,
     "uploads": 2.21,
     "downloads": 0.95
    },
-   "usd_total": 19.28,
-   "task_hours": {
-    "60cm": 260,
-    "30cm": 591
-   },
-   "downloads_per_quad": {
-    "60cm": 8.0,
-    "30cm": 15.0
-   }
+   "usd_total": 19.81
   },
   "high": {
-   "hours_per_source_tb": 4.9,
-   "slowdown_30cm": 1.2,
-   "memory_gib_30cm": 8,
+   "hours_per_source_tb": {
+    "60cm": 4.9,
+    "30cm": 5.9
+   },
    "spot_rework": 0.05,
+   "task_hours": {
+    "60cm": 289,
+    "30cm": 790
+   },
    "usd": {
-    "vcpu": 10.93,
-    "memory": 7.67,
-    "address": 5.38,
+    "vcpu": 10.95,
+    "memory": 4.17,
+    "address": 5.4,
     "uploads": 2.21,
     "downloads": 0.95
    },
-   "usd_total": 27.14,
-   "task_hours": {
-    "60cm": 289,
-    "30cm": 787
-   },
-   "downloads_per_quad": {
-    "60cm": 8.0,
-    "30cm": 15.0
-   }
+   "usd_total": 23.68
   }
  },
- "not_included": "Storage of the output. 18 to 24 TB in a bucket of ours is about $415 to $555 a month at $0.023 per GB."
+ "not_included": "Storage of the output, about 21 TB (18 to 24). In a bucket of ours that is about $415 to $555 a month at $0.023 per GB."
 }

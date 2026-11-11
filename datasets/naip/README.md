@@ -68,9 +68,9 @@ Fargate Spot in us-west-2, next to the source, where reading it costs requests b
 - Downloading the next quad during conversion took 21% off the time per quad in New Hampshire.
 - Requests were 38% of that bill, so the converter now uploads each file in one request and
   downloads the data file in 128 MiB parts.
-- With those changes all 52 state-years are estimated at about $19 (range $17 to $27):
-  `evidence/national-cost-estimate.json`. 30 cm quads have not been converted, so their share is
-  an assumption. Storage of the output is not in that figure.
+- With those changes all 52 state-years are estimated at about $20 (range $19 to $24):
+  `evidence/national-cost-estimate.json`. 30 cm is measured on a 40-quad sample: it needs 4 GiB
+  tasks and runs about 20% slower per byte. Storage of the output is not in that figure.
 
 ## Source and license
 
