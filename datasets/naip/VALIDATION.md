@@ -161,3 +161,34 @@ and the output). Tried locally on the real source of `ri_m_4107102_ne_19_060_202
 source's ratios are as low as 0.46; the output's are 0.987 to 1.021 at every level, its
 overview sizes now match the published convention (4524, 2262, 1131, 565, 282 wide), and
 conversion took 5.8 s. Not yet run on AWS: it needs a new image.
+
+## Checks set for the corrected converter (image `v4`), before any `v4` result (2026-11-11)
+
+No state-year is converted again until these pass. All of it runs in the private work bucket.
+
+The control quads are the 60 used before: 20 each of Utah 2021 (60 cm), New Hampshire 2021
+(60 cm) and New Hampshire 2023 (30 cm), each compared with the file `naip-visualization`
+publishes for the same quad. Runs `control-v4-ut21`, `control-v4-nh21`, `control-v4-nh23`.
+
+1. **Overview sizes.** Every overview level of every control output has the same width and
+   height as the published file's. Pass: all 60, all levels.
+2. **Overview edges.** At every level, the last row over the row before it and the last column
+   over the column before it are at least 0.9 in our file. The published file's ratios are
+   reported beside ours. Pass: all 60, all levels. (The converter itself fails a quad below 0.7.)
+3. **Overview pixels.** Each overview level of our file is compared pixel for pixel with the
+   same level of the published file, as PSNR per band, and the same figure is taken at full
+   resolution. Both are JPEG of the same source, so they will not be identical. Pass: at every
+   level the median over the quads is no more than 3 dB below the full-resolution median for
+   that set, and no single quad-level is below 25 dB. Whatever is found is reported.
+4. **Everything GDAL reports.** `gdalinfo -json` of our file and of the published file are
+   compared key by key for every control quad, leaving out file names and sizes. Every
+   difference is listed, not only the ones looked for. Pass: no difference that changes what a
+   reader gets (georeferencing, CRS, bands, colour interpretation, masks, nodata, block size,
+   compression, overview count and sizes). Differences in tags that do not are listed and judged
+   one by one.
+5. **Full resolution unchanged.** The control's error against the source is the same as in the
+   first control (per quad, within 0.01 dB), since only overviews should differ.
+6. **Drawn.** A mosaic of four adjacent control-area quads at each overview scale, warped with
+   GDAL from our files and from the published files, shows no line along a quad edge: along
+   each shared edge, the mean of the two pixel rows or columns on the seam is within 10% of
+   the mean of the ten on either side. One case crosses a UTM zone line.
