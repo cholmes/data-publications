@@ -59,13 +59,25 @@ first run on 2 GiB tasks.
   shard was launched again and skipped the quads already done.
 - 47,401,872,192 bytes written from 353,433,330,595 bytes read (13.4%).
 - Sampled error against the source, 16 quads: median 31.0 dB, lowest 29.9 dB. That is about
-  4 dB below Utah at the same JPEG quality, with larger files. New Hampshire is mostly forest;
-  no published display copy of a forested state was compared to say whether this matches it.
+  4 dB below Utah at the same JPEG quality, with larger files. The control below shows the
+  published display copies of New Hampshire have the same error.
 - Peak memory 821 MiB on 2 GiB tasks.
 - Overlapped downloads: 6.72 s per quad over 15 shards, against 8.46 s over two shards that
   repeated the same quads with overlap off, 21% less. The wait for downloads fell from 2.2 s to
   under 0.1 s per quad; conversion CPU time rose from 5.5 s to 5.9 s because the download shares
   the one vCPU. Two comparison shards are a small sample and hosts differ in speed.
+
+### Control: New Hampshire 2021, 20 quads (run `control-nh-1`)
+
+`evidence/control-nh-2021-summary.json`. Run because New Hampshire 2025 measured about 4 dB
+below Utah; New Hampshire is mostly forest.
+
+- Error against the source, lowest band: median 29.79 dB for our files and 29.79 dB for the
+  published files (range 28.34 to 31.89 for both). Per quad and per band the two differ by
+  0.001 to 0.003 dB.
+- So the lower figure is what quality 85 gives on this imagery, and the published product has it
+  too. It is not a fault of this conversion.
+- Size: our files are 80% to 100% of the published files (median 89%).
 
 ## What this does not establish
 
@@ -73,7 +85,8 @@ first run on 2 GiB tasks.
   next run on; the pilot's files need a pass that reads and hashes them.
 - 30 cm state-years have not been converted. They have four times the pixels per file, and
   their memory use is not measured.
-- The control covers one state and one year. Other states' published files were not compared.
+- The controls cover two states (Utah 2021, New Hampshire 2021). Other states' published files
+  were not compared.
 - Overview levels were checked for presence, not compared pixel for pixel with anything.
 - Nothing here assesses the imagery itself (cloud, seamlines, colour balance). These files carry
   whatever the source carries.
