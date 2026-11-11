@@ -1,0 +1,82 @@
+{
+ "schema": "naip-national-cost-estimate@1",
+ "made": "2026-11-10",
+ "basis": "Rates from the Utah 2024 bill; hours per source TB from New Hampshire 2025 with overlapped downloads (4.1) and Utah 2024 scaled by the same gain (4.9); request counts from the part sizes in worker/convert.py. 30 cm quads have not been converted: their time per byte and memory are assumptions.",
+ "source_tb": {
+  "60cm": 55.06,
+  "30cm": 125.05
+ },
+ "quads": {
+  "60cm": 136160,
+  "30cm": 85095
+ },
+ "cases": {
+  "low": {
+   "hours_per_source_tb": 4.1,
+   "slowdown_30cm": 1.0,
+   "memory_gib_30cm": 4,
+   "spot_rework": 0.0,
+   "usd": {
+    "vcpu": 7.65,
+    "memory": 2.85,
+    "address": 3.77,
+    "uploads": 2.21,
+    "downloads": 0.95
+   },
+   "usd_total": 17.42,
+   "task_hours": {
+    "60cm": 230,
+    "30cm": 523
+   },
+   "downloads_per_quad": {
+    "60cm": 8.0,
+    "30cm": 15.0
+   }
+  },
+  "central": {
+   "hours_per_source_tb": 4.5,
+   "slowdown_30cm": 1.0,
+   "memory_gib_30cm": 4,
+   "spot_rework": 0.03,
+   "usd": {
+    "vcpu": 8.64,
+    "memory": 3.22,
+    "address": 4.26,
+    "uploads": 2.21,
+    "downloads": 0.95
+   },
+   "usd_total": 19.28,
+   "task_hours": {
+    "60cm": 260,
+    "30cm": 591
+   },
+   "downloads_per_quad": {
+    "60cm": 8.0,
+    "30cm": 15.0
+   }
+  },
+  "high": {
+   "hours_per_source_tb": 4.9,
+   "slowdown_30cm": 1.2,
+   "memory_gib_30cm": 8,
+   "spot_rework": 0.05,
+   "usd": {
+    "vcpu": 10.93,
+    "memory": 7.67,
+    "address": 5.38,
+    "uploads": 2.21,
+    "downloads": 0.95
+   },
+   "usd_total": 27.14,
+   "task_hours": {
+    "60cm": 289,
+    "30cm": 787
+   },
+   "downloads_per_quad": {
+    "60cm": 8.0,
+    "30cm": 15.0
+   }
+  }
+ },
+ "not_included": "Storage of the output. 18 to 24 TB in a bucket of ours is about $415 to $555 a month at $0.023 per GB."
+}

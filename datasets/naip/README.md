@@ -66,7 +66,11 @@ Fargate Spot in us-west-2, next to the source, where reading it costs requests b
 - Peak memory 837 MiB per task, so 60 cm runs fit `--memory-mib 2048`, the least Fargate allows
   for one vCPU. The pilot ran with 4 GiB; New Hampshire 2025 then ran on 2 GiB.
 - Downloading the next quad during conversion took 21% off the time per quad in New Hampshire.
-- At the same rate per byte, all 52 state-years are about $37, plus more memory for 30 cm quads.
+- Requests were 38% of that bill, so the converter now uploads each file in one request and
+  downloads the data file in 128 MiB parts.
+- With those changes all 52 state-years are estimated at about $19 (range $17 to $27):
+  `evidence/national-cost-estimate.json`. 30 cm quads have not been converted, so their share is
+  an assumption. Storage of the output is not in that figure.
 
 ## Source and license
 
