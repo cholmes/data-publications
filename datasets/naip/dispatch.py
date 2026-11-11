@@ -127,6 +127,10 @@ def save_state(state_dir, state):
     os.replace(f"{state_dir}/state.json.tmp", f"{state_dir}/state.json")
 
 
+CAPACITY_TRIES = 10
+CAPACITY_WAIT_S = 30
+
+
 def launch(args):
     stack = load_json(args.stack)
     state = load_state(args.state_dir)
@@ -160,14 +164,21 @@ def launch(args):
             "name": "convert",
             "environment": [{"name": k, "value": str(v)} for k, v in {**env, "SHARD_INDEX": shard}.items()],
         }]}
-        result = aws("ecs", "run-task", "--cluster", stack["cluster_name"],
-                     "--task-definition", task_definition,
-                     "--capacity-provider-strategy", "capacityProvider=FARGATE_SPOT,weight=1",
-                     "--count", "1", "--started-by", args.run_id[:36],
-                     # The run tag is what separates this run's lines on the bill.
-                     "--tags", f"key=run,value={args.run_id}", "--propagate-tags", "TASK_DEFINITION",
-                     "--network-configuration", json.dumps(network),
-                     "--overrides", json.dumps(overrides))
+        for attempt in range(CAPACITY_TRIES):
+            result = aws("ecs", "run-task", "--cluster", stack["cluster_name"],
+                         "--task-definition", task_definition,
+                         "--capacity-provider-strategy", "capacityProvider=FARGATE_SPOT,weight=1",
+                         "--count", "1", "--started-by", args.run_id[:36],
+                         # The run tag is what separates this run's lines on the bill.
+                         "--tags", f"key=run,value={args.run_id}", "--propagate-tags", "TASK_DEFINITION",
+                         "--network-configuration", json.dumps(network),
+                         "--overrides", json.dumps(overrides))
+            failures = result.get("failures") or []
+            if not any("apacity" in f.get("reason", "") for f in failures):
+                break
+            # Spot capacity comes and goes; the first control run hit this on one task of four.
+            print(f"shard {shard}: no Spot capacity, try {attempt + 1} of {CAPACITY_TRIES}", flush=True)
+            time.sleep(CAPACITY_WAIT_S)
         if result.get("failures"):
             raise SystemExit(f"run-task failed for shard {shard}: {result['failures']}")
         state["started"] += 1

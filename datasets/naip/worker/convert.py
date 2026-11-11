@@ -12,7 +12,9 @@ The next quad's source files download on a second thread while the current quad 
 quarter of its task time waiting on downloads with the CPU idle.
 
 Reads are whole-object downloads, not GDAL range reads, so the request count per quad
-is fixed by the part size and not by GDAL's read pattern.
+is fixed by the part size and not by GDAL's read pattern. Requests were 38% of the first
+run's bill, so the data file comes down in 128 MiB parts, the two small files in one
+request each, and the output goes up in one request.
 
 Local check, no S3:  convert.py --local <source raster> <output.tif>
 """
@@ -37,7 +39,8 @@ gdal.UseExceptions()
 QUALITY = int(os.environ.get("QUALITY", "85"))
 BLOCKSIZE = int(os.environ.get("BLOCKSIZE", "512"))
 OVERVIEW_RESAMPLING = os.environ.get("OVERVIEW_RESAMPLING", "AVERAGE")
-PART_BYTES = 32 * 1024 * 1024
+DOWNLOAD_PART_BYTES = 128 * 1024 * 1024
+SINGLE_PUT_BYTES = 1024 * 1024 * 1024  # an output below this goes up in one request
 OVERLAP_DOWNLOADS = os.environ.get("OVERLAP_DOWNLOADS", "1") != "0"
 
 
@@ -145,8 +148,13 @@ class Store:
         self.client = boto3.client("s3")
         self.requests = collections.Counter()
         self.client.meta.events.register("before-send.s3.*", self._count)
-        self.transfer = TransferConfig(
-            multipart_threshold=PART_BYTES, multipart_chunksize=PART_BYTES, max_concurrency=4
+        self.download = TransferConfig(
+            multipart_threshold=DOWNLOAD_PART_BYTES, multipart_chunksize=DOWNLOAD_PART_BYTES,
+            max_concurrency=4,
+        )
+        self.upload = TransferConfig(
+            multipart_threshold=SINGLE_PUT_BYTES, multipart_chunksize=DOWNLOAD_PART_BYTES,
+            max_concurrency=4,
         )
 
     def _count(self, event_name, **_):
@@ -166,13 +174,20 @@ class Store:
     def fetch(self, bucket, key, path):
         """Download a requester-pays object; returns its size."""
         self.client.download_file(
-            bucket, key, path, ExtraArgs={"RequestPayer": "requester"}, Config=self.transfer
+            bucket, key, path, ExtraArgs={"RequestPayer": "requester"}, Config=self.download
         )
+        return os.path.getsize(path)
+
+    def fetch_small(self, bucket, key, path):
+        """Download a small requester-pays object in one request; returns its size."""
+        body = self.client.get_object(Bucket=bucket, Key=key, RequestPayer="requester")["Body"]
+        with open(path, "wb") as out:
+            shutil.copyfileobj(body, out)
         return os.path.getsize(path)
 
     def put_file(self, bucket, key, path):
         self.client.upload_file(
-            path, bucket, key, ExtraArgs={"ContentType": "image/tiff"}, Config=self.transfer
+            path, bucket, key, ExtraArgs={"ContentType": "image/tiff"}, Config=self.upload
         )
 
     def put_json(self, bucket, key, value):
@@ -207,7 +222,8 @@ def fetch_quad(fetcher, work_bucket, receipt_key, quad):
         mark, sizes = time.monotonic(), {}
         for part in ("mrf", "idx", "lrc"):
             path = os.path.join(workdir, os.path.basename(quad[part]))
-            sizes[part] = fetcher.fetch(quad["src_bucket"], quad[part], path)
+            fetch = fetcher.fetch if part == "lrc" else fetcher.fetch_small
+            sizes[part] = fetch(quad["src_bucket"], quad[part], path)
         return {"workdir": workdir, "sizes": sizes, "download_s": time.monotonic() - mark,
                 "requests": collections.Counter(fetcher.requests)}
     except BaseException:
