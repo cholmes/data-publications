@@ -3,11 +3,11 @@
  "prefix": "nthh/naip/ri/2025/60cm/rgb/",
  "receipts": 116,
  "runs": [
-  "ri2025-pub-1"
+  "ri2025-pub-2"
  ],
  "listing": {
   "listed": 116,
-  "bytes": 6112508166,
+  "bytes": 6059990730,
   "missing": [],
   "extra": [],
   "wrong_size": [],

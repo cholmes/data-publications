@@ -238,3 +238,19 @@ share gives about $30 to $35. It is to be redone from the first full `v4` state-
 
 Still not established: the overview comparison against a lossless average covers one quad;
 the seam check covers one place; no full state-year has run on `v4`.
+
+### Rhode Island 2025 converted again on `v4` (run `ri2025-pub-2`, 2026-11-11)
+
+The first state-year replaced in the product. New Hampshire and Utah still hold the faulty
+files of `nh2025-pub-1` and `ut2024-pub-1`.
+
+- 116 of 116 quads, none with a check problem, every file with a new SHA-256; 6,059,990,730
+  bytes (the faulty run wrote 6,112,508,166).
+- Lowest overview edge ratio in any file: 0.925. The source pyramids are as low as 0.033.
+- 10.1 s per quad against 7.8 s in `ri2025-pub-1`.
+- The four hosted checks pass on the new files (`evidence/rhode-island-2025-hosted-checks.json`,
+  24 files downloaded and hashed; this replaces the result for the faulty files).
+- Seams, four adjacent quads near Providence drawn from the product: 0.990 to 1.046 on 20
+  edges (`evidence/seam-rhode-island-2025.json`).
+- Drawn in a map through `https://data.source.coop/nthh/naip/stac/naip.parquet`: no line at
+  quad edges at zoom 12, where New Hampshire's faulty files still show a dashed dark line.
