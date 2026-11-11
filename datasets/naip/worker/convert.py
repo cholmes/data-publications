@@ -42,6 +42,8 @@ OVERVIEW_RESAMPLING = os.environ.get("OVERVIEW_RESAMPLING", "AVERAGE")
 DOWNLOAD_PART_BYTES = 128 * 1024 * 1024
 SINGLE_PUT_BYTES = 1024 * 1024 * 1024  # an output below this goes up in one request
 OVERLAP_DOWNLOADS = os.environ.get("OVERLAP_DOWNLOADS", "1") != "0"
+# An overview's last row or column may be no darker than this share of the one before it.
+OVERVIEW_EDGE_FLOOR = float(os.environ.get("OVERVIEW_EDGE_FLOOR", "0.7"))
 
 
 def cpu_seconds():
@@ -62,6 +64,9 @@ def convert(source, target):
             f"QUALITY={QUALITY}",
             f"BLOCKSIZE={BLOCKSIZE}",
             f"OVERVIEW_RESAMPLING={OVERVIEW_RESAMPLING}",
+            # The source MRF carries its own pyramid, padded with zeros where a level's size
+            # is odd, which darkens the last row and column. Build ours from full resolution.
+            "OVERVIEWS=IGNORE_EXISTING",
             "NUM_THREADS=1",
         ],
     )
@@ -83,7 +88,19 @@ def describe(path):
         "compression": structure.get("COMPRESSION"),
         "layout": structure.get("LAYOUT"),
         "jpeg_quality": structure.get("JPEG_QUALITY"),
+        "overview_edges": overview_edges(band),
     }
+
+
+def overview_edges(band):
+    """Per overview level: mean of the last row over the row before it, and the same for columns."""
+    out = []
+    for i in range(band.GetOverviewCount()):
+        ov = band.GetOverview(i)
+        rows = ov.ReadAsArray(0, ov.YSize - 2, ov.XSize, 2).mean(axis=1)
+        cols = ov.ReadAsArray(ov.XSize - 2, 0, 2, ov.YSize).mean(axis=0)
+        out.append([round(float(rows[1] / max(rows[0], 1.0)), 3), round(float(cols[1] / max(cols[0], 1.0)), 3)])
+    return out
 
 
 def check(source, target):
@@ -102,6 +119,9 @@ def check(source, target):
         problems.append(f"block: {target['block']}")
     if target["overviews"] < 1:
         problems.append("no overviews")
+    for level, ratios in enumerate(target["overview_edges"]):
+        if min(ratios) < OVERVIEW_EDGE_FLOOR:
+            problems.append(f"overview {level + 1} edge darkened: {ratios}")
     return problems
 
 

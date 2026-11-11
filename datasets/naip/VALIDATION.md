@@ -116,3 +116,48 @@ below Utah; New Hampshire is mostly forest.
 - Overview levels were checked for presence, not compared pixel for pixel with anything.
 - Nothing here assesses the imagery itself (cloud, seamlines, colour balance). These files carry
   whatever the source carries.
+
+## Hosted files (2026-11-11)
+
+The checks were set in [PUBLISHING.md](PUBLISHING.md) before any upload and are run by
+`check_hosted.py` with anonymous requests.
+
+### First publishing runs: `ri2025-pub-1`, `nh2025-pub-1`, `ut2024-pub-1`
+
+The grant was confirmed with two quads (`ri2025-pub-smoke`). The three state-years were then
+converted again straight into `nthh/naip/`: 116, 771 and 6,032 files, none with a check problem,
+every file with a SHA-256. Byte totals equal the pilot runs' exactly (6,112,508,166,
+47,401,872,192 and 249,594,785,306). Spot interrupted 3 New Hampshire and 5 Utah tasks; their
+shards were launched again.
+
+- Rhode Island: the four hosted checks pass (`evidence/rhode-island-2025-hosted-checks.json`;
+  24 files downloaded and hashed).
+- New Hampshire: the four hosted checks pass (`evidence/new-hampshire-2025-hosted-checks.json`;
+  21 files).
+- Utah: the hosted checks were stopped before they finished, because of the fault below.
+
+### Fault found after those checks passed: darkened overview edges
+
+**These 6,919 files are faulty and are to be replaced.** Drawing them in a map at low zoom
+showed dark dashes along quad edges. In each file, the last row or column of an overview level
+is darker than the one before it wherever the level above has an odd size: about half as
+bright at one level, a quarter at the next. Measured on `ut/2024/60cm/rgb/40111/
+m_4011117_se_12_060_20240707.tif`, mean of the last two rows of band 1: level 2, 145.0 then
+73.1; level 3, 143.7 then 37.3. Full resolution is not affected.
+
+Cause: the source MRF carries its own pyramid (`<Rsets model="uniform" scale="2" />`), padded
+with zeros where a size is odd, and GDAL's COG driver copies a source's overviews when it has
+them. That is also why our overview sizes were one pixel larger than the published files' in
+the Utah 2021 control. The published `naip-visualization` file for the same quad
+(`m_4011117_se_12_060_20211105.tif`) has no darkened edge at any level.
+
+None of the checks set beforehand looked at overview pixels; "What this does not establish"
+said so. The hosted checks above passed on faulty files.
+
+Fix, in `worker/convert.py`: `OVERVIEWS=IGNORE_EXISTING`, so overviews are built from full
+resolution, and a new per-file check that fails a quad when any overview level's last row or
+column is below 0.7 of the one before it (the ratios are kept in each receipt, for the source
+and the output). Tried locally on the real source of `ri_m_4107102_ne_19_060_20250803`: the
+source's ratios are as low as 0.46; the output's are 0.987 to 1.021 at every level, its
+overview sizes now match the published convention (4524, 2262, 1131, 565, 282 wide), and
+conversion took 5.8 s. Not yet run on AWS: it needs a new image.
