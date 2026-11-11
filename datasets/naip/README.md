@@ -9,8 +9,11 @@ files that few tools read.
 This workspace makes the missing display copy: one RGB JPEG Cloud-Optimized GeoTIFF per quarter
 quad, with the same settings, file names and key layout as `naip-visualization`.
 
-**Status (2026-11-10):** Utah 2024 is converted (6,032 files, 249.6 GB) and sits in a private
-bucket. Nothing is published. The Source Cooperative product `nthh/naip` exists and is empty.
+**Status (2026-11-11):** Utah 2024 (6,032 files, 249.6 GB), New Hampshire 2025 (771 files,
+47.4 GB) and Rhode Island 2025 (116 files, 6.1 GB) are converted and sit in a private bucket.
+Nothing is published. The Source Cooperative product `nthh/naip` exists and is empty.
+[PUBLISHING.md](PUBLISHING.md) has the steps from here to a published product and the checks
+set for them.
 
 ## Layout
 

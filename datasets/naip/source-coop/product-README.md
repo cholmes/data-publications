@@ -27,7 +27,7 @@ No versioned display package is recorded.
 ## Limitations
 
 - Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The near-infrared band and the lossless pixels stay in s3://naip-analytic.
-- Only Utah 2024 is converted so far, and it sits in a private bucket. It is not on Source Cooperative.
+- Only Utah 2024, New Hampshire 2025 and Rhode Island 2025 are converted so far, and they sit in a private bucket. Nothing is on Source Cooperative.
 - Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.
 - Adjacent quarter quads overlap, as they do in the source.
 

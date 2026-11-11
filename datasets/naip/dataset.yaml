@@ -39,7 +39,8 @@ publication:
     limitations:
     - Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The
       near-infrared band and the lossless pixels stay in s3://naip-analytic.
-    - Only Utah 2024 is converted so far, and it sits in a private bucket. It is not on Source Cooperative.
+    - Only Utah 2024, New Hampshire 2025 and Rhode Island 2025 are converted so far, and they sit
+      in a private bucket. Nothing is on Source Cooperative.
     - Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.
     - Adjacent quarter quads overlap, as they do in the source.
     supplements: []
@@ -71,3 +72,18 @@ build:
     summary: datasets/naip/evidence/utah-2024-summary.json
     index: datasets/naip/evidence/utah-2024-index.json
     location: private work bucket in us-west-2; not published
+  - state_year: nh-2025-60cm
+    run: nh2025-1
+    converted_on: '2026-11-10'
+    files: 771
+    bytes: 47401872192
+    summary: datasets/naip/evidence/new-hampshire-2025-summary.json
+    location: private work bucket in us-west-2; not published
+  - state_year: ri-2025-60cm
+    run: ri2025-1
+    converted_on: '2026-11-10'
+    files: 116
+    bytes: 6112508166
+    summary: datasets/naip/evidence/rhode-island-2025-summary.json
+    location: private work bucket in us-west-2; not published
+  publishing: datasets/naip/PUBLISHING.md
