@@ -612,7 +612,6 @@ Run `ut2024-q6575-sample`, image v6, 100 quads, 10 tasks. Summary in
 | 3. Error | Passed on the two quads that had a pixel check in both runs (the published run checked one quad in 50): 1.0 to 2.9 dB below the published values. Two quads is a thin basis. |
 | 4. Speed | Passed. 14.3 megapixels per CPU-second median, against 11.6 for the same quads in the published run. |
 
-Recorded: PSNR on the 50 quads checked in this run, lowest per band 29.6, 32.0, 29.8 dB
-(one quad, also the lowest in the published run) and median per band in the summary file.
+Recorded: PSNR on the 50 quads checked in this run, lowest per band 28.7, 31.7 and 29.2 dB, median 31.8, 33.6 and 31.3 dB.
 This is the first cluster run of `OVERVIEW_QUALITY`; receipts carry `quality` 65 and
 `overview_quality` 75.
