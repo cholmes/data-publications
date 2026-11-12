@@ -295,3 +295,51 @@ written. `make_launch_plan.py` writes `evidence/national-launch-plan.json`: 48 r
 shards sized by source bytes at about 0.6 task-hours each, six waves of at most 450 tasks
 (the Fargate Spot quota is 512 vCPUs), launcher bounds adding to $140. Maine 2024 has a
 60 cm and a 30 cm run with different run ids. Not launched.
+
+## Tiles on a shared grid: one 100 km square (set 2026-11-12, before any result)
+
+A test of re-cutting the imagery from quads into tiles on one pixel grid per UTM zone, and
+of assembling a 100 km file from small tiles by copying compressed blocks. Written to our
+own bucket under `_proto/`, not to the product.
+
+**Why it is possible.** Every Utah 2024 quad's bounds are whole multiples of 0.6 m (6,032 of
+6,032), and three pairs of neighbouring quads hold identical pixels where they overlap, in
+the lossless source. So quads are cuts of one mosaic and can be cut differently without
+resampling.
+
+**The square.** NAD83 / UTM 12N, easting 400,000 to 500,000 m, northing 4,400,000 to
+4,500,000 m (Provo, Timpanogos, Alta). A pixel belongs to the square when its centre is
+inside it: 166,666 by 166,667 pixels, from x 400,000.2 and y 4,500,000.0. 320 source quads.
+
+**Small tiles.** 32 by 32 blocks of 512 pixels (16,384 pixels, 9,830.4 m), counted from the
+square's north-west pixel, so every block of a small tile is a block of the square: 11 by 11
+tiles, the last row and column partial. JPEG quality 75, YCbCr, five overview levels built
+by averaging from full resolution.
+
+**The 100 km file.** Full resolution and overview levels 1 to 5 are the small tiles' blocks,
+copied without decoding. Levels 6 to 9 are averaged from the decoded level 5 and encoded at
+the same quality (one more generation than a direct build, on levels of 19 m and coarser).
+
+Pass marks:
+
+1. **Small tiles are the source.** Every tile's size and position match its window. On a
+   sample of at least 12 tiles, PSNR against the lossless source over the whole tile is at
+   least 31.0 dB in each band (quality 75 measured 32.0 to 37.5 dB on ten Utah crops).
+2. **Tiles meet.** For every pair of neighbouring tiles, reading the two tiles' edge rows or
+   columns gives the same values as reading the same rows or columns of the lossless source
+   to within the JPEG error of criterion 1; no row or column is missing or repeated
+   (positions checked from the geotransforms: the right edge of one tile is the left edge of
+   the next, exactly).
+3. **The copy is exact.** In the 100 km file, levels 0 to 5 decode to the same pixel values
+   as the small tiles, on every block of at least 12 tiles and every level (difference
+   exactly zero).
+4. **The 100 km file is a valid COG.** GDAL reports `LAYOUT=COG`, GDAL's COG validator
+   reports no error, and the file's size is within 1% of the small tiles' sizes summed plus
+   levels 6 to 9.
+5. **No darkened edges.** The overview edge ratio of every small tile is at least 0.7 at
+   every level, as for quads.
+
+Recorded without a pass mark: task time and cost per source TB; requests and bytes to a
+first image for quads, small tiles and the 100 km file in GDAL, the browser reader and
+Folia's reader; and whether each reader fetches the whole block table of the 100 km file.
+A failed criterion is recorded as failed.
