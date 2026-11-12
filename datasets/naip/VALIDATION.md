@@ -473,3 +473,46 @@ above lacked: it tells GDAL the footprints are in another CRS than the mosaic.
 The images are not blank; their checksums differ slightly from the VRT route's (the mosaic
 is one row taller from rounding the extent, and overlapping quads may be drawn in a
 different order). Not compared pixel by pixel.
+
+## Quality 65 at full resolution, 85 for overviews (set 2026-11-12, before any result)
+
+Nathan's choice after viewing ten Utah areas at quality 50, 65, 75 and 85: 65 for full
+resolution, 85 for the overview levels. The converter gets a separate overview quality
+(GDAL's `OVERVIEW_QUALITY`). Checked on one Utah quad built three ways from the lossless
+source: 65 with 85 overviews, 65 throughout, and 85 throughout.
+
+Expected size, from the crop measurements (65 is 58% of the bytes of 85; overviews are a
+third of full resolution at equal quality): 68% of the all-85 file, 18% more than all-65.
+
+Pass marks:
+
+1. **Full resolution is quality 65.** Its PSNR against the source is within 0.2 dB of the
+   all-65 file's in every band, and its full-resolution bytes within 2%.
+2. **Overviews are quality 85.** At each overview level, PSNR against the all-85 file's
+   same level is at least 45 dB or the two decode identically, and the level's bytes are
+   within 2% of the all-85 file's. (Both average the same lossless pixels; only rounding
+   in the encoder may differ.)
+3. **Size.** The file is between 64% and 72% of the all-85 file.
+4. **Still a valid COG** with the same block size, levels and layout as the published
+   quads, and overview edge ratios of at least 0.7.
+
+Recorded without a pass mark: PSNR per band at full resolution and at each level.
+A failed criterion is recorded as failed.
+
+### Results (2026-11-12)
+
+Quad `m_4011127_ne_12_060_20240816` (Alta, Utah), GDAL 3.13.1 on a laptop. Evidence in
+`evidence/quality-65-85/`.
+
+| Pass mark | Result |
+|---|---|
+| 1. Full resolution is quality 65 | Passed. PSNR identical to the all-65 file in every band (33.34, 34.07, 31.63 dB) and the full-resolution bytes are identical. |
+| 2. Overviews are quality 85 | Passed. Every overview level decodes identically to the all-85 file's and has the same bytes. |
+| 3. Size | Passed. 29.7 MB, 71.0% of the all-85 file (41.8 MB); the estimate was 68%. 20% more than all-65 (24.7 MB). |
+| 4. Still a valid COG | Passed on layout, block size and levels (five overviews, as published); edge ratios 0.993 to 1.013. GDAL's validator script was not run on this local file. |
+
+Recorded: the first overview level alone is 8.8 MB, 30% of the file. Against the all-65
+file's overviews, the 85 overviews differ by 30 to 32 dB, which is the error the lower
+setting would have added at those levels. All-85 full resolution measured 35.9, 36.9 and
+33.3 dB. This ran with GDAL directly, not through the converter image; `convert.py` and
+`mosaic.py` now take `OVERVIEW_QUALITY` but have not run with it in the cluster.

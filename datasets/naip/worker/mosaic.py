@@ -37,6 +37,7 @@ from convert import Store, cpu_seconds, overview_edges, sha256_of
 gdal.UseExceptions()
 
 QUALITY = int(os.environ.get("QUALITY", "75"))
+OVERVIEW_QUALITY = int(os.environ.get("OVERVIEW_QUALITY", str(QUALITY)))
 BLOCK = 512
 TILE_BLOCKS = int(os.environ.get("TILE_BLOCKS", "32"))
 TILE_LEVELS = int(math.log2(TILE_BLOCKS))
@@ -61,7 +62,7 @@ def cut_tile(sources, tile, target, threads=1):
     if window[0] < 0 or window[1] < 0 or window[0] + window[2] > vrt.RasterXSize or window[1] + window[3] > vrt.RasterYSize:
         raise ValueError(f"tile window {window} is outside its sources {vrt.RasterXSize} x {vrt.RasterYSize}")
     gdal.Translate(target, vrt, format="COG", srcWin=window, creationOptions=[
-        "COMPRESS=JPEG", f"QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}",
+        "COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={OVERVIEW_QUALITY}", f"BLOCKSIZE={BLOCK}",
         "OVERVIEW_RESAMPLING=AVERAGE", "OVERVIEWS=IGNORE_EXISTING",
         f"OVERVIEW_COUNT={TILE_LEVELS}", f"NUM_THREADS={threads}"])
     vrt = None
@@ -200,7 +201,7 @@ def run_tiles():
                             "requests": dict(store.requests),
                             "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                             "run_id": run_id, "shard": shard_index, "host": host, "gdal": gdal.__version__,
-                            "quality": QUALITY, "finished_unix": round(time.time(), 3)})
+                            "quality": QUALITY, "overview_quality": OVERVIEW_QUALITY, "finished_unix": round(time.time(), 3)})
             store.put_json(work_bucket, receipt_key, receipt)
             done += 1
             print(f"ok {tile['id']} {receipt['output_bytes']} bytes {receipt['seconds']['total_s']} s", flush=True)
@@ -336,7 +337,7 @@ def assemble(square, tile_paths, target, workdir):
                 mem.GetRasterBand(b + 1).WriteArray(last[b])
             gdal.GetDriverByName("GTiff").CreateCopy(path, mem, options=[
                 "TILED=YES", f"BLOCKXSIZE={BLOCK}", f"BLOCKYSIZE={BLOCK}", "COMPRESS=JPEG",
-                "PHOTOMETRIC=YCBCR", f"JPEG_QUALITY={QUALITY}"])
+                "PHOTOMETRIC=YCBCR", f"JPEG_QUALITY={OVERVIEW_QUALITY}"])
             _, _, ifds = read_tiff(path)
             tags = {t: v for t, v in ifds[0].items() if t not in GEO_TAGS}
             tags[NEW_SUBFILE] = (4, 1, struct.pack("<I", 1))
@@ -504,7 +505,7 @@ def run_assemble():
                "out_uri": f"s3://{out_bucket}/{out_prefix}{square['out_key']}", "tiles": len(paths),
                "tile_bytes": tile_bytes, "output_bytes": os.path.getsize(target), "assembled": counts,
                "output": found, "compared_max_abs_difference": compared, "validator": validator,
-               "problems": problems, "quality": QUALITY, "gdal": gdal.__version__,
+               "problems": problems, "quality": QUALITY, "overview_quality": OVERVIEW_QUALITY, "gdal": gdal.__version__,
                "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss}
     if not problems:
         mark = time.monotonic()
@@ -558,7 +559,7 @@ def selftest(workdir):
     worst = {f"{r}-{c}": compare_levels(target, p, r, c, tb) for (r, c), p in paths.items()}
     direct = os.path.join(workdir, "direct.tif")
     gdal.Translate(direct, source, format="COG", creationOptions=[
-        "COMPRESS=JPEG", f"QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}", "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES"])
+        "COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={OVERVIEW_QUALITY}", f"BLOCKSIZE={BLOCK}", "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES"])
     a, b = gdal.Open(target), gdal.Open(direct)
     against_direct = []
     for k in range(a.GetRasterBand(1).GetOverviewCount() + 1):

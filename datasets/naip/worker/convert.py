@@ -37,6 +37,9 @@ from osgeo import gdal
 gdal.UseExceptions()
 
 QUALITY = int(os.environ.get("QUALITY", "85"))
+# Overview levels may be kept at a higher quality than full resolution: they hold finer
+# detail per pixel and are what a zoomed-out map shows.
+OVERVIEW_QUALITY = int(os.environ.get("OVERVIEW_QUALITY", str(QUALITY)))
 BLOCKSIZE = int(os.environ.get("BLOCKSIZE", "512"))
 OVERVIEW_RESAMPLING = os.environ.get("OVERVIEW_RESAMPLING", "AVERAGE")
 DOWNLOAD_PART_BYTES = 128 * 1024 * 1024
@@ -62,6 +65,7 @@ def convert(source, target):
         creationOptions=[
             "COMPRESS=JPEG",
             f"QUALITY={QUALITY}",
+            f"OVERVIEW_QUALITY={OVERVIEW_QUALITY}",
             f"BLOCKSIZE={BLOCKSIZE}",
             f"OVERVIEW_RESAMPLING={OVERVIEW_RESAMPLING}",
             # The source MRF carries its own pyramid, padded with zeros where a level's size
@@ -375,7 +379,7 @@ def main():
             sample = bool(sample_every) and position % sample_every == 0
             receipt = one_quad(store, out_bucket, out_prefix, quad, sample, fetched, wait_s)
             receipt.update({"run_id": run_id, "shard": shard_index, "host": host,
-                            "gdal": gdal.__version__, "quality": QUALITY,
+                            "gdal": gdal.__version__, "quality": QUALITY, "overview_quality": OVERVIEW_QUALITY,
                             "overlap_downloads": OVERLAP_DOWNLOADS,
                             "finished_unix": round(time.time(), 3)})
             store.put_json(work_bucket, receipt_key, receipt)
