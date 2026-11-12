@@ -3,12 +3,13 @@
 
 One row per file, as a STAC item: footprint in longitude and latitude, the date flown, the
 file's own CRS and extent (projection extension), and one asset, `image`, with the file's
-URL, size and checksum. Rows are sorted by state, year and quad so that a row group covers a
-compact area and a reader can skip most of the file from the bbox statistics.
+URL, size and checksum. Rows are sorted by year and then along a Hilbert curve through the
+footprint centres, so that each row group covers one compact area and a reader can skip
+almost all of the file from the row-group bbox statistics.
 
     uv run --no-project --with pyarrow==21.0.0 --with pyproj==3.7.2 \
         python build_stac_index.py <out.parquet> <receipts dir> [<receipts dir> ...] \
-        [--base-url https://data.source.coop/nthh/naip/] [--row-group 512]
+        [--base-url https://data.source.coop/nthh/naip/] [--row-group 512] [--sort hilbert|name]
 """
 
 import argparse
@@ -26,6 +27,45 @@ EXTENSIONS = [
     "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
     "https://stac-extensions.github.io/file/v2.1.0/schema.json",
 ]
+
+
+def hilbert(lon, lat, order=16):
+    """Distance along a Hilbert curve of 2**order cells per side over the whole lon/lat plane."""
+    n = 1 << order
+    x = min(n - 1, max(0, int((lon + 180.0) / 360.0 * n)))
+    y = min(n - 1, max(0, int((lat + 90.0) / 180.0 * n)))
+    d, s = 0, n >> 1
+    while s:
+        rx, ry = int(bool(x & s)), int(bool(y & s))
+        d += s * s * ((3 * rx) ^ ry)
+        if ry == 0:
+            if rx == 1:
+                x, y = n - 1 - x, n - 1 - y
+            x, y = y, x
+        s >>= 1
+    return d
+
+
+def sort_rows(rows, how):
+    if how == "name":
+        rows.sort(key=lambda r: (r["naip:state"], r["naip:year"], r["id"]))
+    else:
+        rows.sort(key=lambda r: (r["naip:year"], hilbert((r["bbox"]["xmin"] + r["bbox"]["xmax"]) / 2,
+                                                         (r["bbox"]["ymin"] + r["bbox"]["ymax"]) / 2), r["id"]))
+
+
+def write(rows, out, row_group):
+    table = pa.Table.from_pylist(rows)
+    geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
+        "encoding": "WKB", "geometry_types": ["Polygon"],
+        "bbox": [min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
+                 max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
+        "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
+    table = table.replace_schema_metadata({"geo": json.dumps(geo)})
+    # Statistics only on the columns a reader filters by: on every column they are most of
+    # the footer, which a reader fetches whole before anything else.
+    pq.write_table(table, out, row_group_size=row_group, compression="zstd",
+                   write_statistics=["bbox.xmin", "bbox.ymin", "bbox.xmax", "bbox.ymax", "datetime", "naip:year"])
 
 
 def item(receipt, base_url, transformers):
@@ -74,6 +114,7 @@ def main():
     p.add_argument("receipts_dirs", nargs="+")
     p.add_argument("--base-url", default="https://data.source.coop/nthh/naip/")
     p.add_argument("--row-group", type=int, default=512)
+    p.add_argument("--sort", choices=["hilbert", "name"], default="hilbert")
     a = p.parse_args()
 
     rows, transformers = [], {}
@@ -82,17 +123,8 @@ def main():
             if name.endswith(".json"):
                 with open(os.path.join(d, name)) as f:
                     rows.append(item(json.load(f), a.base_url, transformers))
-    rows.sort(key=lambda r: (r["naip:state"], r["naip:year"], r["id"]))
-
-    table = pa.Table.from_pylist(rows)
-    geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
-        "encoding": "WKB", "geometry_types": ["Polygon"],
-        "bbox": [min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
-                 max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
-        "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
-    table = table.replace_schema_metadata({"geo": json.dumps(geo)})
-    pq.write_table(table, a.out, row_group_size=a.row_group, compression="zstd",
-                   write_statistics=True)
+    sort_rows(rows, a.sort)
+    write(rows, a.out, a.row_group)
     print(json.dumps({"rows": len(rows), "bytes": os.path.getsize(a.out),
                       "row_groups": pq.ParquetFile(a.out).num_row_groups,
                       "epsg": sorted({r["proj:epsg"] for r in rows})}))
