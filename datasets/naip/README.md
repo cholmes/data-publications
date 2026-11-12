@@ -25,6 +25,23 @@ ut/2024/60cm/rgb/40112/m_4011233_ne_12_060_20240712.tif
 A file here has the same path it would have in `naip-visualization`. Each file is in its own UTM
 zone, 512 px JPEG blocks at quality 85, with overviews. Adjacent quads overlap.
 
+## Flight dates
+
+The date in a file name, and so `datetime` in the index, is the date most of that quad was
+flown, not a date for every pixel. Quads are cut from one seamless mosaic: neighbouring Utah
+2024 quads with labels five weeks apart hold identical pixels where they overlap. Against
+UGRC's NAIP 2024 flight-date polygons, the label is the date covering most of the quad in
+98.8% of Utah's 6,032 quads, and 26.6% of quads contain a second date over at least 5% of
+their area. A state can change season along a flight line: Utah 2021 is 24 September east of
+about -111.56 and 5 to 28 November west of it.
+
+The true lines are in USDA's image-date (seamline) polygons. Checked 2026-11-12: there is no
+national file for 2024 or 2025. The national acquisition-date services at
+`imagery.geoplatform.gov/iipp/rest/services/NAIP` stop at 2023. Per-state "Image Dates"
+layers are on `naip-image-dates-usdaonline.hub.arcgis.com`: all 21 of the 2024 states we
+publish were listed, and at least 16 of the 30 for 2025, with more being added. They are not
+part of this product.
+
 ## What exists to convert
 
 `evidence/naip-analytic-2024-2025-sizes.json`, listed 2026-11-10: 52 state-years in 44 states,
