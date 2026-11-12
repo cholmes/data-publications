@@ -254,3 +254,44 @@ files of `nh2025-pub-1` and `ut2024-pub-1`.
   edges (`evidence/seam-rhode-island-2025.json`).
 - Drawn in a map through `https://data.source.coop/nthh/naip/stac/naip.parquet`: no line at
   quad edges at zoom 12, where New Hampshire's faulty files still show a dashed dark line.
+
+### New Hampshire 2025, Utah 2024 and Vermont 2025 on `v4` (2026-11-11)
+
+Runs `nh2025-pub-2`, `ut2024-pub-2` and `vt2025-pub-1` wrote straight into the product. The
+first two replace the faulty files of `nh2025-pub-1` and `ut2024-pub-1`; Vermont is the first
+whole 30 cm state.
+
+| | New Hampshire 2025 | Utah 2024 | Vermont 2025 (30 cm) |
+|---|---|---|---|
+| Quads with a receipt | 771 of 771 | 6,032 of 6,032 | 812 of 812 |
+| Quads with a check problem | 0 | 0 | 0 |
+| Bytes | 47,074,374,812 | 249,219,194,687 | 148,785,989,474 |
+| Lowest overview edge ratio | 0.928 | 0.841 | 0.929 |
+| Seconds per quad (receipts) | 10.1 | 11.2 | 45.2 |
+| Peak memory, MiB | 844 | 894 | 1,139 |
+| Tasks started, Spot interruptions | 12, 0 | 51, 3 | 40, 10 |
+| Task-hours per source TB, whole task time | 6.5 | 7.9 | 8.1 |
+| Hosted checks, files downloaded and hashed | pass, 21 | pass, 121 | pass, 21 |
+| Seams across a UTM zone line, 20 edges | 0.998 to 1.033 | 0.976 to 1.029 | 0.989 to 1.045 |
+
+- Utah's three quads under 0.92 (`m_4111261_se`, `m_4111262_sw`, `m_4011205_ne`) are open
+  water on the Great Salt Lake. On the lowest, band 1 is about 1.4 across the last 96 rows at
+  full resolution and 0.8 to 2.4 in the last rows of the smallest overview: the ratio is
+  noise between near-black rows, not the darkened edge of the fault (which was 0.03 to 0.6
+  on bright ground).
+- Interrupted shards were started again with `launch --only`; no quad was converted twice
+  into a different file (one receipt and one run id per quad).
+- Evidence: `evidence/{new-hampshire-2025,utah-2024,vermont-2025}-{summary,hosted-checks}.json`
+  and `evidence/seam-{new-hampshire-2025,utah-2024,vermont-2025}.json`.
+- The index at `https://data.source.coop/nthh/naip/stac/naip.parquet` now holds 7,731 rows
+  for the four state-years, all describing `v4` files.
+
+### National estimate and launch plan after `v4` (2026-11-11)
+
+`evidence/national-cost-estimate.json` (schema `@3`) replaces the $20 estimate: about $30
+for the remaining 48 state-years ($28 to $33), from whole task time on the three runs above
+and the Spot rates billed on 2026-11-10. The bill for 2026-11-11 had not posted when it was
+written. `make_launch_plan.py` writes `evidence/national-launch-plan.json`: 48 runs, 2,384
+shards sized by source bytes at about 0.6 task-hours each, six waves of at most 450 tasks
+(the Fargate Spot quota is 512 vCPUs), launcher bounds adding to $140. Maine 2024 has a
+60 cm and a 30 cm run with different run ids. Not launched.

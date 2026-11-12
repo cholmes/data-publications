@@ -3,40 +3,37 @@
  "quads": 771,
  "megapixels": 80294.7,
  "source_bytes": 353433330595,
- "output_bytes": 47401872192,
+ "output_bytes": 47074374812,
  "seconds_summed": {
-  "convert_cpu_s": 4644.2,
-  "convert_wall_s": 4762.0,
-  "download_s": 1717.7,
-  "download_wait_s": 35.6,
-  "pixel_check_s": 56.5,
-  "total_s": 5293.2,
-  "upload_s": 406.2
+  "convert_cpu_s": 6945.9,
+  "convert_wall_s": 7049.8,
+  "download_s": 1943.3,
+  "download_wait_s": 64.0,
+  "pixel_check_s": 57.4,
+  "total_s": 7785.5,
+  "upload_s": 471.7
  },
  "megapixels_per_cpu_s": {
-  "p10": 15.49,
-  "median": 17.91,
-  "p90": 19.59
+  "p10": 10.61,
+  "median": 11.6,
+  "p90": 13.54
  },
  "requests": {
-  "CompleteMultipartUpload": 763,
-  "CreateMultipartUpload": 763,
-  "GetObject": 12466,
-  "HeadObject": 3084,
-  "PutObject": 8,
-  "UploadPart": 1632
+  "GetObject": 4610,
+  "HeadObject": 1542,
+  "PutObject": 771
  },
- "max_rss_kb": 841388,
+ "max_rss_kb": 864036,
  "quads_with_problems": 0,
- "output_share_of_source": 0.1341,
+ "output_share_of_source": 0.1332,
  "psnr_db": {
   "quads": 16,
   "min": 29.92,
   "median": 31.01
  },
  "tasks": {
-  "started": 17,
-  "with_end_record": 16,
-  "spot_interruptions": 1
+  "started": 12,
+  "with_end_record": 12,
+  "spot_interruptions": 0
  }
 }
