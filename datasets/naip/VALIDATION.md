@@ -516,3 +516,26 @@ file's overviews, the 85 overviews differ by 30 to 32 dB, which is the error the
 setting would have added at those levels. All-85 full resolution measured 35.9, 36.9 and
 33.3 dB. This ran with GDAL directly, not through the converter image; `convert.py` and
 `mosaic.py` now take `OVERVIEW_QUALITY` but have not run with it in the cluster.
+
+## WebP against JPEG, and overview quality (set 2026-11-12, before any result)
+
+One Utah quad (`m_4011127_ne_12_060_20240816`), built from the lossless source as COGs:
+JPEG at 65 with overviews at 65, 75 and 85; WebP (lossy) at 50, 60, 70, 75, 80 and 85 with
+overviews at the same quality. Reference for every level: a lossless COG of the same quad
+with the same averaged overviews. One thread for every build, so encode times compare.
+
+Pass marks for WebP as the published encoding:
+
+1. **Smaller at no more error.** Take the lowest WebP quality whose full-resolution PSNR
+   is at least JPEG 65's in every band. Its file is at least 15% smaller than the JPEG
+   file with overviews at 65.
+2. **Draws in the browser reader.** The deck.gl-geotiff demo draws the WebP file at a
+   street view and at a zoomed-out view with no error.
+3. **Decode is not much slower in the browser.** Median decode time per block in the demo
+   is at most twice JPEG's for the same views.
+4. **Same structure.** `LAYOUT=COG`, 512 px blocks, five overview levels.
+
+Recorded without a pass mark: encode seconds, GDAL decode seconds, bytes and PSNR at
+every level for every build. The overview quality choice (65, 75 or 85) is Nathan's to
+make from the per-level figures. Folia's own reader and ArcGIS are not tested here.
+A failed criterion is recorded as failed.
