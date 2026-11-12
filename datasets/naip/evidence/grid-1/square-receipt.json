@@ -1,0 +1,156 @@
+{
+ "schema": "folia.naip-grid-square-receipt@1",
+ "id": "utm12_e400_n4400",
+ "run_id": "grid1-assemble",
+ "out_uri": "s3://private-work-bucket/_proto/grid-1/square/utm12_e400_n4400.tif",
+ "tiles": 121,
+ "tile_bytes": 6925872014,
+ "output_bytes": 6928692797,
+ "assembled": {
+  "levels": 10,
+  "copied_levels": 6,
+  "computed_levels": 4,
+  "blocks": 141862,
+  "bytes": 6928692797
+ },
+ "output": {
+  "width": 166666,
+  "height": 166667,
+  "geotransform": [
+   400000.2,
+   0.6,
+   0.0,
+   4500000.0,
+   0.0,
+   -0.6
+  ],
+  "epsg": "26912",
+  "overviews": 9,
+  "layout": "COG",
+  "compression": "YCbCr JPEG"
+ },
+ "compared_max_abs_difference": {
+  "0-0": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "0-10": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "1-9": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "2-8": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "3-7": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "4-6": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "5-5": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "6-4": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "7-3": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "8-2": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "9-1": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "10-0": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "10-10": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "validator": {
+  "errors": [],
+  "warnings": []
+ },
+ "problems": [],
+ "quality": 75,
+ "gdal": "3.13.1",
+ "max_rss_kb": 1030616,
+ "output_sha256": "79832f668b41eca9bad8fbda759831f65e3854df8f74e14e1b5157b3d53a5224",
+ "seconds": {
+  "download_s": 101.087,
+  "assemble_wall_s": 86.307,
+  "assemble_cpu_s": 7.398,
+  "compare_s": 36.974,
+  "validate_s": 40.722,
+  "upload_s": 59.349
+ },
+ "finished_unix": 1794518989.858
+}

@@ -1,0 +1,12 @@
+{"view": "street", "layout": "quads-vrt", "seconds": 3.54, "exit": 0, "requests": 5, "bytes": 720896, "files_touched": 1}
+{"view": "street", "layout": "quads-stac-index", "seconds": 16.84, "exit": 0, "requests": 7, "bytes": 737280, "files_touched": 2}
+{"view": "street", "layout": "tiles-vrt", "seconds": 5.58, "exit": 0, "requests": 5, "bytes": 557056, "files_touched": 1}
+{"view": "street", "layout": "square", "seconds": 4.07, "exit": 0, "requests": 11, "bytes": 671744, "files_touched": 1}
+{"view": "canyon", "layout": "quads-vrt", "seconds": 12.89, "exit": 0, "requests": 44, "bytes": 3424256, "files_touched": 12}
+{"view": "canyon", "layout": "quads-stac-index", "seconds": 22.66, "exit": 0, "requests": 46, "bytes": 3440640, "files_touched": 13}
+{"view": "canyon", "layout": "tiles-vrt", "seconds": 6.77, "exit": 0, "requests": 21, "bytes": 1064960, "files_touched": 6}
+{"view": "canyon", "layout": "square", "seconds": 2.35, "exit": 0, "requests": 9, "bytes": 835584, "files_touched": 1}
+{"view": "region", "layout": "quads-vrt", "seconds": 194.26, "exit": 0, "requests": 963, "bytes": 22815082, "files_touched": 320}
+{"view": "region", "layout": "quads-stac-index", "seconds": 244.24, "exit": 0, "requests": 965, "bytes": 23109994, "files_touched": 321}
+{"view": "region", "layout": "tiles-vrt", "seconds": 53.39, "exit": 0, "requests": 362, "bytes": 7847936, "files_touched": 121}
+{"view": "region", "layout": "square", "seconds": 2.22, "exit": 0, "requests": 8, "bytes": 573440, "files_touched": 1}

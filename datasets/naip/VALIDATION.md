@@ -343,3 +343,65 @@ Recorded without a pass mark: task time and cost per source TB; requests and byt
 first image for quads, small tiles and the 100 km file in GDAL, the browser reader and
 Folia's reader; and whether each reader fetches the whole block table of the 100 km file.
 A failed criterion is recorded as failed.
+
+### Results (2026-11-12)
+
+Square: NAD83 UTM 12N, easting 400,000 to 500,000, northing 4,400,000 to 4,500,000
+(166,666 by 166,667 px). 121 tiles from 320 source quads, JPEG quality 75. Evidence in
+`evidence/grid-1/`.
+
+| Pass mark | Result |
+|---|---|
+| 1. Small tiles are the source | **Failed.** Size and position match on all 121 tiles. 13 tiles were sampled for PSNR; 9 have every band at 31.0 dB or more. Four fall short in blue only (29.75, 30.33, 30.78, 30.82 dB); red is 31.9 dB or more and green 33.2 dB or more on every tile. |
+| 2. Tiles meet | Passed on positions: 11 by 11 tiles at exact 16,384 px steps, last row and column trimmed to the square. The edge rows were not separately read against the source. |
+| 3. The copy is exact | Passed. Difference zero on every block of 13 tiles at levels 0 to 5. |
+| 4. The 100 km file is a valid COG | Passed as written (`LAYOUT=COG`, validator no error or warning, 0.04% larger than the tiles summed). **But the first file did not draw in the browser reader**, see below. |
+| 5. No darkened edges | Passed. Ratios 0.968 to 1.036. |
+
+**Browser reader failure and fix.** The first assembled file wrote each level's tag values
+in tag order, which put the JPEG tables after the block tables, 1.7 MB into the file.
+GDAL read it; `@cogeotiff/core` (under deck.gl-geotiff) looks for the tables only in the
+header bytes it fetches first and raised "Unable to find Jpeg header" for every block. The
+pass mark did not cover a browser reader and should have. The assembler now writes the
+small values of every level first and the block tables after, coarsest level first. The
+test file was corrected by rewriting its first 2,275,616 bytes and copying the rest inside
+S3 (`rehead_square.py`), not by a new run: a new converter image was not built because the
+build machine was under its free-disk floor. The corrected file gives the same GDAL
+checksums as the first at four windows and levels, and draws in the browser. The fixed
+assembler passed the local self test; it has not yet run in the cluster.
+
+**Compute.** Tiles: 5,554 task-seconds summed over 12 tasks (one Spot interruption), 8.4 MP
+per CPU-second median, peak 1.56 GB. Source downloaded was 213.9 GB against 134.9 GB of
+distinct source, because tiles in different tasks fetch the quads they share. Assembly:
+7.4 CPU-seconds to copy, 324 s of task time with download, comparison, validation and
+upload. Output 6.93 GB for tiles and for the 100 km file.
+
+**Readers, cold.** Quads are the published files (quality 85) read from the Source
+Cooperative bucket directly; tiles and the 100 km file are quality 75. Run from a laptop on
+a home connection, so requests and bytes are the comparable figures.
+
+GDAL 3.13.1, each view read to a 1024 px image (requests, MB, files opened):
+
+| View | Quads by VRT | Quads by STAC index (GTI) | Tiles by VRT | 100 km file |
+|---|---|---|---|---|
+| Street, 614 m | 5, 0.72, 1 | 7, 0.74, 2 | 5, 0.56, 1 | 11, 0.67, 1 |
+| Canyon, 15 km | 44, 3.42, 12 | 46, 3.44, 13 | 21, 1.06, 6 | 9, 0.84, 1 |
+| Square, 100 km | 963, 22.8, 320 | 965, 23.1, 321 | 362, 7.85, 121 | 8, 0.57, 1 |
+
+Building the quad VRT with `gdalbuildvrt` took 102 s and 640 requests. GDAL opened the
+published STAC-GeoParquet index as a mosaic with no extra file
+(`GTI:naip.parquet` with a filter on `naip:state`).
+
+deck.gl-geotiff demo page, 1280 by 800 window (image requests, MB, files):
+
+| View | Quads | Tiles | 100 km file (corrected) |
+|---|---|---|---|
+| Street, 0.6 km | 7, 0.51, 1 | 7, 0.39, 1 | 9, 0.52, 1 |
+| Canyon, 19 km | 30, 1.74, 15 | 12, 0.74, 6 | 8, 0.46, 1 |
+| Region, 37 km | 72, 3.86, 36 | 32, 1.83, 16 | 10, 0.51, 1 |
+
+Neither reader fetched the whole block table of the 100 km file.
+
+Not yet measured: Folia's reader, offline byte counts for the tiles and the 100 km file,
+and a square on a state edge (which needs a transparency mask in the tile cutter and the
+assembler).

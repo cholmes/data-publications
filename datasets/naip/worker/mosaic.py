@@ -365,13 +365,19 @@ def assemble(square, tile_paths, target, workdir):
     for tags in entries:
         ifd_at.append(at)
         at += 8 + 20 * len(tags) + 8
+    # Small values (JPEG tables, georeferencing) for every level come first, so a reader's
+    # first request holds them; the block tables follow, coarsest level first.
     value_at = {}
-    for i, tags in enumerate(entries):
-        for tag, (kind, count, data) in tags:
-            if TYPE_BYTES[kind] * count > 8:
-                value_at[(i, tag)] = at
-                at += TYPE_BYTES[kind] * count
-                at += -at % 8
+    tables = (TILE_OFFSETS, TILE_COUNTS)
+    order = [(i, tag) for i, tags in enumerate(entries) for tag, _ in tags if tag not in tables]
+    order += [(i, tag) for i in reversed(range(len(entries))) for tag in tables]
+    fields = {(i, tag): value for i, tags in enumerate(entries) for tag, value in tags}
+    for key in order:
+        kind, count, _ = fields[key]
+        if TYPE_BYTES[kind] * count > 8:
+            value_at[key] = at
+            at += TYPE_BYTES[kind] * count
+            at += -at % 8
     block_at = [None] * len(levels)
     for i in reversed(range(len(levels))):
         placed = []
@@ -395,13 +401,13 @@ def assemble(square, tile_paths, target, workdir):
                 field = data.ljust(8, b"\0") if size <= 8 else struct.pack("<Q", value_at[(i, tag)])
                 out.write(struct.pack("<HHQ", tag, kind, count) + field)
             out.write(struct.pack("<Q", ifd_at[i + 1] if i + 1 < len(entries) else 0))
-        for i, tags in enumerate(entries):
-            for tag, (kind, count, data) in tags:
-                if (i, tag) in value_at:
-                    if tag == TILE_OFFSETS:
-                        data = struct.pack(f"<{count}Q", *block_at[i])
-                    out.write(b"\0" * (value_at[(i, tag)] - out.tell()))
-                    out.write(data)
+        for i, tag in order:
+            if (i, tag) in value_at:
+                kind, count, data = fields[(i, tag)]
+                if tag == TILE_OFFSETS:
+                    data = struct.pack(f"<{count}Q", *block_at[i])
+                out.write(b"\0" * (value_at[(i, tag)] - out.tell()))
+                out.write(data)
         for i in reversed(range(len(levels))):
             for (path, offset, count), where in zip(levels[i]["blocks"], block_at[i]):
                 out.write(b"\0" * (where - 4 - out.tell()))
