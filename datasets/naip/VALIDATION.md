@@ -576,3 +576,26 @@ JPEG, quality 65 at full resolution and 75 for the overview levels. WebP is not 
 The four state-years published so far are at quality 85 throughout and stay described
 that way in `README.md` until they are converted again; the converter's defaults are
 unchanged, and runs at the new setting pass `QUALITY=65` and `OVERVIEW_QUALITY=75`.
+
+### Layout decision (Nathan, 2026-11-12)
+
+Quads as published, plus one overview file per state-year in the state's main UTM zone.
+The 10 km tiles and the 100 km file stay as a recorded test, not a product.
+
+## Utah sample at quality 65 with overviews at 75 (set 2026-11-12, before any result)
+
+About 100 Utah 2024 quads (the first ten of each of ten shards of the state manifest),
+converted with image v6 into the work bucket, `QUALITY=65 OVERVIEW_QUALITY=75`. Compared
+with the same quads' receipts from the published run `ut2024-pub-2` (quality 85).
+
+Pass marks:
+
+1. **Complete and clean.** Every quad has a receipt with no problem recorded (structure,
+   overview edge ratio of at least 0.7).
+2. **Size.** The sample's output bytes are between 55% and 68% of the same quads'
+   published bytes (the Alta quad measured 63%).
+3. **Error.** On every quad with a pixel check in both runs, PSNR is at most 3.0 dB below
+   the published run's value for that quad.
+4. **Speed.** Median megapixels per CPU-second is at least 90% of the published run's.
+
+A failed criterion is recorded as failed.
