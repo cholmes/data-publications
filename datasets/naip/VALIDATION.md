@@ -569,3 +569,10 @@ JPEG overviews at 65 are 1.6 dB worse than full resolution at level 1 (they hold
 detail per pixel); at 75 they are 0.6 dB worse; at 85 they are 1.3 dB better. Overviews at
 75 add 6.7% to the all-65 file and at 85 add 20.1%. WebP's overviews lose less against
 its full resolution (0.7 to 0.8 dB at level 1).
+
+### Decision (Nathan, 2026-11-12)
+
+JPEG, quality 65 at full resolution and 75 for the overview levels. WebP is not adopted.
+The four state-years published so far are at quality 85 throughout and stay described
+that way in `README.md` until they are converted again; the converter's defaults are
+unchanged, and runs at the new setting pass `QUALITY=65` and `OVERVIEW_QUALITY=75`.
