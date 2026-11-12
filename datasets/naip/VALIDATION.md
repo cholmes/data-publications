@@ -539,3 +539,33 @@ Recorded without a pass mark: encode seconds, GDAL decode seconds, bytes and PSN
 every level for every build. The overview quality choice (65, 75 or 85) is Nathan's to
 make from the per-level figures. Folia's own reader and ArcGIS are not tested here.
 A failed criterion is recorded as failed.
+
+### Results (2026-11-12)
+
+GDAL 3.13.1 on a laptop, one thread; 117.7 megapixels. Evidence in `evidence/webp/`.
+PSNR is red, green, blue against the lossless COG's same level.
+
+| Build | File MB | Full res MB | Full res PSNR | Level 1 PSNR | Level 3 PSNR | Encode CPU s | Decode all levels CPU s |
+|---|---|---|---|---|---|---|---|
+| JPEG 65, overviews 65 | 24.70 | 17.53 | 33.3 34.1 31.6 | 31.7 32.5 30.5 | 30.7 31.6 30.2 | 3.2 | 0.60 |
+| JPEG 65, overviews 75 | 26.36 | 17.53 | same | 32.7 33.5 31.1 | 31.8 32.7 30.8 | 3.2 | 0.64 |
+| JPEG 65, overviews 85 | 29.67 | 17.53 | same | 34.6 35.5 32.1 | 33.9 35.0 31.8 | 3.3 | 0.66 |
+| WebP 50 | 16.07 | 11.24 | 32.4 33.2 31.2 | 31.5 32.4 30.3 | 30.7 31.8 30.1 | 14.8 | 1.44 |
+| WebP 60 | 18.69 | 13.09 | 33.1 34.0 31.7 | 32.3 33.3 30.8 | 31.5 32.7 30.6 | 15.2 | 1.55 |
+| WebP 70 | 21.60 | 15.17 | 33.8 34.8 32.2 | 33.0 34.1 31.4 | 32.4 33.7 31.0 | 16.1 | 1.81 |
+| WebP 75 | 23.31 | 16.39 | 34.2 35.2 32.5 | 33.5 34.6 31.6 | 32.8 34.2 31.3 | 16.3 | 1.85 |
+| WebP 80 | 29.09 | 20.55 | 35.5 36.8 33.5 | 34.9 36.3 32.6 | 34.3 35.9 32.3 | 17.2 | 2.10 |
+| WebP 85 | 36.59 | 26.01 | 37.0 38.5 34.6 | 36.4 38.1 33.7 | 35.9 37.9 33.3 | 18.3 | 2.54 |
+
+| Pass mark | Result |
+|---|---|
+| 1. Smaller at no more error | **Failed.** The lowest tested WebP quality at or above JPEG 65 in every band is 70, and its file is 12.6% smaller, short of 15%. WebP 60 is 24.3% smaller but 0.2 dB below JPEG 65 in red and 0.1 dB in green (0.1 dB above in blue). The crossing point lies between the two steps tested. |
+| 2. Draws in the browser reader | Passed. WebP 60 and 70 drew at the street and whole-quad views with no error. |
+| 3. Decode not much slower in the browser | Passed, on a thin sample. Median per block over two rounds of the street view (6 blocks each): JPEG 4.1 to 10.0 ms, WebP 8.8 to 11.6 ms. The run-to-run spread is as large as the difference. |
+| 4. Same structure | Passed. |
+
+Recorded: in GDAL, WebP took about 5 times the CPU to encode and 2.4 to 3 times to decode.
+JPEG overviews at 65 are 1.6 dB worse than full resolution at level 1 (they hold finer
+detail per pixel); at 75 they are 0.6 dB worse; at 85 they are 1.3 dB better. Overviews at
+75 add 6.7% to the all-65 file and at 85 add 20.1%. WebP's overviews lose less against
+its full resolution (0.7 to 0.8 dB at level 1).
