@@ -405,3 +405,28 @@ Neither reader fetched the whole block table of the 100 km file.
 Not yet measured: Folia's reader, offline byte counts for the tiles and the 100 km file,
 and a square on a state edge (which needs a transparency mask in the tile cutter and the
 assembler).
+
+### Same overview depth for every layout (2026-11-12)
+
+The reader comparison above is unfair to quads and tiles: their overviews stop at their own
+width, while the 100 km file's go down to the whole square. To separate "deep overviews"
+from "one big file", an overview-only file was made for the square from the 100 km file's
+levels 3 to 9 (4.8 m per pixel and coarser, 20,833 px, 118 MB, 1.7% of the full-resolution
+bytes), by copying those blocks inside S3 (`make_overview_file.py`); its GDAL checksums
+match the same levels of the 100 km file. The demo draws it below zoom 13.6 and the
+full-resolution files at or above. The "switch" view is at zoom 13.6, the widest view the
+full-resolution files must serve. No pass mark was set for this comparison.
+
+deck.gl-geotiff demo page, 1280 by 800 window (image requests, MB, files):
+
+| View | Quads alone | Quads + overview file | Tiles + overview file | 100 km file |
+|---|---|---|---|---|
+| Street, 0.6 km | 7, 0.51, 1 | 7, 0.51, 1 | 7, 0.39, 1 | 9, 0.52, 1 |
+| Switch, 6 km | 17, 1.32, 2 | 17, 1.32, 2 | 11, 0.69, 1 | 15, 0.95, 1 |
+| Canyon, 19 km | 30, 1.74, 15 | 8, 0.46, 1 | 8, 0.46, 1 | 8, 0.46, 1 |
+| Region, 37 km | 72, 3.86, 36 | 10, 0.51, 1 | 10, 0.51, 1 | 10, 0.51, 1 |
+
+With equal overview depth the three layouts cost the same below the switch, and differ by
+at most 6 requests at it (one placement, where the view touched two quads; a view on a
+quad corner would touch four). The earlier advantage of the 100 km file was the overview
+depth, not the file size. Quads are quality 85 here and the others 75.
