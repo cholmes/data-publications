@@ -5,6 +5,6 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends python3-boto3 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY convert.py /opt/naip/convert.py
+COPY convert.py mosaic.py /opt/naip/
 
 ENTRYPOINT ["python3", "/opt/naip/convert.py"]

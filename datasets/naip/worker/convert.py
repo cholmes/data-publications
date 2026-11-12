@@ -414,5 +414,8 @@ def main():
 if __name__ == "__main__":
     if len(sys.argv) == 4 and sys.argv[1] == "--local":
         local(sys.argv[2], sys.argv[3])
+    elif os.environ.get("MODE") in ("tiles", "assemble"):
+        import mosaic  # tiles on a shared grid; see mosaic.py
+        sys.exit(mosaic.main())
     else:
         sys.exit(main())
