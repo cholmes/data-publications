@@ -599,3 +599,20 @@ Pass marks:
 4. **Speed.** Median megapixels per CPU-second is at least 90% of the published run's.
 
 A failed criterion is recorded as failed.
+
+### Results (2026-11-12)
+
+Run `ut2024-q6575-sample`, image v6, 100 quads, 10 tasks. Summary in
+`evidence/utah-2024-q65-75-sample-summary.json`.
+
+| Pass mark | Result |
+|---|---|
+| 1. Complete and clean | Passed. 100 receipts, no problem recorded; lowest overview edge ratio 0.968. |
+| 2. Size | Passed. 2.77 GB, 61.9% of the same quads as published. |
+| 3. Error | Passed on the two quads that had a pixel check in both runs (the published run checked one quad in 50): 1.0 to 2.9 dB below the published values. Two quads is a thin basis. |
+| 4. Speed | Passed. 14.3 megapixels per CPU-second median, against 11.6 for the same quads in the published run. |
+
+Recorded: PSNR on the 50 quads checked in this run, lowest per band 29.6, 32.0, 29.8 dB
+(one quad, also the lowest in the published run) and median per band in the summary file.
+This is the first cluster run of `OVERVIEW_QUALITY`; receipts carry `quality` 65 and
+`overview_quality` 75.

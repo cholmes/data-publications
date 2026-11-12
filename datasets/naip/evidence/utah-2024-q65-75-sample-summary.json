@@ -1,0 +1,53 @@
+{
+ "schema": "folia.naip-quality-sample-summary@1",
+ "run": "ut2024-q6575-sample",
+ "image": "v6",
+ "quality": 65,
+ "overview_quality": 75,
+ "quads": 100,
+ "problems": 0,
+ "output_bytes": 2767503153,
+ "published_bytes_same_quads": 4474348228,
+ "psnr_quads": 50,
+ "psnr_db_min": [
+  28.749,
+  31.667,
+  29.189
+ ],
+ "psnr_db_median": [
+  31.82,
+  33.57,
+  31.3
+ ],
+ "psnr_pairs_with_published": {
+  "ut_m_3710903_se_12_060_20240708": {
+   "sample": [
+    29.594,
+    31.971,
+    29.769
+   ],
+   "published": [
+    31.951,
+    34.818,
+    31.261
+   ]
+  },
+  "ut_m_3610901_ne_12_060_20240708": {
+   "sample": [
+    34.94,
+    38.195,
+    35.971
+   ],
+   "published": [
+    36.742,
+    40.425,
+    37.011
+   ]
+  }
+ },
+ "megapixels_per_cpu_s_median": 14.335,
+ "published_megapixels_per_cpu_s_median_same_quads": 11.585,
+ "overview_edge_ratio_min": 0.968,
+ "task_seconds": 1246.7,
+ "size_share_of_published": 0.6185
+}
