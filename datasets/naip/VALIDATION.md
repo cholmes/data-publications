@@ -454,3 +454,22 @@ street and switch views). The index footprints are in longitude and latitude, as
 requires, and the XML form appears to expect them in the mosaic's CRS; not investigated
 further. A tile index in the mosaic's CRS, written from the STAC index, is the likely way
 to give GDAL both; untested.
+
+**Correction, same day: the STAC index can carry the overview file for GDAL.** The GTI
+driver reads its settings from the index layer's metadata, and the Parquet driver keeps
+layer metadata in the file. A copy of the square's 320 STAC rows with `SRS`,
+`SRS_BEHAVIOR=REPROJECT`, the grid and extent, and `OVERVIEW_<n>_DATASET` entries in its
+metadata (`make_gti_parquet.py`) opens as `GTI:<file>` with full resolution and all seven
+overview levels, nothing else needed. `SRS_BEHAVIOR=REPROJECT` is what the `.gti` attempt
+above lacked: it tells GDAL the footprints are in another CRS than the mosaic.
+
+| View | Requests, MB, files |
+|---|---|
+| Street, 614 m | 9, 0.75, 3 |
+| Switch, 4.8 km | 18, 2.64, 4 |
+| Canyon, 15 km | 7, 0.79, 2 |
+| Square, 100 km | 6, 0.48, 2 |
+
+The images are not blank; their checksums differ slightly from the VRT route's (the mosaic
+is one row taller from rounding the extent, and overlapping quads may be drawn in a
+different order). Not compared pixel by pixel.

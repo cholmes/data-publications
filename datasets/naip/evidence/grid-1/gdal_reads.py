@@ -17,7 +17,7 @@ import json, os, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 P = "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1"
-OV_LAYOUTS = [("quads-vrt+overview", f"{HERE}/quads-ov.vrt", []), ("quads-stac-index+overview", f"{HERE}/quads-stac-ov.gti", []),
+OV_LAYOUTS = [("quads-stac-parquet+overview", f"GTI:{HERE}/ut-square-ov.parquet", []), ("quads-vrt+overview", f"{HERE}/quads-ov.vrt", []), ("quads-stac-index+overview", f"{HERE}/quads-stac-ov.gti", []),
               ("tiles-vrt+overview", f"{HERE}/tiles-ov.vrt", []), ("square", f"/vsicurl/{P}/square2/utm12_e400_n4400.tif", [])]
 if len(sys.argv) > 2:   # one layout only
     OV_LAYOUTS = [l for l in OV_LAYOUTS if l[0] == sys.argv[2]]
