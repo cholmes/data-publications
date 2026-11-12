@@ -1,0 +1,15 @@
+<GDALTileIndexDataset>
+  <IndexDataset>CAPTURES/reader-bench/../index/naip-stac.parquet</IndexDataset>
+  <IndexLayer>naip-stac</IndexLayer>
+  <Filter>"naip:state" = 'ut'</Filter>
+  <SRS>EPSG:26912</SRS>
+  <ResX>0.6</ResX><ResY>0.6</ResY>
+  <MinX>400000.2</MinX><MinY>4399999.8</MinY><MaxX>499999.8</MaxX><MaxY>4500000</MaxY>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">0</OOI></OpenOptions></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">1</OOI></OpenOptions></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">2</OOI></OpenOptions></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">3</OOI></OpenOptions></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">4</OOI></OpenOptions></Overview>
+  <Overview><Dataset>/vsicurl/https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overview/utm12_e400_n4400-ov3.tif</Dataset><OpenOptions><OOI key="OVERVIEW_LEVEL">5</OOI></OpenOptions></Overview>
+</GDALTileIndexDataset>

@@ -430,3 +430,27 @@ With equal overview depth the three layouts cost the same below the switch, and 
 at most 6 requests at it (one placement, where the view touched two quads; a view on a
 quad corner would touch four). The earlier advantage of the 100 km file was the overview
 depth, not the file size. Quads are quality 85 here and the others 75.
+
+GDAL 3.13.1 with the same overview file attached (requests, MB, files opened), each view
+read to a 1024 px image; "switch" here is 4.8 km at 4.7 m per pixel:
+
+| View | Quads by VRT + overview | Tiles by VRT + overview | 100 km file |
+|---|---|---|---|
+| Street, 614 m | 5, 0.72, 1 | 5, 0.56, 1 | 8, 0.61, 1 |
+| Switch, 4.8 km | 16, 2.62, 3 | 9, 1.64, 2 | 8, 1.64, 1 |
+| Canyon, 15 km | 5, 0.77, 1 | 5, 0.77, 1 | 6, 0.77, 1 |
+| Square, 100 km | 4, 0.46, 1 | 4, 0.46, 1 | 5, 0.51, 1 |
+
+The VRT names the overview file and each of its levels in `<Overview>` elements. An
+overview is taken to cover the same extent as the mosaic, so the quad VRT had to be cut to
+the square first; an overview file must match the extent of whatever names it.
+
+**Not working: the STAC index plus the overview file in GDAL.** Opened as
+`GTI:naip.parquet` the published index reads correctly at full resolution (first table
+above), but that form cannot name an overview file. A `.gti` XML file that names the index
+and the overview file (`quads-stac-ov.gti`) opened only when given the CRS and extent, read
+the overview levels, and returned blank images at full resolution (checksum 0 on the
+street and switch views). The index footprints are in longitude and latitude, as STAC
+requires, and the XML form appears to expect them in the mosaic's CRS; not investigated
+further. A tile index in the mosaic's CRS, written from the STAC index, is the likely way
+to give GDAL both; untested.

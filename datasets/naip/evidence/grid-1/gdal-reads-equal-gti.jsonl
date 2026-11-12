@@ -1,0 +1,4 @@
+{"view": "street", "layout": "quads-stac-index+overview", "seconds": 1.5, "exit": 0, "requests": 4, "bytes": 32768, "files_touched": 2}
+{"view": "switch", "layout": "quads-stac-index+overview", "seconds": 1.5, "exit": 0, "requests": 4, "bytes": 32768, "files_touched": 2}
+{"view": "canyon", "layout": "quads-stac-index+overview", "seconds": 4.08, "exit": 0, "requests": 7, "bytes": 786432, "files_touched": 2}
+{"view": "region", "layout": "quads-stac-index+overview", "seconds": 4.17, "exit": 0, "requests": 6, "bytes": 475136, "files_touched": 2}
