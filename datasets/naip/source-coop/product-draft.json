@@ -19,9 +19,9 @@
   },
   "license_note": "NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.",
   "limitations": [
-    "Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
-    "Only Utah 2024, New Hampshire 2025 and Rhode Island 2025 are converted so far, and they sit in a private bucket. Nothing is on Source Cooperative.",
-    "Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.",
+    "Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
+    "Seven of 52 state-years are hosted so far (build.converted lists them). The others are being converted.",
+    "There are no overview files above the quad yet. A view wider than a few quads opens one file per quad.",
     "Adjacent quarter quads overlap, as they do in the source."
   ],
   "local_readiness": "blocked",

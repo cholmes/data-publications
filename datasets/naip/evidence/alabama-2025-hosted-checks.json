@@ -1,0 +1,35 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/al/2025/30cm/rgb/",
+ "receipts": 3477,
+ "runs": [
+  "al2025-pub-1"
+ ],
+ "listing": {
+  "listed": 3477,
+  "bytes": 434085293314,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 50,
+  "files": 70,
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 3477,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

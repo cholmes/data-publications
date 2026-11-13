@@ -1,0 +1,35 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/nm/2024/30cm/rgb/",
+ "receipts": 8027,
+ "runs": [
+  "nm2024-pub-1"
+ ],
+ "listing": {
+  "listed": 8027,
+  "bytes": 710958023680,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 50,
+  "files": 161,
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 8027,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

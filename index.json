@@ -10707,9 +10707,9 @@
         "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
         "temporal_note": "One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.",
         "limitations": [
-          "Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
-          "Only Utah 2024, New Hampshire 2025 and Rhode Island 2025 are converted so far, and they sit in a private bucket. Nothing is on Source Cooperative.",
-          "Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.",
+          "Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
+          "Seven of 52 state-years are hosted so far (build.converted lists them). The others are being converted.",
+          "There are no overview files above the quad yet. A view wider than a few quads opens one file per quad.",
           "Adjacent quarter quads overlap, as they do in the source."
         ],
         "supplements": []

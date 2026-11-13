@@ -1,0 +1,39 @@
+{
+ "schema": "folia.naip-display-pilot-summary@1",
+ "quads": 11745,
+ "megapixels": 4521640.6,
+ "source_bytes": 14778601945374,
+ "output_bytes": 877093583189,
+ "seconds_summed": {
+  "convert_cpu_s": 414364.1,
+  "convert_wall_s": 425433.2,
+  "download_s": 78961.3,
+  "download_wait_s": 1489.1,
+  "pixel_check_s": 3091.0,
+  "total_s": 443387.9,
+  "upload_s": 8654.0
+ },
+ "megapixels_per_cpu_s": {
+  "p10": 8.23,
+  "median": 11.62,
+  "p90": 14.09
+ },
+ "requests": {
+  "GetObject": 139637,
+  "HeadObject": 23490,
+  "PutObject": 11747
+ },
+ "max_rss_kb": 1556420,
+ "quads_with_problems": 0,
+ "output_share_of_source": 0.0593,
+ "psnr_db": {
+  "quads": 235,
+  "min": 28.46,
+  "median": 33.82
+ },
+ "tasks": {
+  "started": 210,
+  "with_end_record": 0,
+  "spot_interruptions": 0
+ }
+}

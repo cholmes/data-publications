@@ -695,3 +695,49 @@ quads alone, against 10 requests and one file with an overview file). Answer: no
 files for now. They are added after all six waves are converted and verified. The layout
 recorded on 2026-11-12 (one file per state-year) has not been built or measured at state
 size, and nothing in the product depends on it until then.
+
+## National run, wave one: Alabama 2025, Montana 2025, New Mexico 2024 (2026-11-13)
+
+Runs `al2025-pub-1`, `mt2025-pub-1` and `nm2024-pub-1`, image v6, `QUALITY=65
+OVERVIEW_QUALITY=75`, written straight into the product. All three are 30 cm. The marks are the
+ones already set: the converter's own checks on every file, and the four hosted checks of
+[PUBLISHING.md](PUBLISHING.md). No new mark was written for this wave.
+
+| | Alabama 2025 | Montana 2025 | New Mexico 2024 |
+|---|---|---|---|
+| Quads with a receipt | 3,477 of 3,477 | 11,745 of 11,745 | 8,027 of 8,027 |
+| Quads with a problem recorded | 0 | 0 | 0 |
+| Bytes | 434,085,293,314 | 877,093,583,189 | 710,958,023,680 |
+| Share of the source bytes | 6.8% | 5.9% | 5.9% |
+| Flown | 2025-06-24 to 2025-09-28 | 2025-06-09 to 2025-10-07 | 2024-05-02 to 2024-07-10 |
+| Lowest overview edge ratio | 0.886 | 0.756 | 0.921 |
+| Quads with a pixel check | 70 | 235 | 161 |
+| PSNR median, red, green, blue (dB) | 31.8, 32.2, 28.8 | 34.2, 35.7, 31.4 | 35.9, 38.1, 34.1 |
+| PSNR lowest, red, green, blue (dB) | 30.1, 30.8, 25.8 | 27.5, 30.4, 26.4 | 33.0, 35.5, 30.3 |
+| Peak memory, MiB | 1,585 | 1,520 | 1,644 |
+| Tasks started | 90 | 210 | 172 |
+| Task-hours summed over receipts | 47.8 | 123.2 | 107.7 |
+| Hosted checks: files listed at their recorded size | 3,477 | 11,745 | 8,027 |
+| Hosted checks: files downloaded, hashed and opened in place | 70, all match | 235, all match | 161, all match |
+| Hosted checks: index rows equal to receipts | 3,477 | 11,745 | 8,027 |
+| Hosted checks | pass | pass | pass |
+
+- The first pass left 751 quads in 22 shards that stopped early; those shards were launched again
+  with `--only` and finished. Whether Spot or the one-hour deadline stopped them was not
+  established, and the end records were not read (`tasks.with_end_record` is 0 in the summaries).
+- The hosted checks were first started at about 01:00 and lost when the machine restarted. The
+  results here are from a second run on the same day, from a home connection: 466 files, about
+  40 GB downloaded, 1 hour 47 minutes for the longest state.
+- Montana's lowest edge ratio, 0.756 on `mt_m_4710610_se_13_030_20250701`, is at the smallest
+  overview level only (0.965, 0.897, 0.756 over the last three levels). It is above the
+  converter's 0.7 mark. The file was not opened to see what is at that edge. Four other quads
+  are between 0.886 and 0.897; every other quad is at 0.9 or above.
+- What was billed has not been read. The plan expected about $5.28 for the wave against a
+  ceiling of $27.42.
+- The index hosted at `stac/naip.parquet` still holds only the first four state-years. The
+  per-state index files built from these receipts are local
+  (`al-2025-30cm-q6575.parquet` 594,482 bytes, `mt-2025-30cm-q6575.parquet` 1,627,165 bytes,
+  `nm-2024-30cm-q6575.parquet` 1,321,212 bytes); uploading them needs the Source Cooperative
+  login or a task.
+- No seam check was run on these three states.
+- Evidence: `evidence/{alabama-2025,montana-2025,new-mexico-2024}-{summary,hosted-checks}.json`.

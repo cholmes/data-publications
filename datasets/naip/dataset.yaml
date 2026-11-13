@@ -11,7 +11,8 @@ triage:
   rationale: The public RGB display copy of NAIP (s3://naip-visualization) stops at 2023. The 2024 and
     2025 flights exist on AWS only as requester-pays MRF in s3://naip-analytic. Utah 2024 was converted
     on 2026-11-10 as a pilot (6,032 quarter quads) and a 20-quad control against the published 2021
-    display copy matched its pixels. Nothing is published yet.
+    display copy matched its pixels. Seven state-years are hosted in the unlisted product as of
+    2026-11-13; the national run of the other 45 is under way in six waves.
 publication:
   status: candidate
   source_coop:
@@ -37,11 +38,13 @@ publication:
     temporal_note: One file per quarter quad per state-year. Each file name ends in the date it was
       flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.
     limitations:
-    - Display copy only. The files hold red, green and blue as lossy JPEG at quality 85. The
-      near-infrared band and the lossless pixels stay in s3://naip-analytic.
-    - Only Utah 2024, New Hampshire 2025 and Rhode Island 2025 are converted so far, and they sit
-      in a private bucket. Nothing is on Source Cooperative.
-    - Files converted in the Utah pilot have no recorded SHA-256; the converter records one from the next run on.
+    - Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with
+      overviews at quality 75 and colour at half resolution. The near-infrared band and the
+      lossless pixels stay in s3://naip-analytic.
+    - Seven of 52 state-years are hosted so far (build.converted lists them). The others are
+      being converted.
+    - There are no overview files above the quad yet. A view wider than a few quads opens one
+      file per quad.
     - Adjacent quarter quads overlap, as they do in the source.
     supplements: []
 source:
@@ -60,7 +63,8 @@ source:
 build:
   converter: datasets/naip/worker/convert.py
   container: ghcr.io/osgeo/gdal:ubuntu-small-3.13.1 plus boto3
-  settings: 'COG driver, bands 1 to 3, COMPRESS=JPEG, QUALITY=85, BLOCKSIZE=512, OVERVIEW_RESAMPLING=AVERAGE'
+  settings: 'COG driver, bands 1 to 3, COMPRESS=JPEG, QUALITY=65, OVERVIEW_QUALITY=75, BLOCKSIZE=512,
+    OVERVIEW_RESAMPLING=AVERAGE, OVERVIEWS=IGNORE_EXISTING'
   output_layout: <state>/<year>/<resolution>/rgb/<block>/<name>.tif
   validation: datasets/naip/VALIDATION.md
   converted:
@@ -86,4 +90,67 @@ build:
     bytes: 6112508166
     summary: datasets/naip/evidence/rhode-island-2025-summary.json
     location: private work bucket in us-west-2; not published
+  - state_year: ri-2025-60cm
+    run: ri2025-pub-3
+    converted_on: '2026-11-12'
+    files: 116
+    bytes: 3761529880
+    summary: datasets/naip/evidence/rhode-island-2025-q65-75-summary.json
+    hosted_checks: datasets/naip/evidence/rhode-island-2025-q65-75-hosted-checks.json
+    hosted_checks_result: passed 2026-11-12
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nh-2025-60cm
+    run: nh2025-pub-3
+    converted_on: '2026-11-12'
+    files: 771
+    bytes: 30471141998
+    summary: datasets/naip/evidence/new-hampshire-2025-q65-75-summary.json
+    hosted_checks: datasets/naip/evidence/new-hampshire-2025-q65-75-hosted-checks.json
+    hosted_checks_result: passed 2026-11-12
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ut-2024-60cm
+    run: ut2024-pub-3
+    converted_on: '2026-11-12'
+    files: 6032
+    bytes: 154217029232
+    summary: datasets/naip/evidence/utah-2024-q65-75-summary.json
+    hosted_checks: datasets/naip/evidence/utah-2024-q65-75-hosted-checks.json
+    hosted_checks_result: passed 2026-11-12
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: vt-2025-30cm
+    run: vt2025-pub-2
+    converted_on: '2026-11-12'
+    files: 812
+    bytes: 98710651996
+    summary: datasets/naip/evidence/vermont-2025-q65-75-summary.json
+    hosted_checks: datasets/naip/evidence/vermont-2025-q65-75-hosted-checks.json
+    hosted_checks_result: passed 2026-11-12
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: al-2025-30cm
+    run: al2025-pub-1
+    converted_on: '2026-11-13'
+    files: 3477
+    bytes: 434085293314
+    summary: datasets/naip/evidence/alabama-2025-summary.json
+    hosted_checks: datasets/naip/evidence/alabama-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-13
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: mt-2025-30cm
+    run: mt2025-pub-1
+    converted_on: '2026-11-13'
+    files: 11745
+    bytes: 877093583189
+    summary: datasets/naip/evidence/montana-2025-summary.json
+    hosted_checks: datasets/naip/evidence/montana-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-13
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nm-2024-30cm
+    run: nm2024-pub-1
+    converted_on: '2026-11-13'
+    files: 8027
+    bytes: 710958023680
+    summary: datasets/naip/evidence/new-mexico-2024-summary.json
+    hosted_checks: datasets/naip/evidence/new-mexico-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-13
+    location: nthh/naip on Source Cooperative (unlisted)
   publishing: datasets/naip/PUBLISHING.md
