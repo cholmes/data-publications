@@ -650,3 +650,40 @@ runs, and Utah's rise goes with seven interruptions against three.
 The index at `https://data.source.coop/nthh/naip/stac/naip.parquet` was rebuilt from these
 four runs' receipts (7,731 rows, 1,388,789 bytes) and the hosted copy has the same SHA-256
 as the local one. Summaries, hosted checks and seam checks are in `evidence/*-q65-75-*.json`.
+
+## Colour resolution: JPEG 4:2:0 against 4:4:4 (2026-11-12)
+
+Nathan found the yellow centre line of a road in Zion Canyon faded at quality 65 and still
+faded at 85. No pass marks were set before these measurements; they are recorded as found.
+
+- **Cause.** GDAL writes YCbCr JPEG in TIFF with colour at half resolution in both
+  directions (TIFF `YCbCrSubSampling` 2, 2) and has no option to change it. On the 21 crops
+  of the wipe viewer, colour-only PSNR gains about 1.3 dB from quality 65 to 85, and about
+  2.4 dB from keeping quality 65 and storing colour at full resolution, which costs about
+  23% more bytes (the size of ordinary quality 75). `evidence/jpeg-subsampling/full-colour.json`,
+  ranked spots in `colour-loss.json`.
+- **Patch.** GDAL 3.13.1 with a `JPEG_YCBCR_SUBSAMPLING` creation option (GTiff and COG) and a
+  `JPEG_YCBCR_SUBSAMPLING_OVERVIEW` configuration option: branch `jpeg-ycbcr-subsampling` of
+  `github.com/nthh/gdal`, commit 633b514, built into the local image
+  `folia-gdal:3.13.1-jpeg-subsampling`. The first build tagged files 1, 1 while still encoding
+  tiles at 2, 2 (the tile compression job did not carry the tag), which GDAL then refused to
+  read; the pushed commit fixes that. The image tested is one commit-amend older than the
+  pushed commit: the only difference is the position of one entry in the list of known
+  configuration options.
+- **Two quads, quality 65 with overviews at 75, converted both ways** (`zion.json`,
+  `nhkanc.json`; local arm64 container, so speeds are not comparable with the cluster's):
+
+| | Zion `ut_m_3711241_sw` 4:2:0 | 4:4:4 | NH Kancamagus `nh_m_4307105_ne` 4:2:0 | 4:4:4 |
+|---|---|---|---|---|
+| Bytes | 31,805,053 | 37,852,540 (+19.0%) | 46,396,846 | 57,714,053 (+24.4%) |
+| Convert CPU seconds | 5.4 | 9.9 | 4.2 | 8.7 |
+| PSNR, all bands (dB) | 32.41 | 33.12 | 25.86 | 26.85 |
+| PSNR, colour only (dB) | 39.35 | 41.65 | 33.02 | 36.50 |
+
+- **Readers.** Every level of both 4:4:4 files is tagged 1, 1; both validate as COGs; stock
+  GDAL 3.13.1 reads full resolution and all five overviews; the deck.gl demo page draws
+  them at zoom 18 and 13 with no error (`browser-subsampling.jsonl`), and the screenshots
+  show the expected colours.
+- **Not established.** Conversion cost on the cluster (convert CPU roughly doubled here, and
+  conversion is one part of task time); browser decode time; GDAL's own test suite has not
+  been run on the patch and no test was added for the new option.

@@ -1,0 +1,26 @@
+{
+ "gdal": "3.13.1",
+ "source": "zion.mrf",
+ "megapixels": 126.1,
+ "420": {
+  "bytes": 31805053,
+  "convert_wall_s": 6.0,
+  "convert_cpu_s": 5.4,
+  "megapixels_per_cpu_s": 23.3,
+  "psnr_db": 32.41,
+  "colour_psnr_db": 39.35,
+  "overviews": 5,
+  "layout": "COG"
+ },
+ "444": {
+  "bytes": 37852540,
+  "convert_wall_s": 10.4,
+  "convert_cpu_s": 9.9,
+  "megapixels_per_cpu_s": 12.8,
+  "psnr_db": 33.12,
+  "colour_psnr_db": 41.65,
+  "overviews": 5,
+  "layout": "COG"
+ },
+ "444_over_420_bytes": 1.19
+}

@@ -1,0 +1,26 @@
+{
+ "gdal": "3.13.1",
+ "source": "nhkanc.mrf",
+ "megapixels": 103.5,
+ "420": {
+  "bytes": 46396846,
+  "convert_wall_s": 4.6,
+  "convert_cpu_s": 4.2,
+  "megapixels_per_cpu_s": 24.7,
+  "psnr_db": 25.86,
+  "colour_psnr_db": 33.02,
+  "overviews": 5,
+  "layout": "COG"
+ },
+ "444": {
+  "bytes": 57714053,
+  "convert_wall_s": 9.3,
+  "convert_cpu_s": 8.7,
+  "megapixels_per_cpu_s": 11.8,
+  "psnr_db": 26.85,
+  "colour_psnr_db": 36.5,
+  "overviews": 5,
+  "layout": "COG"
+ },
+ "444_over_420_bytes": 1.244
+}

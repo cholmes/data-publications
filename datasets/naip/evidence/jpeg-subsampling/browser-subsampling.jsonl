@@ -1,0 +1,8 @@
+{"name":"zion","code":"444","zoom":18,"state":"ready","drawn":1,"image_requests":3,"image_bytes":165793,"ready_ms":1638,"errors":[]}
+{"name":"zion","code":"444","zoom":13,"state":"ready","drawn":1,"image_requests":5,"image_bytes":272427,"ready_ms":2153,"errors":[]}
+{"name":"zion","code":"420","zoom":18,"state":"ready","drawn":1,"image_requests":3,"image_bytes":151546,"ready_ms":1907,"errors":[]}
+{"name":"zion","code":"420","zoom":13,"state":"ready","drawn":1,"image_requests":5,"image_bytes":242314,"ready_ms":1410,"errors":[]}
+{"name":"nhkanc","code":"444","zoom":18,"state":"ready","drawn":1,"image_requests":2,"image_bytes":158839,"ready_ms":1400,"errors":[]}
+{"name":"nhkanc","code":"444","zoom":13,"state":"ready","drawn":1,"image_requests":4,"image_bytes":190520,"ready_ms":2347,"errors":[]}
+{"name":"nhkanc","code":"420","zoom":18,"state":"ready","drawn":1,"image_requests":2,"image_bytes":142241,"ready_ms":1185,"errors":[]}
+{"name":"nhkanc","code":"420","zoom":13,"state":"ready","drawn":1,"image_requests":4,"image_bytes":158908,"ready_ms":1329,"errors":[]}
