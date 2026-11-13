@@ -16,7 +16,8 @@
   html, body { height: 100%; margin: 0; }
   body { display: flex; font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text); background: var(--surface); }
   #panel { width: 340px; flex: none; overflow-y: auto; padding: 16px; border-right: 1px solid var(--line); }
-  #mapEl { flex: 1; min-width: 0; }
+  #wrap { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  #mapEl { flex: 1; min-height: 0; }
   h1 { font-size: 16px; margin: 0 0 4px; }
   h2 { font-size: 12px; font-weight: 600; margin: 18px 0 6px; color: var(--text-2); }
   p { margin: 0 0 8px; color: var(--text-2); }
@@ -25,37 +26,55 @@
   select { width: 100%; }
   button { cursor: pointer; }
   button:hover { border-color: var(--text-3); }
+  button[aria-pressed="true"] { background: var(--text); color: #fff; border-color: var(--text); }
   .months { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-bottom: 6px; }
   .months button { padding: 4px 0; }
-  .months button[aria-pressed="true"] { background: var(--text); color: #fff; border-color: var(--text); }
   .presets { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
   .check { display: flex; gap: 6px; align-items: center; }
+  .strip { display: flex; gap: 4px; overflow-x: auto; padding: 8px 10px; border-bottom: 1px solid var(--line); background: var(--surface); scrollbar-width: thin; align-items: center; }
+  .strip button { flex: none; padding: 4px 10px; font-variant-numeric: tabular-nums; }
+  .strip .name { flex: none; color: var(--text-2); font-weight: 600; margin-right: 4px; }
   .legend { display: grid; grid-template-columns: 14px 1fr; gap: 3px 8px; align-items: center; }
   .legend i { width: 14px; height: 14px; border-radius: 2px; display: block; }
+  .slider { display: grid; grid-template-columns: 1fr auto; gap: 0 8px; align-items: center; }
+  .slider span { color: var(--text-2); }
+  .slider output { font-variant-numeric: tabular-nums; }
+  .slider input { grid-column: 1 / 3; width: 100%; }
   #stat { font-size: 15px; font-weight: 600; margin: 0; color: var(--text); }
   table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
   th, td { text-align: left; padding: 2px 6px 2px 0; border-bottom: 1px solid var(--line); }
   th { font-weight: 600; color: var(--text-2); }
   td.n, th.n { text-align: right; }
-  #tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; max-width: 280px; box-shadow: 0 2px 8px rgba(0,0,0,.15); display: none; z-index: 5; font-variant-numeric: tabular-nums; }
+  #tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; max-width: 300px; box-shadow: 0 2px 8px rgba(0,0,0,.15); display: none; z-index: 5; font-variant-numeric: tabular-nums; }
   #tip b { font-weight: 600; }
-  #tip .no { color: var(--text-3); }
-  #wrap { position: relative; flex: 1; min-width: 0; display: flex; }
-  input[type=range] { width: 100%; }
+  #tip .no, #tip .meta { color: var(--text-3); }
+  #tip .meta { color: var(--text-2); }
+  [hidden] { display: none !important; }
   @media (max-width: 760px) { body { flex-direction: column; } #panel { width: 100%; max-height: 45%; border-right: 0; border-bottom: 1px solid var(--line); } }
 </style>
 </head>
 <body>
 <div id="panel">
   <h1>NAIP flight dates</h1>
-  <p>When each quarter quad was flown, for every survey from 2010 to 2025. The date is the one in the file name: the date most of the quad was flown, not a date for every pixel.</p>
-
-  <h2>Survey year</h2>
-  <select id="year" aria-label="Survey year"></select>
+  <p>When each quarter quad was flown, for every survey from 2010 to 2025. The date is the one in the file name: the date most of the quad was flown, not a date for every pixel. Pick survey years in the bar above the map.</p>
 
   <h2>Months flown</h2>
   <div class="presets" id="presets"></div>
   <div class="months" id="months"></div>
+
+  <div id="snowFilter" hidden>
+    <h2>Snow at the time of the flight</h2>
+    <label class="slider"><span>Ground usually snow covered in the month flown, at least</span><output id="snowMinOut"></output>
+      <input type="range" id="snowMin" min="0" max="100" step="5" value="0"></label>
+  </div>
+
+  <div id="terrainFilter" hidden>
+    <h2>Terrain</h2>
+    <label class="slider"><span>Mean elevation of the cell, at least</span><output id="elevOut"></output>
+      <input type="range" id="elev" min="0" max="3600" step="100" value="0"></label>
+    <label class="slider"><span>Relief inside the cell, at least</span><output id="reliefOut"></output>
+      <input type="range" id="relief" min="0" max="1500" step="50" value="0"></label>
+  </div>
 
   <h2>Resolution</h2>
   <select id="res" aria-label="Resolution">
@@ -67,9 +86,12 @@
   <select id="mode" aria-label="Colour">
     <option value="month">Month flown, most recent matching survey</option>
     <option value="count">Number of matching surveys</option>
+    <option value="snowflown" data-snow>How often the ground is snow covered in the month flown</option>
+    <option value="snownormal" data-snow>Snow cover normal for one month (no flight filter)</option>
   </select>
   <div class="legend" id="legend" style="margin-top:8px"></div>
-  <label style="margin-top:10px">Overlay strength <input type="range" id="opacity" min="0.2" max="1" step="0.05" value="0.8"></label>
+  <label class="slider" style="margin-top:10px"><span>Overlay strength</span><output></output>
+    <input type="range" id="opacity" min="0.2" max="1" step="0.05" value="0.8"></label>
 
   <h2>Result</h2>
   <p id="stat">Loading</p>
@@ -77,7 +99,12 @@
   <table id="table" aria-label="Matching quads by state and survey year"></table>
   <p style="margin-top:12px;color:var(--text-3)" id="source"></p>
 </div>
-<div id="wrap"><div id="mapEl"></div><div id="tip"></div></div>
+<div id="wrap">
+  <div class="strip" id="years" role="group" aria-label="Survey years"></div>
+  <div class="strip" id="snowMonths" role="group" aria-label="Month of the snow cover normal" hidden></div>
+  <div id="mapEl"></div>
+  <div id="tip"></div>
+</div>
 
 <script>
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -86,65 +113,95 @@ const css = name => getComputedStyle(document.documentElement).getPropertyValue(
 const MONTH_BIN = [0, 0, 1, 2, 3, 4, 4, 4, 5, 6, 7, 8];
 const BINS = [["Jan and Feb","--jan"],["Mar","--mar"],["Apr","--apr"],["May","--may"],["Jun to Aug","--summer"],
               ["Sep","--sep"],["Oct","--oct"],["Nov","--nov"],["Dec","--dec"]].map(([label, v]) => ({label, hex: css(v)}));
-const COUNT_STEPS = ["#cde2fb","#86b6ef","#3987e5","#1c5cab","#0d366b"];
+const BLUES = ["#cde2fb","#86b6ef","#3987e5","#1c5cab","#0d366b"];       // one hue, light to dark
+const SNOW_EDGES = [10, 25, 50, 75];                                      // percent of days snow covered
+const SNOW_LABELS = ["Under 10% of days", "10 to 25%", "25 to 50%", "50 to 75%", "75% or more"];
 const PRESETS = {"All": [0,1,2,3,4,5,6,7,8,9,10,11], "Nov to Mar": [10,11,0,1,2], "Dec to Mar": [11,0,1,2],
                  "Oct to Apr": [9,10,11,0,1,2,3], "Jun to Sep": [5,6,7,8]};
 const rgb = hex => [1,3,5].map(i => parseInt(hex.slice(i, i+2), 16));
 const $ = id => document.getElementById(id);
+const snowBin = pct => SNOW_EDGES.findIndex(e => pct < e) < 0 ? 4 : SNOW_EDGES.findIndex(e => pct < e);
 
 let H, cell, day, surveyYear, state, cm, month, cellStart, hostedKey, view = null;
-const picked = new Set(PRESETS["Nov to Mar"]);
-let matchOfCell;           // per cell: record index of the most recent match, -1 none, -2 no imagery
-let countOfCell;
+let elevMean = null, elevRelief = null, snow = null, snowInfo = null;     // optional layers
+const picked = new Set(PRESETS["Nov to Mar"]), pickedYears = new Set();   // no year picked means all
+let snowMonth = 0;
+// Per cell: record index of the chosen match, -1 imagery but no match, -2 no imagery, -3 outside the terrain filter.
+let matchOfCell, countOfCell, snowOfCell;
 
-async function load() {
-  const resp = await fetch("dates.bin.gz");
+async function unpack(url) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(`${url}: ${resp.status}`);
   const buf = await new Response(resp.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
   const n = new DataView(buf).getUint32(0, true);
-  H = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 4, n)));
-  let o = 4 + n; const N = H.records;
+  return {head: JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 4, n))), buf, at: 4 + n};
+}
+
+async function load() {
+  const {head, buf, at} = await unpack("dates.bin.gz");
+  H = head; let o = at; const N = H.records, cells = H.cols*H.rows;
   cell = new Uint32Array(buf.slice(o, o += 4*N)); day = new Uint16Array(buf.slice(o, o += 2*N));
   surveyYear = new Uint8Array(buf, o, N); o += N; state = new Uint8Array(buf, o, N); o += N; cm = new Uint8Array(buf, o, N);
   month = new Uint8Array(N);
   const epoch = Date.parse(H.epoch + "T00:00:00Z");
   for (let i = 0; i < N; i++) month[i] = new Date(epoch + day[i]*864e5).getUTCMonth();
-  const cells = H.cols*H.rows;
   cellStart = new Int32Array(cells + 1);
   for (let i = 0; i < N; i++) cellStart[cell[i] + 1]++;
   for (let c = 0; c < cells; c++) cellStart[c + 1] += cellStart[c];
   hostedKey = new Set(H.hosted.map(s => { const [st, y] = s.split("-"); return H.states.indexOf(st)*100 + (y - 2000); }));
-  matchOfCell = new Int32Array(cells); countOfCell = new Uint8Array(cells);
+  matchOfCell = new Int32Array(cells); countOfCell = new Uint8Array(cells); snowOfCell = new Uint8Array(cells);
+  // The terrain and snow tables are optional: the page works without them and hides their controls.
+  await Promise.all([
+    unpack("terrain.bin.gz").then(t => {
+      elevMean = new Int16Array(t.buf.slice(t.at, t.at + 2*cells)); elevRelief = new Uint16Array(t.buf.slice(t.at + 2*cells, t.at + 4*cells));
+    }).catch(() => {}),
+    unpack("snow.bin.gz").then(s => { snow = new Uint8Array(s.buf, s.at, 12*cells); snowInfo = s.head; }).catch(() => {}),
+  ]);
 }
 
 const dateOf = i => new Date(Date.parse(H.epoch + "T00:00:00Z") + day[i]*864e5).toISOString().slice(0, 10);
+const snowAt = (m, c) => snow ? snow[m*H.cols*H.rows + c] : 255;
 
-function matches(i, year, maxCm, onlyHosted) {
-  return picked.has(month[i]) && (year === 0 || surveyYear[i] === year) && cm[i] <= maxCm
-      && (!onlyHosted || hostedKey.has(state[i]*100 + surveyYear[i]));
+function filters() {
+  return {maxCm: +$("res").value, onlyHosted: $("hosted").checked, snowMin: snow ? +$("snowMin").value : 0,
+          elevMin: elevMean ? +$("elev").value : 0, reliefMin: elevMean ? +$("relief").value : 0};
+}
+function terrainOk(c, f) {
+  return !elevMean || ((f.elevMin === 0 || elevMean[c] >= f.elevMin) && (f.reliefMin === 0 || elevRelief[c] >= f.reliefMin));
+}
+function matches(i, c, f) {
+  if (!picked.has(month[i]) || cm[i] > f.maxCm) return false;
+  if (pickedYears.size && !pickedYears.has(surveyYear[i])) return false;
+  if (f.onlyHosted && !hostedKey.has(state[i]*100 + surveyYear[i])) return false;
+  if (f.snowMin > 0) { const p = snowAt(month[i], c); if (p === 255 || p < f.snowMin) return false; }
+  return true;
 }
 
 function compute() {
-  const year = +$("year").value, maxCm = +$("res").value, onlyHosted = $("hosted").checked;
-  const cells = H.cols*H.rows, byGroup = new Map();
+  const f = filters(), cells = H.cols*H.rows, byGroup = new Map(), bySnow = $("mode").value === "snowflown";
   let withMatch = 0, withImagery = 0, records = 0;
   for (let c = 0; c < cells; c++) {
     const a = cellStart[c], b = cellStart[c + 1];
-    if (a === b) { matchOfCell[c] = -2; countOfCell[c] = 0; continue; }
+    countOfCell[c] = 0;
+    if (a === b) { matchOfCell[c] = -2; continue; }
+    if (!terrainOk(c, f)) { matchOfCell[c] = -3; continue; }
     withImagery++;
-    let best = -1, count = 0;
+    let best = -1, bestSnow = 0, count = 0;
     for (let i = a; i < b; i++) {
-      if (!matches(i, year, maxCm, onlyHosted)) continue;
+      if (!matches(i, c, f)) continue;
       count++; records++;
-      if (best < 0 || day[i] > day[best]) best = i;
+      const p = snowAt(month[i], c), ps = p === 255 ? 0 : p;
+      if (best < 0 || (bySnow ? (ps > bestSnow || (ps === bestSnow && day[i] > day[best])) : day[i] > day[best])) { best = i; bestSnow = ps; }
       const key = state[i]*100 + surveyYear[i], g = byGroup.get(key);
-      if (g) { g.n++; g.first = Math.min(g.first, day[i]); g.last = Math.max(g.last, day[i]); g.i0 = day[i] < day[g.i0] ? i : g.i0; g.i1 = day[i] > day[g.i1] ? i : g.i1; }
-      else byGroup.set(key, {n: 1, first: day[i], last: day[i], i0: i, i1: i});
+      if (g) { g.n++; if (day[i] < day[g.i0]) g.i0 = i; if (day[i] > day[g.i1]) g.i1 = i; }
+      else byGroup.set(key, {n: 1, i0: i, i1: i});
     }
-    matchOfCell[c] = best; countOfCell[c] = Math.min(count, 255);
+    matchOfCell[c] = best; countOfCell[c] = Math.min(count, 255); snowOfCell[c] = bestSnow;
     if (best >= 0) withMatch++;
   }
+  const scope = (f.elevMin || f.reliefMin) ? " inside the terrain filter" : "";
   $("stat").textContent = `${withMatch.toLocaleString()} of ${withImagery.toLocaleString()} cells match`;
-  $("stat2").textContent = `${(100*withMatch/withImagery).toFixed(1)}% of cells that have any imagery; ${records.toLocaleString()} matching quad surveys. Grey cells have imagery outside this selection.`;
+  $("stat2").textContent = `${withImagery ? (100*withMatch/withImagery).toFixed(1) : 0}% of cells with any imagery${scope}; ${records.toLocaleString()} matching quad surveys. Grey cells have imagery outside this selection.`;
   const top = [...byGroup.entries()].sort((x, y) => y[1].n - x[1].n).slice(0, 25);
   $("table").innerHTML = "<tr><th>State</th><th>Survey</th><th class=n>Quads</th><th>First</th><th>Last</th></tr>" + top.map(([key, g]) =>
     `<tr><td>${H.states[Math.floor(key/100)].toUpperCase()}</td><td>${2000 + key%100}</td><td class=n>${g.n.toLocaleString()}</td><td>${dateOf(g.i0)}</td><td>${dateOf(g.i1)}</td></tr>`).join("")
@@ -168,22 +225,31 @@ function setupCanvas() {
 }
 
 function paint() {
-  const byCount = $("mode").value === "count", bins = BINS.map(b => rgb(b.hex)), steps = COUNT_STEPS.map(rgb), px = image.data;
+  const mode = $("mode").value, bins = BINS.map(b => rgb(b.hex)), blues = BLUES.map(rgb), px = image.data, f = filters();
+  $("snowMonths").hidden = mode !== "snownormal";
   for (let y = 0, p = 0; y < canvas.height; y++) {
     const base = rowOfY[y]*H.cols;
     for (let x = 0; x < H.cols; x++, p += 4) {
-      const m = matchOfCell[base + x];
-      if (m === -2) { px[p + 3] = 0; continue; }
-      if (m === -1) { px[p] = 110; px[p + 1] = 110; px[p + 2] = 105; px[p + 3] = 60; continue; }
-      const c = byCount ? steps[Math.min(countOfCell[base + x], steps.length) - 1] : bins[MONTH_BIN[month[m]]];
-      px[p] = c[0]; px[p + 1] = c[1]; px[p + 2] = c[2]; px[p + 3] = 255;
+      const c = base + x; let color = null, alpha = 255;
+      if (mode === "snownormal") {
+        const pct = snowAt(snowMonth, c);
+        if (pct !== 255 && pct >= 1 && terrainOk(c, f)) color = blues[snowBin(pct)];
+      } else {
+        const m = matchOfCell[c];
+        if (m === -1) { color = [110, 110, 105]; alpha = 60; }
+        else if (m >= 0) color = mode === "count" ? blues[Math.min(countOfCell[c], blues.length) - 1]
+                               : mode === "snowflown" ? blues[snowBin(snowOfCell[c])] : bins[MONTH_BIN[month[m]]];
+      }
+      if (!color) { px[p + 3] = 0; continue; }
+      px[p] = color[0]; px[p + 1] = color[1]; px[p + 2] = color[2]; px[p + 3] = alpha;
     }
   }
   ctx.putImageData(image, 0, 0);
-  $("legend").innerHTML = (byCount
-    ? steps.map((_, i) => [COUNT_STEPS[i], i === steps.length - 1 ? `${i + 1} or more surveys` : `${i + 1} survey${i ? "s" : ""}`])
-    : BINS.map(b => [b.hex, b.label])).concat([["rgba(110,110,105,.3)", "Imagery, but not in this selection"]])
-    .map(([hex, label]) => `<i style="background:${hex}"></i><span>${label}</span>`).join("");
+  const grey = [["rgba(110,110,105,.3)", "Imagery, but not in this selection"]];
+  const rows = mode === "month" ? BINS.map(b => [b.hex, b.label]).concat(grey)
+    : mode === "count" ? BLUES.map((hex, i) => [hex, i === BLUES.length - 1 ? `${i + 1} or more surveys` : `${i + 1} survey${i ? "s" : ""}`]).concat(grey)
+    : BLUES.map((hex, i) => [hex, SNOW_LABELS[i] + (i ? "" : (mode === "snownormal" ? " (1% and up)" : ""))]).concat(mode === "snowflown" ? grey : []);
+  $("legend").innerHTML = rows.map(([hex, label]) => `<i style="background:${hex}"></i><span>${label}</span>`).join("");
   if (view && view.getSource("grid")) view.triggerRepaint();
 }
 
@@ -197,29 +263,60 @@ function quadName(c) {
 }
 
 function describe(c) {
-  const a = cellStart[c], b = cellStart[c + 1];
-  if (a === b) return null;
-  const year = +$("year").value, maxCm = +$("res").value, onlyHosted = $("hosted").checked, lines = [];
+  const a = cellStart[c], b = cellStart[c + 1], f = filters(), lines = [];
+  if (a === b && !(snow && $("mode").value === "snownormal" && snowAt(0, c) !== 255)) return null;
+  let head = a === b ? "No imagery" : `Quad m_${quadName(c)}`;
+  if (elevMean && elevMean[c] > -32768) head += ` &nbsp;${elevMean[c].toLocaleString()} m, relief ${elevRelief[c].toLocaleString()} m`;
+  const inTerrain = terrainOk(c, f);
   for (let i = b - 1; i >= a; i--) {
-    const hit = matches(i, year, maxCm, onlyHosted);
-    const text = `${dateOf(i)} &nbsp;${H.states[state[i]].toUpperCase()} ${2000 + surveyYear[i]} &nbsp;${cm[i]} cm${hostedKey.has(state[i]*100 + surveyYear[i]) ? " &nbsp;converted" : ""}`;
-    lines.push(hit ? `<b>${text}</b>` : `<span class=no>${text}</span>`);
+    const p = snowAt(month[i], c);
+    const text = `${dateOf(i)} &nbsp;${H.states[state[i]].toUpperCase()} ${2000 + surveyYear[i]} &nbsp;${cm[i]} cm`
+      + (p !== 255 ? ` &nbsp;snow ${p}%` : "") + (hostedKey.has(state[i]*100 + surveyYear[i]) ? " &nbsp;converted" : "");
+    lines.push(inTerrain && matches(i, c, f) ? `<b>${text}</b>` : `<span class=no>${text}</span>`);
   }
-  return `<div style="color:var(--text-2)">Quad m_${quadName(c)}</div>${lines.join("<br>")}`;
+  let foot = "";
+  if (snow && snowAt(0, c) !== 255)
+    foot = `<div class=meta style="margin-top:4px">Days snow covered, Jan to Dec, %:<br>${MONTHS.map((_, m) => snowAt(m, c)).join(" ")}</div>`;
+  return `<div class=meta>${head}</div>${lines.join("<br>")}${foot}`;
+}
+
+function strip(id, name, labels, isOn, onPick) {
+  const el = $(id);
+  const draw = () => { el.innerHTML = `<span class=name>${name}</span>` + labels.map(([key, text]) =>
+    `<button data-k="${key}" aria-pressed=${isOn(key)}>${text}</button>`).join(""); };
+  el.onclick = e => { const k = e.target.dataset.k; if (k === undefined) return; onPick(k); draw(); };
+  // A mouse wheel over the strip scrolls it sideways.
+  el.addEventListener("wheel", e => { if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { el.scrollLeft += e.deltaY; e.preventDefault(); } }, {passive: false});
+  draw();
+}
+
+function slider(id, outId, text) {
+  const show = () => { $(outId).textContent = text(+$(id).value); };
+  $(id).oninput = () => { show(); compute(); };
+  show();
 }
 
 function buildControls() {
-  $("year").innerHTML = "<option value=0>All survey years</option>" +
-    [...new Set(surveyYear)].sort().map(y => `<option value=${y}>${2000 + y}</option>`).join("");
+  const years = [...new Set(surveyYear)].sort();
+  strip("years", "Survey years", [["all", "All"]].concat(years.map(y => [y, 2000 + y])),
+    k => k === "all" ? pickedYears.size === 0 : pickedYears.has(+k),
+    k => { if (k === "all") pickedYears.clear(); else pickedYears.has(+k) ? pickedYears.delete(+k) : pickedYears.add(+k); compute(); });
+  strip("snowMonths", "Snow cover normal for", MONTHS.map((m, i) => [i, m]), k => +k === snowMonth, k => { snowMonth = +k; paint(); });
   $("months").innerHTML = MONTHS.map((m, i) => `<button data-m=${i} aria-pressed=${picked.has(i)}>${m}</button>`).join("");
   $("presets").innerHTML = Object.keys(PRESETS).map(k => `<button data-p="${k}">${k}</button>`).join("");
   $("hostedCount").textContent = `${H.hosted.length} so far`;
-  $("source").textContent = `${H.records.toLocaleString()} quad surveys in ${H.cells_with_imagery.toLocaleString()} cells of the conterminous United States. Sources: ${H.sources}. ${H.outside_grid} quads outside this grid (Hawaii, Puerto Rico and the Virgin Islands) are left out.`;
+  $("terrainFilter").hidden = !elevMean; $("snowFilter").hidden = !snow;
+  if (!snow) document.querySelectorAll("#mode [data-snow]").forEach(o => o.remove());
+  slider("elev", "elevOut", v => v ? `${v.toLocaleString()} m` : "off");
+  slider("relief", "reliefOut", v => v ? `${v.toLocaleString()} m` : "off");
+  slider("snowMin", "snowMinOut", v => v ? `${v}% of days` : "off");
+  $("source").textContent = `${H.records.toLocaleString()} quad surveys in ${H.cells_with_imagery.toLocaleString()} cells of the conterminous United States. Flight dates: ${H.sources}. ${H.outside_grid} quads outside this grid (Hawaii, Puerto Rico and the Virgin Islands) are left out.`
+    + (elevMean ? " Elevation: Terrain Tiles on AWS, zoom 8; relief is the highest minus the lowest pixel in the cell." : "")
+    + (snowInfo ? ` Snow: ${snowInfo.source}, every ${snowInfo.every_days}th day of ${snowInfo.years[0]} to ${snowInfo.years[1]}; the figure is the share of sampled days in a calendar month on which the cell is marked snow covered.` : "");
   const syncMonths = () => document.querySelectorAll("#months button").forEach(b => b.setAttribute("aria-pressed", picked.has(+b.dataset.m)));
   $("months").onclick = e => { const m = e.target.dataset.m; if (m === undefined) return; picked.has(+m) ? picked.delete(+m) : picked.add(+m); syncMonths(); compute(); };
   $("presets").onclick = e => { const p = PRESETS[e.target.dataset.p]; if (!p) return; picked.clear(); p.forEach(m => picked.add(m)); syncMonths(); compute(); };
-  for (const id of ["year", "res", "hosted"]) $(id).onchange = compute;
-  $("mode").onchange = paint;
+  for (const id of ["res", "hosted", "mode"]) $(id).onchange = compute;
   $("opacity").oninput = e => view.setPaintProperty("grid", "raster-opacity", +e.target.value);
 }
 
@@ -247,8 +344,8 @@ load().then(() => {
     const html = col >= 0 && col < H.cols && row >= 0 && row < H.rows ? describe(row*H.cols + col) : null;
     if (!html) { tip.style.display = "none"; return; }
     tip.innerHTML = html; tip.style.display = "block";
-    const w = $("wrap").clientWidth;
-    tip.style.left = Math.min(e.point.x + 14, w - 290) + "px"; tip.style.top = (e.point.y + 14) + "px";
+    const box = $("mapEl").getBoundingClientRect(), wrap = $("wrap").getBoundingClientRect();
+    tip.style.left = Math.min(e.point.x + 14, box.width - 310) + "px"; tip.style.top = (box.top - wrap.top + e.point.y + 14) + "px";
   });
   map.on("mouseout", () => { tip.style.display = "none"; });
 }).catch(error => { $("stat").textContent = "Could not load the date table: " + error.message; });
