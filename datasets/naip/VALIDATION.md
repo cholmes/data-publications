@@ -687,3 +687,11 @@ faded at 85. No pass marks were set before these measurements; they are recorded
 - **Not established.** Conversion cost on the cluster (convert CPU roughly doubled here, and
   conversion is one part of task time); browser decode time; GDAL's own test suite has not
   been run on the patch and no test was added for the new option.
+
+### Overview files wait for the national run (Nathan, 2026-11-13)
+
+Asked again with the request counts above (72 requests and 36 files for a 37 km view from
+quads alone, against 10 requests and one file with an overview file). Answer: no overview
+files for now. They are added after all six waves are converted and verified. The layout
+recorded on 2026-11-12 (one file per state-year) has not been built or measured at state
+size, and nothing in the product depends on it until then.
