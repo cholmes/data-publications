@@ -1,0 +1,35 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/vt/2025/30cm/rgb/",
+ "receipts": 812,
+ "runs": [
+  "vt2025-pub-2"
+ ],
+ "listing": {
+  "listed": 812,
+  "bytes": 98710651996,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 40,
+  "files": 21,
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 812,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

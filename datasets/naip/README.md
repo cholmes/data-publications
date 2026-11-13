@@ -23,7 +23,7 @@ ut/2024/60cm/rgb/40112/m_4011233_ne_12_060_20240712.tif
 ```
 
 A file here has the same path it would have in `naip-visualization`. Each file is in its own UTM
-zone, 512 px JPEG blocks at quality 85, with overviews. Adjacent quads overlap.
+zone, 512 px JPEG blocks at quality 65, with overviews at quality 75. Adjacent quads overlap.
 
 ## Flight dates
 
@@ -61,7 +61,8 @@ after 2023 in `naip-analytic`.
 
 `worker/convert.py` runs in a stock GDAL 3.13.1 container (`worker/Dockerfile`). For each quad it
 downloads the `.mrf`, `.idx` and `.lrc`, writes bands 1 to 3 with GDAL's COG driver
-(`COMPRESS=JPEG QUALITY=85 BLOCKSIZE=512 OVERVIEW_RESAMPLING=AVERAGE`), checks the result against
+(`COMPRESS=JPEG QUALITY=65 OVERVIEW_QUALITY=75 BLOCKSIZE=512 OVERVIEW_RESAMPLING=AVERAGE`; the
+qualities are passed to each run as `QUALITY` and `OVERVIEW_QUALITY`), checks the result against
 the source, uploads it and writes a receipt with sizes, timings, request counts and the file's
 SHA-256. The next quad downloads while the current one converts (`OVERLAP_DOWNLOADS=0` turns that
 off). [VALIDATION.md](VALIDATION.md) has the checks and what they found.

@@ -615,3 +615,38 @@ Run `ut2024-q6575-sample`, image v6, 100 quads, 10 tasks. Summary in
 Recorded: PSNR on the 50 quads checked in this run, lowest per band 28.7, 31.7 and 29.2 dB, median 31.8, 33.6 and 31.3 dB.
 This is the first cluster run of `OVERVIEW_QUALITY`; receipts carry `quality` 65 and
 `overview_quality` 75.
+
+## The four state-years converted again at quality 65 with overviews at 75 (2026-11-12)
+
+Runs `ri2025-pub-3`, `nh2025-pub-3`, `ut2024-pub-3` and `vt2025-pub-2`, image v6, written
+over the quality 85 files in the product. No pass marks were written for these runs before
+they started, which is a lapse; the hosted checks and the seam check are the ones set
+earlier, and the error figures below are held against mark 3 of the Utah sample above.
+
+| | Rhode Island 2025 | New Hampshire 2025 | Utah 2024 | Vermont 2025 (30 cm) |
+|---|---|---|---|---|
+| Files, none with a problem recorded | 116 | 771 | 6,032 | 812 |
+| Bytes | 3,761,529,880 | 30,471,141,998 | 154,217,029,232 | 98,710,651,996 |
+| Share of the quality 85 bytes | 62.1% | 64.7% | 61.9% | 66.3% |
+| Hosted checks (listing, sampled SHA-256, opened in place, index) | pass | pass | pass | pass |
+| Seam check, same four files as before, lowest to highest ratio | 0.986 to 1.044 | 0.998 to 1.033 | 0.975 to 1.030 | 0.991 to 1.044 |
+| Tasks, Spot interruptions | 4, 0 | 12, 0 | 55, 7 | 33, 3 |
+| Task-hours (quality 85 run) | 0.37 (not recorded) | 2.21 (2.30) | 21.03 (19.56) | 10.67 (10.71) |
+| Quads with a pixel check | 12 | 39 | 121 | 41 |
+| PSNR median, red, green, blue (dB) | 29.0, 29.0, 27.1 | 28.2, 28.5, 25.3 | 32.6, 34.0, 32.3 | 31.9, 32.9, 28.9 |
+| PSNR lowest, red, green, blue (dB) | 26.3, 26.8, 24.7 | 27.0, 27.4, 23.8 | 28.7, 30.8, 28.6 | 30.4, 31.4, 26.3 |
+| Quads checked in both runs | 3 | 8 | 121 | 9 |
+| Largest drop from quality 85, red, green, blue (dB) | 3.8, 4.8, 3.5 | 3.7, 5.0, 3.2 | 3.4, 3.4, 2.8 | 2.5, 3.5, 2.3 |
+
+**Error against the Utah sample's mark of at most 3.0 dB below quality 85: not met.** Every
+state has quads beyond it. The two forested, leaf-on states lose the most: the median drop
+in green is 4.4 dB in Rhode Island and 4.6 dB in New Hampshire, against 2.8 dB in Utah and
+3.2 dB in Vermont. The Utah sample that the quality decision rested on understated the loss
+for forest. Whether this is visible at map scale has not been looked at.
+
+Compute did not change with quality: task-hours are within a few percent of the quality 85
+runs, and Utah's rise goes with seven interruptions against three.
+
+The index at `https://data.source.coop/nthh/naip/stac/naip.parquet` was rebuilt from these
+four runs' receipts (7,731 rows, 1,388,789 bytes) and the hosted copy has the same SHA-256
+as the local one. Summaries, hosted checks and seam checks are in `evidence/*-q65-75-*.json`.

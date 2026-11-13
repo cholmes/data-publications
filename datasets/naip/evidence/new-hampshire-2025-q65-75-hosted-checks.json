@@ -1,0 +1,35 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/nh/2025/60cm/rgb/",
+ "receipts": 771,
+ "runs": [
+  "nh2025-pub-3"
+ ],
+ "listing": {
+  "listed": 771,
+  "bytes": 30471141998,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 38,
+  "files": 21,
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 771,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}
