@@ -769,3 +769,27 @@ The same quads in `id2025-pub-1` took 1,495 s in all.
 - Not tested: more than one task at this size, 60 cm quads, eight converters per task
   (would need more than the default 20 GB of task disk), Spot interruption rates at 4 vCPUs.
 - Receipts: `_receipts/group4-test-{1,2,3}/` in the work bucket.
+
+## The 66 quads the edge check refused (2026-11-14)
+
+In the national run the converter refused 66 of 213,524 quads for a darkened overview edge:
+54 in Nevada 2024, 9 in California 2024, and one each in Florida 2025, Wyoming 2024 and
+North Carolina 2024. In 64 of them the ratio is 0.0 at every level: the last row or column
+is black. The check divides the last row by the one before it, so a black source edge reads
+the same as the fault it was written for. The Nevada quads ring an area where the source
+has no quads at all. Florida (0.665 at the smallest level) and Wyoming (0.628 at level 4,
+open water on the bottom edge) are near misses like Ohio's `m_4108132_nw` (0.697, a road
+beside the edge, converted at a floor of 0.65 on 2026-11-13).
+
+Decision (Nathan, 2026-11-14): publish them, then verify each.
+
+- Converted with `OVERVIEW_EDGE_FLOOR=0` for the slices that hold them only (45 tasks).
+  All 66 have a receipt with no problem recorded.
+- Verified from the hosted files with `check_dark_edges.py`: at every overview level the
+  last row and the last column are no darker than 85% of the full-resolution pixels they
+  cover, less 3 levels. 66 of 66 pass (`evidence/dark-edge-quads.json`). A file with the
+  copied-overview fault would fail this, since its edge is half as bright as its pixels.
+- Black share of the 64: 22% to 99.9% of the quad.
+- Not checked: why each area is black. The source carries it.
+- The 0.7 check stays as it is for everything else. It cannot pass a file whose own edge
+  is black; such files need this second check.

@@ -1,0 +1,6427 @@
+{
+ "share": 0.85,
+ "slack": 3.0,
+ "files": 66,
+ "passed": 66,
+ "results": [
+  {
+   "id": "ca_m_3411702_ne_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34117/m_3411702_ne_11_060_20240629.tif",
+   "lon": -117.7813,
+   "lat": 34.9687,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.007
+    ],
+    [
+     0.0,
+     1.011
+    ]
+   ],
+   "black_share": 0.8625,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 122.76,
+      "full_resolution": 122.81,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 122.87,
+      "full_resolution": 122.57,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 122.81,
+      "full_resolution": 122.43,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 122.83,
+      "full_resolution": 122.12,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 123.01,
+      "full_resolution": 121.78,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3411709_nw_11_060_20240519",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34117/m_3411709_nw_11_060_20240519.tif",
+   "lon": -117.9688,
+   "lat": 34.8437,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.007,
+     0.0
+    ]
+   ],
+   "black_share": 0.8615,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 108.58,
+      "full_resolution": 108.52,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 108.68,
+      "full_resolution": 108.51,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 108.65,
+      "full_resolution": 108.55,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 108.55,
+      "full_resolution": 108.3,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 108.38,
+      "full_resolution": 107.89,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3411808_ne_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34118/m_3411808_ne_11_060_20240629.tif",
+   "lon": -118.0313,
+   "lat": 34.9688,
+   "receipt_edge_ratios": [
+    [
+     1.003,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "black_share": 0.2366,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 100.12,
+      "full_resolution": 100.05,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 100.05,
+      "full_resolution": 99.92,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 100.09,
+      "full_resolution": 99.93,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 100.22,
+      "full_resolution": 99.85,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 100.5,
+      "full_resolution": 99.9,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3411808_se_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34118/m_3411808_se_11_060_20240629.tif",
+   "lon": -118.0313,
+   "lat": 34.9062,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ]
+   ],
+   "black_share": 0.3797,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 115.33,
+      "full_resolution": 115.32,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 115.45,
+      "full_resolution": 115.25,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 115.73,
+      "full_resolution": 115.33,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 115.81,
+      "full_resolution": 115.36,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 116.07,
+      "full_resolution": 115.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3412012_ne_10_060_20240604",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34120/m_3412012_ne_10_060_20240604.tif",
+   "lon": -120.5312,
+   "lat": 34.8438,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.992
+    ],
+    [
+     0.0,
+     0.988
+    ],
+    [
+     0.0,
+     0.996
+    ]
+   ],
+   "black_share": 0.349,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 85.79,
+      "full_resolution": 85.79,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 85.77,
+      "full_resolution": 85.74,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 85.75,
+      "full_resolution": 85.62,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.37,
+      "full_resolution": 85.92,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 87.07,
+      "full_resolution": 86.69,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3412028_ne_10_060_20240604",
+   "key": "nthh/naip/ca/2024/60cm/rgb/34120/m_3412028_ne_10_060_20240604.tif",
+   "lon": -120.5312,
+   "lat": 34.5938,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ],
+   "black_share": 0.5698,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 103.79,
+      "full_resolution": 103.84,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 103.91,
+      "full_resolution": 103.77,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 103.91,
+      "full_resolution": 103.73,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.15,
+      "full_resolution": 103.81,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.07,
+      "full_resolution": 103.51,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3511757_se_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/35117/m_3511757_se_11_060_20240629.tif",
+   "lon": -117.9063,
+   "lat": 35.0313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ],
+   "black_share": 0.5921,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 70.53,
+      "full_resolution": 70.56,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 70.57,
+      "full_resolution": 70.54,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 70.65,
+      "full_resolution": 70.57,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 70.62,
+      "full_resolution": 70.45,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 70.88,
+      "full_resolution": 70.37,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3511757_sw_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/35117/m_3511757_sw_11_060_20240629.tif",
+   "lon": -117.9688,
+   "lat": 35.0313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.018
+    ],
+    [
+     0.0,
+     1.057
+    ],
+    [
+     0.0,
+     1.043
+    ],
+    [
+     0.0,
+     1.031
+    ],
+    [
+     0.0,
+     1.029
+    ]
+   ],
+   "black_share": 0.3502,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 97.92,
+      "full_resolution": 97.95,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 96.66,
+      "full_resolution": 96.84,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 93.65,
+      "full_resolution": 93.57,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 91.12,
+      "full_resolution": 91.13,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.7,
+      "full_resolution": 89.11,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "ca_m_3511758_sw_11_060_20240629",
+   "key": "nthh/naip/ca/2024/60cm/rgb/35117/m_3511758_sw_11_060_20240629.tif",
+   "lon": -117.8438,
+   "lat": 35.0313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.996
+    ]
+   ],
+   "black_share": 0.5773,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.28,
+      "full_resolution": 95.32,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.33,
+      "full_resolution": 95.22,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.52,
+      "full_resolution": 95.31,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.63,
+      "full_resolution": 95.38,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.68,
+      "full_resolution": 95.38,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "fl_m_2708160_nw_17_030_20250517",
+   "key": "nthh/naip/fl/2025/30cm/rgb/27081/m_2708160_nw_17_030_20250517.tif",
+   "lon": -81.5937,
+   "lat": 27.0938,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     1.01
+    ],
+    [
+     0.996,
+     1.049
+    ],
+    [
+     1.0,
+     1.085
+    ],
+    [
+     0.976,
+     1.028
+    ],
+    [
+     0.997,
+     0.862
+    ],
+    [
+     1.003,
+     0.665
+    ]
+   ],
+   "black_share": 0.0,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 105.84,
+      "full_resolution": 105.91,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 106.91,
+      "full_resolution": 106.86,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 105.88,
+      "full_resolution": 105.98,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 106.62,
+      "full_resolution": 106.08,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 106.05,
+      "full_resolution": 106.17,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.51,
+      "full_resolution": 103.59,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 105.8,
+      "full_resolution": 106.01,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.59,
+      "full_resolution": 100.69,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 107.08,
+      "full_resolution": 107.27,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 98.96,
+      "full_resolution": 99.21,
+      "pass": true
+     }
+    },
+    {
+     "level": 6,
+     "last_row": {
+      "stored": 107.31,
+      "full_resolution": 107.48,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 106.44,
+      "full_resolution": 107.09,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nc_m_3507849_sw_17_060_20241113",
+   "key": "nthh/naip/nc/2024/60cm/rgb/35078/m_3507849_sw_17_060_20241113.tif",
+   "lon": -78.9687,
+   "lat": 35.1563,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.01
+    ],
+    [
+     0.0,
+     1.017
+    ],
+    [
+     0.0,
+     1.025
+    ],
+    [
+     0.0,
+     0.991
+    ],
+    [
+     0.0,
+     0.996
+    ]
+   ],
+   "black_share": 0.5172,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 78.53,
+      "full_resolution": 78.47,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 78.29,
+      "full_resolution": 78.05,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 77.47,
+      "full_resolution": 77.46,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 76.88,
+      "full_resolution": 76.47,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 77.13,
+      "full_resolution": 76.88,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611526_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36115/m_3611526_se_11_060_20240601.tif",
+   "lon": -115.7812,
+   "lat": 36.5313,
+   "receipt_edge_ratios": [
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.008,
+     0.0
+    ],
+    [
+     1.022,
+     0.0
+    ]
+   ],
+   "black_share": 0.956,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 95.43,
+      "full_resolution": 95.41,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 95.35,
+      "full_resolution": 95.39,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 95.52,
+      "full_resolution": 95.4,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 95.35,
+      "full_resolution": 95.36,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 94.99,
+      "full_resolution": 94.94,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611536_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36115/m_3611536_ne_11_060_20240601.tif",
+   "lon": -115.5313,
+   "lat": 36.4688,
+   "receipt_edge_ratios": [
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.01,
+     0.0
+    ],
+    [
+     1.023,
+     0.0
+    ]
+   ],
+   "black_share": 0.947,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 115.15,
+      "full_resolution": 115.02,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 115.21,
+      "full_resolution": 114.99,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 115.2,
+      "full_resolution": 115.18,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 115.15,
+      "full_resolution": 114.92,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 114.85,
+      "full_resolution": 114.43,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611602_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611602_ne_11_060_20240601.tif",
+   "lon": -116.7813,
+   "lat": 36.9687,
+   "receipt_edge_ratios": [
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.994,
+     0.0
+    ],
+    [
+     0.992,
+     0.0
+    ]
+   ],
+   "black_share": 0.5057,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 126.03,
+      "full_resolution": 125.93,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 125.82,
+      "full_resolution": 125.82,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 125.69,
+      "full_resolution": 125.65,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 125.71,
+      "full_resolution": 125.64,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 126.37,
+      "full_resolution": 126.12,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611603_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611603_sw_11_060_20240601.tif",
+   "lon": -116.7187,
+   "lat": 36.9063,
+   "receipt_edge_ratios": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ],
+    [
+     0.996,
+     0.0
+    ],
+    [
+     0.996,
+     0.0
+    ],
+    [
+     1.01,
+     0.0
+    ]
+   ],
+   "black_share": 0.7532,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 66.97,
+      "full_resolution": 66.95,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 66.99,
+      "full_resolution": 67.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 67.2,
+      "full_resolution": 67.02,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 67.42,
+      "full_resolution": 67.27,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 67.48,
+      "full_resolution": 67.42,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611611_ne_11_060_20240523",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611611_ne_11_060_20240523.tif",
+   "lon": -116.6562,
+   "lat": 36.8437,
+   "receipt_edge_ratios": [
+    [
+     0.994,
+     0.0
+    ],
+    [
+     0.997,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.008,
+     0.0
+    ],
+    [
+     1.01,
+     0.0
+    ]
+   ],
+   "black_share": 0.9074,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 66.33,
+      "full_resolution": 66.25,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 66.51,
+      "full_resolution": 66.44,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 66.66,
+      "full_resolution": 66.54,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 66.45,
+      "full_resolution": 66.43,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 66.3,
+      "full_resolution": 66.11,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611612_sw_11_060_20240523",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611612_sw_11_060_20240523.tif",
+   "lon": -116.5937,
+   "lat": 36.7812,
+   "receipt_edge_ratios": [
+    [
+     0.997,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ]
+   ],
+   "black_share": 0.8255,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 105.19,
+      "full_resolution": 105.17,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 105.44,
+      "full_resolution": 105.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 105.34,
+      "full_resolution": 105.23,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 105.46,
+      "full_resolution": 105.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 105.74,
+      "full_resolution": 105.48,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611620_ne_11_060_20240523",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611620_ne_11_060_20240523.tif",
+   "lon": -116.5312,
+   "lat": 36.7188,
+   "receipt_edge_ratios": [
+    [
+     1.002,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.006,
+     0.0
+    ]
+   ],
+   "black_share": 0.763,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 124.52,
+      "full_resolution": 124.55,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 124.4,
+      "full_resolution": 124.41,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 124.51,
+      "full_resolution": 124.47,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 124.42,
+      "full_resolution": 124.37,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 124.21,
+      "full_resolution": 124.2,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611622_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611622_se_11_060_20240601.tif",
+   "lon": -116.2812,
+   "lat": 36.6563,
+   "receipt_edge_ratios": [
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.018,
+     0.0
+    ],
+    [
+     1.028,
+     0.0
+    ]
+   ],
+   "black_share": 0.9759,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 75.43,
+      "full_resolution": 75.43,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 75.42,
+      "full_resolution": 75.39,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 75.32,
+      "full_resolution": 75.32,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 75.14,
+      "full_resolution": 75.11,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 74.39,
+      "full_resolution": 74.36,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3611632_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/36116/m_3611632_ne_11_060_20240601.tif",
+   "lon": -116.0313,
+   "lat": 36.5938,
+   "receipt_edge_ratios": [
+    [
+     0.998,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.012,
+     0.0
+    ],
+    [
+     1.023,
+     0.0
+    ],
+    [
+     1.035,
+     0.0
+    ]
+   ],
+   "black_share": 0.9624,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 74.83,
+      "full_resolution": 74.79,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 74.86,
+      "full_resolution": 74.89,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 74.75,
+      "full_resolution": 74.67,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 74.14,
+      "full_resolution": 74.21,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 73.35,
+      "full_resolution": 73.26,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711517_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711517_ne_11_060_20240601.tif",
+   "lon": -115.9062,
+   "lat": 37.7188,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.998
+    ],
+    [
+     0.0,
+     0.998
+    ],
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     0.995
+    ],
+    [
+     0.0,
+     0.992
+    ]
+   ],
+   "black_share": 0.6371,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.43,
+      "full_resolution": 80.28,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.48,
+      "full_resolution": 80.49,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.59,
+      "full_resolution": 80.59,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.69,
+      "full_resolution": 80.67,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.85,
+      "full_resolution": 80.87,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711517_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711517_nw_11_060_20240601.tif",
+   "lon": -115.9688,
+   "lat": 37.7187,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.007
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.007
+    ],
+    [
+     0.0,
+     0.998
+    ]
+   ],
+   "black_share": 0.9812,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.85,
+      "full_resolution": 22.86,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.88,
+      "full_resolution": 22.83,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.77,
+      "full_resolution": 22.75,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.67,
+      "full_resolution": 22.65,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.5,
+      "full_resolution": 22.57,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711518_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711518_se_11_060_20240601.tif",
+   "lon": -115.7812,
+   "lat": 37.6563,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     0.999
+    ]
+   ],
+   "black_share": 0.6286,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 117.93,
+      "full_resolution": 117.95,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 117.96,
+      "full_resolution": 117.94,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 117.91,
+      "full_resolution": 117.88,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 117.87,
+      "full_resolution": 117.81,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 117.56,
+      "full_resolution": 117.76,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711518_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711518_sw_11_060_20240601.tif",
+   "lon": -115.8437,
+   "lat": 37.6563,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.005
+    ],
+    [
+     0.0,
+     1.008
+    ]
+   ],
+   "black_share": 0.9755,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 28.1,
+      "full_resolution": 28.12,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 28.19,
+      "full_resolution": 28.13,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 28.15,
+      "full_resolution": 28.18,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 28.15,
+      "full_resolution": 28.11,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 28.08,
+      "full_resolution": 28.03,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711527_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711527_ne_11_060_20240601.tif",
+   "lon": -115.6562,
+   "lat": 37.5938,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.991
+    ],
+    [
+     0.0,
+     0.996
+    ],
+    [
+     0.0,
+     1.007
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     1.009
+    ]
+   ],
+   "black_share": 0.6837,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 67.18,
+      "full_resolution": 66.96,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 67.61,
+      "full_resolution": 67.38,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 67.84,
+      "full_resolution": 67.56,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 67.58,
+      "full_resolution": 67.31,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 67.62,
+      "full_resolution": 67.33,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711527_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711527_nw_11_060_20240601.tif",
+   "lon": -115.7188,
+   "lat": 37.5937,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.006
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.025
+    ]
+   ],
+   "black_share": 0.9846,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 16.72,
+      "full_resolution": 16.74,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 16.71,
+      "full_resolution": 16.71,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 16.71,
+      "full_resolution": 16.69,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 16.64,
+      "full_resolution": 16.63,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 16.64,
+      "full_resolution": 16.53,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711528_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711528_se_11_060_20240601.tif",
+   "lon": -115.5312,
+   "lat": 37.5313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     0.998
+    ],
+    [
+     0.0,
+     0.998
+    ],
+    [
+     0.0,
+     0.996
+    ]
+   ],
+   "black_share": 0.6707,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 94.81,
+      "full_resolution": 94.81,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 94.82,
+      "full_resolution": 94.93,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.04,
+      "full_resolution": 94.99,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.17,
+      "full_resolution": 95.15,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 95.31,
+      "full_resolution": 95.16,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711528_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711528_sw_11_060_20240601.tif",
+   "lon": -115.5937,
+   "lat": 37.5313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.005
+    ],
+    [
+     0.0,
+     1.011
+    ]
+   ],
+   "black_share": 0.9875,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 15.92,
+      "full_resolution": 15.91,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 15.92,
+      "full_resolution": 15.91,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 15.91,
+      "full_resolution": 15.87,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 15.93,
+      "full_resolution": 15.87,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 15.88,
+      "full_resolution": 15.85,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711529_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711529_sw_11_060_20240601.tif",
+   "lon": -115.4687,
+   "lat": 37.5313,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.007
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.003
+    ]
+   ],
+   "black_share": 0.2184,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 129.08,
+      "full_resolution": 129.08,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 129.42,
+      "full_resolution": 129.16,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 129.13,
+      "full_resolution": 128.76,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 128.31,
+      "full_resolution": 128.38,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 127.93,
+      "full_resolution": 127.5,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711537_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711537_ne_11_060_20240601.tif",
+   "lon": -115.4062,
+   "lat": 37.4688,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.003
+    ]
+   ],
+   "black_share": 0.6742,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.32,
+      "full_resolution": 89.31,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.13,
+      "full_resolution": 89.08,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.32,
+      "full_resolution": 89.22,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.31,
+      "full_resolution": 89.23,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.43,
+      "full_resolution": 89.17,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711537_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711537_nw_11_060_20240601.tif",
+   "lon": -115.4687,
+   "lat": 37.4687,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.025
+    ],
+    [
+     0.0,
+     0.99
+    ],
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     1.032
+    ],
+    [
+     0.0,
+     1.044
+    ]
+   ],
+   "black_share": 0.9959,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 8.76,
+      "full_resolution": 8.76,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 8.61,
+      "full_resolution": 8.64,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 8.65,
+      "full_resolution": 8.68,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 8.73,
+      "full_resolution": 8.65,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 8.7,
+      "full_resolution": 8.56,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711538_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37115/m_3711538_sw_11_060_20240601.tif",
+   "lon": -115.3437,
+   "lat": 37.4062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.009
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.013
+    ]
+   ],
+   "black_share": 0.9903,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 13.93,
+      "full_resolution": 13.96,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 13.89,
+      "full_resolution": 13.89,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 13.85,
+      "full_resolution": 13.82,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 13.82,
+      "full_resolution": 13.85,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 13.74,
+      "full_resolution": 13.75,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711601_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711601_se_11_060_20240601.tif",
+   "lon": -116.9062,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ],
+   "black_share": 0.5529,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 79.91,
+      "full_resolution": 79.89,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 79.98,
+      "full_resolution": 79.93,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.07,
+      "full_resolution": 79.94,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.08,
+      "full_resolution": 79.93,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 80.11,
+      "full_resolution": 79.89,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711601_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711601_sw_11_060_20240601.tif",
+   "lon": -116.9687,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ],
+   "black_share": 0.5508,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.21,
+      "full_resolution": 84.08,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.24,
+      "full_resolution": 84.1,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.13,
+      "full_resolution": 84.05,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.23,
+      "full_resolution": 84.05,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.36,
+      "full_resolution": 84.09,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711602_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711602_se_11_060_20240601.tif",
+   "lon": -116.7812,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ]
+   ],
+   "black_share": 0.5517,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.24,
+      "full_resolution": 86.22,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.29,
+      "full_resolution": 86.27,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.36,
+      "full_resolution": 86.27,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.38,
+      "full_resolution": 86.29,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 86.49,
+      "full_resolution": 86.32,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711602_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711602_sw_11_060_20240601.tif",
+   "lon": -116.8438,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     0.998
+    ]
+   ],
+   "black_share": 0.5528,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.64,
+      "full_resolution": 84.62,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.67,
+      "full_resolution": 84.61,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.75,
+      "full_resolution": 84.63,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.79,
+      "full_resolution": 84.65,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.72,
+      "full_resolution": 84.66,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711603_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711603_se_11_060_20240601.tif",
+   "lon": -116.6563,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     0.998
+    ]
+   ],
+   "black_share": 0.5558,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 75.96,
+      "full_resolution": 75.91,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 75.97,
+      "full_resolution": 75.96,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 76.01,
+      "full_resolution": 75.96,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 76.09,
+      "full_resolution": 75.92,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 76.07,
+      "full_resolution": 75.91,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711603_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711603_sw_11_060_20240601.tif",
+   "lon": -116.7188,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ],
+   "black_share": 0.5512,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.06,
+      "full_resolution": 84.06,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.14,
+      "full_resolution": 84.08,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.06,
+      "full_resolution": 84.04,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.2,
+      "full_resolution": 84.06,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 84.33,
+      "full_resolution": 84.07,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711604_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711604_se_11_060_20240601.tif",
+   "lon": -116.5312,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     0.995
+    ],
+    [
+     0.0,
+     0.994
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.02
+    ]
+   ],
+   "black_share": 0.5811,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 38.37,
+      "full_resolution": 38.3,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 38.33,
+      "full_resolution": 38.31,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 38.35,
+      "full_resolution": 38.43,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 38.37,
+      "full_resolution": 38.37,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 38.48,
+      "full_resolution": 38.32,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711604_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711604_sw_11_060_20240601.tif",
+   "lon": -116.5937,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.005
+    ],
+    [
+     0.0,
+     0.99
+    ],
+    [
+     0.0,
+     0.994
+    ],
+    [
+     0.0,
+     0.984
+    ]
+   ],
+   "black_share": 0.5689,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 47.73,
+      "full_resolution": 47.69,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 47.58,
+      "full_resolution": 47.59,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 47.49,
+      "full_resolution": 47.39,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 47.8,
+      "full_resolution": 47.76,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 48.04,
+      "full_resolution": 47.93,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711605_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711605_se_11_060_20240601.tif",
+   "lon": -116.4062,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.009
+    ],
+    [
+     0.0,
+     0.996
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.015
+    ]
+   ],
+   "black_share": 0.6071,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 46.43,
+      "full_resolution": 46.45,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 46.35,
+      "full_resolution": 46.26,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 46.04,
+      "full_resolution": 46.05,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 46.23,
+      "full_resolution": 46.17,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 46.28,
+      "full_resolution": 45.95,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711605_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711605_sw_11_060_20240601.tif",
+   "lon": -116.4687,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.958
+    ],
+    [
+     0.0,
+     0.957
+    ],
+    [
+     0.0,
+     0.998
+    ],
+    [
+     0.0,
+     1.02
+    ],
+    [
+     0.0,
+     1.041
+    ]
+   ],
+   "black_share": 0.5876,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 21.01,
+      "full_resolution": 21.01,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 21.46,
+      "full_resolution": 21.67,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 22.05,
+      "full_resolution": 22.16,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 21.95,
+      "full_resolution": 22.02,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 21.78,
+      "full_resolution": 21.72,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711606_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711606_se_11_060_20240601.tif",
+   "lon": -116.2812,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.01
+    ]
+   ],
+   "black_share": 0.5039,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.8,
+      "full_resolution": 100.79,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.77,
+      "full_resolution": 100.69,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.68,
+      "full_resolution": 100.62,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.63,
+      "full_resolution": 100.64,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 100.67,
+      "full_resolution": 100.44,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711606_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711606_sw_11_060_20240601.tif",
+   "lon": -116.3437,
+   "lat": 37.9063,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.999
+    ]
+   ],
+   "black_share": 0.5635,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 68.46,
+      "full_resolution": 68.35,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 68.53,
+      "full_resolution": 68.48,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 68.45,
+      "full_resolution": 68.47,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 68.59,
+      "full_resolution": 68.42,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 68.72,
+      "full_resolution": 68.47,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711615_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711615_ne_11_060_20240601.tif",
+   "lon": -116.1563,
+   "lat": 37.8437,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.008
+    ],
+    [
+     0.0,
+     1.013
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     0.984
+    ]
+   ],
+   "black_share": 0.6437,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 75.63,
+      "full_resolution": 75.6,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 75.64,
+      "full_resolution": 75.5,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 75.34,
+      "full_resolution": 75.24,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 74.9,
+      "full_resolution": 74.7,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 74.9,
+      "full_resolution": 74.75,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711615_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711615_nw_11_060_20240601.tif",
+   "lon": -116.2188,
+   "lat": 37.8438,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.002
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.008
+    ]
+   ],
+   "black_share": 0.9701,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 24.26,
+      "full_resolution": 24.22,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 24.23,
+      "full_resolution": 24.23,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 24.23,
+      "full_resolution": 24.19,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 24.21,
+      "full_resolution": 24.2,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 24.16,
+      "full_resolution": 24.13,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711616_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711616_se_11_060_20240601.tif",
+   "lon": -116.0313,
+   "lat": 37.7813,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.001
+    ]
+   ],
+   "black_share": 0.6148,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 110.77,
+      "full_resolution": 110.72,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 110.83,
+      "full_resolution": 110.76,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 110.89,
+      "full_resolution": 110.74,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 110.92,
+      "full_resolution": 110.7,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 110.85,
+      "full_resolution": 110.67,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711616_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711616_sw_11_060_20240601.tif",
+   "lon": -116.0937,
+   "lat": 37.7812,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.004
+    ],
+    [
+     0.0,
+     1.006
+    ]
+   ],
+   "black_share": 0.9691,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 29.84,
+      "full_resolution": 29.83,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 29.87,
+      "full_resolution": 29.84,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 29.92,
+      "full_resolution": 29.88,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 29.88,
+      "full_resolution": 29.88,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 29.84,
+      "full_resolution": 29.83,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711641_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711641_sw_11_060_20240601.tif",
+   "lon": -116.9687,
+   "lat": 37.2813,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.006,
+     0.0
+    ]
+   ],
+   "black_share": 0.9356,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 53.41,
+      "full_resolution": 53.3,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 53.33,
+      "full_resolution": 53.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 53.37,
+      "full_resolution": 53.33,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 53.32,
+      "full_resolution": 53.29,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 53.31,
+      "full_resolution": 53.26,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711649_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711649_ne_11_060_20240601.tif",
+   "lon": -116.9062,
+   "lat": 37.2188,
+   "receipt_edge_ratios": [
+    [
+     1.004,
+     0.0
+    ],
+    [
+     0.997,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.027,
+     0.0
+    ],
+    [
+     1.049,
+     0.0
+    ]
+   ],
+   "black_share": 0.9987,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 5.58,
+      "full_resolution": 5.57,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 5.57,
+      "full_resolution": 5.57,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 5.55,
+      "full_resolution": 5.56,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 5.51,
+      "full_resolution": 5.53,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 5.48,
+      "full_resolution": 5.44,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711649_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711649_nw_11_060_20240601.tif",
+   "lon": -116.9687,
+   "lat": 37.2188,
+   "receipt_edge_ratios": [
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ]
+   ],
+   "black_share": 0.3837,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 146.9,
+      "full_resolution": 146.83,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 146.88,
+      "full_resolution": 146.77,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 146.75,
+      "full_resolution": 146.73,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 146.84,
+      "full_resolution": 146.73,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 146.82,
+      "full_resolution": 146.66,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711649_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711649_se_11_060_20240601.tif",
+   "lon": -116.9063,
+   "lat": 37.1563,
+   "receipt_edge_ratios": [
+    [
+     1.003,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ]
+   ],
+   "black_share": 0.6433,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 134.09,
+      "full_resolution": 133.97,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 133.97,
+      "full_resolution": 133.78,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 134.02,
+      "full_resolution": 133.87,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 133.94,
+      "full_resolution": 133.89,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 134.15,
+      "full_resolution": 133.93,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711658_nw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711658_nw_11_060_20240601.tif",
+   "lon": -116.8438,
+   "lat": 37.0938,
+   "receipt_edge_ratios": [
+    [
+     0.998,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ]
+   ],
+   "black_share": 0.8572,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 76.17,
+      "full_resolution": 76.24,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 76.26,
+      "full_resolution": 76.32,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 76.23,
+      "full_resolution": 76.29,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 76.17,
+      "full_resolution": 76.29,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 76.41,
+      "full_resolution": 76.3,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711658_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37116/m_3711658_se_11_060_20240601.tif",
+   "lon": -116.7812,
+   "lat": 37.0313,
+   "receipt_edge_ratios": [
+    [
+     0.992,
+     0.0
+    ],
+    [
+     0.99,
+     0.0
+    ],
+    [
+     0.99,
+     0.0
+    ],
+    [
+     0.991,
+     0.0
+    ],
+    [
+     1.008,
+     0.0
+    ]
+   ],
+   "black_share": 0.983,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 15.25,
+      "full_resolution": 15.23,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 15.41,
+      "full_resolution": 15.37,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 15.51,
+      "full_resolution": 15.48,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 15.55,
+      "full_resolution": 15.55,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 15.41,
+      "full_resolution": 15.56,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711708_se_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711708_se_11_060_20240601.tif",
+   "lon": -117.0312,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     1.001
+    ],
+    [
+     0.0,
+     1.003
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     0.997
+    ],
+    [
+     0.0,
+     0.994
+    ]
+   ],
+   "black_share": 0.5521,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 90.32,
+      "full_resolution": 90.19,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 90.34,
+      "full_resolution": 90.19,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 90.14,
+      "full_resolution": 90.11,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 90.23,
+      "full_resolution": 90.07,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 90.51,
+      "full_resolution": 90.23,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711708_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711708_sw_11_060_20240601.tif",
+   "lon": -117.0937,
+   "lat": 37.9062,
+   "receipt_edge_ratios": [
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     1.001
+    ]
+   ],
+   "black_share": 0.5509,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.04,
+      "full_resolution": 89.01,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.18,
+      "full_resolution": 89.06,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.41,
+      "full_resolution": 89.17,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.48,
+      "full_resolution": 89.26,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 89.42,
+      "full_resolution": 89.2,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711715_ne_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711715_ne_11_060_20240525.tif",
+   "lon": -117.1563,
+   "lat": 37.8438,
+   "receipt_edge_ratios": [
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ]
+   ],
+   "black_share": 0.2701,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 107.38,
+      "full_resolution": 107.28,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 107.45,
+      "full_resolution": 107.2,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 107.14,
+      "full_resolution": 107.14,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 106.97,
+      "full_resolution": 106.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 106.72,
+      "full_resolution": 106.55,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711715_se_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711715_se_11_060_20240525.tif",
+   "lon": -117.1563,
+   "lat": 37.7812,
+   "receipt_edge_ratios": [
+    [
+     0.998,
+     0.0
+    ],
+    [
+     0.996,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ]
+   ],
+   "black_share": 0.2811,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 118.86,
+      "full_resolution": 118.84,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 119.04,
+      "full_resolution": 118.94,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 119.28,
+      "full_resolution": 119.16,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 119.62,
+      "full_resolution": 119.33,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 119.5,
+      "full_resolution": 119.26,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711723_ne_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711723_ne_11_060_20240525.tif",
+   "lon": -117.1562,
+   "lat": 37.7188,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ],
+    [
+     0.995,
+     0.0
+    ],
+    [
+     0.997,
+     0.0
+    ]
+   ],
+   "black_share": 0.2855,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 135.02,
+      "full_resolution": 134.94,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 135.12,
+      "full_resolution": 135.03,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 135.21,
+      "full_resolution": 135.08,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 135.28,
+      "full_resolution": 135.34,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 135.29,
+      "full_resolution": 135.55,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711723_se_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711723_se_11_060_20240525.tif",
+   "lon": -117.1563,
+   "lat": 37.6563,
+   "receipt_edge_ratios": [
+    [
+     1.003,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ]
+   ],
+   "black_share": 0.2623,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 127.48,
+      "full_resolution": 127.59,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 127.49,
+      "full_resolution": 127.43,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 127.64,
+      "full_resolution": 127.57,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 127.58,
+      "full_resolution": 127.44,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 127.7,
+      "full_resolution": 127.41,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711731_ne_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711731_ne_11_060_20240525.tif",
+   "lon": -117.1563,
+   "lat": 37.5938,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.996,
+     0.0
+    ]
+   ],
+   "black_share": 0.2446,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 146.22,
+      "full_resolution": 146.23,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 146.32,
+      "full_resolution": 146.27,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 146.35,
+      "full_resolution": 146.21,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 146.21,
+      "full_resolution": 146.08,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 146.47,
+      "full_resolution": 146.22,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711731_se_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711731_se_11_060_20240525.tif",
+   "lon": -117.1562,
+   "lat": 37.5312,
+   "receipt_edge_ratios": [
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     1.0,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ]
+   ],
+   "black_share": 0.2395,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 135.27,
+      "full_resolution": 135.26,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 135.19,
+      "full_resolution": 135.3,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 135.21,
+      "full_resolution": 135.19,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 135.36,
+      "full_resolution": 135.19,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 135.3,
+      "full_resolution": 135.18,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711739_ne_11_060_20240525",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711739_ne_11_060_20240525.tif",
+   "lon": -117.1563,
+   "lat": 37.4688,
+   "receipt_edge_ratios": [
+    [
+     0.997,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ],
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.998,
+     0.0
+    ]
+   ],
+   "black_share": 0.2342,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 156.43,
+      "full_resolution": 156.47,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 156.93,
+      "full_resolution": 156.77,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 157.02,
+      "full_resolution": 156.89,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 157.44,
+      "full_resolution": 157.15,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 157.65,
+      "full_resolution": 157.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711740_sw_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711740_sw_11_060_20240601.tif",
+   "lon": -117.0938,
+   "lat": 37.4063,
+   "receipt_edge_ratios": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.005,
+     0.0
+    ]
+   ],
+   "black_share": 0.6862,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 125.1,
+      "full_resolution": 125.06,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 125.07,
+      "full_resolution": 125.1,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 124.93,
+      "full_resolution": 124.92,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 124.7,
+      "full_resolution": 124.66,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 124.33,
+      "full_resolution": 124.29,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "nv_m_3711748_ne_11_060_20240601",
+   "key": "nthh/naip/nv/2024/60cm/rgb/37117/m_3711748_ne_11_060_20240601.tif",
+   "lon": -117.0313,
+   "lat": 37.3437,
+   "receipt_edge_ratios": [
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ],
+    [
+     1.003,
+     0.0
+    ],
+    [
+     1.001,
+     0.0
+    ],
+    [
+     1.002,
+     0.0
+    ]
+   ],
+   "black_share": 0.7835,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 88.91,
+      "full_resolution": 88.96,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 88.85,
+      "full_resolution": 88.84,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 88.75,
+      "full_resolution": 88.79,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 88.62,
+      "full_resolution": 88.65,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 88.51,
+      "full_resolution": 88.56,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 0.0,
+      "full_resolution": 0.0,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  },
+  {
+   "id": "wy_m_4411037_ne_12_060_20240801",
+   "key": "nthh/naip/wy/2024/60cm/rgb/44110/m_4411037_ne_12_060_20240801.tif",
+   "lon": -110.4062,
+   "lat": 44.4688,
+   "receipt_edge_ratios": [
+    [
+     0.896,
+     1.01
+    ],
+    [
+     0.996,
+     0.996
+    ],
+    [
+     1.023,
+     0.997
+    ],
+    [
+     0.628,
+     0.995
+    ],
+    [
+     0.801,
+     0.976
+    ]
+   ],
+   "black_share": 0.0,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 28.59,
+      "full_resolution": 28.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 30.09,
+      "full_resolution": 30.37,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 28.67,
+      "full_resolution": 28.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 30.11,
+      "full_resolution": 30.35,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 28.66,
+      "full_resolution": 28.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 30.15,
+      "full_resolution": 30.35,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 28.68,
+      "full_resolution": 28.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 30.11,
+      "full_resolution": 30.36,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 28.85,
+      "full_resolution": 28.8,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 30.11,
+      "full_resolution": 30.36,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  }
+ ]
+}
