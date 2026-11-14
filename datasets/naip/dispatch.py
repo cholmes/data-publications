@@ -156,14 +156,20 @@ def launch(args):
     network = {"awsvpcConfiguration": {"subnets": stack["subnet_ids"],
                                        "securityGroups": [stack["security_group_id"]],
                                        "assignPublicIp": "DISABLED" if args.no_public_ip else "ENABLED"}}
-    shards = [int(x) for x in args.only.split(",")] if args.only else range(args.shards)
-    for shard in shards:
+    shards = [int(x) for x in args.only.split(",")] if args.only else list(range(args.shards))
+    # With --group N one task works N shards side by side (the task definition must start one
+    # converter per index in SHARD_INDEXES). An address is billed per task, so fewer, larger
+    # tasks cost less for the same work.
+    for first in range(0, len(shards), args.group):
+        group = shards[first:first + args.group]
+        shard = group[0] if args.group == 1 else ",".join(map(str, group))
         worst = (state["started"] + 1) * args.deadline / 3600 * hour_usd
         if worst > args.max_usd:
             raise SystemExit(f"refusing to start shard {shard}: worst case ${worst:.2f} passes ${args.max_usd}")
+        which = {"SHARD_INDEX": shard} if args.group == 1 else {"SHARD_INDEXES": shard}
         overrides = {"cpu": str(cpu), "memory": str(memory), "containerOverrides": [{
             "name": "convert",
-            "environment": [{"name": k, "value": str(v)} for k, v in {**env, "SHARD_INDEX": shard}.items()],
+            "environment": [{"name": k, "value": str(v)} for k, v in {**env, **which}.items()],
         }]}
         for attempt in range(CAPACITY_TRIES):
             result = aws("ecs", "run-task", "--cluster", stack["cluster_name"],
@@ -304,6 +310,8 @@ def main():
     p.add_argument("--stack", required=True)
     p.add_argument("--shards", type=int, required=True)
     p.add_argument("--only", help="comma-separated shard indexes; default all")
+    p.add_argument("--group", type=int, default=1,
+                   help="shards per task; above 1 needs a task definition that starts one converter per shard")
     p.add_argument("--limit", type=int, default=0, help="quads per shard; 0 = all")
     p.add_argument("--sample-every", type=int, default=0, help="pixel check every Nth quad")
     p.add_argument("--deadline", type=int, default=7200, help="seconds before a task stops itself")

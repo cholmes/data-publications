@@ -1,0 +1,52 @@
+{
+ "taskRoleArn": "arn:aws:iam::ACCOUNT:role/TASK-ROLE",
+ "executionRoleArn": "arn:aws:iam::ACCOUNT:role/EXECUTION-ROLE",
+ "networkMode": "awsvpc",
+ "requiresCompatibilities": [
+  "FARGATE"
+ ],
+ "runtimePlatform": {
+  "cpuArchitecture": "ARM64",
+  "operatingSystemFamily": "LINUX"
+ },
+ "containerDefinitions": [
+  {
+   "name": "convert",
+   "image": "ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/folia-naip-display-pilot:v6",
+   "cpu": 0,
+   "portMappings": [],
+   "essential": true,
+   "environment": [
+    {
+     "name": "AWS_DEFAULT_REGION",
+     "value": "us-west-2"
+    },
+    {
+     "name": "OUT_BUCKET",
+     "value": "private-work-bucket"
+    }
+   ],
+   "mountPoints": [],
+   "volumesFrom": [],
+   "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+     "awslogs-group": "/ecs/folia-naip-display-pilot",
+     "awslogs-region": "us-west-2",
+     "awslogs-stream-prefix": "convert"
+    }
+   },
+   "systemControls": [],
+   "entryPoint": [
+    "sh",
+    "-c"
+   ],
+   "command": [
+    "pids=\"\"; for i in $(echo \"$SHARD_INDEXES\" | tr \",\" \" \"); do SHARD_INDEX=$i python3 /opt/naip/convert.py & pids=\"$pids $!\"; done; rc=0; for p in $pids; do wait $p || rc=1; done; exit $rc"
+   ]
+  }
+ ],
+ "family": "folia-naip-display-pilot-publish-grouped",
+ "cpu": "4096",
+ "memory": "8192"
+}
