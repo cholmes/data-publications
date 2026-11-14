@@ -6,6 +6,12 @@ holds an RGB JPEG copy that is about a tenth of the size and is what most maps d
 copy stops at 2023. The 2024 and 2025 flights are in `naip-analytic` only, as requester-pays MRF
 files that few tools read.
 
+Microsoft Planetary Computer also publishes NAIP, as four-band Cloud-Optimized GeoTIFFs on Azure.
+On 2026-11-14 its catalogue had at least one item for 34 of the 51 state-years hosted here and
+none for the other 17 (`evidence/planetary-computer-presence.json`, made by
+`check_planetary_computer.py`; the check tests presence, not completeness). Maine 2025 is there
+at 60 cm and here at 30 cm.
+
 This workspace makes the missing display copy: one RGB JPEG Cloud-Optimized GeoTIFF per quarter
 quad, with the same settings, file names and key layout as `naip-visualization`.
 
