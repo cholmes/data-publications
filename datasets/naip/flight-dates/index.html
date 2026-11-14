@@ -6,6 +6,7 @@
 <title>NAIP flight dates</title>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js"></script>
 <style>
   :root {
     --surface: #fcfcfb; --line: #dddcd6; --text: #0b0b0b; --text-2: #52514e; --text-3: #7a7973;
@@ -58,6 +59,21 @@
   <h1>NAIP flight dates</h1>
   <p>When each quarter quad was flown, for every survey from 2010 to 2025. The date is the one in the file name: the date most of the quad was flown, not a date for every pixel. Pick survey years in the bar above the map.</p>
 
+  <h2>Layers</h2>
+  <label class="check"><input type="checkbox" id="imagery"> <span>Converted imagery, read straight from the hosted files</span></label>
+  <p id="imgStat" style="margin:-4px 0 8px 22px"></p>
+  <label class="check"><input type="checkbox" id="snowNow"> <span>Snow now, from the latest Sentinel-2 passes</span></label>
+  <p id="snowStat" style="margin:-4px 0 8px 22px"></p>
+  <select id="goto" aria-label="Go to a place with converted imagery">
+    <option value="">Go to a place with converted imagery</option>
+    <option value="-111.64,40.59,12.6">Central Wasatch, Utah (2024)</option>
+    <option value="-110.95,45.82,12.2">Bridger Range, Montana (2025)</option>
+    <option value="-105.76,35.83,12.2">Santa Fe Baldy, New Mexico (2024)</option>
+    <option value="-71.30,44.27,12.2">Mount Washington, New Hampshire (2025)</option>
+    <option value="-72.81,44.53,12.2">Mount Mansfield, Vermont (2025)</option>
+    <option value="-86.80,33.52,12.2">Birmingham, Alabama (2025)</option>
+  </select>
+
   <h2>Months flown</h2>
   <div class="presets" id="presets"></div>
   <div class="months" id="months"></div>
@@ -91,7 +107,7 @@
   </select>
   <div class="legend" id="legend" style="margin-top:8px"></div>
   <label class="slider" style="margin-top:10px"><span>Overlay strength</span><output></output>
-    <input type="range" id="opacity" min="0.2" max="1" step="0.05" value="0.8"></label>
+    <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.8"></label>
 
   <h2>Result</h2>
   <p id="stat">Loading</p>
@@ -320,11 +336,128 @@ function buildControls() {
   $("opacity").oninput = e => view.setPaintProperty("grid", "raster-opacity", +e.target.value);
 }
 
+// ---- Converted imagery: each hosted file is a COG in its own UTM zone, read by range requests.
+const MIN_IMAGERY_ZOOM = 11.5, MAX_FILES_IN_VIEW = 60, READS_AT_ONCE = 6;
+let hosted = null, hostedByCell = null, imageSeq = 0, imageryRun = 0;
+const tiffs = new Map(), drawn = new Map();        // path -> open file; path -> {key, id}
+
+async function loadHosted() {
+  const resp = await fetch("hosted.json.gz");
+  hosted = JSON.parse(await new Response(resp.body.pipeThrough(new DecompressionStream("gzip"))).text());
+  hostedByCell = new Map();
+  hosted.quads.forEach((q, i) => {
+    const lon = (q[3] + q[5] + q[7] + q[9])/4, lat = (q[4] + q[6] + q[8] + q[10])/4;
+    const c = Math.floor((H.north - lat)/H.cell_degrees)*H.cols + Math.floor((lon - H.west)/H.cell_degrees);
+    if (!hostedByCell.has(c)) hostedByCell.set(c, []);
+    hostedByCell.get(c).push(i);
+  });
+}
+
+function undraw(path) {
+  const d = drawn.get(path);
+  if (!d) return;
+  if (view.getLayer(d.id)) view.removeLayer(d.id);
+  if (view.getSource(d.id)) view.removeSource(d.id);
+  drawn.delete(path);
+}
+
+// Which overview level and which part of one file the current view needs.
+function need(q) {
+  const [, w, , nwx, nwy, nex, ney, sex, sey, swx, swy] = q, b = view.getBounds();
+  const screen = view.getCanvas().clientWidth*(nex - nwx)/(b.getEast() - b.getWest())*Math.min(window.devicePixelRatio || 1, 2);
+  let level = 0;
+  while (w/2**(level + 1) >= screen && level < 12) level++;
+  const ax = nex - nwx, ay = ney - nwy, bx = swx - nwx, by = swy - nwy, det = ax*by - ay*bx;
+  const uv = [[b.getWest(), b.getNorth()], [b.getEast(), b.getNorth()], [b.getEast(), b.getSouth()], [b.getWest(), b.getSouth()]]
+    .map(([x, y]) => [((x - nwx)*by - (y - nwy)*bx)/det, (ax*(y - nwy) - ay*(x - nwx))/det]);
+  const u0 = Math.max(0, Math.min(...uv.map(p => p[0]))), u1 = Math.min(1, Math.max(...uv.map(p => p[0])));
+  const v0 = Math.max(0, Math.min(...uv.map(p => p[1]))), v1 = Math.min(1, Math.max(...uv.map(p => p[1])));
+  return u0 < u1 && v0 < v1 ? {level, u0, u1, v0, v1} : null;
+}
+
+async function drawFile(q, want, run) {
+  const path = q[0];
+  if (!tiffs.has(path)) tiffs.set(path, GeoTIFF.fromUrl(hosted.base + path));
+  const tiff = await tiffs.get(path), levels = await tiff.getImageCount();
+  const image = await tiff.getImage(Math.min(want.level, levels - 1)), W = image.getWidth(), Hh = image.getHeight();
+  // Snap the window to the file's 512 pixel blocks so a small pan reads nothing new.
+  const snap = (f, size, up) => Math.max(0, Math.min(size, (up ? Math.ceil : Math.floor)(f*size/512)*512));
+  const x0 = snap(want.u0, W, false), x1 = snap(want.u1, W, true), y0 = snap(want.v0, Hh, false), y1 = snap(want.v1, Hh, true);
+  const key = `${Math.min(want.level, levels - 1)}:${x0}:${y0}:${x1}:${y1}`;
+  if (drawn.get(path)?.key === key || x1 <= x0 || y1 <= y0) return;
+  const rgb = await image.readRGB({window: [x0, y0, x1, y1], interleave: true});
+  if (run !== imageryRun) return;
+  const canvas = document.createElement("canvas"); canvas.width = x1 - x0; canvas.height = y1 - y0;
+  const pixels = new ImageData(canvas.width, canvas.height), out = pixels.data;
+  for (let i = 0, j = 0; j < out.length; i += 3, j += 4) { out[j] = rgb[i]; out[j + 1] = rgb[i + 1]; out[j + 2] = rgb[i + 2]; out[j + 3] = 255; }
+  canvas.getContext("2d").putImageData(pixels, 0, 0);
+  const [, , , nwx, nwy, nex, ney, sex, sey, swx, swy] = q;
+  const at = (u, v) => [nwx*(1 - u)*(1 - v) + nex*u*(1 - v) + sex*u*v + swx*(1 - u)*v, nwy*(1 - u)*(1 - v) + ney*u*(1 - v) + sey*u*v + swy*(1 - u)*v];
+  const id = `file-${imageSeq++}`;
+  view.addSource(id, {type: "canvas", canvas, animate: false,
+    coordinates: [at(x0/W, y0/Hh), at(x1/W, y0/Hh), at(x1/W, y1/Hh), at(x0/W, y1/Hh)]});
+  view.addLayer({id, type: "raster", source: id, paint: {"raster-fade-duration": 0}}, view.getLayer("snow") ? "snow" : "grid");
+  undraw(path);
+  drawn.set(path, {key, id});
+}
+
+async function updateImagery() {
+  const run = ++imageryRun, stat = $("imgStat");
+  if (!$("imagery").checked || !view) { [...drawn.keys()].forEach(undraw); stat.textContent = ""; return; }
+  if (!hosted) { stat.textContent = "Loading the list of hosted files"; await loadHosted(); if (run !== imageryRun) return; }
+  if (view.getZoom() < MIN_IMAGERY_ZOOM) { [...drawn.keys()].forEach(undraw); stat.textContent = "Zoom in to draw imagery (there are no overview files yet, so a wide view would open hundreds of files)."; return; }
+  const b = view.getBounds(), d = H.cell_degrees, found = [];
+  for (let r = Math.floor((H.north - b.getNorth())/d) - 1; r <= Math.floor((H.north - b.getSouth())/d) + 1; r++)
+    for (let c = Math.floor((b.getWest() - H.west)/d) - 1; c <= Math.floor((b.getEast() - H.west)/d) + 1; c++)
+      for (const i of hostedByCell.get(r*H.cols + c) || []) { const want = need(hosted.quads[i]); if (want) found.push([hosted.quads[i], want]); }
+  const paths = new Set(found.map(f => f[0][0]));
+  [...drawn.keys()].filter(path => !paths.has(path)).forEach(undraw);
+  if (!found.length) { stat.textContent = "No converted imagery in this view."; return; }
+  if (found.length > MAX_FILES_IN_VIEW) { stat.textContent = `${found.length} files in view; zoom in to draw them.`; return; }
+  let done = 0, failed = 0, next = 0;
+  stat.textContent = `Reading ${found.length} files`;
+  await Promise.all(Array.from({length: READS_AT_ONCE}, async () => {
+    while (next < found.length && run === imageryRun) {
+      const [q, want] = found[next++];
+      try { await drawFile(q, want, run); } catch (error) { failed++; console.warn(q[0], error); }
+      done++;
+      if (run === imageryRun) stat.textContent = done < found.length ? `Reading ${found.length} files, ${done} done` : `${found.length} files drawn${failed ? `, ${failed} failed` : ""}.`;
+    }
+  }));
+}
+
+// ---- Snow now: the scene classification of recent Sentinel-2 passes, drawn by a public tile service.
+const TILE_API = "https://planetarycomputer.microsoft.com/api/data/v1", SNOW_DAYS = 21, SNOW_MAX_CLOUD = 40;
+async function toggleSnowNow() {
+  const stat = $("snowStat");
+  if (!$("snowNow").checked) { if (view.getLayer("snow")) view.setLayoutProperty("snow", "visibility", "none"); stat.textContent = ""; return; }
+  if (view.getLayer("snow")) { view.setLayoutProperty("snow", "visibility", "visible"); }
+  else {
+    stat.textContent = "Asking for the latest passes";
+    const end = new Date(), start = new Date(end - SNOW_DAYS*864e5);
+    const search = {collections: ["sentinel-2-l2a"], "filter-lang": "cql2-json", sortby: [{field: "datetime", direction: "desc"}],
+      filter: {op: "and", args: [
+        {op: "anyinteracts", args: [{property: "datetime"}, {interval: [start.toISOString(), end.toISOString()]}]},
+        {op: "<=", args: [{property: "eo:cloud_cover"}, SNOW_MAX_CLOUD]}]}};
+    try {
+      const resp = await fetch(`${TILE_API}/mosaic/register`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(search)});
+      const id = (await resp.json()).searchid;
+      // Scene classes: 11 snow or ice; 8, 9 and 10 cloud. Everything else stays clear.
+      const colours = encodeURIComponent(JSON.stringify({11: [244, 248, 255, 240], 8: [140, 140, 135, 110], 9: [140, 140, 135, 150], 10: [140, 140, 135, 80]}));
+      view.addSource("snow", {type: "raster", tileSize: 256, minzoom: 9, maxzoom: 14,
+        tiles: [`${TILE_API}/mosaic/${id}/tiles/WebMercatorQuad/{z}/{x}/{y}@1x.png?collection=sentinel-2-l2a&assets=SCL&nodata=0&colormap=${colours}`],
+        attribution: "Snow: Copernicus Sentinel-2, drawn by Microsoft Planetary Computer"});
+      view.addLayer({id: "snow", type: "raster", source: "snow", paint: {"raster-opacity": 0.9}}, "grid");
+    } catch (error) { stat.textContent = "The snow tile service did not answer: " + error.message; $("snowNow").checked = false; return; }
+  }
+  stat.innerHTML = `<i style="display:inline-block;width:10px;height:10px;background:#f4f8ff;border:1px solid var(--text-3);border-radius:2px"></i> snow or ice &nbsp;<i style="display:inline-block;width:10px;height:10px;background:#8c8c87;border-radius:2px"></i> cloud, so unknown. Most recent pass in the last ${SNOW_DAYS} days with under ${SNOW_MAX_CLOUD}% cloud, at 20 m. Zoom to 9 or closer.`;
+}
+
 load().then(() => {
   setupCanvas(); buildControls(); compute();
   const south = H.north - H.rows*H.cell_degrees, east = H.west + H.cols*H.cell_degrees;
   const map = view = new maplibregl.Map({
-    container: "mapEl", center: [-98, 39.5], zoom: 3.6, maxZoom: 12, attributionControl: {compact: true},
+    container: "mapEl", center: [-98, 39.5], zoom: 3.6, maxZoom: 18, attributionControl: {compact: true},
     style: {version: 8, sources: {
       base: {type: "raster", tileSize: 256, maxzoom: 16,
              tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
@@ -348,6 +481,13 @@ load().then(() => {
     tip.style.left = Math.min(e.point.x + 14, box.width - 310) + "px"; tip.style.top = (box.top - wrap.top + e.point.y + 14) + "px";
   });
   map.on("mouseout", () => { tip.style.display = "none"; });
+  map.on("moveend", updateImagery);
+  const setOverlay = v => { $("opacity").value = v; map.setPaintProperty("grid", "raster-opacity", v); };
+  $("imagery").onchange = () => { setOverlay($("imagery").checked ? 0.15 : 0.8); updateImagery(); };
+  $("snowNow").onchange = toggleSnowNow;
+  $("goto").onchange = e => { if (!e.target.value) return; const [lng, lat, zoom] = e.target.value.split(",").map(Number);
+    if (!$("imagery").checked) { $("imagery").checked = true; setOverlay(0.15); }
+    map.jumpTo({center: [lng, lat], zoom}); e.target.value = ""; };
 }).catch(error => { $("stat").textContent = "Could not load the date table: " + error.message; });
 </script>
 </body>
