@@ -893,3 +893,49 @@ is every quad in the source listing of 2026-11-10.
 - No seam check was run on any state of the national run.
 - Evidence: `evidence/<state>-<year>-{summary,hosted-checks}.json` for each row (Maine 2024 has
   one pair per pixel size), `evidence/national-task-hours.json`.
+
+## Overview files: test on Rhode Island 2025 and Nevada 2024 (set 2026-11-14, before any result)
+
+One file per state-year that holds the whole state at reduced resolution, so a wide view reads
+one file instead of every quad in it. Built from the reduced levels the hosted quads already
+hold, not from the source. Written to our own bucket under `_proto/grid-1/overviews/`, not to
+the product. Rhode Island 2025 is 116 quads in one UTM zone; Nevada 2024 is 7,397 quads in
+two zones (14 in zone 10) with 54 of the black-edged quads of the section above.
+
+**Method** (`overview.py`, one task per file). Each quad's reduced level is read from the
+hosted file and its black border, where it has one, is marked as holding no picture
+(GDAL's nearblack at 6 grey levels, widened by two pixels). The quads are warped bilinearly
+onto one grid and mosaicked, a later quad over an earlier one, and written as a JPEG COG at
+quality 75 with 512-pixel blocks, averaged reduced levels and a mask where no quad has a
+picture.
+
+**Variants.** Four files per state, because two choices are open (Nathan, 2026-11-14: build
+both, then choose):
+
+| Variant | Grid | Finest level | Quad level read |
+|---|---|---|---|
+| `utm-9.6` | the state's main UTM zone, as decided 2026-11-12 | 9.6 m | 9.6 m |
+| `utm-4.8` | the state's main UTM zone | 4.8 m | 4.8 m |
+| `web-14` | Web Mercator, standard zoom grid | zoom 14 (9.55 m at the equator, 7.3 m on the ground at 40 degrees north) | 4.8 m |
+| `web-15` | Web Mercator, standard zoom grid | zoom 15 (4.78 m at the equator, 3.7 m on the ground at 40 degrees north) | 2.4 m |
+
+Pass marks, for every file:
+
+1. **It is a valid COG with a mask.** GDAL reports `LAYOUT=COG`, JPEG compression, 512-pixel
+   blocks and a mask band, and reads the finest and the coarsest level in place.
+2. **The file holds the mosaic.** On 200 windows of 512 pixels at the finest level, chosen at
+   random among those at least half covered, PSNR between the file and the mosaic before
+   encoding is at least 30.0 dB in each band, in every window.
+3. **Every quad is in it.** The centre of every quad's footprint is unmasked.
+4. **No black border shows.** Inside the footprint of each black-edged quad, pixels that are
+   unmasked and at most 8 in all three bands are at most 0.5% of the footprint. The same
+   share is recorded for every other quad, without a mark.
+5. **A wide view is one file and few requests.** Read through GDAL with anonymous range
+   requests, a 1,280 by 800 pixel view of 37 km across and a view of the whole state each
+   take at most 10 requests.
+
+Recorded without a pass mark: file size; task time, peak memory and disk; requests and bytes
+read from the quads; masked share inside quad footprints; how each variant draws in the
+browser reader and whether the mask shows as transparent there; and, for `utm-9.6`, PSNR
+against the 9.6 m level of `utm-4.8` (the same pixels made by averaging instead of by
+reading the quads' own 9.6 m level). A failed criterion is recorded as failed.
