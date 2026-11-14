@@ -225,9 +225,23 @@ def main():
     to_target(staged, request["target_epsg"])
     mosaic_path, bounds, zones = mosaic(staged, request["target_epsg"], request["res"], folder)
     out = os.path.join(folder, request["name"] + ".tif")
-    gdal.Translate(out, mosaic_path, format="COG", creationOptions=[
-        "COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}",
-        "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES", "NUM_THREADS=ALL_CPUS"])
+    options = ["COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}",
+               "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES"]
+    retried = None
+    try:
+        gdal.Translate(out, mosaic_path, format="COG", creationOptions=options + ["NUM_THREADS=ALL_CPUS"])
+    except RuntimeError as error:
+        # GDAL 3.13.1 with GDAL_NUM_THREADS=ALL_CPUS fails every time on a narrow mosaic (seen on
+        # 2,048 by 28,160 pixels: "ZSTDDecode ... Unknown frame descriptor" from its temporary
+        # overview file). One thread writes the same file correctly, and such files are small.
+        retried = str(error)[:200]
+        print("write failed with all threads, writing again with one:", retried, flush=True)
+        for name in os.listdir(folder):
+            if name.startswith(request["name"] + ".tif"):
+                os.remove(os.path.join(folder, name))
+        gdal.SetConfigOption("GDAL_NUM_THREADS", "1")
+        gdal.Translate(out, mosaic_path, format="COG", creationOptions=options)
+        gdal.SetConfigOption("GDAL_NUM_THREADS", "ALL_CPUS")
     lap("write_file")
 
     found = check(out, mosaic_path, staged, bounds, request["res"], set(request.get("collar_ids", [])))
@@ -238,6 +252,7 @@ def main():
         "bounds": bounds, "bytes": os.path.getsize(out), "file": found, "seconds": seconds,
         "quad_requests": network.get("count"), "quad_bytes_read": network.get("downloaded_bytes"),
         "staged_bytes": staged_bytes, "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+        "write_retried_with_one_thread": retried,
     }
     if local:
         with open(os.path.join(folder, "result.json"), "w") as f:
