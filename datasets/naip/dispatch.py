@@ -155,7 +155,7 @@ def launch(args):
     env.update(pair.split("=", 1) for pair in args.env)
     network = {"awsvpcConfiguration": {"subnets": stack["subnet_ids"],
                                        "securityGroups": [stack["security_group_id"]],
-                                       "assignPublicIp": "ENABLED"}}
+                                       "assignPublicIp": "DISABLED" if args.no_public_ip else "ENABLED"}}
     shards = [int(x) for x in args.only.split(",")] if args.only else range(args.shards)
     for shard in shards:
         worst = (state["started"] + 1) * args.deadline / 3600 * hour_usd
@@ -313,6 +313,8 @@ def main():
     p.add_argument("--task-definition", help="default the stack's task_definition_arn")
     p.add_argument("--cpu", type=int, help="CPU units per task; default the task definition's")
     p.add_argument("--memory-mib", type=int, help="memory per task; default the task definition's")
+    p.add_argument("--no-public-ip", action="store_true",
+                   help="start tasks without a public address; the stack must have its registry and log endpoints")
     p.add_argument("--no-overlap", action="store_true",
                    help="download each quad only after the previous one is done (for comparison)")
     p.add_argument("--env", action="append", default=[], metavar="KEY=VALUE",
