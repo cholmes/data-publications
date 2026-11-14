@@ -741,3 +741,31 @@ ones already set: the converter's own checks on every file, and the four hosted 
   login or a task.
 - No seam check was run on these three states.
 - Evidence: `evidence/{alabama-2025,montana-2025,new-mexico-2024}-{summary,hosted-checks}.json`.
+
+## Several quads per task: three tests on 32 Idaho 2025 quads (2026-11-13)
+
+An address is billed per task-hour ($0.005), about $7.50 of a national run at one quad per
+task. `dispatch.py launch --group 4` starts one task for four shards, and the task definition
+`folia-naip-display-pilot-publish-grouped:1` (`task-definition-grouped.json`, the v6 image)
+starts one converter per shard. Each test was one 4 vCPU task on shards 0 to 3 of 125 of
+Idaho 2025, eight quads each, written to the work bucket under `_test/` and deleted after.
+The same quads in `id2025-pub-1` took 1,495 s in all.
+
+| Test | Memory | GDAL_CACHEMAX | Quads done | Same SHA-256 as published | Seconds on quads | Peak per converter |
+|---|---|---|---|---|---|---|
+| group4-test-1 | 8 GB | default | 27 of 32, one converter killed | 27 of 27 | about 3 times the original per quad | 2.15 GiB |
+| group4-test-2 | 16 GB | 205 MB | 32 of 32 | 32 of 32 | 1,307 | 0.91 GiB |
+| group4-test-3 | 8 GB | 205 MB | 32 of 32 | 32 of 32 | 3,260 | 0.93 GiB |
+
+- Four converters in 16 GB with the cache held at 205 MB (what a 4 GB task gets by default)
+  run at the speed of four separate tasks and write the same bytes. That is the tested
+  setting: about $1.90 of addresses for a national run in place of $7.50.
+- 8 GB is not enough even though the converters themselves use under 1 GiB each: quads take
+  more than twice as long. CPU seconds per quad do not change; the converters wait. Each
+  holds two source files of about 1.4 GB on disk, and with 8 GB little of that stays in
+  memory. Not measured directly: this is read from the timings, not from disk counters.
+- Without GDAL_CACHEMAX, GDAL sizes its cache from the larger task and one converter was
+  killed in 8 GB.
+- Not tested: more than one task at this size, 60 cm quads, eight converters per task
+  (would need more than the default 20 GB of task disk), Spot interruption rates at 4 vCPUs.
+- Receipts: `_receipts/group4-test-{1,2,3}/` in the work bucket.
