@@ -793,3 +793,101 @@ Decision (Nathan, 2026-11-14): publish them, then verify each.
 - Not checked: why each area is black. The source carries it.
 - The 0.7 check stays as it is for everything else. It cannot pass a file whose own edge
   is black; such files need this second check.
+
+## National run, all six waves (2026-11-14)
+
+The 45 runs of waves two to six, image v6, `QUALITY=65 OVERVIEW_QUALITY=75`, written straight
+into the product, with the three runs of wave one beside them for one view of the whole run.
+The marks are the ones already set: the converter's own checks on every file, and the four
+hosted checks of [PUBLISHING.md](PUBLISHING.md). The table is written by `record_runs.py` from
+each run's summary and hosted-check result.
+
+| Wave | State-year | Size | Quads with a receipt | With a problem | GB | Share of source | Flown | Lowest overview edge ratio | Pixel checks: quads, median PSNR, lowest (dB) | Tasks started, Spot interruptions | Hosted: listed at recorded size | Hosted: hashed and opened | Hosted: index rows equal to receipts | Hosted checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Alabama 2025 | 30cm | 3,477 of 3,477 | 0 | 434.1 | 6.8% | 2025-06-24 to 2025-09-28 | 0.886 | 70, 30.88, 29.28 | 90, 4 | 3,477 | 70, all match | 3,477 | pass |
+| 1 | Montana 2025 | 30cm | 11,745 of 11,745 | 0 | 877.1 | 5.9% | 2025-06-09 to 2025-10-07 | 0.756 | 235, 33.82, 28.46 | 210, 10 | 11,745 | 235, all match | 11,745 | pass |
+| 1 | New Mexico 2024 | 30cm | 8,027 of 8,027 | 0 | 711.0 | 5.9% | 2024-05-02 to 2024-07-10 | 0.921 | 161, 36.01, 32.95 | 172, 8 | 8,027 | 161, all match | 8,027 | pass |
+| 2 | Idaho 2025 | 30cm | 6,553 of 6,553 | 0 | 612.1 | 6.6% | 2025-05-19 to 2025-09-27 | 0.904 | 132, 32.08, 29.46 | 130, 5 | 6,553 | 132, all match | 6,553 | pass |
+| 2 | Kansas 2025 | 30cm | 5,902 of 5,902 | 0 | 379.6 | 5.0% | 2025-05-03 to 2025-05-21 | 0.803 | 119, 34.98, 32.5 | 107, 3 | 5,902 | 30, all match | 5,902 | pass |
+| 2 | Ohio 2025 | 60cm | 3,049 of 3,049 | 0 | 62.5 | 5.8% | 2025-06-01 to 2025-07-06 | 0.697 | 61, 31.62, 29.1 | 19, 2 | 3,049 | 21, all match | 3,049 | pass |
+| 2 | South Dakota 2025 | 30cm | 5,991 of 5,991 | 0 | 391.0 | 5.2% | 2025-07-08 to 2025-10-10 | 0.823 | 120, 33.92, 30.26 | 107, 5 | 5,991 | 30, all match | 5,991 | pass |
+| 2 | Texas 2024 | 60cm | 17,276 of 17,276 | 0 | 488.6 | 6.2% | 2024-05-14 to 2024-11-22 | 0.749 | 346, 33.46, 30.12 | 106, 3 | 17,276 | 87, all match | 17,276 | pass |
+| 3 | Florida 2025 | 30cm | 3,806 of 3,806 | 0 | 434.4 | 6.3% | 2025-04-13 to 2025-11-17 | 0.665 | 77, 32.19, 29.45 | 100, 6 | 3,806 | 21, all match | 3,806 | pass |
+| 3 | Georgia 2025 | 30cm | 3,913 of 3,913 | 0 | 481.4 | 6.7% | 2025-07-13 to 2025-10-18 | 0.864 | 79, 32.11, 29.69 | 101, 4 | 3,913 | 21, all match | 3,913 | pass |
+| 3 | Maine 2025 | 30cm | 2,754 of 2,754 | 0 | 332.3 | 7.6% | 2025-07-04 to 2025-09-20 | 0.885 | 56, 29.84, 28.12 | 65, 5 | 2,754 | 21, all match | 2,754 | pass |
+| 3 | Missouri 2024 | 30cm | 5,018 of 5,018 | 0 | 453.5 | 6.1% | 2024-06-25 to 2024-10-16 | 0.819 | 101, 33.3, 29.38 | 108, 7 | 5,018 | 26, all match | 5,018 | pass |
+| 3 | Nebraska 2025 | 30cm | 5,635 of 5,635 | 0 | 383.3 | 5.2% | 2025-07-27 to 2025-09-26 | 0.722 | 113, 34.05, 30.24 | 111, 10 | 5,635 | 29, all match | 5,635 | pass |
+| 4 | California 2024 | 60cm | 11,042 of 11,042 | 0 | 323.8 | 6.6% | 2024-04-29 to 2024-10-18 | 0.000 | 221, 32.27, 28.73 | 74, 0 | 11,042 | 56, all match | 11,042 | pass |
+| 4 | Massachusetts 2025 | 60cm | 744 of 744 | 0 | 23.4 | 7.3% | 2025-07-04 to 2025-09-20 | 0.912 | 15, 29.02, 26.91 | 5, 0 | 744 | 21, all match | 744 | pass |
+| 4 | Mississippi 2025 | 30cm | 3,154 of 3,154 | 0 | 364.7 | 6.4% | 2025-06-21 to 2025-09-27 | 0.894 | 64, 32.82, 30.38 | 77, 0 | 3,154 | 21, all match | 3,154 | pass |
+| 4 | North Carolina 2025 | 30cm | 3,575 of 3,575 | 0 | 408.5 | 6.6% | 2025-05-24 to 2025-10-14 | 0.929 | 72, 31.57, 27.89 | 85, 0 | 3,575 | 21, all match | 3,575 | pass |
+| 4 | North Dakota 2025 | 30cm | 5,711 of 5,711 | 0 | 321.9 | 4.9% | 2025-06-30 to 2025-09-09 | 0.763 | 115, 34.43, 31.37 | 94, 5 | 5,711 | 29, all match | 5,711 | pass |
+| 4 | Tennessee 2025 | 30cm | 3,000 of 3,000 | 0 | 335.1 | 6.4% | 2025-06-10 to 2025-10-15 | 0.895 | 60, 31.56, 29.15 | 74, 3 | 3,000 | 20, all match | 3,000 | pass |
+| 4 | Virginia 2025 | 30cm | 3,031 of 3,031 | 0 | 240.4 | 5.7% | 2025-04-16 to 2025-08-30 | 0.896 | 61, 36.72, 33.55 | 59, 1 | 3,031 | 21, all match | 3,031 | pass |
+| 5 | Arkansas 2025 | 60cm | 3,600 of 3,600 | 0 | 120.5 | 7.1% | 2025-06-26 to 2025-09-07 | 0.871 | 72, 28.15, 25.86 | 24, 1 | 3,600 | 20, all match | 3,600 | pass |
+| 5 | Arizona 2025 | 60cm | 7,629 of 7,629 | 0 | 185.3 | 6.2% | 2025-05-26 to 2025-08-30 | 0.798 | 153, 33.38, 28.54 | 41, 1 | 7,629 | 39, all match | 7,629 | pass |
+| 5 | Idaho 2024 | 60cm | 80 of 80 | 0 | 2.5 | 7.7% | 2024-08-01 to 2024-08-01 | 0.941 | 2, 30.74, 30.73 | 1, 0 | 80 | 20, all match | 80 | pass |
+| 5 | Indiana 2025 | 60cm | 2,688 of 2,688 | 0 | 73.3 | 6.4% | 2025-07-22 to 2025-09-09 | 0.795 | 54, 27.84, 25.42 | 17, 1 | 2,688 | 21, all match | 2,688 | pass |
+| 5 | Louisiana 2025 | 60cm | 3,288 of 3,288 | 0 | 111.0 | 7.0% | 2025-05-04 to 2025-09-08 | 0.799 | 66, 28.92, 25.36 | 23, 2 | 3,288 | 21, all match | 3,288 | pass |
+| 5 | Michigan 2024 | 60cm | 4,846 of 4,846 | 0 | 134.9 | 7.0% | 2024-07-25 to 2024-10-06 | 0.802 | 97, 29.39, 26.08 | 27, 1 | 4,846 | 25, all match | 4,846 | pass |
+| 5 | Minnesota 2025 | 60cm | 6,791 of 6,791 | 0 | 148.1 | 6.3% | 2025-07-01 to 2025-10-08 | 0.815 | 136, 31.2, 27.7 | 32, 0 | 6,791 | 34, all match | 6,791 | pass |
+| 5 | North Dakota 2024 | 60cm | 5,689 of 5,689 | 0 | 106.2 | 5.4% | 2024-07-12 to 2024-09-25 | 0.731 | 114, 31.16, 26.83 | 27, 1 | 5,689 | 29, all match | 5,689 | pass |
+| 5 | Nebraska 2024 | 60cm | 5,626 of 5,626 | 0 | 98.8 | 4.8% | 2024-07-13 to 2024-09-25 | 0.750 | 113, 34.75, 32.19 | 27, 0 | 5,626 | 29, all match | 5,626 | pass |
+| 5 | Nevada 2024 | 60cm | 7,397 of 7,397 | 0 | 195.5 | 6.2% | 2024-05-16 to 2024-10-05 | 0.000 | 148, 32.42, 29.7 | 73, 0 | 7,397 | 37, all match | 7,397 | pass |
+| 5 | New York 2024 | 60cm | 3,882 of 3,882 | 0 | 123.9 | 7.6% | 2024-05-24 to 2024-10-22 | 0.892 | 78, 28.53, 26.82 | 24, 1 | 3,882 | 21, all match | 3,882 | pass |
+| 5 | Oklahoma 2025 | 60cm | 4,815 of 4,815 | 0 | 102.3 | 5.6% | 2025-04-12 to 2025-10-10 | 0.722 | 97, 33.3, 29.84 | 25, 0 | 4,815 | 25, all match | 4,815 | pass |
+| 5 | Oregon 2024 | 60cm | 7,454 of 7,454 | 0 | 185.5 | 6.3% | 2024-06-06 to 2024-10-06 | 0.891 | 150, 32.82, 29.46 | 41, 2 | 7,454 | 38, all match | 7,454 | pass |
+| 5 | South Carolina 2025 | 30cm | 2,152 of 2,152 | 0 | 242.8 | 6.5% | 2025-04-16 to 2025-06-24 | 0.887 | 44, 31.74, 29.81 | 51, 0 | 2,152 | 21, all match | 2,152 | pass |
+| 5 | Wisconsin 2024 | 60cm | 4,484 of 4,484 | 0 | 116.2 | 6.7% | 2024-08-19 to 2024-10-10 | 0.788 | 90, 32.2, 29.47 | 23, 0 | 4,484 | 23, all match | 4,484 | pass |
+| 5 | Wyoming 2024 | 60cm | 7,357 of 7,357 | 0 | 147.1 | 5.5% | 2024-07-11 to 2024-09-09 | 0.628 | 148, 35.31, 29.88 | 38, 1 | 7,357 | 37, all match | 7,357 | pass |
+| 6 | Connecticut 2025 | 60cm | 413 of 413 | 0 | 14.0 | 7.6% | 2025-07-04 to 2025-08-09 | 0.952 | 9, 28.38, 27.55 | 3, 0 | 413 | 21, all match | 413 | pass |
+| 6 | Iowa 2025 | 60cm | 4,239 of 4,239 | 0 | 63.4 | 4.5% | 2025-07-28 to 2025-09-27 | 0.772 | 85, 33.13, 31.32 | 20, 1 | 4,239 | 22, all match | 4,239 | pass |
+| 6 | Illinois 2025 | 60cm | 4,131 of 4,131 | 0 | 76.1 | 5.2% | 2025-07-01 to 2025-09-29 | 0.704 | 83, 32.28, 29.27 | 22, 2 | 4,131 | 21, all match | 4,131 | pass |
+| 6 | Indiana 2024 | 60cm | 2,689 of 2,689 | 0 | 53.7 | 5.4% | 2024-06-24 to 2024-09-18 | 0.859 | 54, 34.51, 31.04 | 14, 0 | 2,689 | 21, all match | 2,689 | pass |
+| 6 | Kentucky 2024 | 60cm | 2,930 of 2,930 | 0 | 89.4 | 6.8% | 2024-05-19 to 2024-08-30 | 0.917 | 59, 29.19, 26.91 | 18, 0 | 2,930 | 21, all match | 2,930 | pass |
+| 6 | Maine 2024 | 30cm | 839 of 839 | 0 | 91.4 | 7.2% | 2024-07-28 to 2024-09-17 | 0.926 | 17, 32.31, 29.59 | 19, 1 | 839 | 21, all match | 839 | pass |
+| 6 | Maine 2024 | 60cm | 1 of 1 | 0 | 0.1 | 7.8% | 2024-09-15 to 2024-09-15 | 0.989 | 1, 31.34, 31.34 | 1, 0 | 1 | 1, all match | 1 | pass |
+| 6 | Montana 2024 | 60cm | 1,666 of 1,666 | 0 | 45.0 | 6.8% | 2024-07-21 to 2024-10-04 | 0.931 | 34, 31.7, 29.56 | 10, 1 | 1,666 | 21, all match | 1,666 | pass |
+| 6 | North Carolina 2024 | 60cm | 3,582 of 3,582 | 0 | 105.8 | 6.8% | 2024-05-02 to 2024-11-21 | 0.000 | 72, 32.44, 29.51 | 23, 1 | 3,582 | 21, all match | 3,582 | pass |
+| 6 | New Jersey 2025 | 60cm | 634 of 634 | 0 | 18.3 | 6.8% | 2025-07-04 to 2025-08-09 | 0.936 | 13, 28.41, 26.49 | 4, 0 | 634 | 21, all match | 634 | pass |
+| 6 | Pennsylvania 2024 | 60cm | 1,118 of 1,118 | 0 | 24.8 | 6.3% | 2010-06-24 to 2024-10-18 | 0.776 | 23, 35.28, 32.66 | 6, 0 | 1,118 | 21, all match | 1,118 | pass |
+| 6 | West Virginia 2024 | 60cm | 101 of 101 | 0 | 3.0 | 7.4% | 2024-07-02 to 2024-08-23 | 0.942 | 3, 32.94, 32.68 | 1, 0 | 101 | 21, all match | 101 | pass |
+
+Totals: 213,524 of 213,524 quads have a receipt and none records a problem; 10.74 TB written
+from 175.89 TB of source (6.1%); 4,293 quads had a pixel check; 2,529 tasks were started and 98
+ended in a Spot interruption; 1,746 hosted files were hashed and opened in place. With the four
+state-years converted before the national run, the product holds 221,255 files, 11.03 TB, which
+is every quad in the source listing of 2026-11-10.
+
+- Waves three to six were not started wave by wave. `rolling_launch.py` started each planned
+  run as task slots came free under the account's limit on Fargate Spot vCPUs.
+- How the hosted samples were read changed during the run. Wave one and Idaho 2025 were read
+  from a laptop at every 50th file (466 and 132 files). The other 44 state-years were read by
+  one task in us-west-2 (`sample_hosted.py`) at every 200th file and at least 20 per state-year:
+  1,148 files, 52.1 GB, in under two minutes, with the listing and index checks run from the
+  laptop as before. The in-region reader was first tried on Idaho 2025, where it gave the same
+  verdict on the same 132 files as the laptop had.
+- Ohio 2025 was first checked with 3,048 files hosted; the row here is a second check with all
+  3,049. An earlier laptop check of Kansas 2025 stopped on a GDAL error while the network was
+  down and is not a result; South Dakota and Texas had not been checked before this one.
+- A lowest edge ratio under 0.7 means quads the converter refused and that were then converted
+  with the edge check lowered or off: one in Ohio at a floor of 0.65, and the 66 of the
+  section above (California, Nevada, North Carolina, Florida and Wyoming here). Each of the 66
+  was settled against its own full-resolution pixels.
+- Four files under Pennsylvania 2024 carry a 2010 flight date in their names
+  (`m_3907813_SE_18_60_20100624` and three neighbours). The names are the source's; the files
+  were converted and are hosted like the rest. What they show was not looked at.
+- The end record of every task was read this time. Wave one's summaries were written again
+  with them: 4, 10 and 8 of its tasks ended in a Spot interruption, which settles what stopped
+  the shards that were launched a second time.
+- Task time at the billed Spot rates comes to $27.02 for 1,422 task-hours ($14.43 vCPU, $5.47
+  memory, $7.11 public addresses), against a plan of $26.82 for 1,414
+  (`evidence/national-task-hours.json`). That is measured time multiplied by rates, not a bill:
+  Cost Explorer had not posted the days of the large waves when this was written, and request
+  charges are not in it.
+- The index hosted at `stac/naip.parquet` still holds only the first four state-years. The
+  per-state index files built from these receipts are local; uploading them needs the Source
+  Cooperative login or a task.
+- No seam check was run on any state of the national run.
+- Evidence: `evidence/<state>-<year>-{summary,hosted-checks}.json` for each row (Maine 2024 has
+  one pair per pixel size), `evidence/national-task-hours.json`.

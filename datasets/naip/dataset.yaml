@@ -11,8 +11,8 @@ triage:
   rationale: The public RGB display copy of NAIP (s3://naip-visualization) stops at 2023. The 2024 and
     2025 flights exist on AWS only as requester-pays MRF in s3://naip-analytic. Utah 2024 was converted
     on 2026-11-10 as a pilot (6,032 quarter quads) and a 20-quad control against the published 2021
-    display copy matched its pixels. Seven state-years are hosted in the unlisted product as of
-    2026-11-13; the national run of the other 45 is under way in six waves.
+    display copy matched its pixels. All 52 state-years (221,255 files, 11.03 TB) are hosted in the
+    unlisted product as of 2026-11-14 and each passed the hosted checks.
 publication:
   status: candidate
   source_coop:
@@ -41,8 +41,9 @@ publication:
     - Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with
       overviews at quality 75 and colour at half resolution. The near-infrared band and the
       lossless pixels stay in s3://naip-analytic.
-    - Seven of 52 state-years are hosted so far (build.converted lists them). The others are
-      being converted.
+    - Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.
+    - The index at stac/naip.parquet lists only Utah 2024, New Hampshire 2025, Rhode Island 2025
+      and Vermont 2025 so far.
     - There are no overview files above the quad yet. A view wider than a few quads opens one
       file per quad.
     - Adjacent quarter quads overlap, as they do in the source.
@@ -152,5 +153,410 @@ build:
     summary: datasets/naip/evidence/new-mexico-2024-summary.json
     hosted_checks: datasets/naip/evidence/new-mexico-2024-hosted-checks.json
     hosted_checks_result: passed 2026-11-13
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: id-2025-30cm
+    run: id2025-pub-1
+    converted_on: '2026-11-14'
+    files: 6553
+    bytes: 612106695308
+    summary: datasets/naip/evidence/idaho-2025-summary.json
+    hosted_checks: datasets/naip/evidence/idaho-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-13
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ks-2025-30cm
+    run: ks2025-pub-1
+    converted_on: '2026-11-14'
+    files: 5902
+    bytes: 379646106239
+    summary: datasets/naip/evidence/kansas-2025-summary.json
+    hosted_checks: datasets/naip/evidence/kansas-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: oh-2025-60cm
+    run: oh2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3049
+    bytes: 62483619002
+    summary: datasets/naip/evidence/ohio-2025-summary.json
+    hosted_checks: datasets/naip/evidence/ohio-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: sd-2025-30cm
+    run: sd2025-pub-1
+    converted_on: '2026-11-14'
+    files: 5991
+    bytes: 390970838918
+    summary: datasets/naip/evidence/south-dakota-2025-summary.json
+    hosted_checks: datasets/naip/evidence/south-dakota-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: tx-2024-60cm
+    run: tx2024-pub-1
+    converted_on: '2026-11-14'
+    files: 17276
+    bytes: 488641050724
+    summary: datasets/naip/evidence/texas-2024-summary.json
+    hosted_checks: datasets/naip/evidence/texas-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: fl-2025-30cm
+    run: fl2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3806
+    bytes: 434440215070
+    summary: datasets/naip/evidence/florida-2025-summary.json
+    hosted_checks: datasets/naip/evidence/florida-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ga-2025-30cm
+    run: ga2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3913
+    bytes: 481411785947
+    summary: datasets/naip/evidence/georgia-2025-summary.json
+    hosted_checks: datasets/naip/evidence/georgia-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: me-2025-30cm
+    run: me2025-pub-1
+    converted_on: '2026-11-14'
+    files: 2754
+    bytes: 332322098888
+    summary: datasets/naip/evidence/maine-2025-summary.json
+    hosted_checks: datasets/naip/evidence/maine-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: mo-2024-30cm
+    run: mo2024-pub-1
+    converted_on: '2026-11-14'
+    files: 5018
+    bytes: 453512671247
+    summary: datasets/naip/evidence/missouri-2024-summary.json
+    hosted_checks: datasets/naip/evidence/missouri-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ne-2025-30cm
+    run: ne2025-pub-1
+    converted_on: '2026-11-14'
+    files: 5635
+    bytes: 383320185344
+    summary: datasets/naip/evidence/nebraska-2025-summary.json
+    hosted_checks: datasets/naip/evidence/nebraska-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ca-2024-60cm
+    run: ca2024-pub-1
+    converted_on: '2026-11-14'
+    files: 11042
+    bytes: 323805015554
+    summary: datasets/naip/evidence/california-2024-summary.json
+    hosted_checks: datasets/naip/evidence/california-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ma-2025-60cm
+    run: ma2025-pub-1
+    converted_on: '2026-11-14'
+    files: 744
+    bytes: 23427096839
+    summary: datasets/naip/evidence/massachusetts-2025-summary.json
+    hosted_checks: datasets/naip/evidence/massachusetts-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ms-2025-30cm
+    run: ms2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3154
+    bytes: 364736291086
+    summary: datasets/naip/evidence/mississippi-2025-summary.json
+    hosted_checks: datasets/naip/evidence/mississippi-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nc-2025-30cm
+    run: nc2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3575
+    bytes: 408531263365
+    summary: datasets/naip/evidence/north-carolina-2025-summary.json
+    hosted_checks: datasets/naip/evidence/north-carolina-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nd-2025-30cm
+    run: nd2025-pub-1
+    converted_on: '2026-11-14'
+    files: 5711
+    bytes: 321878485749
+    summary: datasets/naip/evidence/north-dakota-2025-summary.json
+    hosted_checks: datasets/naip/evidence/north-dakota-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: tn-2025-30cm
+    run: tn2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3000
+    bytes: 335096862415
+    summary: datasets/naip/evidence/tennessee-2025-summary.json
+    hosted_checks: datasets/naip/evidence/tennessee-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: va-2025-30cm
+    run: va2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3031
+    bytes: 240446892874
+    summary: datasets/naip/evidence/virginia-2025-summary.json
+    hosted_checks: datasets/naip/evidence/virginia-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ar-2025-60cm
+    run: ar2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3600
+    bytes: 120541297632
+    summary: datasets/naip/evidence/arkansas-2025-summary.json
+    hosted_checks: datasets/naip/evidence/arkansas-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: az-2025-60cm
+    run: az2025-pub-1
+    converted_on: '2026-11-14'
+    files: 7629
+    bytes: 185275655471
+    summary: datasets/naip/evidence/arizona-2025-summary.json
+    hosted_checks: datasets/naip/evidence/arizona-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: id-2024-60cm
+    run: id2024-pub-1
+    converted_on: '2026-11-14'
+    files: 80
+    bytes: 2538149936
+    summary: datasets/naip/evidence/idaho-2024-summary.json
+    hosted_checks: datasets/naip/evidence/idaho-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: in-2025-60cm
+    run: in2025-pub-1
+    converted_on: '2026-11-14'
+    files: 2688
+    bytes: 73304423371
+    summary: datasets/naip/evidence/indiana-2025-summary.json
+    hosted_checks: datasets/naip/evidence/indiana-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: la-2025-60cm
+    run: la2025-pub-1
+    converted_on: '2026-11-14'
+    files: 3288
+    bytes: 110958093962
+    summary: datasets/naip/evidence/louisiana-2025-summary.json
+    hosted_checks: datasets/naip/evidence/louisiana-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: mi-2024-60cm
+    run: mi2024-pub-1
+    converted_on: '2026-11-14'
+    files: 4846
+    bytes: 134895063837
+    summary: datasets/naip/evidence/michigan-2024-summary.json
+    hosted_checks: datasets/naip/evidence/michigan-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: mn-2025-60cm
+    run: mn2025-pub-1
+    converted_on: '2026-11-14'
+    files: 6791
+    bytes: 148138316732
+    summary: datasets/naip/evidence/minnesota-2025-summary.json
+    hosted_checks: datasets/naip/evidence/minnesota-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nd-2024-60cm
+    run: nd2024-pub-1
+    converted_on: '2026-11-14'
+    files: 5689
+    bytes: 106220545037
+    summary: datasets/naip/evidence/north-dakota-2024-summary.json
+    hosted_checks: datasets/naip/evidence/north-dakota-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ne-2024-60cm
+    run: ne2024-pub-1
+    converted_on: '2026-11-14'
+    files: 5626
+    bytes: 98836169087
+    summary: datasets/naip/evidence/nebraska-2024-summary.json
+    hosted_checks: datasets/naip/evidence/nebraska-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nv-2024-60cm
+    run: nv2024-pub-1
+    converted_on: '2026-11-14'
+    files: 7397
+    bytes: 195549175563
+    summary: datasets/naip/evidence/nevada-2024-summary.json
+    hosted_checks: datasets/naip/evidence/nevada-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ny-2024-60cm
+    run: ny2024-pub-1
+    converted_on: '2026-11-14'
+    files: 3882
+    bytes: 123876549575
+    summary: datasets/naip/evidence/new-york-2024-summary.json
+    hosted_checks: datasets/naip/evidence/new-york-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ok-2025-60cm
+    run: ok2025-pub-1
+    converted_on: '2026-11-14'
+    files: 4815
+    bytes: 102259918047
+    summary: datasets/naip/evidence/oklahoma-2025-summary.json
+    hosted_checks: datasets/naip/evidence/oklahoma-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: or-2024-60cm
+    run: or2024-pub-1
+    converted_on: '2026-11-14'
+    files: 7454
+    bytes: 185462809369
+    summary: datasets/naip/evidence/oregon-2024-summary.json
+    hosted_checks: datasets/naip/evidence/oregon-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: sc-2025-30cm
+    run: sc2025-pub-1
+    converted_on: '2026-11-14'
+    files: 2152
+    bytes: 242847197194
+    summary: datasets/naip/evidence/south-carolina-2025-summary.json
+    hosted_checks: datasets/naip/evidence/south-carolina-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: wi-2024-60cm
+    run: wi2024-pub-1
+    converted_on: '2026-11-14'
+    files: 4484
+    bytes: 116202773634
+    summary: datasets/naip/evidence/wisconsin-2024-summary.json
+    hosted_checks: datasets/naip/evidence/wisconsin-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: wy-2024-60cm
+    run: wy2024-pub-1
+    converted_on: '2026-11-14'
+    files: 7357
+    bytes: 147099089567
+    summary: datasets/naip/evidence/wyoming-2024-summary.json
+    hosted_checks: datasets/naip/evidence/wyoming-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ct-2025-60cm
+    run: ct2025-pub-1
+    converted_on: '2026-11-14'
+    files: 413
+    bytes: 14034089319
+    summary: datasets/naip/evidence/connecticut-2025-summary.json
+    hosted_checks: datasets/naip/evidence/connecticut-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ia-2025-60cm
+    run: ia2025-pub-1
+    converted_on: '2026-11-14'
+    files: 4239
+    bytes: 63387953916
+    summary: datasets/naip/evidence/iowa-2025-summary.json
+    hosted_checks: datasets/naip/evidence/iowa-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: il-2025-60cm
+    run: il2025-pub-1
+    converted_on: '2026-11-14'
+    files: 4131
+    bytes: 76141435941
+    summary: datasets/naip/evidence/illinois-2025-summary.json
+    hosted_checks: datasets/naip/evidence/illinois-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: in-2024-60cm
+    run: in2024-pub-1
+    converted_on: '2026-11-14'
+    files: 2689
+    bytes: 53665125404
+    summary: datasets/naip/evidence/indiana-2024-summary.json
+    hosted_checks: datasets/naip/evidence/indiana-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ky-2024-60cm
+    run: ky2024-pub-1
+    converted_on: '2026-11-14'
+    files: 2930
+    bytes: 89423899976
+    summary: datasets/naip/evidence/kentucky-2024-summary.json
+    hosted_checks: datasets/naip/evidence/kentucky-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: me-2024-30cm
+    run: me2024-30cm-pub-1
+    converted_on: '2026-11-14'
+    files: 839
+    bytes: 91365995833
+    summary: datasets/naip/evidence/maine-2024-30cm-summary.json
+    hosted_checks: datasets/naip/evidence/maine-2024-30cm-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: me-2024-60cm
+    run: me2024-60cm-pub-1
+    converted_on: '2026-11-14'
+    files: 1
+    bytes: 125410848
+    summary: datasets/naip/evidence/maine-2024-60cm-summary.json
+    hosted_checks: datasets/naip/evidence/maine-2024-60cm-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: mt-2024-60cm
+    run: mt2024-pub-1
+    converted_on: '2026-11-14'
+    files: 1666
+    bytes: 45040267141
+    summary: datasets/naip/evidence/montana-2024-summary.json
+    hosted_checks: datasets/naip/evidence/montana-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nc-2024-60cm
+    run: nc2024-pub-1
+    converted_on: '2026-11-14'
+    files: 3582
+    bytes: 105814746156
+    summary: datasets/naip/evidence/north-carolina-2024-summary.json
+    hosted_checks: datasets/naip/evidence/north-carolina-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: nj-2025-60cm
+    run: nj2025-pub-1
+    converted_on: '2026-11-14'
+    files: 634
+    bytes: 18295460746
+    summary: datasets/naip/evidence/new-jersey-2025-summary.json
+    hosted_checks: datasets/naip/evidence/new-jersey-2025-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: pa-2024-60cm
+    run: pa2024-pub-1
+    converted_on: '2026-11-14'
+    files: 1118
+    bytes: 24837360178
+    summary: datasets/naip/evidence/pennsylvania-2024-summary.json
+    hosted_checks: datasets/naip/evidence/pennsylvania-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: wv-2024-60cm
+    run: wv2024-pub-1
+    converted_on: '2026-11-14'
+    files: 101
+    bytes: 3027300284
+    summary: datasets/naip/evidence/west-virginia-2024-summary.json
+    hosted_checks: datasets/naip/evidence/west-virginia-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
     location: nthh/naip on Source Cooperative (unlisted)
   publishing: datasets/naip/PUBLISHING.md

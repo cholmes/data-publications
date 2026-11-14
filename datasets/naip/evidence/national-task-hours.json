@@ -1,0 +1,262 @@
+{
+ "made": "2026-11-14",
+ "rates_usd_per_hour": {
+  "vcpu": 0.01015,
+  "gb": 0.001115,
+  "address": 0.005
+ },
+ "totals": {
+  "hours": 1422.14,
+  "usd": 27.02,
+  "tasks": 2529,
+  "noend": 0,
+  "spot": 98,
+  "planned_hours": 1413.9,
+  "planned_usd": 26.82,
+  "addr": 7.11,
+  "vcpu": 14.43,
+  "mem": 5.47
+ },
+ "runs": [
+  {
+   "run": "al2025-pub-1",
+   "task_hours": 48.9,
+   "planned_task_hours": 51.5
+  },
+  {
+   "run": "mt2025-pub-1",
+   "task_hours": 126.1,
+   "planned_task_hours": 119.7
+  },
+  {
+   "run": "nm2024-pub-1",
+   "task_hours": 110.0,
+   "planned_task_hours": 98.0
+  },
+  {
+   "run": "id2025-pub-1",
+   "task_hours": 74.9,
+   "planned_task_hours": 74.7
+  },
+  {
+   "run": "ks2025-pub-1",
+   "task_hours": 73.9,
+   "planned_task_hours": 61.8
+  },
+  {
+   "run": "oh2025-pub-1",
+   "task_hours": 9.1,
+   "planned_task_hours": 8.5
+  },
+  {
+   "run": "sd2025-pub-1",
+   "task_hours": 64.8,
+   "planned_task_hours": 60.6
+  },
+  {
+   "run": "tx2024-pub-1",
+   "task_hours": 59.1,
+   "planned_task_hours": 62.1
+  },
+  {
+   "run": "fl2025-pub-1",
+   "task_hours": 54.6,
+   "planned_task_hours": 55.6
+  },
+  {
+   "run": "ga2025-pub-1",
+   "task_hours": 55.3,
+   "planned_task_hours": 58.1
+  },
+  {
+   "run": "me2025-pub-1",
+   "task_hours": 30.0,
+   "planned_task_hours": 35.3
+  },
+  {
+   "run": "mo2024-pub-1",
+   "task_hours": 63.3,
+   "planned_task_hours": 60.1
+  },
+  {
+   "run": "ne2025-pub-1",
+   "task_hours": 63.8,
+   "planned_task_hours": 60.0
+  },
+  {
+   "run": "ca2024-pub-1",
+   "task_hours": 36.1,
+   "planned_task_hours": 38.8
+  },
+  {
+   "run": "ma2025-pub-1",
+   "task_hours": 1.9,
+   "planned_task_hours": 2.5
+  },
+  {
+   "run": "ms2025-pub-1",
+   "task_hours": 43.4,
+   "planned_task_hours": 46.0
+  },
+  {
+   "run": "nc2025-pub-1",
+   "task_hours": 48.8,
+   "planned_task_hours": 50.5
+  },
+  {
+   "run": "nd2025-pub-1",
+   "task_hours": 55.2,
+   "planned_task_hours": 52.9
+  },
+  {
+   "run": "tn2025-pub-1",
+   "task_hours": 39.9,
+   "planned_task_hours": 42.3
+  },
+  {
+   "run": "va2025-pub-1",
+   "task_hours": 39.6,
+   "planned_task_hours": 34.4
+  },
+  {
+   "run": "ar2025-pub-1",
+   "task_hours": 9.6,
+   "planned_task_hours": 13.4
+  },
+  {
+   "run": "az2025-pub-1",
+   "task_hours": 24.3,
+   "planned_task_hours": 23.5
+  },
+  {
+   "run": "id2024-pub-1",
+   "task_hours": 0.2,
+   "planned_task_hours": 0.3
+  },
+  {
+   "run": "in2025-pub-1",
+   "task_hours": 6.8,
+   "planned_task_hours": 9.0
+  },
+  {
+   "run": "la2025-pub-1",
+   "task_hours": 9.8,
+   "planned_task_hours": 12.5
+  },
+  {
+   "run": "mi2024-pub-1",
+   "task_hours": 12.7,
+   "planned_task_hours": 15.3
+  },
+  {
+   "run": "mn2025-pub-1",
+   "task_hours": 17.9,
+   "planned_task_hours": 18.7
+  },
+  {
+   "run": "nd2024-pub-1",
+   "task_hours": 14.0,
+   "planned_task_hours": 15.5
+  },
+  {
+   "run": "ne2024-pub-1",
+   "task_hours": 17.5,
+   "planned_task_hours": 16.2
+  },
+  {
+   "run": "nv2024-pub-1",
+   "task_hours": 23.2,
+   "planned_task_hours": 24.9
+  },
+  {
+   "run": "ny2024-pub-1",
+   "task_hours": 10.4,
+   "planned_task_hours": 12.9
+  },
+  {
+   "run": "ok2025-pub-1",
+   "task_hours": 14.6,
+   "planned_task_hours": 14.4
+  },
+  {
+   "run": "or2024-pub-1",
+   "task_hours": 21.9,
+   "planned_task_hours": 23.1
+  },
+  {
+   "run": "sc2025-pub-1",
+   "task_hours": 30.3,
+   "planned_task_hours": 30.2
+  },
+  {
+   "run": "wi2024-pub-1",
+   "task_hours": 12.6,
+   "planned_task_hours": 13.7
+  },
+  {
+   "run": "wy2024-pub-1",
+   "task_hours": 22.2,
+   "planned_task_hours": 21.1
+  },
+  {
+   "run": "ct2025-pub-1",
+   "task_hours": 1.1,
+   "planned_task_hours": 1.5
+  },
+  {
+   "run": "ia2025-pub-1",
+   "task_hours": 12.4,
+   "planned_task_hours": 11.1
+  },
+  {
+   "run": "il2025-pub-1",
+   "task_hours": 13.4,
+   "planned_task_hours": 11.6
+  },
+  {
+   "run": "in2024-pub-1",
+   "task_hours": 8.2,
+   "planned_task_hours": 7.8
+  },
+  {
+   "run": "ky2024-pub-1",
+   "task_hours": 8.4,
+   "planned_task_hours": 10.4
+  },
+  {
+   "run": "me2024-30cm-pub-1",
+   "task_hours": 9.9,
+   "planned_task_hours": 10.2
+  },
+  {
+   "run": "me2024-60cm-pub-1",
+   "task_hours": 0.0,
+   "planned_task_hours": 0.0
+  },
+  {
+   "run": "mt2024-pub-1",
+   "task_hours": 4.8,
+   "planned_task_hours": 5.3
+  },
+  {
+   "run": "nc2024-pub-1",
+   "task_hours": 11.6,
+   "planned_task_hours": 12.4
+  },
+  {
+   "run": "nj2025-pub-1",
+   "task_hours": 1.8,
+   "planned_task_hours": 2.1
+  },
+  {
+   "run": "pa2024-pub-1",
+   "task_hours": 3.4,
+   "planned_task_hours": 3.1
+  },
+  {
+   "run": "wv2024-pub-1",
+   "task_hours": 0.3,
+   "planned_task_hours": 0.3
+  }
+ ]
+}

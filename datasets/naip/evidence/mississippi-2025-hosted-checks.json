@@ -1,0 +1,37 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/ms/2025/30cm/rgb/",
+ "receipts": 3154,
+ "runs": [
+  "ms2025-pub-1"
+ ],
+ "listing": {
+  "listed": 3154,
+  "bytes": 364736291086,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 157,
+  "files": 21,
+  "read_from": "a task in us-west-2 (sample_hosted.py)",
+  "not_read": [],
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 3154,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

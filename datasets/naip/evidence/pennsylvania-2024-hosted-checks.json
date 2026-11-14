@@ -1,0 +1,37 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/pa/2024/60cm/rgb/",
+ "receipts": 1118,
+ "runs": [
+  "pa2024-pub-1"
+ ],
+ "listing": {
+  "listed": 1118,
+  "bytes": 24837360178,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 55,
+  "files": 21,
+  "read_from": "a task in us-west-2 (sample_hosted.py)",
+  "not_read": [],
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 1118,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

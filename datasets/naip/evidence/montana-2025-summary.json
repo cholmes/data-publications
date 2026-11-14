@@ -33,7 +33,7 @@
  },
  "tasks": {
   "started": 210,
-  "with_end_record": 0,
-  "spot_interruptions": 0
+  "with_end_record": 210,
+  "spot_interruptions": 10
  }
 }
