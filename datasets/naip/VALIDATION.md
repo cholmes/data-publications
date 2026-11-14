@@ -890,6 +890,15 @@ is every quad in the source listing of 2026-11-10.
   one per hosted file, 39,528,190 bytes in 433 row groups. Read back from outside it has the
   SHA-256 of the local file (`204e8b51...4ba5f0`). The 7,731 rows hosted before are unchanged
   in it. Drawn in a map through it: downtown Boise from the Idaho 2025 files at zoom 14.
+- The index was replaced later on 2026-11-14 after validate.stac-geoparquet.org reported four
+  faults in it: the `bbox` struct's fields were in alphabetical order, there was no `links`
+  column, the file had no `stac-geoparquet` metadata, and it carried the `type` column the
+  specification says to omit. The replacement has the same 221,255 rows, equal to the first
+  upload in every column both have, plus one `derived_from` link per row to the source file and
+  the collection in the file's metadata: 40,819,342 bytes, SHA-256 `9b0904ea...1b7ae4`, read
+  back from outside. The validator then reports it valid as Parquet, GeoParquet 1.1.0 and
+  stac-geoparquet, with one warning kept on purpose: row groups hold 512 rows, not the 50,000
+  it suggests, so that a map view reads 3 to 6 of 433 groups.
 - No seam check was run on any state of the national run.
 - Evidence: `evidence/<state>-<year>-{summary,hosted-checks}.json` for each row (Maine 2024 has
   one pair per pixel size), `evidence/national-task-hours.json`.
