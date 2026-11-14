@@ -885,9 +885,11 @@ is every quad in the source listing of 2026-11-10.
   (`evidence/national-task-hours.json`). That is measured time multiplied by rates, not a bill:
   Cost Explorer had not posted the days of the large waves when this was written, and request
   charges are not in it.
-- The index hosted at `stac/naip.parquet` still holds only the first four state-years. The
-  per-state index files built from these receipts are local; uploading them needs the Source
-  Cooperative login or a task.
+- The index at `https://data.source.coop/nthh/naip/stac/naip.parquet` was rebuilt from the
+  receipts of all 52 runs with `build_stac_index.py` and written by one task: 221,255 rows,
+  one per hosted file, 39,528,190 bytes in 433 row groups. Read back from outside it has the
+  SHA-256 of the local file (`204e8b51...4ba5f0`). The 7,731 rows hosted before are unchanged
+  in it. Drawn in a map through it: downtown Boise from the Idaho 2025 files at zoom 14.
 - No seam check was run on any state of the national run.
 - Evidence: `evidence/<state>-<year>-{summary,hosted-checks}.json` for each row (Maine 2024 has
   one pair per pixel size), `evidence/national-task-hours.json`.

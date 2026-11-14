@@ -12,8 +12,8 @@ quad, with the same settings, file names and key layout as `naip-visualization`.
 **Status (2026-11-14):** all 52 state-years are converted and hosted in the Source Cooperative
 product `nthh/naip`, which is unlisted: 221,255 files, 11.03 TB, about 6% of the size of the
 source. Each state-year passed the hosted checks in [PUBLISHING.md](PUBLISHING.md);
-[VALIDATION.md](VALIDATION.md) has the results of each. The hosted index still lists only the
-first four state-years, and there are no overview files above the quad yet.
+[VALIDATION.md](VALIDATION.md) has the results of each. The index at
+`stac/naip.parquet` lists every file. There are no overview files above the quad yet.
 [flight-dates/](flight-dates/) holds a viewer of when every quad was flown.
 
 ## Layout

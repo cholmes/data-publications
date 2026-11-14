@@ -47,7 +47,6 @@ No versioned display package is recorded.
 
 - Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.
 - Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.
-- The index at stac/naip.parquet lists only Utah 2024, New Hampshire 2025, Rhode Island 2025 and Vermont 2025 so far.
 - There are no overview files above the quad yet. A view wider than a few quads opens one file per quad.
 - Adjacent quarter quads overlap, as they do in the source.
 
