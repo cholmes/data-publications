@@ -56,18 +56,26 @@ def main():
     if a.other:
         other = gdal.Open("/vsicurl/" + a.other)
         coarse = [other.GetRasterBand(b).GetOverview(0) for b in (1, 2, 3)]
-        assert (coarse[0].XSize, coarse[0].YSize) == (width, height), "the two files are not on the same grid"
+        # The two files snap their bounds to different multiples (512 pixels of their own
+        # size), so the other file's second level sits at a whole-pixel offset inside this one.
+        ours_gt, theirs_gt = ds.GetGeoTransform(), other.GetGeoTransform()
+        dx, dy = (theirs_gt[0] - ours_gt[0]) / res, (ours_gt[3] - theirs_gt[3]) / res
+        assert abs(dx - round(dx)) < 1e-6 and abs(dy - round(dy)) < 1e-6 and abs(theirs_gt[1] * 2 - res) < 1e-9, \
+            "the two files are not on the same grid"
+        dx, dy, cw, ch = round(dx), round(dy), coarse[0].XSize, coarse[0].YSize
+        assert dx >= 0 and dy >= 0 and dx + cw <= width and dy + ch <= height, "the other file is not inside this one"
         mask = ds.GetRasterBand(1).GetMaskBand()
         rng, found = random.Random(20261114), []
         for _ in range(8000):
             if len(found) == 200:
                 break
-            x, y = rng.randrange(width // 512) * 512, rng.randrange(height // 512) * 512
+            cx, cy = rng.randrange(cw // 512) * 512, rng.randrange(ch // 512) * 512
+            x, y = cx + dx, cy + dy
             valid = mask.ReadAsArray(x, y, 512, 512) > 0
             if valid.mean() < 0.5:
                 continue
             ours = ds.ReadAsArray(x, y, 512, 512).astype(np.float64)
-            theirs = np.stack([c.ReadAsArray(x, y, 512, 512) for c in coarse]).astype(np.float64)
+            theirs = np.stack([c.ReadAsArray(cx, cy, 512, 512) for c in coarse]).astype(np.float64)
             mse = [float(((ours[b] - theirs[b])[valid] ** 2).mean()) for b in range(3)]
             found.append([99.0 if m == 0 else round(10 * math.log10(255 ** 2 / m), 2) for m in mse])
         out["against_averaged"] = {"windows": len(found),

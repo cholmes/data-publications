@@ -1,0 +1,72 @@
+{
+ "checked": "2026-11-14",
+ "api": "https://planetarycomputer.microsoft.com/api/stac/v1/search",
+ "test": "at least one item per state, year and pixel size",
+ "hosted_state_years": 51,
+ "also_on_planetary_computer": [
+  "al-2025",
+  "ar-2025",
+  "az-2025",
+  "ca-2024",
+  "ct-2025",
+  "fl-2025",
+  "ga-2025",
+  "ia-2025",
+  "id-2025",
+  "il-2025",
+  "in-2025",
+  "ks-2025",
+  "ky-2024",
+  "la-2025",
+  "ma-2025",
+  "me-2025",
+  "mi-2024",
+  "mn-2025",
+  "ms-2025",
+  "nc-2025",
+  "ne-2025",
+  "nh-2025",
+  "nj-2025",
+  "nm-2024",
+  "nv-2024",
+  "ny-2024",
+  "oh-2025",
+  "ok-2025",
+  "or-2024",
+  "ri-2025",
+  "sc-2025",
+  "sd-2025",
+  "tn-2025",
+  "tx-2024"
+ ],
+ "hosted_only": [
+  "id-2024",
+  "in-2024",
+  "me-2024",
+  "mo-2024",
+  "mt-2024",
+  "mt-2025",
+  "nc-2024",
+  "nd-2024",
+  "nd-2025",
+  "ne-2024",
+  "pa-2024",
+  "ut-2024",
+  "va-2025",
+  "vt-2025",
+  "wi-2024",
+  "wv-2024",
+  "wy-2024"
+ ],
+ "planetary_computer_only": [],
+ "different_pixel_size": {
+  "me-2025": {
+   "hosted": [
+    0.3
+   ],
+   "planetary_computer": [
+    0.6
+   ]
+  }
+ }
+}
