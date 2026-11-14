@@ -16,3 +16,6 @@ node_modules/
 *.tar
 *.tar.gz
 /scripts/cloud_viewer/dist/
+
+# dated output of datasets/naip/flight-dates/build_winter_test.py
+/datasets/naip/flight-dates/winter/

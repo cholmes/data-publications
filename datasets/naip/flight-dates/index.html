@@ -64,6 +64,10 @@
   <p id="imgStat" style="margin:-4px 0 8px 22px"></p>
   <label class="check"><input type="checkbox" id="snowNow"> <span>Snow now, from the latest Sentinel-2 passes</span></label>
   <p id="snowStat" style="margin:-4px 0 8px 22px"></p>
+  <div id="winterRow" hidden>
+    <label class="check"><input type="checkbox" id="winter"> <span>Snow with trees showing through (Central Wasatch test)</span></label>
+    <p id="winterStat" style="margin:-4px 0 8px 22px"></p>
+  </div>
   <select id="goto" aria-label="Go to a place with converted imagery">
     <option value="">Go to a place with converted imagery</option>
     <option value="-111.64,40.59,12.6">Central Wasatch, Utah (2024)</option>
@@ -396,7 +400,7 @@ async function drawFile(q, want, run) {
   const id = `file-${imageSeq++}`;
   view.addSource(id, {type: "canvas", canvas, animate: false,
     coordinates: [at(x0/W, y0/Hh), at(x1/W, y0/Hh), at(x1/W, y1/Hh), at(x0/W, y1/Hh)]});
-  view.addLayer({id, type: "raster", source: id, paint: {"raster-fade-duration": 0}}, view.getLayer("snow") ? "snow" : "grid");
+  view.addLayer({id, type: "raster", source: id, paint: {"raster-fade-duration": 0}}, "above-imagery");
   undraw(path);
   drawn.set(path, {key, id});
 }
@@ -453,6 +457,24 @@ async function toggleSnowNow() {
   stat.innerHTML = `<i style="display:inline-block;width:10px;height:10px;background:#f4f8ff;border:1px solid var(--text-3);border-radius:2px"></i> snow or ice &nbsp;<i style="display:inline-block;width:10px;height:10px;background:#8c8c87;border-radius:2px"></i> cloud, so unknown. Most recent pass in the last ${SNOW_DAYS} days with under ${SNOW_MAX_CLOUD}% cloud, at 20 m. Zoom to 9 or closer.`;
 }
 
+// ---- Winter test: snow from Sentinel-2, minus the vegetation taller than the snow depth. Built by build_winter_test.py.
+let winter = null;
+fetch("winter/winter.json").then(r => r.ok ? r.json() : null).then(info => { winter = info; $("winterRow").hidden = !info; }).catch(() => {});
+function toggleWinter() {
+  const on = $("winter").checked;
+  winter.images.forEach((image, i) => {
+    const id = `winter-${i}`;
+    if (!view.getSource(id)) {
+      view.addSource(id, {type: "image", url: "winter/" + image.file, coordinates: image.corners});
+      view.addLayer({id, type: "raster", source: id, paint: {"raster-fade-duration": 0}}, "grid");
+    }
+    view.setLayoutProperty(id, "visibility", on ? "visible" : "none");
+  });
+  const d = winter.snow_depth_m, a = winter.percent_of_area;
+  $("winterStat").textContent = on ? `Sentinel-2 passes ${winter.sentinel_passes.slice(-1)[0]} to ${winter.sentinel_passes[0]}; snow depth of ${winter.snodas_day.replace(/(\d{4})(\d\d)(\d\d)/, "$1-$2-$3")}, ${d.lowest} to ${d.highest} m. Snow seen on ${a.snow_seen_by_sentinel}% of the area, ${a.snow_added_under_forest}% more assumed under forest. Vegetation taller than the snow stays visible.` : "";
+  if (on && $("snowNow").checked) { $("snowNow").checked = false; toggleSnowNow(); }
+}
+
 load().then(() => {
   setupCanvas(); buildControls(); compute();
   const south = H.north - H.rows*H.cell_degrees, east = H.west + H.cols*H.cell_degrees;
@@ -468,6 +490,8 @@ load().then(() => {
   map.on("load", () => {
     map.addSource("grid", {type: "canvas", canvas, animate: true,
       coordinates: [[H.west, H.north], [east, H.north], [east, south], [H.west, south]]});
+    // Imagery files go under this marker; the snow layers and the date overlay go over it.
+    map.addLayer({id: "above-imagery", type: "background", paint: {"background-opacity": 0}});
     map.addLayer({id: "grid", type: "raster", source: "grid",
       paint: {"raster-resampling": "nearest", "raster-opacity": +$("opacity").value, "raster-fade-duration": 0}});
   });
@@ -485,6 +509,7 @@ load().then(() => {
   const setOverlay = v => { $("opacity").value = v; map.setPaintProperty("grid", "raster-opacity", v); };
   $("imagery").onchange = () => { setOverlay($("imagery").checked ? 0.15 : 0.8); updateImagery(); };
   $("snowNow").onchange = toggleSnowNow;
+  $("winter").onchange = toggleWinter;
   $("goto").onchange = e => { if (!e.target.value) return; const [lng, lat, zoom] = e.target.value.split(",").map(Number);
     if (!$("imagery").checked) { $("imagery").checked = true; setOverlay(0.15); }
     map.jumpTo({center: [lng, lat], zoom}); e.target.value = ""; };
