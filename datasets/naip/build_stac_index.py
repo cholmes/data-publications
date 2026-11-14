@@ -2,8 +2,9 @@
 """Build a STAC-GeoParquet index of converted quads from one or more runs' receipts.
 
 One row per file, as a STAC item: footprint in longitude and latitude, the date flown, the
-file's own CRS and extent (projection extension), and one asset, `image`, with the file's
-URL, size and checksum. Rows are sorted by year and then along a Hilbert curve through the
+file's own CRS and extent (projection extension), one asset, `image`, with the file's URL,
+size and checksum, and one link, `derived_from`, to the source file. The collection is kept in
+the file's `stac-geoparquet` metadata (specification 1.1.0). Rows are sorted by year and then along a Hilbert curve through the
 footprint centres, so that each row group covers one compact area and a reader can skip
 almost all of the file from the row-group bbox statistics.
 
@@ -54,14 +55,46 @@ def sort_rows(rows, how):
                                                          (r["bbox"]["ymin"] + r["bbox"]["ymax"]) / 2), r["id"]))
 
 
+def collection(rows):
+    """The STAC Collection these items belong to, kept in the file's own metadata."""
+    days = [r["datetime"] for r in rows]
+    return {
+        "type": "Collection", "stac_version": "1.1.0", "stac_extensions": [], "id": "naip",
+        "title": "NAIP display copies, 2024 onward",
+        "description": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA National Agriculture Imagery Program quarter "
+                       "quads, one item per file, converted from the four-band files in s3://naip-analytic. "
+                       "NAIP imagery is in the public domain and USDA asks for credit; these files are a format "
+                       "conversion, not a USDA product.",
+        "license": "other",
+        "providers": [{"name": "USDA Farm Production and Conservation Business Center", "roles": ["producer", "licensor"],
+                       "url": "https://naip-usdaonline.hub.arcgis.com/"}],
+        "extent": {"spatial": {"bbox": [[min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
+                                         max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)]]},
+                   "temporal": {"interval": [[min(days).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                              max(days).strftime("%Y-%m-%dT%H:%M:%SZ")]]}},
+        "summaries": {"gsd": sorted({r["gsd"] for r in rows}), "naip:state": sorted({r["naip:state"] for r in rows}),
+                      "naip:year": sorted({r["naip:year"] for r in rows}),
+                      "proj:code": sorted({r["proj:code"] for r in rows})},
+        "item_assets": {"image": {"type": "image/tiff; application=geotiff; profile=cloud-optimized",
+                                  "roles": ["data", "visual"], "title": "RGB JPEG Cloud-Optimized GeoTIFF"}},
+        "links": [],
+    }
+
+
 def write(rows, out, row_group):
     table = pa.Table.from_pylist(rows)
+    # GeoParquet's bbox covering wants the struct's fields in this order; inferred structs come out
+    # alphabetical.
+    order = ("xmin", "ymin", "xmax", "ymax")
+    bbox = pa.StructArray.from_arrays([pa.array([r["bbox"][k] for r in rows], pa.float64()) for k in order], names=order)
+    table = table.set_column(table.schema.get_field_index("bbox"), "bbox", bbox)
     geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
         "encoding": "WKB", "geometry_types": ["Polygon"],
         "bbox": [min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
                  max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
-    table = table.replace_schema_metadata({"geo": json.dumps(geo)})
+    stac = {"version": "1.1.0", "collections": {"naip": collection(rows)}}
+    table = table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)})
     # Statistics only on the columns a reader filters by: on every column they are most of
     # the footer, which a reader fetches whole before anything else.
     pq.write_table(table, out, row_group_size=row_group, compression="zstd",
@@ -78,7 +111,6 @@ def item(receipt, base_url, transformers):
     out = receipt["output"]
     sha = receipt.get("output_sha256")
     return {
-        "type": "Feature",
         "stac_version": "1.1.0",
         "stac_extensions": EXTENSIONS,
         "id": receipt["id"],
@@ -96,6 +128,8 @@ def item(receipt, base_url, transformers):
         "proj:bbox": native,
         "proj:shape": [out["height"], out["width"]],
         "proj:transform": [out["geotransform"][i] for i in (1, 2, 0, 4, 5, 3)],
+        "links": [{"rel": "derived_from", "title": "Source four-band MRF (requester pays)",
+                   "href": f"s3://naip-analytic/{state}/{year}/{resolution}/rgbir/{key.split('/')[-2]}/{filename[:-4]}.mrf"}],
         "assets": {"image": {
             "href": base_url + path,
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
