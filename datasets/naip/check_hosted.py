@@ -6,19 +6,24 @@ Every request to the product is anonymous, because that is how a reader reaches 
     python3 check_hosted.py <receipts dir> <index.parquet> <out.json> \
         [--bucket us-west-2.opendata.source.coop] [--prefix nthh/naip/] [--every 50] [--least 20]
 
+The sample reads (checks 2 and 3) are a download of every sampled file. They can be done
+beside the bucket instead: `--list-samples keys.json` writes the keys this run would read and
+stops; sample_hosted.py reads them in a task and writes a result; `--samples result.json`
+then judges that result here in place of reading the files again.
+
 Needs the aws CLI, GDAL's Python bindings and pyarrow. Exits 1 when a check fails; the
 result file is written either way.
 """
 
 import argparse
-import hashlib
 import json
 import os
 import subprocess
 import sys
-import urllib.request
 
 import pyarrow.parquet as pq
+
+from sample_hosted import open_in_place, sha256_of
 
 gdal = None  # imported in main, after pyarrow has read the index: GDAL's own Arrow clashes otherwise
 
@@ -49,33 +54,9 @@ def listing(bucket, prefix):
             return found
 
 
-def sha256_of(url):
-    h = hashlib.sha256()
-    with urllib.request.urlopen(url) as resp:
-        while chunk := resp.read(1 << 22):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def open_in_place(bucket, key):
-    """Problems found opening the file over /vsis3/; an empty list is a pass."""
-    problems = []
-    ds = gdal.Open(f"/vsis3/{bucket}/{key}")
-    structure = ds.GetMetadata("IMAGE_STRUCTURE")
-    if structure.get("LAYOUT") != "COG":
-        problems.append(f"layout {structure.get('LAYOUT')}")
-    if structure.get("COMPRESSION") not in ("JPEG", "YCbCr JPEG"):
-        problems.append(f"compression {structure.get('COMPRESSION')}")
-    band = ds.GetRasterBand(1)
-    if band.GetOverviewCount() < 1:
-        problems.append("no overview")
-    else:
-        ov = band.GetOverview(band.GetOverviewCount() - 1)
-        if ov.ReadRaster(0, 0, min(512, ov.XSize), min(512, ov.YSize)) is None:
-            problems.append("overview read failed")
-    if ds.ReadRaster(ds.RasterXSize // 2, ds.RasterYSize // 2, 512, 512) is None:
-        problems.append("full-resolution read failed")
-    return problems
+def sample_of(keys, every, least):
+    """Every Nth key in name order, with N small enough to give at least `least` files."""
+    return keys[::max(1, min(every, len(keys) // least))]
 
 
 def main():
@@ -87,7 +68,16 @@ def main():
     p.add_argument("--prefix", default="nthh/naip/")
     p.add_argument("--every", type=int, default=50)
     p.add_argument("--least", type=int, default=20)
+    p.add_argument("--list-samples", help="write the keys of the sample to this file and stop")
+    p.add_argument("--samples", help="result of sample_hosted.py to judge in place of reading the files here")
     a = p.parse_args()
+
+    if a.list_samples:
+        keys = sorted(load_receipts(a.receipts_dir))
+        with open(a.list_samples, "w") as f:
+            json.dump({"bucket": a.bucket, "keys": sample_of(keys, a.every, a.least)}, f)
+        print(len(sample_of(keys, a.every, a.least)), "of", len(keys), "files in the sample")
+        return
 
     rows = {r["path"]: r for r in pq.read_table(a.index, columns=["path", "bytes", "sha256"]).to_pylist()}
     global gdal
@@ -112,21 +102,33 @@ def main():
     result["listing"]["pass"] = not (result["listing"]["missing"] or result["listing"]["extra"] or wrong_size)
 
     # 2 and 3. a sample is the bytes that were made, and opens in place
-    step = max(1, min(a.every, len(keys) // a.least))
-    sample = keys[::step]
-    bad_hash, bad_open = [], []
+    sample = sample_of(keys, a.every, a.least)
+    remote = None
+    if a.samples:
+        with open(a.samples) as f:
+            remote = json.load(f)
+    bad_hash, bad_open, not_read = [], [], []
     for i, k in enumerate(sample):
         want = receipts[k].get("output_sha256")
-        got = sha256_of(f"https://s3.us-west-2.amazonaws.com/{a.bucket}/{k}")
+        if remote is None:
+            got, _ = sha256_of(f"https://s3.us-west-2.amazonaws.com/{a.bucket}/{k}")
+            problems = open_in_place(gdal, a.bucket, k)
+            print(f"sample {i + 1}/{len(sample)}", file=sys.stderr)
+        elif k in remote["files"]:
+            got, problems = remote["files"][k]["sha256"], remote["files"][k]["problems"]
+        else:
+            not_read.append({"key": k, "error": remote["errors"].get(k, "not read")})
+            continue
         if got != want:
             bad_hash.append({"key": k, "receipt": want, "hosted": got})
-        problems = open_in_place(a.bucket, k)
         if problems:
             bad_open.append({"key": k, "problems": problems})
-        print(f"sample {i + 1}/{len(sample)}", file=sys.stderr)
-    result["sample"] = {"every": step, "files": len(sample),
-                        "sha256": {"mismatches": bad_hash, "pass": not bad_hash},
-                        "open_in_place": {"gdal": gdal.__version__, "problems": bad_open, "pass": not bad_open}}
+    result["sample"] = {"every": max(1, min(a.every, len(keys) // a.least)), "files": len(sample),
+                        "read_from": "a task in us-west-2 (sample_hosted.py)" if remote else "this machine",
+                        "not_read": not_read,
+                        "sha256": {"mismatches": bad_hash, "pass": not bad_hash and not not_read},
+                        "open_in_place": {"gdal": remote["gdal"] if remote else gdal.__version__,
+                                          "problems": bad_open, "pass": not bad_open and not not_read}}
 
     # 4. the index matches
     strip = len(a.prefix)
