@@ -1173,8 +1173,14 @@ quality. Result files are in `evidence/overviews/sharpness/`; the table is made 
 - **Cost of reading the 4.8 m level**: 1.7 times the bytes read from the quads and 4 times
   the staged disk in Rhode Island (in Nevada zone 11, 4.6 GB read and 17.5 GB staged against
   1.8 GB and 4.4 GB). The file is 11% larger at quality 75 and 56% larger at quality 85.
-- **To the eye**, at 9.6 m a screen pixel, the builds from the 4.8 m level are visibly
-  crisper than the present one and close to the quads (`overview_pictures.py`, Providence).
+- **To the eye there is no difference.** Side by side at 9.6 m a screen pixel, and enlarged
+  two and four times, the builds cannot be told apart (`overview_pictures.py`, Providence;
+  Nathan could not tell them apart, and neither could a second look at an enlarged crop).
+  An earlier note here called the 4.8 m builds visibly crisper; that was wrong. What does
+  look different when enlarged is the quads' own 4.8 m level, which is the reader's
+  handover and not a property of the overview file.
+- **Outcome: the present build stays** (9.6 m level, bilinear, quality 75). It is the
+  smallest and cheapest, and the measured gain of the others does not show.
 
 **In the browser reader (2026-11-14).** A three-item index of the 9.6 m files
 (`build_overview_index.py`) was opened in the explorer's browser reader. Rhode Island and
