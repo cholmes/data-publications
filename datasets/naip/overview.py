@@ -103,17 +103,26 @@ def mosaic(staged, target_epsg, res, folder):
     for quad in staged:
         zones.setdefault(quad["epsg"], []).append(quad["path"])
     main = max(zones, key=lambda e: len(zones[e]))
-    warped = []
+    placed = []
     for epsg in sorted(zones, key=lambda e: (e == main, e)):      # the main zone last, so it lies on top
-        together = os.path.join(folder, f"zone-{epsg}.vrt")
-        gdal.BuildVRT(together, zones[epsg], srcNodata=0, VRTNodata=0)
-        path = os.path.join(folder, f"zone-{epsg}-warped.vrt")
-        gdal.Warp(path, together, format="VRT", dstSRS=f"EPSG:{target_epsg}", xRes=res, yRes=res,
-                  outputBounds=bounds, resampleAlg="bilinear", srcNodata=0, dstNodata=0,
-                  multithread=True, warpOptions=["NUM_THREADS=ALL_CPUS"])
-        warped.append(path)
+        path = os.path.join(folder, f"zone-{epsg}-placed.vrt")
+        if epsg == target_epsg:
+            # Already in the target zone: each quad is resampled once, straight onto the target grid.
+            # A plain mosaic first would put each quad on the nearest pixel of a grid that is not
+            # its own, up to three quarters of a pixel off (measured 2026-11-14).
+            gdal.BuildVRT(path, zones[epsg], srcNodata=0, VRTNodata=0, xRes=res, yRes=res, outputBounds=bounds,
+                          resampleAlg="bilinear")
+        else:
+            # Another zone has to be reprojected. One thread: GDAL 3.13.1 returned pixels moved by
+            # one pixel in places when this ran on several (Nevada zone 10, 2026-11-14).
+            together = os.path.join(folder, f"zone-{epsg}.vrt")
+            gdal.BuildVRT(together, zones[epsg], srcNodata=0, VRTNodata=0, resampleAlg="bilinear")
+            gdal.Warp(path, together, format="VRT", dstSRS=f"EPSG:{target_epsg}", xRes=res, yRes=res,
+                      outputBounds=bounds, resampleAlg="bilinear", srcNodata=0, dstNodata=0,
+                      warpOptions=["NUM_THREADS=1"])
+        placed.append(path)
     joined = os.path.join(folder, "joined.vrt")
-    gdal.BuildVRT(joined, warped, srcNodata=0, VRTNodata=0)
+    gdal.BuildVRT(joined, placed, srcNodata=0, VRTNodata=0)
     final = os.path.join(folder, "mosaic.vrt")
     gdal.Warp(final, joined, format="VRT", xRes=res, yRes=res, outputBounds=bounds, resampleAlg="near",
               srcNodata=0, dstAlpha=True)
@@ -203,7 +212,7 @@ def main():
         request = json.loads(s3.get_object(Bucket=work, Key=os.environ["REQUEST_KEY"])["Body"].read())
     for key, value in {"AWS_NO_SIGN_REQUEST": "YES", "AWS_REGION": "us-west-2", "GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
                        "CPL_VSIL_NETWORK_STATS_ENABLED": "YES", "GDAL_MAX_DATASET_POOL_SIZE": "400",
-                       "GDAL_CACHEMAX": os.environ.get("GDAL_CACHEMAX", "2048"), "GDAL_NUM_THREADS": "ALL_CPUS"}.items():
+                       "GDAL_CACHEMAX": os.environ.get("GDAL_CACHEMAX", "2048")}.items():
         gdal.SetConfigOption(key, value)
     folder = tempfile.mkdtemp(prefix="overview-", dir=os.environ.get("OUT_DIR"))
     clock, seconds = time.monotonic(), {}
@@ -227,21 +236,26 @@ def main():
     out = os.path.join(folder, request["name"] + ".tif")
     options = ["COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}",
                "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES"]
+    # The mosaic is copied to a plain local file with one read, and the COG is written from that.
+    # Written straight from the lazy mosaic with several threads, GDAL 3.13.1 built the reduced
+    # levels in a way that left whole blocks of the file one pixel out of place (Nevada zone 10,
+    # 2026-11-14: 23 of 220 blocks, the same ones every time). From a plain file it does not.
+    flat = os.path.join(folder, "mosaic.tif")
+    gdal.Translate(flat, mosaic_path, creationOptions=["COMPRESS=ZSTD", "ZSTD_LEVEL=1", "TILED=YES", "BLOCKXSIZE=512",
+                                                       "BLOCKYSIZE=512", "BIGTIFF=YES", "SPARSE_OK=TRUE"])
+    lap("copy_mosaic")
     retried = None
     try:
-        gdal.Translate(out, mosaic_path, format="COG", creationOptions=options + ["NUM_THREADS=ALL_CPUS"])
+        gdal.Translate(out, flat, format="COG", creationOptions=options + ["NUM_THREADS=ALL_CPUS"])
     except RuntimeError as error:
-        # GDAL 3.13.1 with GDAL_NUM_THREADS=ALL_CPUS fails every time on a narrow mosaic (seen on
-        # 2,048 by 28,160 pixels: "ZSTDDecode ... Unknown frame descriptor" from its temporary
-        # overview file). One thread writes the same file correctly, and such files are small.
         retried = str(error)[:200]
         print("write failed with all threads, writing again with one:", retried, flush=True)
         for name in os.listdir(folder):
             if name.startswith(request["name"] + ".tif"):
                 os.remove(os.path.join(folder, name))
-        gdal.SetConfigOption("GDAL_NUM_THREADS", "1")
-        gdal.Translate(out, mosaic_path, format="COG", creationOptions=options)
-        gdal.SetConfigOption("GDAL_NUM_THREADS", "ALL_CPUS")
+        gdal.Translate(out, flat, format="COG", creationOptions=options + ["NUM_THREADS=1"])
+    flat_bytes = os.path.getsize(flat)
+    os.remove(flat)
     lap("write_file")
 
     found = check(out, mosaic_path, staged, bounds, request["res"], set(request.get("collar_ids", [])))
@@ -251,7 +265,7 @@ def main():
         "res": request["res"], "read_m": request["read_m"], "quads": len(quads), "zones": zones,
         "bounds": bounds, "bytes": os.path.getsize(out), "file": found, "seconds": seconds,
         "quad_requests": network.get("count"), "quad_bytes_read": network.get("downloaded_bytes"),
-        "staged_bytes": staged_bytes, "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+        "staged_bytes": staged_bytes, "mosaic_copy_bytes": flat_bytes, "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         "write_retried_with_one_thread": retried,
     }
     if local:
