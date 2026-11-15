@@ -981,9 +981,12 @@ Against the pass marks:
    recorded, by the zone 10 file (27.12 dB). The zone 10 figure was a fault in the check, not
    the file: see below.
 3. **Every quad is in it: failed** by every Nevada file that holds zone 11. 71 quad centres
-   are masked, the same 71 in each. 70 are quads that are black in the hosted file itself,
-   in one block at 36 to 37 north, 115 to 117 west. The other, `nv_m_3611602_ne`, is half
-   black with its centre near the edge of the picture; it has not been looked at further.
+   are masked, the same 71 in each, in one block at 36 to 37 north, 115 to 117 west. Measured
+   afterwards on the hosted quads themselves (`evidence/overviews/rerun/nv-2024-masked-centres.json`):
+   every one of the 71 is black at its centre in the hosted file, 51% to 100% of the quad is
+   black (median 76%), and one is black throughout. The source has no picture there, so the
+   mask is right and the mark was set wrongly: it should have been "the centre of every quad
+   that has a picture at its centre is unmasked". It stays recorded as failed as written.
 4. **No black border shows: passed.** The highest black share inside a black-edged quad is
    0.003%.
 5. **A wide view is few requests: passed** by every file measured (3 or 4 requests a view).
@@ -1044,8 +1047,71 @@ mosaic. Rebuilt on the test machine:
   from 23.83 to 30.02 dB and the median from 33.46 to 36.19 dB.
 
 Pass mark added for every later build, set after these results: no sampled block agrees
-better moved by one pixel. The Nevada files and Rhode Island 4.8 m have not been rebuilt
-with the corrected builder; the choice of finest level waits for that.
+better moved by one pixel. The rebuilds of every file with the corrected builder follow.
+
+### Rebuilt with the corrected builder, one file per zone (2026-11-14)
+
+Six tasks on Fargate Spot (8 vCPU, ARM), each one file in its own UTM zone at 9.6 m or 4.8 m:
+Rhode Island 2025 (zone 19) and Nevada 2024 split into zone 10 (14 quads) and zone 11 (7,383).
+Written under `_proto/grid-1/overviews/v2/`. The 4.8 m zone 11 task was interrupted by Spot two
+minutes in and started again. Result files are in `evidence/overviews/rerun/`; the table is
+made by `summarize_overview_results.py`.
+
+| Build | Quads | Pixels | File | Read, copy, write (s) | Own check, lowest dB | Centres masked | Requests, 37 km view and whole file | Against quads: blocks, moved, lowest and median dB |
+|---|---|---|---|---|---|---|---|---|
+| nv-2024-z10-utm-4.8 | 14 | 3,584 by 55,296 | 6.4 MB | 1, 4, 3 | 31.80, 32.08, 31.38 | 0 | 4 and 3 | 1,507, 0, 28.03 and 38.48 |
+| nv-2024-z10-utm-9.6 | 14 | 2,048 by 28,160 | 1.7 MB | 0, 1, 1 | 31.58, 31.80, 31.35 | 0 | 3 and 3 | 335, 0, 29.67 and 39.90 |
+| nv-2024-z11-utm-4.8 | 7,383 | 111,104 by 163,840 | 2,191.9 MB | 248, 2100, 562 | 29.86, 29.92, 29.75 (fails) | 71 | 4 and 4 | 6,167, 0, 23.52 and 39.36 |
+| nv-2024-z11-utm-9.6 | 7,383 | 55,808 by 81,920 | 529.4 MB | 69, 312, 96 | 32.12, 32.34, 31.73 | 71 | 4 and 4 | 1,326, 0, 27.68 and 39.45 |
+| ri-2025-z19-utm-4.8 | 116 | 15,872 by 22,528 | 44.4 MB | 4, 16, 5 | 31.68, 31.77, 30.82 | 0 | 4 and 4 | 5,280, 0, 29.24 and 35.55 |
+| ri-2025-z19-utm-9.6 | 116 | 8,192 by 11,776 | 10.5 MB | 2, 4, 1 | 33.66, 34.10, 32.72 | 0 | 3 and 4 | 1,200, 0, 30.02 and 36.19 |
+
+Against the pass marks:
+
+1. **Valid COG with a mask: passed** by all six.
+2. **The file holds the mosaic (30 dB in every window): passed** by five. **Failed** by
+   Nevada zone 11 at 4.8 m: lowest window 29.86, 29.92, 29.75 dB (median 39.80, 40.37,
+   39.17). The first build of that size failed the same way in blue only (29.84 dB).
+3. **Every quad is in it: failed as written** by both zone 11 files, with the same 71 masked
+   centres, all of them black in the hosted quads (see the correction under the first results).
+4. **No black border shows: passed.** The highest black share inside a black-edged quad is
+   0.001%. Among other quads the highest is 8.4% (`nv_m_3511435_ne`), recorded without a mark.
+5. **A wide view is few requests: passed**, 3 or 4 requests a view for every file.
+6. **No sampled block agrees better moved by one pixel: passed** by all six (0 of 335 to
+   6,167 blocks in 14 to 60 quads each).
+
+Recorded without a mark:
+
+- **Time.** Zone 11 at 9.6 m took 8.4 minutes of build (read 69 s, copy 312 s, write 96 s)
+  against 47 minutes with the first builder; at 4.8 m 50 minutes (read 248 s, copy 2,100 s,
+  write 562 s) against 3 hours 9 minutes. The copy of the mosaic to a plain file is now the
+  slow step and runs on one thread.
+- **Disk and memory.** Zone 11 at 4.8 m staged 17.5 GB of quad levels and wrote a 17.9 GB
+  copy of the mosaic beside the 2.2 GB file; at 9.6 m 4.4 GB, 4.4 GB and 0.5 GB. Peak memory
+  was 3.1 GB and 2.9 GB.
+- **Reads from the quads.** 22,085 requests and 1.8 GB for zone 11 at 9.6 m; 25,669 requests
+  and 4.6 GB at 4.8 m.
+- **Agreement with the hosted quads** (128 pixel blocks, the quad's own level against the
+  file): median 36.19 and 35.55 dB in Rhode Island at 9.6 m and 4.8 m, 39.45 and 39.36 dB
+  in Nevada zone 11. Lowest block 30.02 and 29.24 dB in Rhode Island, 27.68 and 23.52 dB in
+  Nevada. Of 59 Nevada quads sampled, 3 have a block under 30 dB at 9.6 m and 19 at 4.8 m.
+- **Reading the quads' own 9.6 m level against averaging the 4.8 m file down**: median 31.84,
+  32.08, 31.31 dB in Rhode Island (lowest 28.33, 28.51, 28.19) and 36.55, 37.04, 36.27 dB in
+  Nevada zone 11 (lowest 25.37, 25.51, 25.31).
+- **Pictures.** `overview_pictures.py` draws the same ground from the 9.6 m file, the 4.8 m
+  file and the hosted quads side by side. Drawn for Providence, Las Vegas and a valley near
+  39.5 north, 116.8 west at 4.8 m and 9.6 m a screen pixel (not kept in the repository). At
+  9.6 m a screen pixel the three panels look alike. At 4.8 m a screen pixel the 9.6 m file is
+  visibly soft and the 4.8 m file is close to the quads.
+- **The mask in a browser reader.** geotiff.js 2.1.3 lists the mask of each level as a
+  separate image in the file (subfile type 4 at full size, 5 at reduced levels). Where the
+  mask is off, the picture holds near-black with a blue cast, so a reader that ignores the
+  mask draws that. Not yet drawn live in the browser reader.
+
+Scaled by quads from zone 11 to all 221,255 quads in 101 files (an estimate, not a
+measurement): 16 GB and 4 task-hours at 9.6 m, 66 GB and 25 task-hours at 4.8 m. The largest
+file, Texas 2024 zone 14 with 11,075 quads, would need about 14 GB of task disk at 9.6 m and
+56 GB at 4.8 m.
 
 ## JPEG XL against JPEG and WebP (set 2026-11-14, before any result)
 

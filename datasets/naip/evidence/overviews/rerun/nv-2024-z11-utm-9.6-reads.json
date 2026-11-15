@@ -1,0 +1,29 @@
+{
+ "url": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v2/nv-2024-z11-utm-9.6.tif",
+ "size": [
+  55808,
+  81920
+ ],
+ "ground_m": 9.6,
+ "view_37km": {
+  "requests": 4,
+  "bytes": 923957
+ },
+ "whole_file": {
+  "requests": 4,
+  "bytes": 212992
+ },
+ "against_averaged": {
+  "windows": 200,
+  "median_db": [
+   36.55,
+   37.04,
+   36.27
+  ],
+  "lowest_db": [
+   25.37,
+   25.51,
+   25.31
+  ]
+ }
+}

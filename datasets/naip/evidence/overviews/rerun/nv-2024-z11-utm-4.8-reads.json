@@ -1,0 +1,16 @@
+{
+ "url": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v2/nv-2024-z11-utm-4.8.tif",
+ "size": [
+  111104,
+  163840
+ ],
+ "ground_m": 4.8,
+ "view_37km": {
+  "requests": 4,
+  "bytes": 980783
+ },
+ "whole_file": {
+  "requests": 4,
+  "bytes": 196608
+ }
+}

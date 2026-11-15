@@ -1,0 +1,29 @@
+{
+ "url": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v2/ri-2025-z19-utm-9.6.tif",
+ "size": [
+  8192,
+  11776
+ ],
+ "ground_m": 9.6,
+ "view_37km": {
+  "requests": 3,
+  "bytes": 566214
+ },
+ "whole_file": {
+  "requests": 4,
+  "bytes": 114688
+ },
+ "against_averaged": {
+  "windows": 200,
+  "median_db": [
+   31.84,
+   32.08,
+   31.31
+  ],
+  "lowest_db": [
+   28.33,
+   28.51,
+   28.19
+  ]
+ }
+}
