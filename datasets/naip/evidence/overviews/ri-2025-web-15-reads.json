@@ -1,0 +1,16 @@
+{
+ "url": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/ri-2025-web-15.tif",
+ "size": [
+  20992,
+  29696
+ ],
+ "ground_m": 3.57,
+ "view_37km": {
+  "requests": 4,
+  "bytes": 471465
+ },
+ "whole_file": {
+  "requests": 4,
+  "bytes": 131072
+ }
+}

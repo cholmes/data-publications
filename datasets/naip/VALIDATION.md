@@ -948,3 +948,171 @@ read from the quads; masked share inside quad footprints; how each variant draws
 browser reader and whether the mask shows as transparent there; and, for `utm-9.6`, PSNR
 against the 9.6 m level of `utm-4.8` (the same pixels made by averaging instead of by
 reading the quads' own 9.6 m level). A failed criterion is recorded as failed.
+
+### Results (2026-11-14)
+
+Result files are in `evidence/overviews/`; the table is made by `summarize_overview_results.py`.
+Builds named `-fixed` were made on the test machine with the corrected builder described
+below; every other build ran as one task on Fargate with the first builder. `web-15` for
+Nevada was interrupted twice by Spot and was not run again. `nv-2024-z10` and `nv-2024-z11`
+are Nevada split by UTM zone, each file in its own zone, which is the layout agreed for a
+national run (one file per state-year and zone).
+
+| Build | Quads | Pixels | File | Read, copy, write (s) | Own check, lowest dB | Centres masked | Requests, 37 km view and whole file | Against quads: blocks, moved, lowest and median dB |
+|---|---|---|---|---|---|---|---|---|
+| nv-2024-utm-4.8 | 7,397 | 112,128 by 163,840 | 2,194.5 MB | 257, none, 11112 | 30.02, 30.14, 29.84 (fails) | 71 | 4 and 4 | 6,187, 0, 22.51 and 37.04 |
+| nv-2024-utm-9.6 | 7,397 | 56,320 by 81,920 | 530.3 MB | 109, none, 1300 | 32.81, 32.99, 32.68 | 71 | 4 and 4 | 1,334, 0, 25.15 and 37.30 |
+| nv-2024-web-14 | 7,397 | 71,168 by 105,472 | 1,019.2 MB | 190, none, 3401 | 29.25, 29.34, 29.14 (fails) | 71 | 4 and 4 | not run |
+| nv-2024-z10-utm-9.6-fixed | 14 | 2,048 by 28,160 | 1.7 MB | 3, 2, 1 | 31.58, 31.80, 31.35 | 0 | not run | 335, 0, 29.67 and 39.90 |
+| nv-2024-z10-utm-9.6 | 14 | 2,048 by 28,160 | 1.7 MB | 4, none, 20 | 27.12, 27.32, 27.21 (fails) | 0 | not run | 335, 0, 27.53 and 38.30 |
+| nv-2024-z11-utm-9.6 | 7,383 | 55,808 by 81,920 | 529.2 MB | 136, none, 2669 | 32.44, 32.81, 32.15 | 71 | not run | 1,326, 0, 25.15 and 37.46 |
+| ri-2025-utm-4.8 | 116 | 15,872 by 22,528 | 44.4 MB | 6, none, 153 | 31.23, 31.31, 30.43 | 0 | 4 and 4 | 5,280, 20, 25.37 and 32.82 |
+| ri-2025-utm-9.6-fixed | 116 | 8,192 by 11,776 | 10.5 MB | 23, 13, 2 | 33.66, 34.10, 32.72 | 0 | not run | 1,200, 0, 30.02 and 36.19 |
+| ri-2025-utm-9.6 | 116 | 8,192 by 11,776 | 10.6 MB | 2, none, 9 | 32.59, 32.96, 31.81 | 0 | 3 and 4 | 1,200, 3, 23.83 and 33.46 |
+| ri-2025-web-14 | 116 | 10,752 by 14,848 | 22.0 MB | 3, none, 15 | 30.35, 30.48, 28.86 (fails) | 0 | 4 and 4 | not run |
+| ri-2025-web-15 | 116 | 20,992 by 29,696 | 93.9 MB | 14, none, 154 | 29.57, 29.61, 27.55 (fails) | 0 | 4 and 4 | not run |
+
+Against the pass marks:
+
+1. **Valid COG with a mask: passed** by every file.
+2. **The file holds the mosaic (30 dB in every window): passed** by both `utm-9.6` files, the
+   zone 11 file, Rhode Island `utm-4.8` and both `-fixed` files. **Failed** by every Web
+   Mercator file (27.55 to 29.34 dB lowest), by Nevada `utm-4.8` (blue 29.84 dB) and, as first
+   recorded, by the zone 10 file (27.12 dB). The zone 10 figure was a fault in the check, not
+   the file: see below.
+3. **Every quad is in it: failed** by every Nevada file that holds zone 11. 71 quad centres
+   are masked, the same 71 in each. 70 are quads that are black in the hosted file itself,
+   in one block at 36 to 37 north, 115 to 117 west. The other, `nv_m_3611602_ne`, is half
+   black with its centre near the edge of the picture; it has not been looked at further.
+4. **No black border shows: passed.** The highest black share inside a black-edged quad is
+   0.003%.
+5. **A wide view is few requests: passed** by every file measured (3 or 4 requests a view).
+
+Recorded without a mark:
+
+- **Web Mercator costs twice the bytes for a lower score** (Nevada 1,019 MB at zoom 14
+  against 530 MB at 9.6 m), so the UTM grid stands.
+- **Reading the quads' own 9.6 m level against averaging the 4.8 m file down**: median
+  29.92, 30.13, 29.59 dB between the two in Rhode Island and 34.76, 35.14, 34.34 dB in
+  Nevada, with the first builder. The two were not placed alike (below), so these
+  figures understate how well they agree.
+- **Writing is the slow step and grows faster than the file**: 1,300 to 2,669 s for Nevada at
+  9.6 m, 3,401 s for zoom 14 and 11,112 s for 4.8 m, on 8 vCPU. Peak memory stayed under 3 GB.
+- Not done: pictures of the files side by side, and how they draw in the browser reader.
+
+### Three faults found on 2026-11-14, and the corrected builder
+
+Looking for why the 14-quad zone 10 file scored 27.12 dB turned up three separate faults.
+All three were invisible to mark 2, which compares a file with the mosaic it was read from.
+
+1. **The check read its reference on several threads and got moved pixels.** With
+   `GDAL_NUM_THREADS=ALL_CPUS`, GDAL 3.13.1 returned 660,635 of the zone 10 mosaic's pixels
+   (1.1%) differently from a one-thread read, and the same ones every time: whole strips one
+   pixel east or west of where they belong. A one-thread read is identical to an independent
+   one-thread reprojection of the same quads. Read with one thread, the first zone 10 file
+   scores 32.38, 32.57, 32.12 dB lowest, which passes.
+2. **A threaded write from the lazy mosaic moves blocks.** Writing the COG straight from the
+   mosaic with 4 or more threads left 23 of the zone 10 file's 220 blocks one pixel out of
+   place, the same blocks every time. One thread, or any number of threads without reduced
+   levels, or any number of threads from a plain local copy of the mosaic, all write the same
+   correct file. The first zone 10 file escaped only because its threaded write failed
+   outright and was repeated on one thread.
+3. **Quads were placed on the nearest pixel before being resampled.** The first builder made
+   a plain mosaic of each zone on a grid that is no quad's own, which puts each quad up to
+   three quarters of a pixel east or west of its place (measured per block in two Rhode
+   Island quads and one Nevada quad: 0.25 to 0.75 pixel, one sign across a quad).
+
+`check_overview_against_quads.py` was written to see these: for a seeded sample of quads it
+reads the quad's own reduced level from the hosted file, puts it on the overview file's grid
+with one thread, and compares 128 pixel blocks, recording any block that agrees better moved
+by one pixel. It finds none in the one-thread zone 10 file and 27 of 335 in an all-thread
+copy of the same mosaic.
+
+- **The large Nevada files show no moved block** in 59 sampled quads each (1,326, 1,334 and
+  6,187 blocks), so fault 2 is not seen in them. Fault 3 is in all of them.
+- **Rhode Island, first builder**: 3 of 1,200 blocks at 9.6 m and 20 of 5,280 at 4.8 m agree
+  better moved, all from fault 3.
+
+The corrected builder (`overview.py`, commit a5fabd1) places each quad once, bilinearly,
+straight onto the target grid when the file is in the quad's own zone; reprojects other
+zones on one thread; reads on one thread; and writes the COG from a plain local copy of the
+mosaic. Rebuilt on the test machine:
+
+- **Zone 10, 14 quads**: identical, pixel for pixel, to a one-thread write of the same
+  mosaic; no moved block; own check 31.58, 31.80, 31.35 dB lowest.
+- **Rhode Island 9.6 m**: no moved block; against the hosted quads the lowest block rises
+  from 23.83 to 30.02 dB and the median from 33.46 to 36.19 dB.
+
+Pass mark added for every later build, set after these results: no sampled block agrees
+better moved by one pixel. The Nevada files and Rhode Island 4.8 m have not been rebuilt
+with the corrected builder; the choice of finest level waits for that.
+
+## JPEG XL against JPEG and WebP (set 2026-11-14, before any result)
+
+A small local test, to decide whether JPEG XL is worth taking further. Nothing is converted
+or published. Two quads whose lossless sources are on the test machine: Zion
+(`ut_m_3711241_sw`, the quad with the faded road centre line) and New Hampshire Kancamagus
+(`nh_m_4307105_ne`, forest). Built as COGs with GDAL 3.13.3 from conda-forge (libjxl 0.13),
+one thread, 512 px blocks, averaged overviews:
+
+- JPEG 65 with overviews at 75, colour at half resolution (what is published);
+- WebP 50 and 65;
+- JPEG XL, lossy, at distance 1.0, 1.5, 2.0, 2.5, 3.0 and 4.0 (effort 5), overviews at the
+  same distance; and distance 2.0 again at effort 3 and 7, for encode time.
+
+The full-colour JPEG 65 file from the colour resolution test is measured again with the same
+code, not rebuilt. Reference for every level: a lossless COG of the same quad with the same
+averaged overviews.
+
+Pass marks for taking JPEG XL further:
+
+1. **Smaller with no more error and full colour.** Take the largest distance tested whose
+   full-resolution PSNR is at least JPEG 65's in every band and whose colour-only PSNR (Cb,
+   Cr) is at least the full-colour JPEG 65 file's. Its file is at least 15% smaller than the
+   published-settings JPEG file.
+2. **Same structure.** `LAYOUT=COG`, 512 px blocks, five overview levels.
+
+Recorded without a pass mark: bytes and PSNR per level, encode and decode CPU seconds, and
+which readers open the file: Homebrew GDAL 3.13.1, the conda-forge GDAL, QGIS 4.2.1, Chrome
+decoding one tile taken out of the file, and the explorer's TIFF reader. A failed criterion
+is recorded as failed.
+
+## JPEG 2000, HTJ2K and AVIF against the same two quads (set 2026-11-14, before any result)
+
+Added to the test above at Nathan's request, on the same two quads, the same machine and one
+thread. Set after the JPEG XL results were in and before any of these files was built. None of
+the three is a GeoTIFF compression, so these files are not COGs.
+
+- **JPEG 2000** (OpenJPEG through GDAL's `JP2OpenJPEG`): lossy 9/7 wavelet, 1024 px tiles, six
+  resolutions (the same five reduced sizes as the COG), `RPCL` order, TLM and PLT markers, at
+  `QUALITY` 4, 6, 8, 10, 12 and 15 (the file as a percentage of the uncompressed size).
+- **HTJ2K** (OpenJPH `ojph_compress`): the same tiles, resolutions and order, at quantisation
+  step 0.02, 0.03, 0.05 and 0.08. Read back through GDAL.
+- **AVIF** (GDAL's `AVIF` driver, AOM codec, speed 6): the whole quad as one image with no
+  reduced levels, full colour at quality 50, 60 and 70, and half-resolution colour at 60. This
+  measures the codec only.
+- **JPEG XL with finer overviews**, added because the first JPEG XL builds gave their reduced
+  levels the same distance as full resolution while the published JPEG gives its own a higher
+  quality: distance 2.5 with overviews at 1.5, and 3.0 with overviews at 2.0
+  (`JXL_DISTANCE_OVERVIEW`).
+
+Pass marks:
+
+1. **JPEG 2000 and HTJ2K, smaller with no more error and full colour.** The same rule as
+   JPEG XL mark 1: the smallest build whose full-resolution PSNR is at least JPEG 65's in
+   every band and whose colour-only PSNR is at least the full-colour JPEG 65 file's is at
+   least 15% smaller than the published-settings JPEG file.
+2. **JPEG 2000 and HTJ2K, views by range request.** Read through GDAL over HTTP from a server
+   that counts requests, a 1024 px window at full resolution and the whole quad at one
+   sixteenth each take at most 10 requests, and the whole-quad view transfers at most twice
+   the bytes the published JPEG COG does for the same view.
+3. **AVIF, codec only.** The same rule as mark 1, against the bytes of the published JPEG's
+   full-resolution level alone, since the AVIF file holds no reduced levels.
+4. **JPEG XL with finer overviews.** A build is at least 15% smaller than the published JPEG
+   file with PSNR at least the published JPEG's in every band at every level.
+
+Recorded without a pass mark: PSNR at each reduced level (a JPEG 2000 reduced level is the
+wavelet's low-pass image, not an average, and its size can differ by a pixel, so it is
+compared over the shared area and reads lower against an averaged reference for reasons other
+than compression error), encode and decode CPU seconds, and the same two views for the
+published JPEG, WebP 65, JPEG XL and AVIF files. A failed criterion is recorded as failed.

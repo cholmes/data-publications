@@ -1,0 +1,16 @@
+{
+ "url": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/ri-2025-utm-4.8.tif",
+ "size": [
+  15872,
+  22528
+ ],
+ "ground_m": 4.8,
+ "view_37km": {
+  "requests": 4,
+  "bytes": 719476
+ },
+ "whole_file": {
+  "requests": 4,
+  "bytes": 81920
+ }
+}

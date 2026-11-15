@@ -1,0 +1,112 @@
+{
+ "file": "nv-2024-z10-utm-9.6.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 14,
+ "blocks": 335,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 27.53,
+  "median": 38.3
+ },
+ "quads": [
+  {
+   "id": "nv_m_3912016_ne_10_060_20240612",
+   "level_m": 9.602,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 29.79
+  },
+  {
+   "id": "nv_m_3912024_ne_10_060_20240612",
+   "level_m": 9.612,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.79
+  },
+  {
+   "id": "nv_m_3912040_se_10_060_20240921",
+   "level_m": 9.604,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 29.85
+  },
+  {
+   "id": "nv_m_3912056_se_10_060_20240727",
+   "level_m": 9.602,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.58
+  },
+  {
+   "id": "nv_m_3912040_ne_10_060_20240612",
+   "level_m": 9.604,
+   "blocks": 23,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 28.88
+  },
+  {
+   "id": "nv_m_3912064_se_10_060_20240727",
+   "level_m": 9.606,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 38.76
+  },
+  {
+   "id": "nv_m_3912016_se_10_060_20240612",
+   "level_m": 9.612,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.2
+  },
+  {
+   "id": "nv_m_4112048_se_10_060_20240908",
+   "level_m": 9.614,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 38.3
+  },
+  {
+   "id": "nv_m_3812008_ne_10_060_20240727",
+   "level_m": 9.606,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 30.22
+  },
+  {
+   "id": "nv_m_3912032_se_10_060_20240612",
+   "level_m": 9.6,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 29.33
+  },
+  {
+   "id": "nv_m_4112056_ne_10_060_20240908",
+   "level_m": 9.608,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 33.08
+  },
+  {
+   "id": "nv_m_3912024_se_10_060_20240612",
+   "level_m": 9.606,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 30.89
+  },
+  {
+   "id": "nv_m_3912032_ne_10_060_20240612",
+   "level_m": 9.6,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 27.53
+  },
+  {
+   "id": "nv_m_3912064_ne_10_060_20240727",
+   "level_m": 9.611,
+   "blocks": 24,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 39.59
+  }
+ ]
+}
