@@ -56,6 +56,10 @@ def main():
         dates = sorted(q["datetime"] for q in quads if q["naip:state"] == state and q["naip:year"] == int(year)
                        and str(q["proj:epsg"]) in r["zones"])
         geometry, bbox = footprint(r["bounds"], r["target_epsg"])
+        # Files named <state>-<year>-utm<zone> sit under <state>/<year>/; the earlier test files sit at the base.
+        parts = r["name"].split("-")
+        folder = f"{state}/{year}/" if len(parts) == 3 and parts[2].startswith("utm") else ""
+        href = base.rstrip("/") + f"/{folder}{r['name']}.tif"
         width, height = r["file"]["size"]
         rows.append({
             "stac_version": "1.1.0",
@@ -68,7 +72,7 @@ def main():
             "proj:shape": [height, width],
             "proj:transform": [r["res"], 0.0, r["bounds"][0], 0.0, -r["res"], r["bounds"][3]],
             "links": [],
-            "assets": {"image": {"file:checksum": None, "file:size": r["bytes"], "href": base.rstrip("/") + f"/{r['name']}.tif",
+            "assets": {"image": {"file:checksum": None, "file:size": r["bytes"], "href": href,
                                  "roles": ["overview", "visual"], "title": "RGB JPEG Cloud-Optimized GeoTIFF with a mask",
                                  "type": "image/tiff; application=geotiff; profile=cloud-optimized"}},
         })
