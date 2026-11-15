@@ -1116,3 +1116,136 @@ wavelet's low-pass image, not an average, and its size can differ by a pixel, so
 compared over the shared area and reads lower against an averaged reference for reasons other
 than compression error), encode and decode CPU seconds, and the same two views for the
 published JPEG, WebP 65, JPEG XL and AVIF files. A failed criterion is recorded as failed.
+
+### Results for JPEG XL, JPEG 2000, HTJ2K and AVIF (2026-11-14)
+
+Result files are in `evidence/codecs/`; the tables and every verdict below are made by
+`summarize_codec_results.py`. Build names: `jxl-d2.5` is JPEG XL at distance 2.5, `-e3` and
+`-e7` its effort, `-ovr-d1.5` the distance of its reduced levels; `jp2-q6` is JPEG 2000 at
+6% of the uncompressed size; `htj2k-s0.05` is HTJ2K at quantisation step 0.05; `avif-q60-444`
+is AVIF at quality 60 with full colour. PSNR is at full resolution.
+
+**zion** (126.1 megapixels; published JPEG 31.8 MB, of which 21.3 MB is the full-resolution level)
+
+| Build | File | Against published | PSNR R, G, B | Colour PSNR | Encode CPU s | Decode CPU s | Street view: requests, KB | Whole quad at 1:16: requests, KB |
+|---|---|---|---|---|---|---|---|---|
+| jpeg-65-75 | 31.8 MB | +0% | 32.2, 33.6, 31.7 | 39.4 | 3.2 | 0.81 | 4, 181 | 3, 213 |
+| webp-50 | 20.9 MB | -34% | 31.2, 32.9, 31.1 | 38.7 | 16.3 | 1.82 |  |  |
+| webp-65 | 25.6 MB | -20% | 32.3, 34.1, 31.9 | 39.3 | 17.8 | 2.15 | 4, 154 | 3, 131 |
+| jxl-d1.0 | 51.1 MB | +61% | 37.6, 40.4, 36.5 | 42.9 | 41.9 | 4.91 |  |  |
+| jxl-d1.5 | 37.9 MB | +19% | 35.4, 37.6, 35.3 | 41.9 | 40.3 | 4.95 |  |  |
+| jxl-d2.0 | 29.2 MB | -8% | 33.7, 35.6, 34.4 | 41.3 | 37.8 | 4.5 | 4, 186 | 3, 131 |
+| jxl-d2.5 | 23.0 MB | -28% | 32.5, 34.1, 33.6 | 40.8 | 39.6 | 4.65 | 4, 151 | 3, 131 |
+| jxl-d3.0 | 18.8 MB | -41% | 31.6, 33.1, 33.0 | 40.7 | 40.2 | 4.86 |  |  |
+| jxl-d4.0 | 14.2 MB | -55% | 30.1, 31.6, 32.2 | 40.4 | 38.8 | 9.16 |  |  |
+| jxl-d2.0-e3 | 29.7 MB | -7% | 33.9, 35.5, 33.0 | 40.5 | 10.8 | 4.27 |  |  |
+| jxl-d2.0-e7 | 29.5 MB | -7% | 33.7, 35.7, 34.4 | 41.2 | 71.6 | 4.32 |  |  |
+| jpeg-65-75-full-colour | 37.9 MB | +19% | 32.9, 33.7, 32.9 | 41.6 |  | 0.95 |  |  |
+| jp2-q4 | 15.1 MB | -52% | 32.0, 33.3, 32.5 | 40.4 | 24.1 | 9.22 | 4, 164 | 11, 15,124 |
+| jp2-q6 | 22.7 MB | -29% | 34.2, 35.7, 34.2 | 41.5 | 23.8 | 10.78 | 4, 213 | 13, 22,689 |
+| jp2-q8 | 30.3 MB | -5% | 36.0, 37.7, 35.7 | 42.8 | 23.6 | 12.63 | 4, 295 | 13, 30,251 |
+| jp2-q10 | 37.8 MB | +19% | 37.6, 39.5, 36.8 | 43.6 | 22.6 | 14.0 | 4, 344 | 20, 37,813 |
+| jp2-q12 | 45.4 MB | +43% | 39.0, 41.2, 38.0 | 44.5 | 23.3 | 16.08 | 4, 410 | 20, 45,380 |
+| jp2-q15 | 56.7 MB | +78% | 40.9, 43.3, 39.6 | 45.9 | 23.7 | 18.73 | 4, 508 | 20, 56,724 |
+| htj2k-s0.02 | 45.2 MB | +42% | 38.9, 40.7, 37.9 | 44.8 | 3.7 | 6.83 | 4, 377 | 18, 45,183 |
+| htj2k-s0.03 | 31.2 MB | -2% | 36.1, 37.6, 35.7 | 43.1 | 3.1 | 6.52 | 4, 279 | 18, 31,156 |
+| htj2k-s0.05 | 18.2 MB | -43% | 32.8, 34.2, 33.2 | 41.1 | 2.6 | 6.64 | 4, 180 | 12, 18,230 |
+| htj2k-s0.08 | 10.4 MB | -67% | 30.1, 31.4, 31.1 | 39.5 | 2.0 | 5.6 | 4, 115 | 10, 10,373 |
+| avif-q50-444 | 11.5 MB | -64% | 31.7, 32.8, 33.1 | 41.7 | 52.6 | 2.0 | 3, 11,528 | 3, 11,528 |
+| avif-q60-444 | 17.6 MB | -45% | 33.8, 34.9, 34.7 | 42.6 | 59.2 | 2.32 | 4, 17,551 | 4, 17,551 |
+| avif-q70-444 | 25.1 MB | -21% | 35.9, 37.4, 36.4 | 43.4 | 65.9 | 2.7 | 4, 25,111 | 4, 25,111 |
+| avif-q60-420 | 17.1 MB | -46% | 33.7, 34.9, 33.9 | 41.7 | 55.9 | 2.86 | 4, 17,089 | 4, 17,089 |
+| jxl-d2.5-ovr-d1.5 | 27.2 MB | -14% | 32.5, 34.1, 33.6 | 40.8 | 39.6 | 4.86 | 4, 151 | 3, 180 |
+| jxl-d3.0-ovr-d2.0 | 22.0 MB | -31% | 31.6, 33.1, 33.0 | 40.7 | 41.7 | 4.96 | 4, 128 | 3, 131 |
+
+Bars: PSNR [32.19, 33.59, 31.66] in every band (published JPEG) and colour-only PSNR 41.65 (full-colour JPEG).
+
+- JPEG XL mark 1: FAILED: jxl-d1.5 is the smallest that meets both bars, +19%
+- JPEG XL mark 2 (COG, 512 px blocks, five levels): passed
+- JPEG 2000 mark 1: FAILED: jp2-q8 is the smallest that meets both bars, -5%
+- JPEG 2000 mark 2 (views by range request): FAILED: the whole-quad view took 11 to 20 requests and 15.1 to 56.7 MB, against 0.21 MB for the published JPEG
+- HTJ2K mark 1: FAILED: htj2k-s0.03 is the smallest that meets both bars, -2%
+- HTJ2K mark 2 (views by range request): FAILED: the whole-quad view took 10 to 18 requests and 10.4 to 45.2 MB, against 0.21 MB for the published JPEG
+- AVIF mark 3 (against the published JPEG's full-resolution level): passed: avif-q60-420 is the smallest that meets both bars, -20%
+- JPEG XL with finer overviews, mark 4: jxl-d2.5-ovr-d1.5 -14%, every level at least the published JPEG's: yes (fails); jxl-d3.0-ovr-d2.0 -31%, every level at least the published JPEG's: no (fails)
+
+**nhkanc** (103.5 megapixels; published JPEG 46.4 MB, of which 33.4 MB is the full-resolution level)
+
+| Build | File | Against published | PSNR R, G, B | Colour PSNR | Encode CPU s | Decode CPU s | Street view: requests, KB | Whole quad at 1:16: requests, KB |
+|---|---|---|---|---|---|---|---|---|
+| jpeg-65-75 | 46.4 MB | +0% | 27.0, 27.6, 23.9 | 33.0 | 3.1 | 0.83 | 4, 348 | 3, 164 |
+| webp-50 | 41.2 MB | -11% | 28.9, 30.7, 26.0 | 33.5 | 18.0 | 2.99 |  |  |
+| webp-65 | 47.7 MB | +3% | 30.2, 32.3, 27.0 | 34.2 | 20.3 | 3.4 | 4, 390 | 3, 82 |
+| jxl-d1.0 | 61.4 MB | +32% | 32.6, 36.4, 26.8 | 34.4 | 38.4 | 4.7 |  |  |
+| jxl-d1.5 | 49.0 MB | +6% | 30.8, 33.3, 26.1 | 33.9 | 38.0 | 4.83 |  |  |
+| jxl-d2.0 | 40.6 MB | -12% | 29.3, 31.1, 25.5 | 33.5 | 38.3 | 4.96 | 4, 333 | 3, 82 |
+| jxl-d2.5 | 34.2 MB | -26% | 28.1, 29.4, 24.9 | 33.3 | 38.0 | 4.75 | 4, 286 | 3, 66 |
+| jxl-d3.0 | 27.6 MB | -40% | 26.8, 27.5, 24.2 | 33.4 | 36.2 | 4.55 |  |  |
+| jxl-d4.0 | 19.6 MB | -58% | 25.0, 25.1, 23.1 | 33.6 | 34.6 | 8.85 |  |  |
+| jxl-d2.0-e3 | 49.2 MB | +6% | 30.8, 32.6, 25.9 | 34.0 | 11.3 | 4.83 |  |  |
+| jxl-d2.0-e7 | 40.7 MB | -12% | 29.2, 31.1, 25.6 | 33.5 | 66.5 | 4.41 |  |  |
+| jpeg-65-75-full-colour | 57.7 MB | +24% | 27.6, 27.7, 25.6 | 36.5 |  | 1.11 |  |  |
+| jp2-q4 | 12.4 MB | -73% | 23.6, 23.6, 22.2 | 32.5 | 27.7 | 6.31 | 4, 164 | 10, 12,419 |
+| jp2-q6 | 18.6 MB | -60% | 25.4, 25.5, 23.6 | 33.6 | 26.1 | 7.6 | 4, 213 | 12, 18,620 |
+| jp2-q8 | 24.8 MB | -46% | 27.1, 27.6, 25.0 | 34.1 | 25.6 | 8.32 | 4, 279 | 12, 24,841 |
+| jp2-q10 | 31.1 MB | -33% | 28.9, 29.7, 26.8 | 35.3 | 29.0 | 9.87 | 4, 344 | 17, 31,054 |
+| jp2-q12 | 37.3 MB | -20% | 30.3, 31.5, 28.1 | 36.2 | 26.3 | 11.24 | 5, 1,163 | 17, 37,259 |
+| jp2-q15 | 46.6 MB | +0% | 32.4, 34.5, 30.2 | 37.3 | 26.2 | 13.35 | 4, 492 | 17, 46,584 |
+| htj2k-s0.02 | 83.9 MB | +81% | 37.7, 40.5, 35.3 | 41.7 | 3.9 | 5.57 | 4, 901 | 31, 83,892 |
+| htj2k-s0.03 | 63.8 MB | +37% | 35.0, 37.1, 32.4 | 39.4 | 3.0 | 5.13 | 4, 705 | 31, 63,772 |
+| htj2k-s0.05 | 43.7 MB | -6% | 31.4, 32.5, 29.0 | 37.1 | 2.7 | 4.8 | 4, 492 | 18, 43,653 |
+| htj2k-s0.08 | 28.5 MB | -39% | 27.8, 28.3, 25.9 | 35.1 | 2.3 | 4.68 | 4, 328 | 18, 28,516 |
+| avif-q50-444 | 18.7 MB | -60% | 26.6, 26.7, 24.5 | 34.4 | 55.6 | 2.71 | 4, 18,715 | 4, 18,715 |
+| avif-q60-444 | 27.9 MB | -40% | 29.1, 29.6, 26.3 | 35.2 | 74.6 | 3.23 | 4, 27,940 | 4, 27,940 |
+| avif-q70-444 | 40.3 MB | -13% | 32.0, 33.4, 28.6 | 36.3 | 87.1 | 3.84 | 5, 40,269 | 5, 40,269 |
+| avif-q60-420 | 26.7 MB | -43% | 29.1, 29.7, 26.4 | 35.3 | 68.9 | 3.49 | 4, 26,663 | 4, 26,663 |
+| jxl-d2.5-ovr-d1.5 | 38.1 MB | -18% | 28.1, 29.4, 24.9 | 33.3 | 38.9 | 4.9 | 4, 286 | 3, 131 |
+| jxl-d3.0-ovr-d2.0 | 31.1 MB | -33% | 26.8, 27.5, 24.2 | 33.4 | 38.3 | 5.02 | 4, 234 | 3, 82 |
+
+Bars: PSNR [27.0, 27.59, 23.93] in every band (published JPEG) and colour-only PSNR 36.5 (full-colour JPEG).
+
+- JPEG XL mark 1: FAILED: no build tested meets the error and colour bars
+- JPEG XL mark 2 (COG, 512 px blocks, five levels): passed
+- JPEG 2000 mark 1: FAILED: jp2-q15 is the smallest that meets both bars, +0%
+- JPEG 2000 mark 2 (views by range request): FAILED: the whole-quad view took 10 to 17 requests and 12.4 to 46.6 MB, against 0.16 MB for the published JPEG
+- HTJ2K mark 1: FAILED: htj2k-s0.05 is the smallest that meets both bars, -6%
+- HTJ2K mark 2 (views by range request): FAILED: the whole-quad view took 18 to 31 requests and 28.5 to 83.9 MB, against 0.16 MB for the published JPEG
+- AVIF mark 3 (against the published JPEG's full-resolution level): FAILED: no build tested meets the error and colour bars
+- JPEG XL with finer overviews, mark 4: jxl-d2.5-ovr-d1.5 -18%, every level at least the published JPEG's: yes (passes); jxl-d3.0-ovr-d2.0 -33%, every level at least the published JPEG's: no (fails)
+
+**No codec passed its marks on both quads.** The colour bar decides most of it: it asks for
+the colour of the full-colour JPEG, a file 19% and 24% larger than the published one.
+
+Read without the colour bar, on error at least as low as the published JPEG's in every band:
+
+- **JPEG XL in a COG** at distance 2.5 is 28% and 26% smaller at full resolution, and with
+  its reduced levels at 1.5 it is 14% and 18% smaller with every level at least as good.
+  It costs about 12 times the encode CPU and 6 times the decode CPU of JPEG. Effort 3 cuts the
+  encode to 3.5 times but is 21% larger than effort 5 on the forest quad.
+- **WebP 65** is 20% smaller on Zion and 3% larger on the forest quad, with lower error on
+  both, at about 6 times the encode CPU and 3 to 4 times the decode CPU.
+- **JPEG 2000** has the lowest error for its size of the four at full resolution, but a
+  zoomed-out view through GDAL downloaded the whole file (12 to 57 MB, against 0.2 MB for the
+  COG), and decoding every level took 8 to 23 times the JPEG's CPU. **HTJ2K** encodes as fast
+  as JPEG and has the same whole-file cost.
+- **AVIF** is the smallest for its error at full resolution (17.6 MB against the published
+  JPEG's 21.3 MB full-resolution level on Zion, with 1.3 to 3.0 dB less error and full
+  colour). It cannot be the compression of a GeoTIFF, so as built it has no reduced levels
+  and any view downloads the whole file. Encode is 17 to 28 times the JPEG's CPU.
+- JPEG XL's colour-only PSNR barely moves with distance on the forest quad (33.3 to 34.4 dB
+  from distance 4.0 to 1.0) and its blue band trails red and green by 4 to 10 dB there. PSNR
+  in RGB is not what it optimises, so it is undersold by these bars.
+
+Which readers open the files (2026-11-14):
+
+| Reader | JPEG COG | WebP COG | JPEG XL COG |
+|---|---|---|---|
+| GDAL 3.13.3, conda-forge | yes | yes | yes |
+| GDAL 3.13.1, Homebrew | yes | yes | no: "missing codec JXL" |
+| QGIS 4.2.1 (its own GDAL 3.12.4) | yes | yes | no: "missing codec JXL" |
+| The explorer's TIFF reader (geotiff.js 2.1.3) | decoder present | decoder present | no decoder for compression 50002 |
+| Chrome 157 | | | decodes one 512 px tile taken out of the file as `image/jxl` |
+
+QGIS 4.2.1 has a JPEG 2000 driver and no AVIF driver; neither file was opened in it. The
+JPEG and WebP rows for the explorer's reader are from its decoder list, not from opening
+these files.

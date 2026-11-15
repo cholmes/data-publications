@@ -1,0 +1,621 @@
+{
+ "gdal": "3.13.3",
+ "source": "nhkanc.mrf",
+ "megapixels": 103.5,
+ "builds": {
+  "jpeg-65-75": {
+   "options": [
+    "COMPRESS=JPEG",
+    "QUALITY=65",
+    "OVERVIEW_QUALITY=75"
+   ],
+   "encode_cpu_s": 3.1,
+   "encode_wall_s": 4.0,
+   "file_bytes": 46396846,
+   "psnr_db_by_level": [
+    [
+     27.0,
+     27.59,
+     23.93
+    ],
+    [
+     27.23,
+     28.86,
+     23.61
+    ],
+    [
+     26.65,
+     29.07,
+     23.32
+    ],
+    [
+     27.34,
+     30.08,
+     25.39
+    ],
+    [
+     29.07,
+     32.16,
+     28.96
+    ],
+    [
+     31.02,
+     34.6,
+     31.97
+    ]
+   ],
+   "colour_psnr_db": 33.02,
+   "decode_all_levels_cpu_s": 0.83,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "webp-50": {
+   "options": [
+    "COMPRESS=WEBP",
+    "QUALITY=50",
+    "OVERVIEW_QUALITY=50"
+   ],
+   "encode_cpu_s": 18.0,
+   "encode_wall_s": 21.8,
+   "file_bytes": 41243668,
+   "psnr_db_by_level": [
+    [
+     28.95,
+     30.71,
+     26.0
+    ],
+    [
+     27.73,
+     30.36,
+     24.7
+    ],
+    [
+     26.98,
+     30.35,
+     24.08
+    ],
+    [
+     27.37,
+     30.61,
+     25.49
+    ],
+    [
+     28.17,
+     31.38,
+     28.67
+    ],
+    [
+     28.98,
+     32.78,
+     32.12
+    ]
+   ],
+   "colour_psnr_db": 33.46,
+   "decode_all_levels_cpu_s": 2.99,
+   "layout": "COG",
+   "compression": "WEBP",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "webp-65": {
+   "options": [
+    "COMPRESS=WEBP",
+    "QUALITY=65",
+    "OVERVIEW_QUALITY=65"
+   ],
+   "encode_cpu_s": 20.3,
+   "encode_wall_s": 30.8,
+   "file_bytes": 47684148,
+   "psnr_db_by_level": [
+    [
+     30.22,
+     32.33,
+     27.0
+    ],
+    [
+     28.93,
+     31.96,
+     25.51
+    ],
+    [
+     28.08,
+     31.93,
+     24.67
+    ],
+    [
+     28.38,
+     32.13,
+     25.95
+    ],
+    [
+     29.24,
+     32.64,
+     28.71
+    ],
+    [
+     29.76,
+     33.51,
+     31.79
+    ]
+   ],
+   "colour_psnr_db": 34.18,
+   "decode_all_levels_cpu_s": 3.4,
+   "layout": "COG",
+   "compression": "WEBP",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d1.0": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=1.0",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 38.4,
+   "encode_wall_s": 62.5,
+   "file_bytes": 61397545,
+   "psnr_db_by_level": [
+    [
+     32.65,
+     36.36,
+     26.82
+    ],
+    [
+     32.29,
+     36.34,
+     29.4
+    ],
+    [
+     31.49,
+     36.44,
+     31.23
+    ],
+    [
+     31.56,
+     37.03,
+     33.38
+    ],
+    [
+     32.95,
+     38.51,
+     35.32
+    ],
+    [
+     34.64,
+     40.2,
+     36.7
+    ]
+   ],
+   "colour_psnr_db": 34.41,
+   "decode_all_levels_cpu_s": 4.7,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d1.5": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=1.5",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 38.0,
+   "encode_wall_s": 47.1,
+   "file_bytes": 48996580,
+   "psnr_db_by_level": [
+    [
+     30.8,
+     33.34,
+     26.12
+    ],
+    [
+     30.15,
+     33.32,
+     28.56
+    ],
+    [
+     29.38,
+     33.54,
+     30.57
+    ],
+    [
+     29.62,
+     34.22,
+     33.0
+    ],
+    [
+     30.88,
+     35.4,
+     35.04
+    ],
+    [
+     32.37,
+     36.9,
+     36.68
+    ]
+   ],
+   "colour_psnr_db": 33.87,
+   "decode_all_levels_cpu_s": 4.83,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d2.0": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=2.0",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 38.3,
+   "encode_wall_s": 57.0,
+   "file_bytes": 40644808,
+   "psnr_db_by_level": [
+    [
+     29.32,
+     31.15,
+     25.5
+    ],
+    [
+     28.53,
+     31.13,
+     27.91
+    ],
+    [
+     27.83,
+     31.36,
+     30.14
+    ],
+    [
+     27.79,
+     31.48,
+     32.74
+    ],
+    [
+     28.99,
+     32.72,
+     34.96
+    ],
+    [
+     30.96,
+     35.11,
+     36.65
+    ]
+   ],
+   "colour_psnr_db": 33.5,
+   "decode_all_levels_cpu_s": 4.96,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d2.5": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=2.5",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 38.0,
+   "encode_wall_s": 73.0,
+   "file_bytes": 34164805,
+   "psnr_db_by_level": [
+    [
+     28.07,
+     29.37,
+     24.92
+    ],
+    [
+     27.14,
+     29.25,
+     27.35
+    ],
+    [
+     26.23,
+     29.08,
+     29.75
+    ],
+    [
+     26.09,
+     29.18,
+     32.47
+    ],
+    [
+     27.89,
+     31.44,
+     35.02
+    ],
+    [
+     30.12,
+     34.17,
+     36.71
+    ]
+   ],
+   "colour_psnr_db": 33.29,
+   "decode_all_levels_cpu_s": 4.75,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d3.0": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=3.0",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 36.2,
+   "encode_wall_s": 45.2,
+   "file_bytes": 27631742,
+   "psnr_db_by_level": [
+    [
+     26.81,
+     27.51,
+     24.23
+    ],
+    [
+     25.76,
+     27.23,
+     26.73
+    ],
+    [
+     24.86,
+     27.17,
+     29.37
+    ],
+    [
+     25.13,
+     28.04,
+     32.3
+    ],
+    [
+     27.16,
+     30.64,
+     35.06
+    ],
+    [
+     29.56,
+     33.57,
+     36.83
+    ]
+   ],
+   "colour_psnr_db": 33.38,
+   "decode_all_levels_cpu_s": 4.55,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d4.0": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=4.0",
+    "JXL_EFFORT=5"
+   ],
+   "encode_cpu_s": 34.6,
+   "encode_wall_s": 51.4,
+   "file_bytes": 19588684,
+   "psnr_db_by_level": [
+    [
+     24.99,
+     25.12,
+     23.06
+    ],
+    [
+     23.77,
+     24.84,
+     25.77
+    ],
+    [
+     22.95,
+     25.11,
+     28.83
+    ],
+    [
+     23.45,
+     26.44,
+     32.25
+    ],
+    [
+     25.98,
+     29.53,
+     35.48
+    ],
+    [
+     28.61,
+     32.66,
+     37.15
+    ]
+   ],
+   "colour_psnr_db": 33.59,
+   "decode_all_levels_cpu_s": 8.85,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d2.0-e3": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=2.0",
+    "JXL_EFFORT=3"
+   ],
+   "encode_cpu_s": 11.3,
+   "encode_wall_s": 13.4,
+   "file_bytes": 49243953,
+   "psnr_db_by_level": [
+    [
+     30.78,
+     32.62,
+     25.89
+    ],
+    [
+     29.92,
+     32.46,
+     24.66
+    ],
+    [
+     28.95,
+     32.61,
+     24.21
+    ],
+    [
+     28.92,
+     33.01,
+     26.09
+    ],
+    [
+     29.9,
+     33.93,
+     29.37
+    ],
+    [
+     31.15,
+     35.32,
+     32.18
+    ]
+   ],
+   "colour_psnr_db": 34.05,
+   "decode_all_levels_cpu_s": 4.83,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jxl-d2.0-e7": {
+   "options": [
+    "COMPRESS=JXL",
+    "JXL_LOSSLESS=NO",
+    "JXL_DISTANCE=2.0",
+    "JXL_EFFORT=7"
+   ],
+   "encode_cpu_s": 66.5,
+   "encode_wall_s": 79.8,
+   "file_bytes": 40744207,
+   "psnr_db_by_level": [
+    [
+     29.22,
+     31.05,
+     25.56
+    ],
+    [
+     28.35,
+     31.0,
+     27.86
+    ],
+    [
+     27.65,
+     31.21,
+     30.1
+    ],
+    [
+     27.78,
+     31.49,
+     32.76
+    ],
+    [
+     29.08,
+     32.84,
+     35.12
+    ],
+    [
+     31.07,
+     35.21,
+     36.59
+    ]
+   ],
+   "colour_psnr_db": 33.52,
+   "decode_all_levels_cpu_s": 4.41,
+   "layout": "COG",
+   "compression": "JXL",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  },
+  "jpeg-65-75-full-colour": {
+   "options": "existing file",
+   "file_bytes": 57714053,
+   "psnr_db_by_level": [
+    [
+     27.61,
+     27.71,
+     25.59
+    ],
+    [
+     28.34,
+     29.0,
+     26.1
+    ],
+    [
+     27.66,
+     29.12,
+     25.44
+    ],
+    [
+     27.94,
+     30.09,
+     26.87
+    ],
+    [
+     29.47,
+     32.2,
+     30.24
+    ],
+    [
+     31.41,
+     34.66,
+     33.5
+    ]
+   ],
+   "colour_psnr_db": 36.5,
+   "decode_all_levels_cpu_s": 1.11,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "block": [
+    512,
+    512
+   ],
+   "overviews": 5
+  }
+ }
+}
