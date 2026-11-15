@@ -1124,8 +1124,9 @@ file, Texas 2024 zone 14 with 11,075 quads, would need about 14 GB of task disk 
 - **No national overview run yet.** First: how the files look in the browser reader, and
   whether the build can be improved.
 - **Layout and names of the overview files in the product**: a top-level `overviews/` folder,
-  so the state folders stay file for file what `naip-visualization` would hold. A state file
-  is `overviews/<state>/<year>/<state>-<year>-utm<zone>.tif` (`overviews/nv/2024/nv-2024-utm11.tif`).
+  so the state folders stay file for file what `naip-visualization` would hold. The folder
+  is flat, about 110 files, since each name carries its state and year: a state file is
+  `overviews/<state>-<year>-utm<zone>.tif` (`overviews/nv-2024-utm11.tif`).
   The national file is `overviews/national-latest.tif`, one address that is rewritten when a
   newer flight is added. The overview index is `stac/naip-overviews.parquet`.
 

@@ -56,10 +56,7 @@ def main():
         dates = sorted(q["datetime"] for q in quads if q["naip:state"] == state and q["naip:year"] == int(year)
                        and str(q["proj:epsg"]) in r["zones"])
         geometry, bbox = footprint(r["bounds"], r["target_epsg"])
-        # Files named <state>-<year>-utm<zone> sit under <state>/<year>/; the earlier test files sit at the base.
-        parts = r["name"].split("-")
-        folder = f"{state}/{year}/" if len(parts) == 3 and parts[2].startswith("utm") else ""
-        href = base.rstrip("/") + f"/{folder}{r['name']}.tif"
+        href = base.rstrip("/") + f"/{r['name']}.tif"
         width, height = r["file"]["size"]
         rows.append({
             "stac_version": "1.1.0",
