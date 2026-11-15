@@ -23,6 +23,7 @@ gdal.UseExceptions()
 gdal.SetConfigOption("GDAL_NUM_THREADS", "1")
 gdal.SetConfigOption("GDAL_DISABLE_READDIR_ON_OPEN", "EMPTY_DIR")
 BLOCK = 128
+FLAT = 1.0          # a block that agrees within one grey level as it lies is not out of place
 
 
 def opened(path):
@@ -88,7 +89,8 @@ def main():
                 best = min(moved, key=moved.get)
                 mse = float(((got[:, y:y + BLOCK, x:x + BLOCK] - w) ** 2).mean())
                 found.append({"psnr_db": round(10 * math.log10(255 ** 2 / max(mse, 1e-9)), 2),
-                              "better_moved": list(best) if best != (0, 0) and moved[best] < 0.7 * moved[(0, 0)] else None})
+                              "better_moved": list(best) if best != (0, 0) and moved[(0, 0)] >= FLAT
+                              and moved[best] < 0.7 * moved[(0, 0)] else None})
         if found:
             per_quad.append({"id": quad_id, "level_m": round(level_res, 3), "blocks": len(found),
                              "blocks_better_moved": sum(1 for b in found if b["better_moved"]),
