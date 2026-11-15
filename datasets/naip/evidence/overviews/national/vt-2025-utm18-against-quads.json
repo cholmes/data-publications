@@ -1,0 +1,98 @@
+{
+ "file": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v3/vt-2025-utm18.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 12,
+ "blocks": 240,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 30.96,
+  "median": 34.23
+ },
+ "quads": [
+  {
+   "id": "vt_m_4207323_nw_18_030_20250810",
+   "level_m": 9.615,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.82
+  },
+  {
+   "id": "vt_m_4307260_sw_18_030_20250810",
+   "level_m": 9.611,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.01
+  },
+  {
+   "id": "vt_m_4407256_sw_18_030_20250920",
+   "level_m": 9.612,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 33.21
+  },
+  {
+   "id": "vt_m_4407306_se_18_030_20250811",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.55
+  },
+  {
+   "id": "vt_m_4407239_ne_18_030_20250920",
+   "level_m": 9.609,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.83
+  },
+  {
+   "id": "vt_m_4407244_se_18_030_20250812",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 30.96
+  },
+  {
+   "id": "vt_m_4307218_se_18_030_20250815",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.48
+  },
+  {
+   "id": "vt_m_4407242_se_18_030_20250815",
+   "level_m": 9.61,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 31.95
+  },
+  {
+   "id": "vt_m_4207211_ne_18_030_20250810",
+   "level_m": 9.611,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.76
+  },
+  {
+   "id": "vt_m_4407227_nw_18_030_20250815",
+   "level_m": 9.608,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.54
+  },
+  {
+   "id": "vt_m_4307259_sw_18_030_20250810",
+   "level_m": 9.61,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.0
+  },
+  {
+   "id": "vt_m_4407225_nw_18_030_20250811",
+   "level_m": 9.604,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 33.05
+  }
+ ]
+}

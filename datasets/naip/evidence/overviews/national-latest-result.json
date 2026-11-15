@@ -1,0 +1,79 @@
+{
+ "name": "national-latest",
+ "gdal": "3.13.1",
+ "target_epsg": 3857,
+ "res": 305.748113140705,
+ "read_m": 153.6,
+ "sources": 109,
+ "bytes": 37598495,
+ "bounds": [
+  -13932330.019595645,
+  2661231.5767766964,
+  -7357522.594617926,
+  6418264.391049679
+ ],
+ "seconds": {
+  "read_sources": 1.9,
+  "place": 62.9,
+  "write_file": 2.7,
+  "check": 1.7
+ },
+ "file": {
+  "size": [
+   21504,
+   12288
+  ],
+  "levels": [
+   [
+    10752,
+    6144
+   ],
+   [
+    5376,
+    3072
+   ],
+   [
+    2688,
+    1536
+   ],
+   [
+    1344,
+    768
+   ],
+   [
+    672,
+    384
+   ],
+   [
+    336,
+    192
+   ]
+  ],
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "block": [
+   512,
+   512
+  ],
+  "bands": 3,
+  "mask_per_dataset": true,
+  "mask_matches_canvas": 1.0,
+  "windows": {
+   "count": 200,
+   "lowest_db": [
+    31.03,
+    31.75,
+    30.59
+   ],
+   "median_db": [
+    33.86,
+    34.78,
+    33.09
+   ]
+  }
+ },
+ "covered_share": 0.5361,
+ "dark_share_of_covered": 1e-06,
+ "sources_showing_nothing": [],
+ "max_rss_kb": 7301892
+}

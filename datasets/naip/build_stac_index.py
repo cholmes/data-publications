@@ -10,7 +10,8 @@ almost all of the file from the row-group bbox statistics.
 
     uv run --no-project --with pyarrow==21.0.0 --with pyproj==3.7.2 \
         python build_stac_index.py <out.parquet> <receipts dir> [<receipts dir> ...] \
-        [--base-url https://data.source.coop/nthh/naip/] [--row-group 512] [--sort hilbert|name]
+        [--base-url https://data.source.coop/nthh/naip/] [--row-group 512] [--sort hilbert|name] \
+        [--overviews https://data.source.coop/nthh/naip/stac/naip-overviews.parquet]
 """
 
 import argparse
@@ -55,12 +56,12 @@ def sort_rows(rows, how):
                                                          (r["bbox"]["ymin"] + r["bbox"]["ymax"]) / 2), r["id"]))
 
 
-def collection(rows):
+def collection(rows, links):
     """The STAC Collection these items belong to, kept in the file's own metadata."""
     days = [r["datetime"] for r in rows]
     return {
         "type": "Collection", "stac_version": "1.1.0", "stac_extensions": [], "id": "naip",
-        "title": "NAIP display copies, 2024 onward",
+        "title": "NAIP display copies",
         "description": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA National Agriculture Imagery Program quarter "
                        "quads, one item per file, converted from the four-band files in s3://naip-analytic. "
                        "NAIP imagery is in the public domain and USDA asks for credit; these files are a format "
@@ -77,11 +78,11 @@ def collection(rows):
                       "proj:code": sorted({r["proj:code"] for r in rows})},
         "item_assets": {"image": {"type": "image/tiff; application=geotiff; profile=cloud-optimized",
                                   "roles": ["data", "visual"], "title": "RGB JPEG Cloud-Optimized GeoTIFF"}},
-        "links": [],
+        "links": links,
     }
 
 
-def write(rows, out, row_group):
+def write(rows, out, row_group, links):
     table = pa.Table.from_pylist(rows)
     # GeoParquet's bbox covering wants the struct's fields in this order; inferred structs come out
     # alphabetical.
@@ -93,7 +94,7 @@ def write(rows, out, row_group):
         "bbox": [min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
                  max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
-    stac = {"version": "1.1.0", "collections": {"naip": collection(rows)}}
+    stac = {"version": "1.1.0", "collections": {"naip": collection(rows, links)}}
     table = table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)})
     # Statistics only on the columns a reader filters by: on every column they are most of
     # the footer, which a reader fetches whole before anything else.
@@ -103,10 +104,10 @@ def write(rows, out, row_group):
 
 def item(receipt, base_url, transformers):
     key = receipt["out_uri"].split("/", 3)[3]
-    # <state>/<year>/<res>/rgb/<block>/m_<quad>_<quarter>_<zone>_<res>_<yyyymmdd>.tif
+    # <state>/<year>/<res>/rgb/<block>/m_<quad>_<quarter>_<zone>_<res>_<yyyymmdd flown>[_<yyyymmdd made>].tif
     path = "/".join(key.split("/")[-6:])
     state, year, resolution, _, _, filename = path.split("/")
-    flown = filename[:-4].rsplit("_", 1)[-1]
+    flown = filename[:-4].split("_")[5]      # a 2023 name carries a second date after it, the day the file was made
     ring, native = footprint(receipt, transformers)
     out = receipt["output"]
     sha = receipt.get("output_sha256")
@@ -149,6 +150,7 @@ def main():
     p.add_argument("--base-url", default="https://data.source.coop/nthh/naip/")
     p.add_argument("--row-group", type=int, default=512)
     p.add_argument("--sort", choices=["hilbert", "name"], default="hilbert")
+    p.add_argument("--overviews", help="URL of the index of overview files; kept as a link in the collection")
     a = p.parse_args()
 
     rows, transformers = [], {}
@@ -158,7 +160,10 @@ def main():
                 with open(os.path.join(d, name)) as f:
                     rows.append(item(json.load(f), a.base_url, transformers))
     sort_rows(rows, a.sort)
-    write(rows, a.out, a.row_group)
+    links = [] if not a.overviews else [{
+        "rel": "overviews", "href": a.overviews, "type": "application/vnd.apache.parquet",
+        "title": "Reduced pictures of whole states and of the country, one item per file (STAC GeoParquet)"}]
+    write(rows, a.out, a.row_group, links)
     print(json.dumps({"rows": len(rows), "bytes": os.path.getsize(a.out),
                       "row_groups": pq.ParquetFile(a.out).num_row_groups,
                       "epsg": sorted({r["proj:epsg"] for r in rows})}))

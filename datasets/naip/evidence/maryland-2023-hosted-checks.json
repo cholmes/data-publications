@@ -1,0 +1,37 @@
+{
+ "bucket": "us-west-2.opendata.source.coop",
+ "prefix": "nthh/naip/md/2023/30cm/rgb/",
+ "receipts": 901,
+ "runs": [
+  "md2023-pub-1"
+ ],
+ "listing": {
+  "listed": 901,
+  "bytes": 74940058324,
+  "missing": [],
+  "extra": [],
+  "wrong_size": [],
+  "pass": true
+ },
+ "sample": {
+  "every": 45,
+  "files": 21,
+  "read_from": "a task in us-west-2 (sample_hosted.py)",
+  "not_read": [],
+  "sha256": {
+   "mismatches": [],
+   "pass": true
+  },
+  "open_in_place": {
+   "gdal": "3.13.1",
+   "problems": [],
+   "pass": true
+  }
+ },
+ "index": {
+  "rows": 901,
+  "differ": [],
+  "pass": true
+ },
+ "pass": true
+}

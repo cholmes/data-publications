@@ -1,0 +1,56 @@
+{
+ "file": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v3/nd-2025-utm13.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 6,
+ "blocks": 100,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 34.57,
+  "median": 38.52
+ },
+ "quads": [
+  {
+   "id": "nd_m_4610225_se_13_030_20250710",
+   "level_m": 9.605,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 35.77
+  },
+  {
+   "id": "nd_m_4610352_ne_13_030_20250710",
+   "level_m": 9.602,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.47
+  },
+  {
+   "id": "nd_m_4810212_ne_13_030_20250630",
+   "level_m": 9.614,
+   "blocks": 15,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.17
+  },
+  {
+   "id": "nd_m_4810229_nw_13_030_20250630",
+   "level_m": 9.617,
+   "blocks": 15,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 38.09
+  },
+  {
+   "id": "nd_m_4710344_se_13_030_20250701",
+   "level_m": 9.614,
+   "blocks": 15,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.57
+  },
+  {
+   "id": "nd_m_4710355_se_13_030_20250702",
+   "level_m": 9.608,
+   "blocks": 15,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.89
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "file": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v3/ny-2024-utm19.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 6,
+ "blocks": 120,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 31.68,
+  "median": 43.9
+ },
+ "quads": [
+  {
+   "id": "ny_m_4107141_sw_19_060_20240702",
+   "level_m": 9.608,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.13
+  },
+  {
+   "id": "ny_m_4107158_sw_19_060_20240702",
+   "level_m": 9.607,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 35.17
+  },
+  {
+   "id": "ny_m_4107157_se_19_060_20240702",
+   "level_m": 9.616,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 32.53
+  },
+  {
+   "id": "ny_m_4107157_sw_19_060_20240702",
+   "level_m": 9.608,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 31.68
+  },
+  {
+   "id": "ny_m_4107157_nw_19_060_20240702",
+   "level_m": 9.6,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.74
+  },
+  {
+   "id": "ny_m_4107157_ne_19_060_20240702",
+   "level_m": 9.608,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.4
+  }
+ ]
+}

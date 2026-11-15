@@ -6,7 +6,7 @@ copies both into evidence/ under the state's name, and prints one table row (for
 VALIDATION.md) and one build.converted entry (for dataset.yaml). The table and the entries
 are generated here so they are never typed by hand.
 
-    python3 record_runs.py <runs dir> --table table.md --entries entries.yaml [--skip run,run]
+    python3 record_runs.py <runs dir> --table table.md --entries entries.yaml [--skip run,run] [--plan launch-plan.json]
 
 --skip names runs whose dataset.yaml entry already exists; they stay in the table.
 """
@@ -27,6 +27,7 @@ STATES = {
     "or": "oregon", "pa": "pennsylvania", "sc": "south-carolina", "sd": "south-dakota",
     "tn": "tennessee", "tx": "texas", "va": "virginia", "wi": "wisconsin", "wv": "west-virginia",
     "wy": "wyoming",
+    "co": "colorado", "de": "delaware", "md": "maryland", "ut": "utah", "wa": "washington",
 }
 
 
@@ -41,8 +42,9 @@ def main():
     p.add_argument("--table", required=True)
     p.add_argument("--entries", required=True)
     p.add_argument("--skip", default="")
+    p.add_argument("--plan", default=os.path.join(HERE, "evidence", "national-launch-plan.json"))
     a = p.parse_args()
-    plan = load(os.path.join(HERE, "evidence", "national-launch-plan.json"))["runs"]
+    plan = load(a.plan)["runs"]
     twice = {}                                   # states with two resolutions in one year
     for r in plan:
         state, year, _ = r["manifest"].split("-")
@@ -60,7 +62,7 @@ def main():
         flown, finished, lowest = [], 0.0, 9.0
         for receipt_name in os.listdir(f"{folder}/receipts"):
             receipt = load(f"{folder}/receipts/{receipt_name}")
-            flown.append(receipt["id"].rsplit("_", 1)[1])
+            flown.append(receipt["id"].split("_")[6])      # not a 2023 name's second date
             finished = max(finished, receipt["finished_unix"])
             lowest = min(lowest, min(min(pair) for pair in receipt["output"]["overview_edges"]))
         day = lambda d: f"{d[:4]}-{d[4:6]}-{d[6:]}"

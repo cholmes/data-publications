@@ -1,0 +1,56 @@
+{
+ "file": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v3/nj-2025-utm18.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 6,
+ "blocks": 120,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 31.97,
+  "median": 37.28
+ },
+ "quads": [
+  {
+   "id": "nj_m_3907416_nw_18_060_20250704",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 38.31
+  },
+  {
+   "id": "nj_m_3907537_se_18_060_20250705",
+   "level_m": 9.604,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 35.46
+  },
+  {
+   "id": "nj_m_4107442_se_18_060_20250809",
+   "level_m": 9.609,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 31.97
+  },
+  {
+   "id": "nj_m_4107457_se_18_060_20250809",
+   "level_m": 9.61,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 33.56
+  },
+  {
+   "id": "nj_m_4007455_se_18_060_20250704",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 34.89
+  },
+  {
+   "id": "nj_m_4007461_ne_18_060_20250704",
+   "level_m": 9.604,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 35.47
+  }
+ ]
+}

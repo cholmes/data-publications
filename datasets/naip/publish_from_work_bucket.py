@@ -56,12 +56,12 @@ def main():
     with open(a.copies) as f:
         wanted = json.load(f)
     bucket, cluster = stack["bucket_name"], stack["cluster_name"]
-    request_key, result_key, program_key = (f"_publish/{a.run}-{part}" for part in ("request.json", "result.json", "copy.py"))
+    request_key, result_key, program_key = (f"_publish/{a.run}-{part}" for part in ("request.json", "result.json", "copies.py"))
     for key, body in ((request_key, json.dumps(wanted)), (program_key, PROGRAM)):
         subprocess.run(["aws", "--region", REGION, "s3", "cp", "--only-show-errors", "-", f"s3://{bucket}/{key}"],
                        input=body.encode(), check=True)
-    command = (f"python3 -c \"import boto3; boto3.client('s3').download_file('{bucket}','{program_key}','/tmp/copy.py')\""
-               " && timeout 3000 python3 /tmp/copy.py")
+    command = (f"python3 -c \"import boto3; boto3.client('s3').download_file('{bucket}','{program_key}','/tmp/publish_copies.py')\""
+               " && timeout 3000 python3 /tmp/publish_copies.py")      # not copy.py: that name hides Python's own copy module
     overrides = {"cpu": "1024", "memory": "2048", "containerOverrides": [{"name": CONTAINER, "command": [command], "environment": [
         {"name": "WORK_BUCKET", "value": bucket}, {"name": "REQUEST_KEY", "value": request_key},
         {"name": "RESULT_KEY", "value": result_key}]}]}

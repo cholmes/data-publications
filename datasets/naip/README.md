@@ -1,4 +1,4 @@
-# NAIP display copies, 2024 onward
+# NAIP display copies
 
 The National Agriculture Imagery Program (NAIP) flies the United States at 30 or 60 cm. On AWS it
 is published twice: `s3://naip-analytic` holds the four-band data, and `s3://naip-visualization`
@@ -7,7 +7,7 @@ copy stops at 2023. The 2024 and 2025 flights are in `naip-analytic` only, as re
 files that few tools read.
 
 Microsoft Planetary Computer also publishes NAIP, as four-band Cloud-Optimized GeoTIFFs on Azure.
-On 2026-11-14 its catalogue had at least one item for 34 of the 51 state-years hosted here and
+On 2026-11-14 its catalogue had at least one item for 34 of the 51 state-years of 2024 and 2025 hosted here and
 none for the other 17 (`evidence/planetary-computer-presence.json`, made by
 `check_planetary_computer.py`; the check tests presence, not completeness). Maine 2025 is there
 at 60 cm and here at 30 cm.
@@ -15,11 +15,25 @@ at 60 cm and here at 30 cm.
 This workspace makes the missing display copy: one RGB JPEG Cloud-Optimized GeoTIFF per quarter
 quad, with the same settings, file names and key layout as `naip-visualization`.
 
-**Status (2026-11-14):** all 52 state-years are converted and hosted in the Source Cooperative
-product `nthh/naip`, which is unlisted: 221,255 files, 11.03 TB, about 6% of the size of the
-source. Each state-year passed the hosted checks in [PUBLISHING.md](PUBLISHING.md);
-[VALIDATION.md](VALIDATION.md) has the results of each. The index at
-`stac/naip.parquet` lists every file. There are no overview files above the quad yet.
+**Status (2026-11-14):** every 2024 and 2025 state-year is converted and hosted in the Source
+Cooperative product `nthh/naip`, which is unlisted, with five earlier ones: Colorado, Delaware,
+Maryland and Washington 2023, the latest flight of those states, and Utah 2021 for its
+late-season flights. Those five are also in `naip-visualization`; they are here so one product
+and one index cover the country. In all 56 state-years in 48 states: 241,507 files, 12.43 TB,
+about 6% of the size of the source. Each state-year passed the hosted checks in
+[PUBLISHING.md](PUBLISHING.md); [VALIDATION.md](VALIDATION.md) has the results of each. The index
+at `stac/naip.parquet` lists every file.
+
+The country is not whole. Pennsylvania 2024 and West Virginia 2024 are partial flights, the
+2024 folders of the source lack every quad numbered `xx12023` (at 120 W in California, Oregon
+and Nevada), and Florida 2025 lacks a strip of south Florida. VALIDATION.md has the detail.
+
+**Overview files** are in `overviews/`: 109 reduced pictures of one state, year and UTM zone at
+9.6 m, and one of the country in Web Mercator at about 240 m with the latest flight of each
+state on top (110 files, 20.8 GB). `stac/naip-overviews.parquet` lists them, one item per file,
+with the pixel size in `gsd`; the collection record of `stac/naip.parquet` links to it with
+rel `overviews`. A map draws the coarsest files whose `gsd` is no larger than a screen pixel
+and the quads when none is that fine.
 [flight-dates/](flight-dates/) holds a viewer of when every quad was flown.
 
 ## Layout
@@ -27,7 +41,13 @@ source. Each state-year passed the hosted checks in [PUBLISHING.md](PUBLISHING.m
 ```
 <state>/<year>/<resolution>/rgb/<block>/m_<quad>_<quarter>_<utm zone>_<resolution>_<date flown>.tif
 ut/2024/60cm/rgb/40112/m_4011233_ne_12_060_20240712.tif
+overviews/<state>-<year>-utm<zone>.tif          overviews/ut-2024-utm12.tif
+overviews/national-latest.tif
+stac/naip.parquet                               one item per quad file
+stac/naip-overviews.parquet                     one item per overview file
 ```
+
+A 2023 file name carries two dates: the day flown, then the day the file was made.
 
 A file here has the same path it would have in `naip-visualization`. Each file is in its own UTM
 zone, 512 px JPEG blocks at quality 65, with overviews at quality 75. Adjacent quads overlap.

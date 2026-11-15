@@ -1,0 +1,80 @@
+{
+ "national-latest": {
+  "size": [
+   21504,
+   12288
+  ],
+  "levels": 6,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.552,
+  "mean_red_where_covered": 130.9,
+  "seconds": 1.3
+ },
+ "tx-2024-utm14": {
+  "size": [
+   61440,
+   125440
+  ],
+  "levels": 8,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.65,
+  "mean_red_where_covered": 148.8,
+  "seconds": 0.7
+ },
+ "ut-2021-utm12": {
+  "size": [
+   47104,
+   59904
+  ],
+  "levels": 7,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.863,
+  "mean_red_where_covered": 142.3,
+  "seconds": 0.8
+ },
+ "co-2023-utm13": {
+  "size": [
+   56320,
+   48640
+  ],
+  "levels": 7,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.945,
+  "mean_red_where_covered": 124.4,
+  "seconds": 0.9
+ },
+ "ny-2024-utm19": {
+  "size": [
+   2048,
+   4096
+  ],
+  "levels": 3,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.396,
+  "mean_red_where_covered": 65.3,
+  "seconds": 0.4
+ },
+ "vt-2025-utm18": {
+  "size": [
+   12800,
+   28672
+  ],
+  "levels": 6,
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "mask_per_dataset": true,
+  "covered_share_smallest_level": 0.755,
+  "mean_red_where_covered": 104.0,
+  "seconds": 0.9
+ }
+}

@@ -1,6 +1,6 @@
-# NAIP display copies, 2024 onward
+# NAIP display copies
 
-RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads for the state-years that the AWS naip-visualization bucket does not hold, converted from the naip-analytic MRF files with the same settings, file names and key layout.
+RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.
 
 **Planned product:** no converted release is currently available.
 
@@ -28,7 +28,8 @@ No versioned display package is recorded.
 
 - Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.
 - Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.
-- There are no overview files above the quad yet. A view wider than a few quads opens one file per quad.
+- Pennsylvania 2024 and West Virginia 2024 are partial flights; the rest of both states was last flown in 2022 and is not here. The 2024 folders of the source lack every quad numbered xx12023 (California, Oregon and Nevada at 120 W), and Florida 2025 lacks a strip of south Florida.
+- The overview files are for drawing a map, not for measurement. A state file holds one flight year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each state, so neighbouring states can differ in year and in tone.
 - Adjacent quarter quads overlap, as they do in the source.
 
 Public hosting and scientific validation status must be checked independently.

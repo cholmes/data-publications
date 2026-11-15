@@ -44,9 +44,9 @@ def main(receipts_dir, out_path):
         with open(os.path.join(receipts_dir, name)) as f:
             r = json.load(f)
         key = r["out_uri"].split("/", 3)[3] if "out_uri" in r else r["out_key"]
-        # <state>/<year>/<res>/rgb/<block>/m_<quad>_<quarter>_<zone>_<res>_<yyyymmdd>.tif
+        # <state>/<year>/<res>/rgb/<block>/m_<quad>_<quarter>_<zone>_<res>_<yyyymmdd flown>[_<yyyymmdd made>].tif
         state, year, resolution, _, _, filename = key.split("/")[-6:]
-        flown = filename[:-4].rsplit("_", 1)[-1]
+        flown = filename[:-4].split("_")[5]      # a 2023 name carries a second date after it, the day the file was made
         ring, native = footprint(r, transformers)
         psnr = r.get("psnr_db")
         rows.append({

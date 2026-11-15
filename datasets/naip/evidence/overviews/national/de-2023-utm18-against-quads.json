@@ -1,0 +1,56 @@
+{
+ "file": "https://private-work-bucket.s3.us-west-2.amazonaws.com/_proto/grid-1/overviews/v3/de-2023-utm18.tif",
+ "pixel_m": 9.6,
+ "quads_sampled": 6,
+ "blocks": 120,
+ "blocks_better_moved_by_one_pixel": 0,
+ "quads_with_a_moved_block": 0,
+ "psnr_db": {
+  "lowest": 31.79,
+  "median": 38.12
+ },
+ "quads": [
+  {
+   "id": "de_m_3807511_ne_18_030_20230729_20230919",
+   "level_m": 9.616,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 37.12
+  },
+  {
+   "id": "de_m_3807527_sw_18_030_20230819_20230919",
+   "level_m": 9.614,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 33.64
+  },
+  {
+   "id": "de_m_3907543_sw_18_030_20230711_20230919",
+   "level_m": 9.601,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 36.13
+  },
+  {
+   "id": "de_m_3907550_se_18_030_20230711_20230919",
+   "level_m": 9.609,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 35.94
+  },
+  {
+   "id": "de_m_3907528_ne_18_030_20230711_20230919",
+   "level_m": 9.601,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 39.65
+  },
+  {
+   "id": "de_m_3907535_ne_18_030_20230711_20230919",
+   "level_m": 9.601,
+   "blocks": 20,
+   "blocks_better_moved": 0,
+   "lowest_psnr_db": 31.79
+  }
+ ]
+}

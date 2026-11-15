@@ -1,6 +1,6 @@
 schema_version: 1
 id: naip
-title: NAIP display copies, 2024 onward
+title: NAIP display copies
 intake:
   kind: producer
   reference_url: https://registry.opendata.aws/naip/
@@ -20,10 +20,12 @@ publication:
     owner_status: confirmed
     account_verification: null
     product_id: naip
-    title: NAIP display copies, 2024 onward
-    summary: RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads for the state-years that the
-      AWS naip-visualization bucket does not hold, converted from the naip-analytic MRF files with the
-      same settings, file names and key layout.
+    title: NAIP display copies
+    summary: RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the
+      naip-analytic MRF files with the settings, file names and key layout of the AWS
+      naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and
+      the latest flight of the four states last flown in 2023, with reduced pictures of each state
+      and of the country for drawing a map.
     tags:
     - naip
     - aerial-imagery
@@ -42,8 +44,12 @@ publication:
       overviews at quality 75 and colour at half resolution. The near-infrared band and the
       lossless pixels stay in s3://naip-analytic.
     - Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.
-    - There are no overview files above the quad yet. A view wider than a few quads opens one
-      file per quad.
+    - Pennsylvania 2024 and West Virginia 2024 are partial flights; the rest of both states was last
+      flown in 2022 and is not here. The 2024 folders of the source lack every quad numbered xx12023
+      (California, Oregon and Nevada at 120 W), and Florida 2025 lacks a strip of south Florida.
+    - The overview files are for drawing a map, not for measurement. A state file holds one flight
+      year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each
+      state, so neighbouring states can differ in year and in tone.
     - Adjacent quarter quads overlap, as they do in the source.
     supplements: []
 source:
@@ -65,6 +71,18 @@ build:
   settings: 'COG driver, bands 1 to 3, COMPRESS=JPEG, QUALITY=65, OVERVIEW_QUALITY=75, BLOCKSIZE=512,
     OVERVIEW_RESAMPLING=AVERAGE, OVERVIEWS=IGNORE_EXISTING'
   output_layout: <state>/<year>/<resolution>/rgb/<block>/<name>.tif
+  overviews:
+    builder: datasets/naip/overview.py (state files), datasets/naip/national.py (national file)
+    settings: 'COG driver, COMPRESS=JPEG, QUALITY=75, OVERVIEW_QUALITY=75, BLOCKSIZE=512, with a mask;
+      state files from the 9.6 m level of the quads, bilinear, in the quads'' UTM zone; national file
+      in EPSG:3857 at 305.748 m (zoom 9 of 256 pixel tiles), averaged from the state files'
+    output_layout: overviews/<state>-<year>-utm<zone>.tif, overviews/national-latest.tif
+    index: stac/naip-overviews.parquet (110 items; linked from stac/naip.parquet with rel overviews)
+    files: 110
+    bytes: 20840004811
+    built_on: '2026-11-14'
+    evidence: datasets/naip/evidence/overviews/national-run-files.md
+    location: nthh/naip on Source Cooperative (unlisted)
   validation: datasets/naip/VALIDATION.md
   converted:
   - state_year: ut-2024-60cm
@@ -555,6 +573,51 @@ build:
     bytes: 3027300284
     summary: datasets/naip/evidence/west-virginia-2024-summary.json
     hosted_checks: datasets/naip/evidence/west-virginia-2024-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: co-2023-30cm
+    run: co2023-pub-1
+    converted_on: '2026-11-15'
+    files: 7423
+    bytes: 1000641355313
+    summary: datasets/naip/evidence/colorado-2023-summary.json
+    hosted_checks: datasets/naip/evidence/colorado-2023-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: de-2023-30cm
+    run: de2023-pub-1
+    converted_on: '2026-11-15'
+    files: 176
+    bytes: 13844475047
+    summary: datasets/naip/evidence/delaware-2023-summary.json
+    hosted_checks: datasets/naip/evidence/delaware-2023-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: md-2023-30cm
+    run: md2023-pub-1
+    converted_on: '2026-11-15'
+    files: 901
+    bytes: 74940058324
+    summary: datasets/naip/evidence/maryland-2023-summary.json
+    hosted_checks: datasets/naip/evidence/maryland-2023-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ut-2021-60cm
+    run: ut2021-pub-1
+    converted_on: '2026-11-15'
+    files: 6032
+    bytes: 165130422928
+    summary: datasets/naip/evidence/utah-2021-summary.json
+    hosted_checks: datasets/naip/evidence/utah-2021-hosted-checks.json
+    hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: wa-2023-60cm
+    run: wa2023-pub-1
+    converted_on: '2026-11-15'
+    files: 5720
+    bytes: 148795094475
+    summary: datasets/naip/evidence/washington-2023-summary.json
+    hosted_checks: datasets/naip/evidence/washington-2023-hosted-checks.json
     hosted_checks_result: passed 2026-11-14
     location: nthh/naip on Source Cooperative (unlisted)
   publishing: datasets/naip/PUBLISHING.md
