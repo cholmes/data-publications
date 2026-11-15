@@ -9,9 +9,11 @@ this one unchanged: `gsd` is the file's finest level and `datetime` is the lates
 date among the quads of the same state, year and zone, with the first in `start_datetime`.
 
 The footprint of a state file is an outline of its quads, not the file's rectangle, which
-for most states is a third empty: the union of the quad footprints, widened a little,
-holes dropped, and simplified by less than it was widened, so it still covers every quad.
-A reader that asks which files are in view is then not sent to a file with no picture there.
+for most states is a third empty: the union of the quad footprints, widened a little and
+simplified by less than it was widened, so it still covers every quad. A hole the size of a
+missing quad or more is kept and smaller ones are dropped. A reader that asks which files are
+in view is then not sent to a file with no picture there, and where a newer flight lacks
+quads it goes on to the older file that has them.
 A state with islands has an outline of several parts (a MultiPolygon).
 The file's rectangle is in `proj:bbox`. The national file's footprint is its rectangle.
 
@@ -37,6 +39,7 @@ ogr.UseExceptions()
 
 EDGE_POINTS = 16
 GROW = 0.002        # degrees an outline is widened by before it is simplified, about 200 m
+HOLE = 0.001        # square degrees: the smallest hole kept in an outline. A quarter quad is 0.0625 degrees a side (0.0039)
 QUAD_INDEX_URL = os.environ.get("QUAD_INDEX_URL", "https://data.source.coop/nthh/naip/stac/naip.parquet")
 TYPE = "image/tiff; application=geotiff; profile=cloud-optimized"
 EXTENSIONS = ["https://stac-extensions.github.io/projection/v2.0.0/schema.json",
@@ -92,18 +95,23 @@ def footprint(bounds, epsg):
 
 
 def outline(quads):
-    """The union of these quad footprints (WKB), widened by GROW, holes dropped, simplified by less than GROW; and its bbox."""
+    """The union of these quad footprints (WKB), widened by GROW, holes under HOLE dropped, simplified by less than GROW; and its bbox."""
     parts = ogr.Geometry(ogr.wkbMultiPolygon)
     for wkb in quads:
         parts.AddGeometry(ogr.CreateGeometryFromWkb(bytes(wkb)))
     joined = parts.UnionCascaded().Buffer(GROW, 2)
-    solid = ogr.Geometry(ogr.wkbMultiPolygon)
+    kept = ogr.Geometry(ogr.wkbMultiPolygon)
     for i in range(max(1, joined.GetGeometryCount() if joined.GetGeometryType() == ogr.wkbMultiPolygon else 1)):
         polygon = joined.GetGeometryRef(i) if joined.GetGeometryType() == ogr.wkbMultiPolygon else joined
         shell = ogr.Geometry(ogr.wkbPolygon)
         shell.AddGeometry(polygon.GetGeometryRef(0))
-        solid.AddGeometry(shell)
-    shape = solid.UnionCascaded().Simplify(GROW / 2)
+        for j in range(1, polygon.GetGeometryCount()):
+            hole = ogr.Geometry(ogr.wkbPolygon)
+            hole.AddGeometry(polygon.GetGeometryRef(j))
+            if hole.GetArea() >= HOLE:
+                shell.AddGeometry(polygon.GetGeometryRef(j))
+        kept.AddGeometry(shell)
+    shape = kept.UnionCascaded().SimplifyPreserveTopology(GROW / 2)
     xmin, xmax, ymin, ymax = shape.GetEnvelope()
     return bytes(shape.ExportToIsoWkb()), {"xmin": xmin, "ymin": ymin, "xmax": xmax, "ymax": ymax}
 

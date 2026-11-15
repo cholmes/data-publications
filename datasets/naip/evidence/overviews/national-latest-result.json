@@ -4,8 +4,8 @@
  "target_epsg": 3857,
  "res": 305.748113140705,
  "read_m": 153.6,
- "sources": 109,
- "bytes": 37598495,
+ "sources": 116,
+ "bytes": 38103185,
  "bounds": [
   -13932330.019595645,
   2661231.5767766964,
@@ -13,8 +13,8 @@
   6418264.391049679
  ],
  "seconds": {
-  "read_sources": 1.9,
-  "place": 62.9,
+  "read_sources": 2.0,
+  "place": 64.9,
   "write_file": 2.7,
   "check": 1.7
  },
@@ -66,14 +66,14 @@
     30.59
    ],
    "median_db": [
-    33.86,
-    34.78,
+    33.83,
+    34.67,
     33.09
    ]
   }
  },
- "covered_share": 0.5361,
+ "covered_share": 0.5454,
  "dark_share_of_covered": 1e-06,
  "sources_showing_nothing": [],
- "max_rss_kb": 7301892
+ "max_rss_kb": 7377596
 }

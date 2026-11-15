@@ -44,9 +44,11 @@ publication:
       overviews at quality 75 and colour at half resolution. The near-infrared band and the
       lossless pixels stay in s3://naip-analytic.
     - Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.
-    - Pennsylvania 2024 and West Virginia 2024 are partial flights; the rest of both states was last
-      flown in 2022 and is not here. The 2024 folders of the source lack every quad numbered xx12023
-      (California, Oregon and Nevada at 120 W), and Florida 2025 lacks a strip of south Florida.
+    - Pennsylvania 2024 and West Virginia 2024 are partial flights, the 2024 folders of the source
+      lack every quad numbered xx12023 (California and Oregon at 120 W), and Florida 2025 lacks a
+      strip of south Florida. Those places are filled from the flight before, with Pennsylvania 2022
+      and West Virginia 2022 whole and only the missing quads from California 2022, Oregon 2022 and
+      Florida 2023. They differ from their neighbours in year, season and tone.
     - The overview files are for drawing a map, not for measurement. A state file holds one flight
       year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each
       state, so neighbouring states can differ in year and in tone.
@@ -77,10 +79,10 @@ build:
       state files from the 9.6 m level of the quads, bilinear, in the quads'' UTM zone; national file
       in EPSG:3857 at 305.748 m (zoom 9 of 256 pixel tiles), averaged from the state files'
     output_layout: overviews/<state>-<year>-utm<zone>.tif, overviews/national-latest.tif
-    index: stac/naip-overviews.parquet (110 items; linked from stac/naip.parquet with rel overviews)
-    files: 110
-    bytes: 20840004811
-    built_on: '2026-11-14'
+    index: stac/naip-overviews.parquet (117 items; linked from stac/naip.parquet with rel overviews)
+    files: 117
+    bytes: 21382536345
+    built_on: '2026-11-15'
     evidence: datasets/naip/evidence/overviews/national-run-files.md
     location: nthh/naip on Source Cooperative (unlisted)
   validation: datasets/naip/VALIDATION.md
@@ -619,5 +621,50 @@ build:
     summary: datasets/naip/evidence/washington-2023-summary.json
     hosted_checks: datasets/naip/evidence/washington-2023-hosted-checks.json
     hosted_checks_result: passed 2026-11-14
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: ca-2022-60cm
+    run: ca2022-pub-1
+    converted_on: '2026-11-15'
+    files: 32
+    bytes: 739657792
+    summary: datasets/naip/evidence/california-2022-summary.json
+    hosted_checks: datasets/naip/evidence/california-2022-hosted-checks.json
+    hosted_checks_result: passed 2026-11-15
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: fl-2023-30cm
+    run: fl2023-pub-1
+    converted_on: '2026-11-15'
+    files: 150
+    bytes: 14022799145
+    summary: datasets/naip/evidence/florida-2023-summary.json
+    hosted_checks: datasets/naip/evidence/florida-2023-hosted-checks.json
+    hosted_checks_result: passed 2026-11-15
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: or-2022-30cm
+    run: or2022-pub-1
+    converted_on: '2026-11-15'
+    files: 16
+    bytes: 1378321358
+    summary: datasets/naip/evidence/oregon-2022-summary.json
+    hosted_checks: datasets/naip/evidence/oregon-2022-hosted-checks.json
+    hosted_checks_result: passed 2026-11-15
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: pa-2022-60cm
+    run: pa2022-pub-1
+    converted_on: '2026-11-15'
+    files: 3237
+    bytes: 84524965038
+    summary: datasets/naip/evidence/pennsylvania-2022-summary.json
+    hosted_checks: datasets/naip/evidence/pennsylvania-2022-hosted-checks.json
+    hosted_checks_result: passed 2026-11-15
+    location: nthh/naip on Source Cooperative (unlisted)
+  - state_year: wv-2022-60cm
+    run: wv2022-pub-1
+    converted_on: '2026-11-15'
+    files: 1831
+    bytes: 70377678551
+    summary: datasets/naip/evidence/west-virginia-2022-summary.json
+    hosted_checks: datasets/naip/evidence/west-virginia-2022-hosted-checks.json
+    hosted_checks_result: passed 2026-11-15
     location: nthh/naip on Source Cooperative (unlisted)
   publishing: datasets/naip/PUBLISHING.md

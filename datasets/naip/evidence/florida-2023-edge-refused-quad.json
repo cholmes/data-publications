@@ -1,0 +1,122 @@
+{
+ "share": 0.85,
+ "slack": 3.0,
+ "files": 1,
+ "passed": 1,
+ "results": [
+  {
+   "id": "fl_m_2608035_nw_17_030_20230228_20230511",
+   "key": "nthh/naip/fl/2023/30cm/rgb/26080/m_2608035_nw_17_030_20230228_20230511.tif",
+   "lon": -80.7187,
+   "lat": 26.4687,
+   "receipt_edge_ratios": [
+    [
+     1.009,
+     0.997
+    ],
+    [
+     1.007,
+     0.996
+    ],
+    [
+     1.011,
+     1.0
+    ],
+    [
+     0.917,
+     1.015
+    ],
+    [
+     0.71,
+     1.039
+    ],
+    [
+     0.523,
+     1.076
+    ]
+   ],
+   "black_share": 0.0,
+   "levels": [
+    {
+     "level": 1,
+     "last_row": {
+      "stored": 56.47,
+      "full_resolution": 56.56,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.42,
+      "full_resolution": 104.49,
+      "pass": true
+     }
+    },
+    {
+     "level": 2,
+     "last_row": {
+      "stored": 56.34,
+      "full_resolution": 56.35,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.62,
+      "full_resolution": 104.63,
+      "pass": true
+     }
+    },
+    {
+     "level": 3,
+     "last_row": {
+      "stored": 56.22,
+      "full_resolution": 56.1,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.8,
+      "full_resolution": 104.69,
+      "pass": true
+     }
+    },
+    {
+     "level": 4,
+     "last_row": {
+      "stored": 55.97,
+      "full_resolution": 56.04,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.94,
+      "full_resolution": 104.63,
+      "pass": true
+     }
+    },
+    {
+     "level": 5,
+     "last_row": {
+      "stored": 56.56,
+      "full_resolution": 58.06,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 104.48,
+      "full_resolution": 103.99,
+      "pass": true
+     }
+    },
+    {
+     "level": 6,
+     "last_row": {
+      "stored": 65.93,
+      "full_resolution": 67.34,
+      "pass": true
+     },
+     "last_column": {
+      "stored": 102.65,
+      "full_resolution": 102.14,
+      "pass": true
+     }
+    }
+   ],
+   "pass": true
+  }
+ ]
+}

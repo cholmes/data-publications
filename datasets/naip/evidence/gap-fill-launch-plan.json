@@ -1,0 +1,98 @@
+{
+ "made": "2026-11-11",
+ "basis": "Shards are sized by source bytes so each is about SHARD_HOURS of work at the measured\ntask-hours per source TB (whole task time, start-up and Spot rework included, runs\nnh2025-pub-2, ut2024-pub-2, vt2025-pub-1 on image v4). Waves keep running tasks under WAVE_TASKS.",
+ "totals": {
+  "runs": 5,
+  "quads": 5266,
+  "source_tb": 2.51,
+  "shards": 36,
+  "expected_task_hours": 20,
+  "expected_compute_usd": 0.35,
+  "max_usd_bound": 2.14
+ },
+ "waves": [
+  {
+   "wave": 1,
+   "tasks": 36,
+   "runs": [
+    "pa2022-pub-1",
+    "wv2022-pub-1",
+    "fl2023-pub-1",
+    "ca2022-pub-1",
+    "or2022-pub-1"
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "run": "ca2022-pub-1",
+   "manifest": "ca-2022-60cm",
+   "quads": 32,
+   "res": "60cm",
+   "source_tb": 0.013,
+   "expected_task_hours": 0.1,
+   "expected_usd": 0.0,
+   "shards": 1,
+   "memory_mib": 2048,
+   "deadline": 3600,
+   "max_usd": 0.1,
+   "wave": 1
+  },
+  {
+   "run": "fl2023-pub-1",
+   "manifest": "fl-2023-30cm",
+   "quads": 150,
+   "res": "30cm",
+   "source_tb": 0.258,
+   "expected_task_hours": 2.1,
+   "expected_usd": 0.04,
+   "shards": 4,
+   "memory_mib": 4096,
+   "deadline": 3600,
+   "max_usd": 0.29,
+   "wave": 1
+  },
+  {
+   "run": "or2022-pub-1",
+   "manifest": "or-2022-30cm",
+   "quads": 16,
+   "res": "30cm",
+   "source_tb": 0.025,
+   "expected_task_hours": 0.2,
+   "expected_usd": 0.0,
+   "shards": 1,
+   "memory_mib": 4096,
+   "deadline": 3600,
+   "max_usd": 0.11,
+   "wave": 1
+  },
+  {
+   "run": "pa2022-pub-1",
+   "manifest": "pa-2022-60cm",
+   "quads": 3237,
+   "res": "60cm",
+   "source_tb": 1.348,
+   "expected_task_hours": 10.6,
+   "expected_usd": 0.19,
+   "shards": 18,
+   "memory_mib": 2048,
+   "deadline": 3600,
+   "max_usd": 0.97,
+   "wave": 1
+  },
+  {
+   "run": "wv2022-pub-1",
+   "manifest": "wv-2022-60cm",
+   "quads": 1831,
+   "res": "60cm",
+   "source_tb": 0.862,
+   "expected_task_hours": 6.8,
+   "expected_usd": 0.12,
+   "shards": 12,
+   "memory_mib": 2048,
+   "deadline": 3600,
+   "max_usd": 0.67,
+   "wave": 1
+  }
+ ]
+}

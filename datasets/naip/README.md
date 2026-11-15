@@ -15,25 +15,27 @@ at 60 cm and here at 30 cm.
 This workspace makes the missing display copy: one RGB JPEG Cloud-Optimized GeoTIFF per quarter
 quad, with the same settings, file names and key layout as `naip-visualization`.
 
-**Status (2026-11-14):** every 2024 and 2025 state-year is converted and hosted in the Source
-Cooperative product `nthh/naip`, which is unlisted, with five earlier ones: Colorado, Delaware,
-Maryland and Washington 2023, the latest flight of those states, and Utah 2021 for its
-late-season flights. Those five are also in `naip-visualization`; they are here so one product
-and one index cover the country. In all 56 state-years in 48 states: 241,507 files, 12.43 TB,
-about 6% of the size of the source. Each state-year passed the hosted checks in
-[PUBLISHING.md](PUBLISHING.md); [VALIDATION.md](VALIDATION.md) has the results of each. The index
-at `stac/naip.parquet` lists every file.
+**Status (2026-11-15):** every 2024 and 2025 state-year is converted and hosted in the Source
+Cooperative product `nthh/naip`, which is unlisted, with ten earlier ones. Colorado, Delaware,
+Maryland and Washington 2023 are the latest flight of those states, and Utah 2021 is there for
+its late-season flights. Pennsylvania 2022 and West Virginia 2022 are whole, because the 2024
+flights of both states are partial. California 2022, Oregon 2022 and Florida 2023 hold only
+the quads the newer flight lacks (32, 16 and 150). All ten are also in `naip-visualization`;
+they are here so one product and one index cover the country. In all 61 state-years in 48
+states: 246,773 files, 12.60 TB, about 6% of the size of the source. Each state-year passed
+the hosted checks in [PUBLISHING.md](PUBLISHING.md); [VALIDATION.md](VALIDATION.md) has the
+results of each. The index at `stac/naip.parquet` lists every file.
 
-The country is not whole. Pennsylvania 2024 and West Virginia 2024 are partial flights, the
-2024 folders of the source lack every quad numbered `xx12023` (at 120 W in California, Oregon
-and Nevada), and Florida 2025 lacks a strip of south Florida. VALIDATION.md has the detail.
+The country is whole where the source has a flight since 2021. What is still empty is water
+and a range in Nevada that the source leaves black. Where an older flight fills a gap it
+differs from its neighbours in year, season and tone. VALIDATION.md has the detail.
 
-**Overview files** are in `overviews/`: 109 reduced pictures of one state, year and UTM zone at
+**Overview files** are in `overviews/`: 116 reduced pictures of one state, year and UTM zone at
 9.6 m, and one of the country in Web Mercator at about 240 m with the latest flight of each
-state on top (110 files, 20.8 GB). `stac/naip-overviews.parquet` lists them, one item per file,
-with the pixel size in `gsd`; the collection record of `stac/naip.parquet` links to it with
-rel `overviews`. A map draws the coarsest files whose `gsd` is no larger than a screen pixel
-and the quads when none is that fine.
+state on top (117 files, 21.4 GB). `stac/naip-overviews.parquet` lists them, one item per file,
+with the pixel size in `gsd` and an outline of where the file has a picture; the collection
+record of `stac/naip.parquet` links to it with rel `overviews`. A map draws the coarsest
+files whose `gsd` is no larger than a screen pixel and the quads when none is that fine.
 [flight-dates/](flight-dates/) holds a viewer of when every quad was flown.
 
 ## Layout

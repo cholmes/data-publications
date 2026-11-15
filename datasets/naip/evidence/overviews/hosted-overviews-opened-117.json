@@ -1,0 +1,113 @@
+{
+ "checked": "2026-11-15",
+ "listed": 117,
+ "listed_bytes": 21382536345,
+ "names_equal_index": true,
+ "sizes_equal_index": true,
+ "opened": [
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/ca-2022-utm10.tif",
+   "size": [
+    4096,
+    82944
+   ],
+   "epsg": 26910,
+   "levels": 8,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.0608,
+   "smallest_level_mean_where_covered": 115.4
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/or-2022-utm10.tif",
+   "size": [
+    2560,
+    36864
+   ],
+   "epsg": 26910,
+   "levels": 7,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.0847,
+   "smallest_level_mean_where_covered": 151.1
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/fl-2023-utm17.tif",
+   "size": [
+    4096,
+    18432
+   ],
+   "epsg": 26917,
+   "levels": 6,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.9642,
+   "smallest_level_mean_where_covered": 119.2
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/pa-2022-utm17.tif",
+   "size": [
+    23552,
+    30208
+   ],
+   "epsg": 26917,
+   "levels": 6,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.8543,
+   "smallest_level_mean_where_covered": 98.3
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/pa-2022-utm18.tif",
+   "size": [
+    30208,
+    27648
+   ],
+   "epsg": 26918,
+   "levels": 6,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.8267,
+   "smallest_level_mean_where_covered": 112.0
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/wv-2022-utm17.tif",
+   "size": [
+    43008,
+    40960
+   ],
+   "epsg": 26917,
+   "levels": 7,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.4277,
+   "smallest_level_mean_where_covered": 110.3
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/wv-2022-utm18.tif",
+   "size": [
+    3584,
+    6656
+   ],
+   "epsg": 26918,
+   "levels": 4,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.5747,
+   "smallest_level_mean_where_covered": 98.7
+  },
+  {
+   "file": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+   "size": [
+    21504,
+    12288
+   ],
+   "epsg": 3857,
+   "levels": 6,
+   "layout": "COG",
+   "compression": "YCbCr JPEG",
+   "smallest_level_covered_share": 0.5597,
+   "smallest_level_mean_where_covered": 130.6
+  }
+ ]
+}
