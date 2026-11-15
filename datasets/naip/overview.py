@@ -17,7 +17,8 @@ Request:
 
 `res` is the pixel size of the finest level in the target grid's own units; `read_m` is the
 quad level to read. The file's bounds are snapped outward to 512 pixels, so every reduced
-level is an exact halving of the one before.
+level is an exact halving of the one before. An optional "resample" names how a quad is put
+on the grid (GDAL's names; "bilinear" when absent, "average" when `read_m` is finer than `res`).
 
 Needs GDAL's Python bindings, numpy and (for S3) boto3, all in the converter image.
 """
@@ -92,7 +93,7 @@ def to_target(staged, target_epsg):
         quad["target"] = [transforms[quad["epsg"]].TransformPoint(x, y)[:2] for x, y in quad["corners"]]
 
 
-def mosaic(staged, target_epsg, res, folder):
+def mosaic(staged, target_epsg, res, folder, resample="bilinear"):
     """A lazy mosaic of the staged quads on the target grid, with an alpha band. Returns its path and bounds."""
     step = BLOCK * res
     xs = [x for q in staged for x, _ in q["target"]]
@@ -111,14 +112,14 @@ def mosaic(staged, target_epsg, res, folder):
             # A plain mosaic first would put each quad on the nearest pixel of a grid that is not
             # its own, up to three quarters of a pixel off (measured 2026-11-14).
             gdal.BuildVRT(path, zones[epsg], srcNodata=0, VRTNodata=0, xRes=res, yRes=res, outputBounds=bounds,
-                          resampleAlg="bilinear")
+                          resampleAlg=resample)
         else:
             # Another zone has to be reprojected. One thread: GDAL 3.13.1 returned pixels moved by
             # one pixel in places when this ran on several (Nevada zone 10, 2026-11-14).
             together = os.path.join(folder, f"zone-{epsg}.vrt")
             gdal.BuildVRT(together, zones[epsg], srcNodata=0, VRTNodata=0, resampleAlg="bilinear")
             gdal.Warp(path, together, format="VRT", dstSRS=f"EPSG:{target_epsg}", xRes=res, yRes=res,
-                      outputBounds=bounds, resampleAlg="bilinear", srcNodata=0, dstNodata=0,
+                      outputBounds=bounds, resampleAlg=resample, srcNodata=0, dstNodata=0,
                       warpOptions=["NUM_THREADS=1"])
         placed.append(path)
     joined = os.path.join(folder, "joined.vrt")
@@ -232,7 +233,8 @@ def main():
     lap("read_quads")
 
     to_target(staged, request["target_epsg"])
-    mosaic_path, bounds, zones = mosaic(staged, request["target_epsg"], request["res"], folder)
+    resample = request.get("resample") or ("average" if request["read_m"] < request["res"] else "bilinear")
+    mosaic_path, bounds, zones = mosaic(staged, request["target_epsg"], request["res"], folder, resample)
     out = os.path.join(folder, request["name"] + ".tif")
     options = ["COMPRESS=JPEG", f"QUALITY={QUALITY}", f"OVERVIEW_QUALITY={QUALITY}", f"BLOCKSIZE={BLOCK}",
                "OVERVIEW_RESAMPLING=AVERAGE", "BIGTIFF=YES"]
@@ -262,7 +264,7 @@ def main():
     lap("check")
     result = {
         "name": request["name"], "gdal": gdal.__version__, "target_epsg": request["target_epsg"],
-        "res": request["res"], "read_m": request["read_m"], "quads": len(quads), "zones": zones,
+        "res": request["res"], "read_m": request["read_m"], "resample": resample, "quads": len(quads), "zones": zones,
         "bounds": bounds, "bytes": os.path.getsize(out), "file": found, "seconds": seconds,
         "quad_requests": network.get("count"), "quad_bytes_read": network.get("downloaded_bytes"),
         "staged_bytes": staged_bytes, "mosaic_copy_bytes": flat_bytes, "max_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,

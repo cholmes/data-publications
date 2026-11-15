@@ -1113,6 +1113,77 @@ measurement): 16 GB and 4 task-hours at 9.6 m, 66 GB and 25 task-hours at 4.8 m.
 file, Texas 2024 zone 14 with 11,075 quads, would need about 14 GB of task disk at 9.6 m and
 56 GB at 4.8 m.
 
+### Decisions and a sharpness test (Nathan, 2026-11-14; test set before any result)
+
+- **Finest level of a state file: 9.6 m.**
+- **One national file above the state files**, in Web Mercator, finest level zoom 9, the
+  latest flight on top where a state has two years. Built after the state files.
+- **Coverage**: Colorado, Delaware, Maryland and Washington 2023 and Utah 2021 are converted
+  with the national-run converter and settings, so the country is whole and the Wasatch has
+  a November flight.
+- **No national overview run yet.** First: how the files look in the browser reader, and
+  whether the build can be improved.
+
+**Sharpness test.** The 9.6 m file is made by reading each quad's own 9.6 m level and
+putting it on the file's grid bilinearly, which softens it by up to half a pixel. Three
+ways to build Rhode Island 2025 at 9.6 m are compared against a reference that none of them
+is made from: each sampled quad read at full resolution from the hosted file and averaged
+onto the file's 9.6 m grid on one thread (`check_overview_against_full_resolution.py`, a
+seeded sample of 12 quads, 128 pixel blocks whose centre is at least 480 m inside the quad).
+
+| Build | Quad level read | Put on the grid by |
+|---|---|---|
+| `ri-2025-z19-utm-9.6` (as rebuilt above) | 9.6 m | bilinear |
+| `ri-2025-z19-utm-9.6-cubic` | 9.6 m | cubic |
+| `ri-2025-z19-utm-9.6-from-4.8` | 4.8 m | average |
+
+Pass mark: a build replaces the present one if its median block is at least 1.0 dB above
+the present build's in every band against the reference, its lowest block is not lower, it
+has no block that agrees better moved by one pixel against the quads, and it still passes
+the 30 dB mark of its own check. Reads from the quads, staged bytes, time and file size are
+recorded without a mark.
+
+**Results (2026-11-14).** Built on the test machine; 12 quads, 168 blocks. The two builds at
+quality 85 were added after the first three results, to tell the level read from the JPEG
+quality. Result files are in `evidence/overviews/sharpness/`; the table is made by
+`summarize_sharpness_results.py`.
+
+| Build | Level read, method, quality | File | Read from quads | Staged | Median dB against the reference | Change from present | Lowest block dB | Own check, lowest dB |
+|---|---|---|---|---|---|---|---|---|
+| `ri-2025-z19-utm-9.6` | 9.6 m, bilinear, 75 | 10.5 MB | 33 MB | 81 MB | 28.11, 29.99, 29.93 |  | 24.85, 26.38, 26.89 | 33.66, 34.10, 32.72 |
+| `ri-2025-z19-utm-9.6-cubic` | 9.6 m, cubic, 75 | 11.3 MB | 33 MB | 82 MB | 28.50, 30.07, 29.30 | +0.39, +0.08, -0.63 | 25.65, 26.52, 26.54 | 32.39, 32.76, 31.62 |
+| `ri-2025-z19-utm-9.6-from-4.8` | 4.8 m, average, 75 | 11.7 MB | 58 MB | 335 MB | 29.85, 31.43, 29.69 | +1.74, +1.44, -0.24 | 27.44, 28.83, 26.90 | 30.53, 31.10, 28.61 (fails) |
+| `ri-2025-z19-utm-9.6-q85` | 9.6 m, bilinear, 85 | 14.4 MB | 33 MB | 82 MB | 28.47, 30.44, 30.22 | +0.36, +0.45, +0.29 | 25.13, 26.68, 27.27 | 36.03, 36.60, 34.90 |
+| `ri-2025-z19-utm-9.6-from-4.8-q85` | 4.8 m, average, 85 | 16.4 MB | 58 MB | 335 MB | 31.18, 33.14, 30.43 | +3.07, +3.15, +0.50 | 28.83, 30.78, 27.63 | 32.88, 33.69, 30.28 |
+
+- **No build passed the mark as set.** Cubic gains under half a decibel and loses in blue.
+  Reading the 4.8 m level and averaging gains 1.74 and 1.44 dB in red and green at the
+  median and 2.6 and 2.5 dB in the lowest block, but loses 0.24 dB in blue, and at quality
+  75 its own check fails in blue (28.61 dB): the sharper picture is harder to encode.
+- **At quality 85** the same build gains 3.07, 3.15 and 0.50 dB at the median and 4.0, 4.4
+  and 0.7 dB in the lowest block, and passes its own check. Blue still misses the 1.0 dB
+  mark. Quality 85 alone, on the present method, gains under half a decibel: the level
+  read matters more than the quality.
+- **The reference is weak in blue.** It is an average of full-resolution pixels stored at
+  quality 65 with colour at half resolution, whose colour blocks cover 16 by 16 pixels, the
+  size of one 9.6 m pixel, so their error does not average out. The mark asked for every
+  band and is recorded as failed; it was not set with that in mind.
+- **A first reference was wrong and its figures are discarded**: GDAL read a reduced level
+  of each quad instead of full resolution until the check named `overviewLevel="NONE"`.
+- **Cost of reading the 4.8 m level**: 1.7 times the bytes read from the quads and 4 times
+  the staged disk in Rhode Island (in Nevada zone 11, 4.6 GB read and 17.5 GB staged against
+  1.8 GB and 4.4 GB). The file is 11% larger at quality 75 and 56% larger at quality 85.
+- **To the eye**, at 9.6 m a screen pixel, the builds from the 4.8 m level are visibly
+  crisper than the present one and close to the quads (`overview_pictures.py`, Providence).
+
+**In the browser reader (2026-11-14).** A three-item index of the 9.6 m files
+(`build_overview_index.py`) was opened in the explorer's browser reader. Rhode Island and
+Nevada draw from their overview files and the mask shows as transparent, including the
+block of Nevada with no picture. Repeat loads: Nevada whole, 2 files, 17 requests, drawn in
+2.5 s; Las Vegas at zoom 12.5, 1 file, 35 requests, 3.0 s. The reader asks for each tile
+with its own request, where GDAL merged the same view into 4. The first load of each view
+took longer than 8 s once and was not diagnosed.
+
 ## JPEG XL against JPEG and WebP (set 2026-11-14, before any result)
 
 A small local test, to decide whether JPEG XL is worth taking further. Nothing is converted

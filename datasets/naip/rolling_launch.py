@@ -4,10 +4,11 @@
 The account may run 512 Fargate Spot vCPUs at once and every task is one vCPU. Rather than
 wait for a whole wave to end, this starts the next planned run that fits under --ceiling
 tasks, counting the tasks in the cluster now. Each run keeps its planned shard count,
-memory and spend bound from evidence/national-launch-plan.json; nothing else is changed.
+memory and spend bound from the launch plan (evidence/national-launch-plan.json unless --plan
+names another); nothing else is changed.
 
     python3 rolling_launch.py <runs dir> --stack <stack.json> --waves 4,5,6 \
-        --task-definition <arn> [--ceiling 500] [--reserve-waves 3] [--reserve-runs a,b] [--parallel 4] [--hours 10]
+        --task-definition <arn> [--ceiling 500] [--reserve-waves 3] [--reserve-runs a,b] [--parallel 4] [--hours 10] [--plan f]
 
 Starts no further run once a launch fails, so a refused start is looked at before more are made.
 Runs that already have a state.json in the runs dir are skipped.
@@ -39,10 +40,12 @@ def main():
     p.add_argument("--reserve-runs", default="", help="runs another launcher is starting")
     p.add_argument("--parallel", type=int, default=4, help="runs being started at once")
     p.add_argument("--hours", type=float, default=10)
+    p.add_argument("--plan", default=os.path.join(HERE, "evidence", "national-launch-plan.json"),
+                   help="launch plan made by make_launch_plan.py; default the national one")
     a = p.parse_args()
     with open(a.stack) as f:
         cluster = json.load(f)["cluster_name"]
-    with open(os.path.join(HERE, "evidence", "national-launch-plan.json")) as f:
+    with open(a.plan) as f:
         plan = json.load(f)["runs"]
     waves = [int(w) for w in a.waves.split(",")]
     todo = [r for w in waves for r in plan if r["wave"] == w

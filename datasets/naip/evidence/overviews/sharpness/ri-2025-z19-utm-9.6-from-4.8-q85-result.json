@@ -1,0 +1,151 @@
+{
+ "name": "ri-2025-z19-utm-9.6-from-4.8-q85",
+ "gdal": "3.13.1",
+ "target_epsg": 26919,
+ "res": 9.6,
+ "read_m": 4.8,
+ "resample": "average",
+ "quads": 116,
+ "zones": {
+  "26919": 116
+ },
+ "bounds": [
+  250675.19999999998,
+  4551475.2,
+  329318.39999999997,
+  4664524.8
+ ],
+ "bytes": 16411368,
+ "file": {
+  "size": [
+   8192,
+   11776
+  ],
+  "levels": [
+   [
+    4096,
+    5888
+   ],
+   [
+    2048,
+    2944
+   ],
+   [
+    1024,
+    1472
+   ],
+   [
+    512,
+    736
+   ],
+   [
+    256,
+    368
+   ]
+  ],
+  "layout": "COG",
+  "compression": "YCbCr JPEG",
+  "block": [
+   512,
+   512
+  ],
+  "bands": 3,
+  "mask_per_dataset": true,
+  "reads": true,
+  "windows": {
+   "count": 200,
+   "lowest_db": [
+    32.88,
+    33.69,
+    30.28
+   ],
+   "median_db": [
+    34.45,
+    35.27,
+    32.84
+   ]
+  },
+  "centres_masked": [],
+  "black": {
+   "collar_quads": 0,
+   "collar_highest_share": null,
+   "other_highest_share": 0.0,
+   "quads_with_a_border_found": 0,
+   "masked_share_mean": 1e-05,
+   "worst": [
+    {
+     "id": "ri_m_4107102_ne_19_060_20250803",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107102_se_19_060_20250803",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107103_ne_19_060_20250809",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107103_nw_19_060_20250803",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107103_se_19_060_20250809",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107103_sw_19_060_20250803",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107104_ne_19_060_20250802",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107104_nw_19_060_20250809",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107104_se_19_060_20250802",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    },
+    {
+     "id": "ri_m_4107104_sw_19_060_20250809",
+     "border": false,
+     "black_share": 0.0,
+     "masked_share": 0.0
+    }
+   ]
+  }
+ },
+ "seconds": {
+  "read_quads": 18.4,
+  "copy_mosaic": 8.4,
+  "write_file": 2.0,
+  "check": 8.2
+ },
+ "quad_requests": 351,
+ "quad_bytes_read": 57819136,
+ "staged_bytes": 335236140,
+ "mosaic_copy_bytes": 100572266,
+ "max_rss_kb": 1939292160,
+ "write_retried_with_one_thread": null
+}
