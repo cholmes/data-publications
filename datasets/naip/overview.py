@@ -241,7 +241,7 @@ def main():
     # levels in a way that left whole blocks of the file one pixel out of place (Nevada zone 10,
     # 2026-11-14: 23 of 220 blocks, the same ones every time). From a plain file it does not.
     flat = os.path.join(folder, "mosaic.tif")
-    gdal.Translate(flat, mosaic_path, creationOptions=["COMPRESS=ZSTD", "ZSTD_LEVEL=1", "TILED=YES", "BLOCKXSIZE=512",
+    gdal.Translate(flat, mosaic_path, creationOptions=["COMPRESS=ZSTD", "ZSTD_LEVEL=1", "PREDICTOR=2", "TILED=YES", "BLOCKXSIZE=512",
                                                        "BLOCKYSIZE=512", "BIGTIFF=YES", "SPARSE_OK=TRUE"])
     lap("copy_mosaic")
     retried = None
