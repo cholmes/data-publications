@@ -1603,3 +1603,37 @@ Which readers open the files (2026-11-14):
 QGIS 4.2.1 has a JPEG 2000 driver and no AVIF driver; neither file was opened in it. The
 JPEG and WebP rows for the explorer's reader are from its decoder list, not from opening
 these files.
+
+## Partial years left out of the indexes (2026-11-16)
+
+Pennsylvania 2024 (1,118 quads) and West Virginia 2024 (101 quads) cover part of each state
+and sat over the whole 2022 flights in every index and in the national file. The rule in
+`partial_years.py` (a year under 90% of the quads of an older year of the same state) finds
+those two and no other. Their files are still hosted.
+
+Published by copy task `publish-year-rule-1` (3 of 3 copied, sizes equal, 82,875,399 bytes).
+Each hosted file was read back through `data.source.coop` and its SHA-256 equals the local file.
+
+| File | Before | After | SHA-256 (first 12) |
+|---|---|---|---|
+| `stac/naip.parquet` | 246,773 rows, 44,552,589 bytes | 245,554 rows, 44,285,451 bytes | `3d10f8ec3197` |
+| `stac/naip-overviews.parquet` | 117 rows, 519,665 bytes | 115 rows, 512,684 bytes | `9958456a8437` |
+| `overviews/national-latest.tif` | 116 sources, 38,103,185 bytes | 114 sources, 38,077,264 bytes | `85e9adc58c1a` |
+
+- Quad index: the 1,219 rows gone are all Pennsylvania 2024 or West Virginia 2024; every other
+  row, the schema and the metadata equal the file before.
+- Overview index: the two state files of those years are gone; the national row has the new
+  size and quad count, and its first date is 2021-06-16 (it was 2010-06-24, from four
+  Pennsylvania 2024 quads whose names carry a 2010 date).
+- National file: built on a Mac from the published state files, not in the cloud image. Its
+  own check passes (200 windows, lowest 31.0 / 31.8 / 30.6 dB). More than 16 pixels from the two
+  footprints it equals a build of all 116 sources made the same way (PSNR 101.7 dB), and that
+  build differs from the file before by PSNR 50.9 dB, mean dE 0.13, which is the difference
+  between the two machines. Nine Pennsylvania cells flown only in 2024 are fully covered, eight
+  by New York 2024 and one by New Jersey 2025.
+- Explorer on the hosted files: Pennsylvania draws 2022 state files and 2022 quads, West
+  Virginia draws its 2022 state file, Utah is unchanged, no failed request.
+
+Not yet known when this was written: USDA's 2024 status table records both states as flown
+whole (3,343 and 1,831 quads), so the source bucket may since have more of 2024 than was
+converted. Listing it again is a requester-pays read and has not been done.
