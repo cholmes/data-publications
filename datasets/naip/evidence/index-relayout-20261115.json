@@ -1,0 +1,64 @@
+{
+ "date": "2026-11-15",
+ "publish_run": "publish-indexes-4",
+ "files": {
+  "stac/naip.parquet": {
+   "before": {
+    "bytes": 45571122,
+    "sha256": "b53c265a32ccbaf39d6b11936362d791e19bb072b9791245f94a0407d291d575",
+    "rows": 246773,
+    "row_groups": 482,
+    "rows_in_each_group": [
+     501,
+     512
+    ],
+    "footer_bytes": 1232879,
+    "page_index": false
+   },
+   "after": {
+    "bytes": 44552589,
+    "sha256": "b4975aeb4680331de80a2a1da4430f6cc2ee263b77b06efc6d2335e14275c5e1",
+    "rows": 246773,
+    "row_groups": 31,
+    "rows_in_each_group": [
+     1013,
+     8192
+    ],
+    "footer_bytes": 94936,
+    "page_index": true
+   },
+   "same_rows_and_values": true,
+   "same_schema_and_metadata": true,
+   "hosted_download_sha256_equals_built": true
+  },
+  "stac/naip-overviews.parquet": {
+   "before": {
+    "bytes": 424259,
+    "sha256": "0a13c881744962438bc04c39667684f30519183ecd36eedf051efb2c77622622",
+    "rows": 117,
+    "row_groups": 1,
+    "rows_in_each_group": [
+     117
+    ],
+    "footer_bytes": 12973,
+    "page_index": false
+   },
+   "after": {
+    "bytes": 519665,
+    "sha256": "5d36af3e4cae7d86bf7e635f4940f29f6dca23b1d45342ea9fc6e8ca26875214",
+    "rows": 117,
+    "row_groups": 16,
+    "rows_in_each_group": [
+     1,
+     4,
+     8
+    ],
+    "footer_bytes": 49825,
+    "page_index": false
+   },
+   "same_rows_and_values": true,
+   "same_schema_and_metadata": true,
+   "hosted_download_sha256_equals_built": true
+  }
+ }
+}

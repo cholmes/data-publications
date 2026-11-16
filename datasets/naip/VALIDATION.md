@@ -1368,6 +1368,39 @@ every sampled point. Zooming over Pennsylvania from the country to one quad, the
 imagery stayed 1 on every frame through both tier changes. The fault inside the quads tier is
 still there: from zoom 13.2 to 15 with no pan, 21% of the grid was empty on 6 frames.
 
+### The two indexes written again in a layout a map opens faster (2026-11-15)
+
+`stac/naip.parquet` and `stac/naip-overviews.parquet` were replaced in place. The rows, values,
+schema and file metadata of each are the same as before; only the order of the rows and the
+way they are grouped changed (`evidence/index-relayout-20261115.json`: every row compared, and
+the hosted files downloaded anonymously and their SHA-256 equal to the files built).
+
+| | Before | After |
+|---|---|---|
+| `stac/naip.parquet` | by year, then along a Hilbert curve; 482 row groups of 512; footer 1,232,879 bytes; 45,571,122 bytes | along the Hilbert curve alone, newest first at each place; 31 row groups of 8,192 in pages of 128 rows with Parquet's page index; footer 94,936 bytes; 44,552,589 bytes |
+| `stac/naip-overviews.parquet` | one row group of 117; 424,259 bytes | coarsest first, the national file alone in the first row group, then groups of 8 west to east, with pixel-size bounds on each; 519,665 bytes |
+
+Why: a map reads the footer before any row, and then the rows of its view. Measured in the
+explorer through a 3 megabit link with 150 ms before each answer, opening a view of three
+quads cold took 12.1 s with the earlier quad index and read 1.89 MB of it; the same view
+with the lean test copy of this layout took 7.8 s and read 0.10 MB (the explorer repository's
+`evidence/naip-viewer-speed-20261115/`). The published file keeps every column; counted over
+300 sample views it costs a map 81 KB after an 89 KB footer, against 167 KB after a
+1,216 KB footer for the same order in 512-row groups.
+
+What it costs: a reader that does not use the page index (pyarrow does not) takes whole row
+groups, which are now sixteen times larger, so a query for a small area reads more than it
+did. A reader of the whole file is unaffected.
+
+Checked before the replacement: the explorer read both new files from a local store, with
+the imagery from the hosted product, in seven views (the country, Pennsylvania, a Utah state
+view, and quads in Utah, Florida, Maine and the California 2022 fill); all completed, with
+68 to 244 KB of index read. After it: the deployed explorer read the hosted files in five
+views and completed each, with 68 to 256 KB of index read.
+
+Built with `build_stac_index.py --from-index` and `build_overview_index.py --relayout`, which
+write an existing index again in the layout both scripts now use by default.
+
 ## JPEG XL against JPEG and WebP (set 2026-11-14, before any result)
 
 A small local test, to decide whether JPEG XL is worth taking further. Nothing is converted

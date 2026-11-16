@@ -116,7 +116,38 @@ def outline(quads):
     return bytes(shape.ExportToIsoWkb()), {"xmin": xmin, "ymin": ymin, "xmax": xmax, "ymax": ymax}
 
 
+GROUP = 8
+STATISTICS = ["bbox.xmin", "bbox.ymin", "bbox.xmax", "bbox.ymax", "datetime", "gsd"]
+
+
+def write(table, out):
+    """Coarsest files first, in small row groups, so a map reads only the tier it will draw.
+
+    Rows are ordered by pixel size, coarsest first, then west to east. A row group holds at most
+    GROUP rows and never mixes pixel sizes more than a factor of two apart, so the file for the
+    whole country sits alone in the first group. Each group carries the bounds of its rows and of
+    their pixel sizes; a reader drawing the country takes the first group and nothing else.
+    """
+    gsd, west = table["gsd"].to_pylist(), table["bbox"].combine_chunks().field("xmin").to_pylist()
+    rows = sorted(range(table.num_rows), key=lambda i: (-gsd[i], west[i]))
+    table = table.take(pa.array(rows))
+    sizes = [gsd[i] for i in rows]
+    with open(out, "wb") as f, pq.ParquetWriter(f, table.schema, compression="zstd", write_statistics=STATISTICS) as writer:
+        start = 0
+        for at in range(1, len(sizes) + 1):
+            if at == len(sizes) or at - start == GROUP or sizes[start] > 2 * sizes[at]:
+                writer.write_table(table.slice(start, at - start))
+                start = at
+
+
 def main():
+    if sys.argv[1] == "--relayout":      # an existing index written again in this layout: same rows, schema and metadata
+        with open(sys.argv[2], "rb") as f:
+            table = pq.ParquetFile(f).read()
+        write(table, sys.argv[3])
+        with open(sys.argv[3], "rb") as f:
+            print(os.path.basename(sys.argv[3]), table.num_rows, "items,", pq.ParquetFile(f).num_row_groups, "row groups")
+        return
     quad_index, base, out = sys.argv[1:4]
     with open(quad_index, "rb") as f:      # an open file: pyarrow's own file systems clash with GDAL's when both are loaded
         index = pq.ParquetFile(f)
@@ -170,10 +201,8 @@ def main():
         "encoding": "WKB", "geometry_types": sorted(kinds),
         "bbox": [min(b["xmin"] for b in boxes), min(b["ymin"] for b in boxes), max(b["xmax"] for b in boxes), max(b["ymax"] for b in boxes)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
-    with open(out, "wb") as f:
-        stac = {"version": "1.1.0", "collections": {"naip-overviews": collection(rows)}}
-        pq.write_table(table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)}), f,
-                       compression="zstd")
+    stac = {"version": "1.1.0", "collections": {"naip-overviews": collection(rows)}}
+    write(table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)}), out)
     print(os.path.basename(out), len(rows), "items")
 
 

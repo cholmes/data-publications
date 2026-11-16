@@ -4,14 +4,28 @@
 One row per file, as a STAC item: footprint in longitude and latitude, the date flown, the
 file's own CRS and extent (projection extension), one asset, `image`, with the file's URL,
 size and checksum, and one link, `derived_from`, to the source file. The collection is kept in
-the file's `stac-geoparquet` metadata (specification 1.1.0). Rows are sorted by year and then along a Hilbert curve through the
-footprint centres, so that each row group covers one compact area and a reader can skip
-almost all of the file from the row-group bbox statistics.
+the file's `stac-geoparquet` metadata (specification 1.1.0).
+
+Layout, chosen by measuring what a map reads to open a view (index_variants.py and the explorer's
+index-read-cost.mjs):
+
+  * Rows run along a Hilbert curve through the footprint centres, newest first where rows share a
+    place, so the rows of one area sit together whatever their year.
+  * Row groups are large (8,192 rows), which keeps the footer a reader must fetch first small, and
+    each is written as pages of 128 rows with Parquet's page index: the bounds and address of every
+    page. A reader that uses the page index takes only the pages in view. One that does not takes
+    whole row groups, sixteen times the rows the earlier 512-row groups gave it.
+  * Only columns with few distinct values keep a dictionary. A dictionary is one block per row
+    group, and a reader taking one page would have to take all of it.
+
+--from-index writes an existing index again in this layout: the same rows, schema and metadata.
 
     uv run --no-project --with pyarrow==21.0.0 --with pyproj==3.7.2 \
         python build_stac_index.py <out.parquet> <receipts dir> [<receipts dir> ...] \
-        [--base-url https://data.source.coop/nthh/naip/] [--row-group 512] [--sort hilbert|name] \
+        [--base-url https://data.source.coop/nthh/naip/] [--row-group 8192] [--page-rows 128] \
+        [--sort hilbert|yearhilbert|name] \
         [--overviews https://data.source.coop/nthh/naip/stac/naip-overviews.parquet]
+    ... python build_stac_index.py <out.parquet> --from-index <existing index.parquet>
 """
 
 import argparse
@@ -20,6 +34,7 @@ import json
 import os
 
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as pq
 from pyproj import Transformer
 
@@ -48,12 +63,22 @@ def hilbert(lon, lat, order=16):
     return d
 
 
-def sort_rows(rows, how):
+def order(table, how):
+    """The table's rows in the wanted order."""
     if how == "name":
-        rows.sort(key=lambda r: (r["naip:state"], r["naip:year"], r["id"]))
+        keys = zip(table["naip:state"].to_pylist(), table["naip:year"].to_pylist(), table["id"].to_pylist())
     else:
-        rows.sort(key=lambda r: (r["naip:year"], hilbert((r["bbox"]["xmin"] + r["bbox"]["xmax"]) / 2,
-                                                         (r["bbox"]["ymin"] + r["bbox"]["ymax"]) / 2), r["id"]))
+        bbox = table["bbox"].combine_chunks()
+        lon = pc.divide(pc.add(bbox.field("xmin"), bbox.field("xmax")), 2).to_pylist()
+        lat = pc.divide(pc.add(bbox.field("ymin"), bbox.field("ymax")), 2).to_pylist()
+        place = [hilbert(x, y) for x, y in zip(lon, lat)]
+        when = table["datetime"].cast(pa.int64()).to_pylist()
+        if how == "yearhilbert":      # the layout before November 2026: one curve per year
+            keys = zip(table["naip:year"].to_pylist(), place, table["id"].to_pylist())
+        else:
+            keys = zip(place, [-t for t in when], table["id"].to_pylist())
+    keys = list(keys)
+    return table.take(pa.array(sorted(range(table.num_rows), key=keys.__getitem__)))
 
 
 def collection(rows, links):
@@ -82,12 +107,22 @@ def collection(rows, links):
     }
 
 
-def write(rows, out, row_group, links):
+# Leaf columns with few distinct values, which keep a dictionary in a paged file.
+FEW_VALUES = ["stac_version", "stac_extensions.list.element", "collection", "gsd", "naip:state", "naip:year",
+              "proj:code", "proj:epsg", "proj:shape.list.element", "links.list.element.rel",
+              "links.list.element.title", "assets.image.roles.list.element", "assets.image.title",
+              "assets.image.type", "naip:run"]
+# Statistics only on the columns a reader filters by: on every column they are most of the
+# footer, which a reader fetches whole before anything else.
+STATISTICS = ["bbox.xmin", "bbox.ymin", "bbox.xmax", "bbox.ymax", "datetime", "naip:year"]
+
+
+def table_of(rows, links):
     table = pa.Table.from_pylist(rows)
     # GeoParquet's bbox covering wants the struct's fields in this order; inferred structs come out
     # alphabetical.
-    order = ("xmin", "ymin", "xmax", "ymax")
-    bbox = pa.StructArray.from_arrays([pa.array([r["bbox"][k] for r in rows], pa.float64()) for k in order], names=order)
+    names = ("xmin", "ymin", "xmax", "ymax")
+    bbox = pa.StructArray.from_arrays([pa.array([r["bbox"][k] for r in rows], pa.float64()) for k in names], names=names)
     table = table.set_column(table.schema.get_field_index("bbox"), "bbox", bbox)
     geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
         "encoding": "WKB", "geometry_types": ["Polygon"],
@@ -95,11 +130,13 @@ def write(rows, out, row_group, links):
                  max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
     stac = {"version": "1.1.0", "collections": {"naip": collection(rows, links)}}
-    table = table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)})
-    # Statistics only on the columns a reader filters by: on every column they are most of
-    # the footer, which a reader fetches whole before anything else.
-    pq.write_table(table, out, row_group_size=row_group, compression="zstd",
-                   write_statistics=["bbox.xmin", "bbox.ymin", "bbox.xmax", "bbox.ymax", "datetime", "naip:year"])
+    return table.replace_schema_metadata({"geo": json.dumps(geo), "stac-geoparquet": json.dumps(stac)})
+
+
+def write(table, out, row_group, page_rows):
+    paged = {} if not page_rows else {"write_page_index": True, "data_page_size": 1, "write_batch_size": page_rows,
+                                      "use_dictionary": FEW_VALUES}
+    pq.write_table(table, out, row_group_size=row_group, compression="zstd", write_statistics=STATISTICS, **paged)
 
 
 def item(receipt, base_url, transformers):
@@ -146,27 +183,36 @@ def item(receipt, base_url, transformers):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("out")
-    p.add_argument("receipts_dirs", nargs="+")
+    p.add_argument("receipts_dirs", nargs="*")
+    p.add_argument("--from-index", help="an existing index to write again in this layout, in place of receipts")
     p.add_argument("--base-url", default="https://data.source.coop/nthh/naip/")
-    p.add_argument("--row-group", type=int, default=512)
-    p.add_argument("--sort", choices=["hilbert", "name"], default="hilbert")
+    p.add_argument("--row-group", type=int, default=8192)
+    p.add_argument("--page-rows", type=int, default=128, help="rows a page; 0 writes one page per column and no page index")
+    p.add_argument("--sort", choices=["hilbert", "yearhilbert", "name"], default="hilbert")
     p.add_argument("--overviews", help="URL of the index of overview files; kept as a link in the collection")
     a = p.parse_args()
 
-    rows, transformers = [], {}
-    for d in a.receipts_dirs:
-        for name in sorted(os.listdir(d)):
-            if name.endswith(".json"):
-                with open(os.path.join(d, name)) as f:
-                    rows.append(item(json.load(f), a.base_url, transformers))
-    sort_rows(rows, a.sort)
-    links = [] if not a.overviews else [{
-        "rel": "overviews", "href": a.overviews, "type": "application/vnd.apache.parquet",
-        "title": "Reduced pictures of whole states and of the country, one item per file (STAC GeoParquet)"}]
-    write(rows, a.out, a.row_group, links)
-    print(json.dumps({"rows": len(rows), "bytes": os.path.getsize(a.out),
+    if a.from_index:
+        with open(a.from_index, "rb") as f:
+            table = pq.ParquetFile(f).read()
+    else:
+        rows, transformers = [], {}
+        for d in a.receipts_dirs:
+            for name in sorted(os.listdir(d)):
+                if name.endswith(".json"):
+                    with open(os.path.join(d, name)) as f:
+                        rows.append(item(json.load(f), a.base_url, transformers))
+        links = [] if not a.overviews else [{
+            "rel": "overviews", "href": a.overviews, "type": "application/vnd.apache.parquet",
+            "title": "Reduced pictures of whole states and of the country, one item per file (STAC GeoParquet)"}]
+        table = table_of(rows, links)
+    write(order(table, a.sort), a.out, a.row_group, a.page_rows)
+    with open(a.out, "rb") as f:
+        f.seek(-8, os.SEEK_END)
+        footer = int.from_bytes(f.read(4), "little")
+    print(json.dumps({"rows": table.num_rows, "bytes": os.path.getsize(a.out), "footer_bytes": footer,
                       "row_groups": pq.ParquetFile(a.out).num_row_groups,
-                      "epsg": sorted({r["proj:epsg"] for r in rows})}))
+                      "epsg": sorted(set(table["proj:epsg"].to_pylist()))}))
 
 
 if __name__ == "__main__":
