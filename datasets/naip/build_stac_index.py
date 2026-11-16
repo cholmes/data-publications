@@ -18,13 +18,17 @@ index-read-cost.mjs):
   * Only columns with few distinct values keep a dictionary. A dictionary is one block per row
     group, and a reader taking one page would have to take all of it.
 
---from-index writes an existing index again in this layout: the same rows, schema and metadata.
+--from-index writes an existing index again in this layout: the same schema and metadata.
+
+A year in which only part of a state was flown again is not listed (partial_years.py), so a
+reader that draws the newest file over a place gets one flight per state. Its files are still
+at the addresses the other rows follow. --keep-partial-years lists them.
 
     uv run --no-project --with pyarrow==21.0.0 --with pyproj==3.7.2 \
         python build_stac_index.py <out.parquet> <receipts dir> [<receipts dir> ...] \
         [--base-url https://data.source.coop/nthh/naip/] [--row-group 8192] [--page-rows 128] \
         [--sort hilbert|yearhilbert|name] \
-        [--overviews https://data.source.coop/nthh/naip/stac/naip-overviews.parquet]
+        [--overviews https://data.source.coop/nthh/naip/stac/naip-overviews.parquet] [--keep-partial-years]
     ... python build_stac_index.py <out.parquet> --from-index <existing index.parquet>
 """
 
@@ -39,6 +43,7 @@ import pyarrow.parquet as pq
 from pyproj import Transformer
 
 from build_index import footprint, wkb_polygon
+from partial_years import counts_of, partial
 
 EXTENSIONS = [
     "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
@@ -190,11 +195,17 @@ def main():
     p.add_argument("--page-rows", type=int, default=128, help="rows a page; 0 writes one page per column and no page index")
     p.add_argument("--sort", choices=["hilbert", "yearhilbert", "name"], default="hilbert")
     p.add_argument("--overviews", help="URL of the index of overview files; kept as a link in the collection")
+    p.add_argument("--keep-partial-years", action="store_true", help="list the years that cover only part of a state")
     a = p.parse_args()
 
+    left_out = {}
     if a.from_index:
         with open(a.from_index, "rb") as f:
             table = pq.ParquetFile(f).read()
+        pairs = list(zip(table["naip:state"].to_pylist(), table["naip:year"].to_pylist()))
+        drop = set() if a.keep_partial_years else partial(counts_of(*zip(*pairs)))
+        left_out = {f"{s}-{y}": pairs.count((s, y)) for s, y in sorted(drop)}
+        table = table.filter(pa.array([pair not in drop for pair in pairs]))
     else:
         rows, transformers = [], {}
         for d in a.receipts_dirs:
@@ -202,6 +213,10 @@ def main():
                 if name.endswith(".json"):
                     with open(os.path.join(d, name)) as f:
                         rows.append(item(json.load(f), a.base_url, transformers))
+        pairs = [(r["naip:state"], r["naip:year"]) for r in rows]
+        drop = set() if a.keep_partial_years else partial(counts_of(*zip(*pairs)))
+        left_out = {f"{s}-{y}": pairs.count((s, y)) for s, y in sorted(drop)}
+        rows = [r for r, pair in zip(rows, pairs) if pair not in drop]
         links = [] if not a.overviews else [{
             "rel": "overviews", "href": a.overviews, "type": "application/vnd.apache.parquet",
             "title": "Reduced pictures of whole states and of the country, one item per file (STAC GeoParquet)"}]
@@ -210,7 +225,7 @@ def main():
     with open(a.out, "rb") as f:
         f.seek(-8, os.SEEK_END)
         footer = int.from_bytes(f.read(4), "little")
-    print(json.dumps({"rows": table.num_rows, "bytes": os.path.getsize(a.out), "footer_bytes": footer,
+    print(json.dumps({"rows": table.num_rows, "partial_years_left_out": left_out, "bytes": os.path.getsize(a.out), "footer_bytes": footer,
                       "row_groups": pq.ParquetFile(a.out).num_row_groups,
                       "epsg": sorted(set(table["proj:epsg"].to_pylist()))}))
 

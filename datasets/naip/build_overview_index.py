@@ -22,6 +22,10 @@ is. Its `gsd` is the ground size at the middle latitude of the file; `proj:trans
 the exact pixel. It has no state or year, and its dates and quad count are those of all the
 state files given.
 
+A state file whose state and year the quad index does not list is left out, and the national
+file's dates and quad count do not include it: the quad index leaves out the years that cover
+only part of a state (partial_years.py), and this index follows it.
+
 The collection is kept in the file's `stac-geoparquet` metadata, with a link to the quad
 index the files were made from (QUAD_INDEX_URL).
 """
@@ -160,6 +164,11 @@ def main():
     by_group = {}
     for q in quads:
         by_group.setdefault((q["naip:state"], q["naip:year"], str(q["proj:epsg"])), []).append(q)
+    unlisted = sorted(r["name"] for r in results if "zones" in r
+                      and not any((r["name"].split("-")[0], int(r["name"].split("-")[1]), zone) in by_group for zone in r["zones"]))
+    results = [r for r in results if r["name"] not in unlisted]
+    if unlisted:
+        print("left out, not in the quad index:", " ".join(unlisted))
     rows = []
     for r in sorted(results, key=lambda r: ("zones" in r, r["name"])):      # the national file first
         if "zones" in r:

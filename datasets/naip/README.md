@@ -24,7 +24,17 @@ the quads the newer flight lacks (32, 16 and 150). All ten are also in `naip-vis
 they are here so one product and one index cover the country. In all 61 state-years in 48
 states: 246,773 files, 12.60 TB, about 6% of the size of the source. Each state-year passed
 the hosted checks in [PUBLISHING.md](PUBLISHING.md); [VALIDATION.md](VALIDATION.md) has the
-results of each. The index at `stac/naip.parquet` lists every file.
+results of each. The index at `stac/naip.parquet` lists every file except those of the two
+partial years.
+
+**Partial years are hosted but not listed.** Pennsylvania 2024 (1,118 quads) and West Virginia
+2024 (101 quads) cover only part of each state. Listed beside the whole 2022 flights, they put
+two flights of different season and tone side by side inside one state in any map that draws
+the newest file over a place. So neither index lists them, and the national file is made
+without them; the files stay under `pa/2024/`, `wv/2024/` and in `overviews/`. The rule is a
+count, in [partial_years.py](partial_years.py): a year holding under 90% of the quads of an
+older year of the same state is not listed. `build_stac_index.py --keep-partial-years` lists
+them again.
 
 The country is whole where the source has a flight since 2021. What is still empty is water
 and a range in Nevada that the source leaves black. Where an older flight fills a gap it
@@ -32,7 +42,8 @@ differs from its neighbours in year, season and tone. VALIDATION.md has the deta
 
 **Overview files** are in `overviews/`: 116 reduced pictures of one state, year and UTM zone at
 9.6 m, and one of the country in Web Mercator at about 240 m with the latest flight of each
-state on top (117 files, 21.4 GB). `stac/naip-overviews.parquet` lists them, one item per file,
+state on top (117 files, 21.4 GB). `stac/naip-overviews.parquet` lists 115 of them (not the two
+state files of the partial years), one item per file,
 with the pixel size in `gsd` and an outline of where the file has a picture; the collection
 record of `stac/naip.parquet` links to it with rel `overviews`. A map draws the coarsest
 files whose `gsd` is no larger than a screen pixel and the quads when none is that fine.

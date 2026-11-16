@@ -2,12 +2,16 @@
 """The request overview.py takes for the national file, from the state overview files' results.
 
     python3 make_national_request.py <folder of state *-result.json> <bucket> <key prefix of the state files> \
-        <out request.json> --out-key KEY --result-key KEY [--zoom 9]
+        <out request.json> --out-key KEY --result-key KEY [--zoom 9] [--quad-index naip.parquet]
 
 The national file is one Web Mercator picture on the standard zoom grid (256 pixel tiles),
 finest level --zoom. Its sources are the state files, each read at the level one step finer
 than the national pixel and averaged. A later source lies over an earlier one, so the
 sources are listed oldest flight year first: where a state has two years the later shows.
+
+With --quad-index, a state file whose state and year that index does not list is left out. The
+index leaves out the years in which only part of a state was flown again (partial_years.py),
+so the country shows one flight per state.
 """
 import argparse
 import glob
@@ -28,13 +32,23 @@ def main():
     p.add_argument("--result-key", required=True)
     p.add_argument("--zoom", type=int, default=9)
     p.add_argument("--name", default="national-latest")
+    p.add_argument("--quad-index", help="leave out the state files whose state and year this index does not list")
     a = p.parse_args()
+    listed = None
+    if a.quad_index:
+        import pyarrow.parquet as pq
+        with open(a.quad_index, "rb") as f:
+            table = pq.ParquetFile(f).read(columns=["naip:state", "naip:year"])
+        listed = set(zip(table["naip:state"].to_pylist(), table["naip:year"].to_pylist()))
     res = WEB_ZOOM_0 / 2 ** a.zoom
     sources = []
     for path in glob.glob(os.path.join(a.results, "*-result.json")):
         with open(path) as f:
             r = json.load(f)
         state, year = r["name"].split("-")[:2]
+        if listed is not None and (state, int(year)) not in listed:
+            print("left out, not in the quad index:", r["name"])
+            continue
         sources.append((int(year), r["name"], r["target_epsg"], r["res"]))
     finest = min(s[3] for s in sources)
     # The level of the state files to read: the coarsest that is still finer than the national pixel
