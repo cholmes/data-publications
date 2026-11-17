@@ -1,0 +1,147 @@
+{
+  "assets": [
+    {
+      "asset_id": "counties",
+      "bbox_values_recomputed": 12940,
+      "gaz_funcstat_counts": {
+        "null": 3235
+      },
+      "popest_2023_present": 3144,
+      "pruning": {
+        "Atlanta": {
+          "exempt": false,
+          "row_groups": 7,
+          "row_groups_read": 3,
+          "rows_matching": 13
+        },
+        "Front Range": {
+          "exempt": false,
+          "row_groups": 7,
+          "row_groups_read": 3,
+          "rows_matching": 13
+        },
+        "Los Angeles basin": {
+          "exempt": false,
+          "row_groups": 7,
+          "row_groups_read": 3,
+          "rows_matching": 5
+        },
+        "central Ohio": {
+          "exempt": false,
+          "row_groups": 7,
+          "row_groups_read": 3,
+          "rows_matching": 9
+        }
+      },
+      "rows": 3235,
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880,
+      "source_fields_compared": 12,
+      "wkb_values_compared": 3235
+    },
+    {
+      "asset_id": "places",
+      "bbox_values_recomputed": 130432,
+      "gaz_funcstat_counts": {
+        "A": 19470,
+        "B": 2,
+        "F": 8,
+        "I": 30,
+        "N": 4,
+        "S": 12815,
+        "null": 279
+      },
+      "popest_2023_present": 19484,
+      "pruning": {
+        "Atlanta": {
+          "exempt": false,
+          "row_groups": 64,
+          "row_groups_read": 5,
+          "rows_matching": 65
+        },
+        "Front Range": {
+          "exempt": false,
+          "row_groups": 64,
+          "row_groups_read": 2,
+          "rows_matching": 126
+        },
+        "Los Angeles basin": {
+          "exempt": false,
+          "row_groups": 64,
+          "row_groups_read": 3,
+          "rows_matching": 168
+        },
+        "central Ohio": {
+          "exempt": false,
+          "row_groups": 64,
+          "row_groups_read": 1,
+          "rows_matching": 63
+        }
+      },
+      "rows": 32608,
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486,
+      "source_fields_compared": 12,
+      "wkb_values_compared": 32608
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "bbox_values_recomputed": 145468,
+      "gaz_funcstat_counts": {
+        "A": 16186,
+        "B": 17,
+        "C": 29,
+        "F": 4684,
+        "G": 1602,
+        "I": 253,
+        "N": 7997,
+        "S": 5536,
+        "null": 63
+      },
+      "popest_2023_present": 21039,
+      "pruning": {
+        "Atlanta": {
+          "exempt": false,
+          "row_groups": 72,
+          "row_groups_read": 4,
+          "rows_matching": 42
+        },
+        "Front Range": {
+          "exempt": false,
+          "row_groups": 72,
+          "row_groups_read": 3,
+          "rows_matching": 36
+        },
+        "Los Angeles basin": {
+          "exempt": false,
+          "row_groups": 72,
+          "row_groups_read": 4,
+          "rows_matching": 33
+        },
+        "central Ohio": {
+          "exempt": false,
+          "row_groups": 72,
+          "row_groups_read": 3,
+          "rows_matching": 95
+        }
+      },
+      "rows": 36367,
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829,
+      "source_fields_compared": 14,
+      "wkb_values_compared": 36367
+    }
+  ],
+  "evidence": {
+    "inputs": {
+      "2023_Gaz_cousubs_national.zip": "22f4892eadaa4236add3b3dd015dff401e74e1aef32a7717a15e44c23dbdc1f3",
+      "2023_Gaz_place_national.zip": "3c8b23c0dcdb15c0ebd16fee7373e032466e6b585650aa219bc1bee5ac8bd58f",
+      "cb_2023_us_county_500k.zip": "99d6597b1fc7767deef62e01d28d8b5dcbd578e151855f7dc0d173cbf5bf0868",
+      "cb_2023_us_cousub_500k.zip": "c5d57d7f71af1f40f738e8dccc23bf62efd0331491a5ff0e24cfdcf026e6bc03",
+      "cb_2023_us_place_500k.zip": "27562072c8e7890cafa6b3ac7a44e5e394b34da210501b48500052bc56b8a18d",
+      "sub-est2023.csv": "493161c5f342e587b10fcbfbfca6768f8b828c80ff9ac2283ef16225ccd653e9"
+    }
+  },
+  "release": "cb2023-r1",
+  "status": "passed"
+}

@@ -1,0 +1,173 @@
+{
+  "created_from_commit": "5464a777f6be8f1530a5bbbd3060080d070b4ac1",
+  "layers": {
+    "counties": {
+      "bbox": [
+        -179.146711,
+        -14.548699,
+        179.77847,
+        71.387815
+      ],
+      "crs": "EPSG:4269",
+      "feature_count": 3235,
+      "gaz_funcstat_counts": {
+        "null": 3235
+      },
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "name": "counties.parquet",
+      "path": "data/counties.parquet",
+      "popest_2023_present": 3144,
+      "row_group_size": 512,
+      "row_groups": 7,
+      "schema_fields": [
+        "STATEFP",
+        "COUNTYFP",
+        "COUNTYNS",
+        "GEOIDFQ",
+        "GEOID",
+        "NAME",
+        "NAMELSAD",
+        "STUSPS",
+        "STATE_NAME",
+        "LSAD",
+        "ALAND",
+        "AWATER",
+        "geometry",
+        "source_row",
+        "gaz_funcstat",
+        "popest_2023",
+        "bbox"
+      ],
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880
+    },
+    "county-subdivisions": {
+      "bbox": [
+        -179.146711,
+        -14.548699,
+        179.77847,
+        71.387815
+      ],
+      "crs": "EPSG:4269",
+      "feature_count": 36367,
+      "gaz_funcstat_counts": {
+        "A": 16186,
+        "B": 17,
+        "C": 29,
+        "F": 4684,
+        "G": 1602,
+        "I": 253,
+        "N": 7997,
+        "S": 5536,
+        "null": 63
+      },
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "name": "county-subdivisions.parquet",
+      "path": "data/county-subdivisions.parquet",
+      "popest_2023_present": 21039,
+      "row_group_size": 512,
+      "row_groups": 72,
+      "schema_fields": [
+        "STATEFP",
+        "COUNTYFP",
+        "COUSUBFP",
+        "COUSUBNS",
+        "GEOIDFQ",
+        "GEOID",
+        "NAME",
+        "NAMELSAD",
+        "STUSPS",
+        "NAMELSADCO",
+        "STATE_NAME",
+        "LSAD",
+        "ALAND",
+        "AWATER",
+        "geometry",
+        "source_row",
+        "gaz_funcstat",
+        "popest_2023",
+        "bbox"
+      ],
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829
+    },
+    "places": {
+      "bbox": [
+        -176.696676,
+        -14.37374,
+        174.15530983084,
+        71.3397102533974
+      ],
+      "crs": "EPSG:4269",
+      "feature_count": 32608,
+      "gaz_funcstat_counts": {
+        "A": 19470,
+        "B": 2,
+        "F": 8,
+        "I": 30,
+        "N": 4,
+        "S": 12815,
+        "null": 279
+      },
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "name": "places.parquet",
+      "path": "data/places.parquet",
+      "popest_2023_present": 19484,
+      "row_group_size": 512,
+      "row_groups": 64,
+      "schema_fields": [
+        "STATEFP",
+        "PLACEFP",
+        "PLACENS",
+        "GEOIDFQ",
+        "GEOID",
+        "NAME",
+        "NAMELSAD",
+        "STUSPS",
+        "STATE_NAME",
+        "LSAD",
+        "ALAND",
+        "AWATER",
+        "geometry",
+        "source_row",
+        "gaz_funcstat",
+        "popest_2023",
+        "bbox"
+      ],
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486
+    }
+  },
+  "peak_process_memory_bytes": 689537024,
+  "release": "cb2023-r1",
+  "tool_versions": {
+    "gdal": "3.11.4",
+    "numpy": "2.5.4",
+    "pyarrow": "23.0.1",
+    "pyogrio": "0.12.1",
+    "pyproj": "3.7.2",
+    "python": "3.12.12",
+    "shapely": "2.1.2"
+  },
+  "workflow_files": {
+    "README.md": "a746e9745ab4b4650942897d5aca83bcaf44ebfa8c5dbfbb73d1ce1d84b4f11f",
+    "build.py": "7b9532368e07d2ac221a04d07353107a421cb63a0b00a7fb058fa3b9771a3a5a",
+    "common.py": "0ce88eac236113cb7f714361877424c109773b8f3579bac0efd2f989442f6acb",
+    "dataset.yaml": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2",
+    "pyproject.toml": "ec64bba9dea1d89078307f50ce7f706bf1f1bc809cb548a1b693ff11625ac4d4",
+    "source.py": "7ba7120f51cb183be5f6d81a2e2a3c5963f23c3e768de17fdfa68e3b40bc3602",
+    "test_faults.py": "671c1bf87c0f853ceb29126cd2249bda743a7339c4b67526d1d38628fd53d444",
+    "uv.lock": "b48c2326a35d48a9cdae16c67287c98c2558cef117cc983f19166df789d2a5ec",
+    "validate.py": "356a47b83b54ca4c5e61fa7d91d478980b1076ec042f9c7a0e760ad501d9b24c",
+    "validation-plan.md": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "assets": [
+    {
+      "asset_id": "counties",
+      "rebuild_sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880
+    },
+    {
+      "asset_id": "places",
+      "rebuild_sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "rebuild_sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829
+    }
+  ],
+  "evidence": {
+    "commit": "5464a777f6be8f1530a5bbbd3060080d070b4ac1",
+    "problems": [],
+    "tool_versions": [
+      {
+        "gdal": "3.11.4",
+        "numpy": "2.5.4",
+        "pyarrow": "23.0.1",
+        "pyogrio": "0.12.1",
+        "pyproj": "3.7.2",
+        "python": "3.12.12",
+        "shapely": "2.1.2"
+      },
+      {
+        "gdal": "3.11.4",
+        "numpy": "2.5.4",
+        "pyarrow": "23.0.1",
+        "pyogrio": "0.12.1",
+        "pyproj": "3.7.2",
+        "python": "3.12.12",
+        "shapely": "2.1.2"
+      }
+    ]
+  },
+  "status": "passed"
+}

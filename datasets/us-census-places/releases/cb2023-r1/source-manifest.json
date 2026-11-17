@@ -1,0 +1,42 @@
+{
+  "files": {
+    "2023_Gaz_cousubs_national.zip": {
+      "name": "2023_Gaz_cousubs_national.zip",
+      "sha256": "22f4892eadaa4236add3b3dd015dff401e74e1aef32a7717a15e44c23dbdc1f3",
+      "size_bytes": 1491622,
+      "url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_cousubs_national.zip"
+    },
+    "2023_Gaz_place_national.zip": {
+      "name": "2023_Gaz_place_national.zip",
+      "sha256": "3c8b23c0dcdb15c0ebd16fee7373e032466e6b585650aa219bc1bee5ac8bd58f",
+      "size_bytes": 1220953,
+      "url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_place_national.zip"
+    },
+    "cb_2023_us_county_500k.zip": {
+      "name": "cb_2023_us_county_500k.zip",
+      "sha256": "99d6597b1fc7767deef62e01d28d8b5dcbd578e151855f7dc0d173cbf5bf0868",
+      "size_bytes": 11630077,
+      "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip"
+    },
+    "cb_2023_us_cousub_500k.zip": {
+      "name": "cb_2023_us_cousub_500k.zip",
+      "sha256": "c5d57d7f71af1f40f738e8dccc23bf62efd0331491a5ff0e24cfdcf026e6bc03",
+      "size_bytes": 40339825,
+      "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_cousub_500k.zip"
+    },
+    "cb_2023_us_place_500k.zip": {
+      "name": "cb_2023_us_place_500k.zip",
+      "sha256": "27562072c8e7890cafa6b3ac7a44e5e394b34da210501b48500052bc56b8a18d",
+      "size_bytes": 22856787,
+      "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_place_500k.zip"
+    },
+    "sub-est2023.csv": {
+      "name": "sub-est2023.csv",
+      "sha256": "493161c5f342e587b10fcbfbfca6768f8b828c80ff9ac2283ef16225ccd653e9",
+      "size_bytes": 6714548,
+      "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2023/cities/totals/sub-est2023.csv"
+    }
+  },
+  "license": "public domain",
+  "producer": "US Census Bureau"
+}

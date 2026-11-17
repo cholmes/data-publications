@@ -1,0 +1,7 @@
+test_faults_are_rejected (test_faults.Faults.test_faults_are_rejected) ... ok
+test_unchanged_passes (test_faults.Faults.test_unchanged_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.676s
+
+OK
