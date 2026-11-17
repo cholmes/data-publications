@@ -232,5 +232,6 @@ Before any r7 check: a QGIS view also took several seconds. Measured with QGIS's
 of a new area is about 25 to 29 requests in sequence at about 0.25 s each; without
 `GDAL_DISABLE_READDIR_ON_OPEN`, which QGIS does not set, GDAL also asks for side files of each quad
 (176 404s for one Alta view, 20 s instead of 6 s). The address `/vsicurl?empty_dir=yes&url=...`
-stops that with no setting, so the comment in `gti/naip.gti` and the README give that address. r7
-is built again from the commit with this change; the index files are unchanged.
+stops that with no setting, so the README gives that address. (`gti/naip.gti` itself cannot carry
+it: it is an option of the address the file is opened with.) The r7 files are those built at
+d88994f; nothing that goes into them changes.
