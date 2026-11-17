@@ -1,0 +1,15 @@
+[project]
+name = "us-census-places"
+version = "0.1.0"
+description = "Reproducible local release of the 2023 Census counties, places and county subdivisions as GeoParquet"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+  "numpy==2.5.4",
+  "pyarrow==23.0.1",
+  "pyogrio==0.12.1",
+  "pyproj==3.7.2",
+  "shapely==2.1.2",
+]
+
+[tool.uv]
+package = false
