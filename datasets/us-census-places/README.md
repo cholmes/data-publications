@@ -3,8 +3,10 @@
 The Census Bureau's 2023 cartographic boundary files (1:500,000) for counties, places and county
 subdivisions, converted from zipped shapefiles to one GeoParquet file per layer.
 
-**Status (2026-11-16):** candidate. The build and its checks are written; no release has been
-built from committed code, nothing is hosted and nothing is in the public catalogue.
+**Status (2026-11-16):** prepared. Release `cb2023-r1` was built from committed code, passed the
+checks of the validation plan and the shared packager, and rebuilt byte-identically in a clean
+checkout. Nothing is hosted and nothing is in the public catalogue. The display package (outline
+tiles and a names index) is not built here yet.
 
 | File | Rows | What a row is |
 | --- | ---: | --- |

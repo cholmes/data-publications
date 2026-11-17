@@ -1,0 +1,288 @@
+{
+  "assets": [
+    {
+      "asset_id": "counties",
+      "description": "3,235 counties and equivalents, including Puerto Rico and the island areas. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve.",
+      "field_dictionary": "metadata/counties-field-dictionary.json",
+      "field_dictionary_sha256": "844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+      "geo_metadata_version": "1.1.0",
+      "geometry_column": "geometry",
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "href": "assets/counties.parquet",
+      "identifier_column": "GEOID",
+      "media_type": "application/vnd.apache.parquet",
+      "row_count": 3235,
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880,
+      "source_path": "counties.parquet",
+      "title": "Counties and county equivalents"
+    },
+    {
+      "asset_id": "places",
+      "description": "32,608 places. gaz_funcstat A marks an incorporated place with an active government; census designated places carry no population estimate. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve.",
+      "field_dictionary": "metadata/places-field-dictionary.json",
+      "field_dictionary_sha256": "66fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+      "geo_metadata_version": "1.1.0",
+      "geometry_column": "geometry",
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "href": "assets/places.parquet",
+      "identifier_column": "GEOID",
+      "media_type": "application/vnd.apache.parquet",
+      "row_count": 32608,
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486,
+      "source_path": "places.parquet",
+      "title": "Incorporated places and census designated places"
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "description": "36,367 county subdivisions. gaz_funcstat A marks a township or town with an active government, found in 20 states. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve.",
+      "field_dictionary": "metadata/county-subdivisions-field-dictionary.json",
+      "field_dictionary_sha256": "7b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+      "geo_metadata_version": "1.1.0",
+      "geometry_column": "geometry",
+      "geometry_types": [
+        "Polygon",
+        "MultiPolygon"
+      ],
+      "href": "assets/county-subdivisions.parquet",
+      "identifier_column": "GEOID",
+      "media_type": "application/vnd.apache.parquet",
+      "row_count": 36367,
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829,
+      "source_path": "county-subdivisions.parquet",
+      "title": "County subdivisions"
+    }
+  ],
+  "clean_rebuild_report": {
+    "path": "evidence/clean-rebuild.json",
+    "sha256": "56e21002e2a2e6d1af94248bfb84cb59ae4028ae0c696f19c2a42396e1351b0e"
+  },
+  "code_revision": "5464a777f6be8f1530a5bbbd3060080d070b4ac1",
+  "copied_data_modes": {
+    "counties": "apfs_clone",
+    "county-subdivisions": "apfs_clone",
+    "places": "apfs_clone"
+  },
+  "created": "2026-11-17T00:23:11Z",
+  "data_license": {
+    "path": "licenses/data-license.json",
+    "sha256": "caac4d1a4d1170a9ba8858a53bffb18b4170b093c1fc9250259dd566f8024bec"
+  },
+  "dataset_id": "us-census-places",
+  "dataset_record": {
+    "path": "dataset.yaml",
+    "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2"
+  },
+  "display_derivatives": [
+    {
+      "display_only": true,
+      "format": "PNG",
+      "path": "display/thumbnail.png",
+      "role": "thumbnail",
+      "sampled_features": 1437,
+      "sampled_vertices": 500130,
+      "sampling_limit": {
+        "max_features": 50000,
+        "max_vertices": 500000
+      },
+      "sha256": "b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+      "size_bytes": 6899
+    }
+  ],
+  "manifest_version": "1.0",
+  "publicly_published": false,
+  "release_id": "cb2023-r1",
+  "release_version": "1.0.0",
+  "scope_note": "Local package only; not uploaded, publicly hosted, or submitted to a registry.",
+  "source_attribution": {
+    "path": "source/attribution.json",
+    "sha256": "eaacb081972902ff0be2451ea2fddd7d4c319a24ce6f93f3d24bc7d9bf3105e6"
+  },
+  "source_fidelity_report": {
+    "path": "evidence/source-fidelity.json",
+    "sha256": "50da818652746570567f1847bf91732cf11594ee4271d06fab87faf160f228c5"
+  },
+  "source_license": {
+    "path": "licenses/source-license.json",
+    "sha256": "42ea1e200f70870cef640714a3bee85cabbf1ed2535a1b32e2e425fad769b3ac"
+  },
+  "spatial_bbox": [
+    -179.146711,
+    -14.548699,
+    179.77847,
+    71.387815
+  ],
+  "status": "local-candidate",
+  "supporting_files": [
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/source-manifest.json",
+      "sha256": "25e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+      "size_bytes": 1883,
+      "source_basename": "source-manifest.json",
+      "title": "Pinned Census inputs: address, size and SHA-256"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/build-manifest.json",
+      "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+      "size_bytes": 4442,
+      "source_basename": "build-manifest.json",
+      "title": "Build commit, tool versions and output facts"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "text/markdown",
+      "path": "provenance/validation-plan.md",
+      "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+      "size_bytes": 6388,
+      "source_basename": "validation-plan.md",
+      "title": "Checks written before the first build"
+    }
+  ],
+  "temporal_interval": [
+    "2023-01-01T00:00:00Z",
+    "2023-07-01T00:00:00Z"
+  ],
+  "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+  "workflow_files": {
+    "datasets/us-census-places/README.md": {
+      "bytes": 2465,
+      "package_path": "verification/workflow/datasets/us-census-places/README.md",
+      "sha256": "a746e9745ab4b4650942897d5aca83bcaf44ebfa8c5dbfbb73d1ce1d84b4f11f"
+    },
+    "datasets/us-census-places/build.py": {
+      "bytes": 10908,
+      "package_path": "verification/workflow/datasets/us-census-places/build.py",
+      "sha256": "7b9532368e07d2ac221a04d07353107a421cb63a0b00a7fb058fa3b9771a3a5a"
+    },
+    "datasets/us-census-places/common.py": {
+      "bytes": 1709,
+      "package_path": "verification/workflow/datasets/us-census-places/common.py",
+      "sha256": "0ce88eac236113cb7f714361877424c109773b8f3579bac0efd2f989442f6acb"
+    },
+    "datasets/us-census-places/compare_rebuild.py": {
+      "bytes": 2176,
+      "package_path": "verification/workflow/datasets/us-census-places/compare_rebuild.py",
+      "sha256": "3519674f79b0b166cfd4766422174975aac3bbf8ce99da3b63d381e048190aac"
+    },
+    "datasets/us-census-places/dataset.yaml": {
+      "bytes": 1881,
+      "package_path": "verification/workflow/datasets/us-census-places/dataset.yaml",
+      "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2"
+    },
+    "datasets/us-census-places/pyproject.toml": {
+      "bytes": 349,
+      "package_path": "verification/workflow/datasets/us-census-places/pyproject.toml",
+      "sha256": "ec64bba9dea1d89078307f50ce7f706bf1f1bc809cb548a1b693ff11625ac4d4"
+    },
+    "datasets/us-census-places/releases/cb2023-r1/build-manifest.json": {
+      "bytes": 4442,
+      "package_path": "verification/workflow/datasets/us-census-places/releases/cb2023-r1/build-manifest.json",
+      "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5"
+    },
+    "datasets/us-census-places/releases/cb2023-r1/fault-tests.txt": {
+      "bytes": 248,
+      "package_path": "verification/workflow/datasets/us-census-places/releases/cb2023-r1/fault-tests.txt",
+      "sha256": "fb2a527c43e897f842ead22f3c8e2bc57b995b06ae8c0ac2b572bdaa7011f19e"
+    },
+    "datasets/us-census-places/releases/cb2023-r1/package-spec.json": {
+      "bytes": 6235,
+      "package_path": "verification/workflow/datasets/us-census-places/releases/cb2023-r1/package-spec.json",
+      "sha256": "32168cbadaa7fef0ecab1c44fbe7d48cd2eb923b65bde41acc4451fa6283d26b"
+    },
+    "datasets/us-census-places/source.py": {
+      "bytes": 4132,
+      "package_path": "verification/workflow/datasets/us-census-places/source.py",
+      "sha256": "7ba7120f51cb183be5f6d81a2e2a3c5963f23c3e768de17fdfa68e3b40bc3602"
+    },
+    "datasets/us-census-places/test_faults.py": {
+      "bytes": 3761,
+      "package_path": "verification/workflow/datasets/us-census-places/test_faults.py",
+      "sha256": "671c1bf87c0f853ceb29126cd2249bda743a7339c4b67526d1d38628fd53d444"
+    },
+    "datasets/us-census-places/uv.lock": {
+      "bytes": 64921,
+      "package_path": "verification/workflow/datasets/us-census-places/uv.lock",
+      "sha256": "b48c2326a35d48a9cdae16c67287c98c2558cef117cc983f19166df789d2a5ec"
+    },
+    "datasets/us-census-places/validate.py": {
+      "bytes": 10014,
+      "package_path": "verification/workflow/datasets/us-census-places/validate.py",
+      "sha256": "356a47b83b54ca4c5e61fa7d91d478980b1076ec042f9c7a0e760ad501d9b24c"
+    },
+    "datasets/us-census-places/validation-plan.md": {
+      "bytes": 6388,
+      "package_path": "verification/workflow/datasets/us-census-places/validation-plan.md",
+      "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917"
+    },
+    "scripts/release_tools/AGENTS.md": {
+      "bytes": 857,
+      "package_path": "verification/workflow/scripts/release_tools/AGENTS.md",
+      "sha256": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b"
+    },
+    "scripts/release_tools/README.md": {
+      "bytes": 15314,
+      "package_path": "verification/workflow/scripts/release_tools/README.md",
+      "sha256": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2"
+    },
+    "scripts/release_tools/add_spatial_bounds.py": {
+      "bytes": 21945,
+      "package_path": "verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "sha256": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6"
+    },
+    "scripts/release_tools/package-lock.json": {
+      "bytes": 54306,
+      "package_path": "verification/workflow/scripts/release_tools/package-lock.json",
+      "sha256": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c"
+    },
+    "scripts/release_tools/package.json": {
+      "bytes": 142,
+      "package_path": "verification/workflow/scripts/release_tools/package.json",
+      "sha256": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470"
+    },
+    "scripts/release_tools/package_release.py": {
+      "bytes": 63322,
+      "package_path": "verification/workflow/scripts/release_tools/package_release.py",
+      "sha256": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8"
+    },
+    "scripts/release_tools/pyproject.toml": {
+      "bytes": 259,
+      "package_path": "verification/workflow/scripts/release_tools/pyproject.toml",
+      "sha256": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c"
+    },
+    "scripts/release_tools/serve.py": {
+      "bytes": 2789,
+      "package_path": "verification/workflow/scripts/release_tools/serve.py",
+      "sha256": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175"
+    },
+    "scripts/release_tools/test_package_release.py": {
+      "bytes": 10209,
+      "package_path": "verification/workflow/scripts/release_tools/test_package_release.py",
+      "sha256": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7"
+    },
+    "scripts/release_tools/test_spatial_bounds.py": {
+      "bytes": 8062,
+      "package_path": "verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "sha256": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f"
+    },
+    "scripts/release_tools/uv.lock": {
+      "bytes": 134378,
+      "package_path": "verification/workflow/scripts/release_tools/uv.lock",
+      "sha256": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b"
+    }
+  }
+}

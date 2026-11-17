@@ -1,0 +1,30 @@
+{
+  "asset_count": 3,
+  "assets": [
+    {
+      "asset_id": "counties",
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880
+    },
+    {
+      "asset_id": "places",
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829
+    }
+  ],
+  "dataset_id": "us-census-places",
+  "final_verification_sha256": "28c5b0089396c437a0031628ad0bca8fd8d1652c0d12c2ed933fe34bc3b2730d",
+  "manifest_sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+  "package_binding_sha256": "4d8cc92a252b6ffe2397f179af1508b2c5d356d21713eec615107c460dc72a4c",
+  "package_dir": "cb2023-r1",
+  "publicly_published": false,
+  "registry_submitted": false,
+  "release_id": "cb2023-r1",
+  "release_version": "1.0.0",
+  "status": "packaged_locally_not_published"
+}

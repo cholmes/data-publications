@@ -4,9 +4,9 @@ Generated from `candidates/<id>/dataset.yaml` and `datasets/<id>/dataset.yaml`; 
 
 Candidates are exploratory and carry no commitment to convert or publish. Prepared datasets remain distinct from verified public releases.
 
-Inventory: 454 records; 295 classified global or near-global; 113 covered by expanded discovery.
+Inventory: 455 records; 295 classified global or near-global; 113 covered by expanded discovery.
 
-Decisions: defer: 3; pending: 443; publish_conversion: 7; reuse_existing: 1.
+Decisions: defer: 3; pending: 443; publish_conversion: 8; reuse_existing: 1.
 
 [Global inventory CSV](candidates.csv) includes the existing global backlog. [Full index](index.json) also includes regional and unclassified records. [Discovery methods and coverage](research/global-candidates-20261031/README.md).
 

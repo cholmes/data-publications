@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "dataset_id": "us-census-places",
+  "release": "cb2023-r1",
+  "package_manifest_sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+  "collection_path": "collection.json",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "27b6d9fe3276a66f0ac9f428be6da9a9da425e6343246fcfb7c8793b314e50fe",
+      "size_bytes": 538
+    },
+    {
+      "path": "README.md",
+      "sha256": "4b034d2c1faf4ae99356f9528f7e862e58d0b41e613fb87dd1ce86d7c0baabb3",
+      "size_bytes": 1966
+    },
+    {
+      "path": "collection.json",
+      "sha256": "de8e356bdde1124325b5fbd30652beaeaef332532dad9b68b52e890ef0d6932d",
+      "size_bytes": 11334
+    },
+    {
+      "path": "display/thumbnail.png",
+      "sha256": "b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+      "size_bytes": 6899
+    }
+  ],
+  "binding_proof": {
+    "path": "proof/package-binding.json",
+    "sha256": "4d8cc92a252b6ffe2397f179af1508b2c5d356d21713eec615107c460dc72a4c"
+  }
+}

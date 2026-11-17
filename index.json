@@ -14828,6 +14828,21 @@
       }
     },
     {
+      "id": "us-census-places",
+      "record_path": "datasets/us-census-places/dataset.yaml",
+      "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+      "community_url": null,
+      "family_key": null,
+      "decision": "publish_conversion",
+      "priority": "pilot_review",
+      "publication_status": "prepared",
+      "intake": {
+        "kind": "producer",
+        "reference_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html",
+        "added_on": "2026-11-16"
+      }
+    },
+    {
       "id": "us_ftype_fgroup",
       "record_path": "candidates/us_ftype_fgroup/dataset.yaml",
       "title": "US National Forest Type",
