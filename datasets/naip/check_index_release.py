@@ -422,7 +422,7 @@ def quad_checks(table, hosted, expected, left_hrefs, changes=NO_CHANGES):
     out = {"1b": check_quad_values(table, hosted, changes)["passed"], "3": check_accounting(table, expected, left_hrefs)["passed"],
            "4": check_size_checksum(table, expected)["passed"], "6": check_footprints(table, corners=True)["passed"],
            "7": check_dates(table)["passed"]}
-    if GTI_LOCATION in changes["added_columns"]:
+    if GTI_LOCATION in table.column_names or GTI_LOCATION in changes["added_columns"]:
         out["11"] = check_gti_locations(table)["passed"]
     return out
 
@@ -462,7 +462,7 @@ def fault_tests(table, hosted, expected, left_hrefs, left_receipt, changes=NO_CH
         ("a datetime changed", change(i, lambda r: r.__setitem__("datetime", r["datetime"].replace(day=1 if r["datetime"].day != 1 else 2))), "7"),
         ("rows of a left-out year added back", rebuilt(rows + [add_back(r) or r for r in [copy.deepcopy(rows[i])]]), "3"),
     ]
-    if GTI_LOCATION in changes["added_columns"]:
+    if GTI_LOCATION in table.column_names:
         cases += [
             ("a gti location pointing at another file", change(i, lambda r: r.__setitem__(GTI_LOCATION, rows[i + 1][GTI_LOCATION])), "11"),
             ("a gti location made absolute", change(i, lambda r: r.__setitem__(GTI_LOCATION, r["assets"]["image"]["href"])), "11"),
@@ -526,7 +526,7 @@ def main():
         "8_overview_index": check_overview_rows(overviews, quads, results, listed),
         "9_fault_tests": fault_tests(quads, hosted_quads, expected, left_hrefs, left_receipts[0], changes),
     }
-    if GTI_LOCATION in changes["added_columns"]:
+    if GTI_LOCATION in quads.column_names or GTI_LOCATION in changes["added_columns"]:
         checks["11_gti"] = {"quads": check_gti_locations(quads), "overviews": check_gti_locations(overviews),
                             "files": check_gti_files(args.release)}
     for key in ("5_hosted_listing", "6_footprint", "11_gti"):

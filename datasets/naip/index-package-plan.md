@@ -211,3 +211,19 @@ comparison left out `crs` on the release's side only, as written for r5, whose h
 predecessor had none; hosted r5 has it. Both files' `geo` metadata is byte-identical to hosted
 r5's. The comparison now leaves `crs` out on both sides, and the release's `crs` must still be
 OGC:CRS84.
+
+## Addendum for r7 (2026-11-17 UTC, written after r6 was hosted and before any r7 build)
+
+QGIS 4.2.1 froze when the hosted r6 `naip.gti` was added as a layer. Adding a layer makes QGIS
+take approximate statistics and draw the whole extent; GDAL takes both from the coarsest overview,
+which in r6 was the national file at 0.00256 degrees (23,125 x 10,438 pixels), so one band's
+statistics fetched 29 MB and warped 241 million pixels (22 s). r7 adds four coarser overview levels
+of the national file (0.00512, 0.01024, 0.02048 and 0.04096 degrees, down to 1,445 x 652 pixels).
+Nothing else changes: the two index files are to be byte-identical to hosted r6, and
+`releases/index-20261117-r7/changes.json` states no changes against them.
+
+Check 11 now runs whenever the index has the `naip:gti_location` column, not only when the column
+is new, and so do its two fault cases. Check 12 adds a third step that does what QGIS does on adding
+the layer (approximate statistics of band 1, then a 1,000-pixel draw of the whole extent) and must
+fetch no more than 8 MiB in all. Run on the r6 files it fails (28.5 MB fetched;
+`releases/index-20261117-r7/check-gti-open-on-r6.json`).

@@ -5,7 +5,9 @@
        by range through /vsicurl/. The mosaic is in NAD83 longitude and latitude (the quads' datum) at
        0.000005 degrees, about 0.5 m; QGIS reprojects it to the project CRS. Band 4 is alpha, so the
        masked border of each quad stays transparent. Zoomed out it reads the 9.6 m state overview
-       files and then the national file, through naip-overviews.gti. Made by
+       files and then the national file, through naip-overviews.gti. The coarsest levels (down to
+       0.04096 degrees, 1,445 x 652 pixels) keep a whole-country read, such as the statistics QGIS
+       takes when the layer is added, to a few hundred kilobytes of the national file's own overviews. Made by
        datasets/naip/gti/naip.gti in github.com/nthh/data-publications. -->
   <IndexDataset>naip.parquet</IndexDataset>
   <LocationField>naip:gti_location</LocationField>
@@ -48,5 +50,21 @@
   <Overview>
     <Dataset>naip-overviews.gti</Dataset>
     <OpenOptions><OOI key="FILTER">id = 'national-latest'</OOI><OOI key="RESX">0.00256</OOI><OOI key="RESY">0.00256</OOI></OpenOptions>
+  </Overview>
+  <Overview>
+    <Dataset>naip-overviews.gti</Dataset>
+    <OpenOptions><OOI key="FILTER">id = 'national-latest'</OOI><OOI key="RESX">0.00512</OOI><OOI key="RESY">0.00512</OOI></OpenOptions>
+  </Overview>
+  <Overview>
+    <Dataset>naip-overviews.gti</Dataset>
+    <OpenOptions><OOI key="FILTER">id = 'national-latest'</OOI><OOI key="RESX">0.01024</OOI><OOI key="RESY">0.01024</OOI></OpenOptions>
+  </Overview>
+  <Overview>
+    <Dataset>naip-overviews.gti</Dataset>
+    <OpenOptions><OOI key="FILTER">id = 'national-latest'</OOI><OOI key="RESX">0.02048</OOI><OOI key="RESY">0.02048</OOI></OpenOptions>
+  </Overview>
+  <Overview>
+    <Dataset>naip-overviews.gti</Dataset>
+    <OpenOptions><OOI key="FILTER">id = 'national-latest'</OOI><OOI key="RESX">0.04096</OOI><OOI key="RESY">0.04096</OOI></OpenOptions>
   </Overview>
 </GDALTileIndexDataset>

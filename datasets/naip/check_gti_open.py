@@ -19,7 +19,9 @@ resolution and the whole of Utah at about 600 m, and records every request the s
 every imagery request GDAL made (from its debug log). The check passes when both reads give a
 picture (band 1 mean between 60 and 200, alpha not all zero), every imagery request is a byte
 range, no index file is read whole, and neither read takes more than 8 MiB of the index files
-(the ranges GDAL's debug log says it fetched; HEAD requests carry no body).
+(the ranges GDAL's debug log says it fetched; HEAD requests carry no body). A third step does what
+QGIS does when the layer is added, approximate statistics of band 1 and a 1,000-pixel draw of the
+whole extent, and must fetch no more than 8 MiB in all.
 
 With --hosted there is no server: the script opens /vsicurl/<host>/nthh/naip/stac/naip.gti, the
 hosted file, with the same reads and marks (hosted check 8). --release then names the local files
@@ -44,6 +46,8 @@ ALTA = (-111.632, 40.596, -111.618, 40.585)       # ulx, uly, lrx, lry, as -proj
 UTAH = (-114.1, 42.1, -109.0, 36.9)
 UTAH_RES = 0.0054                                  # degrees, about 600 m
 INDEX_BYTES_PER_READ = 8 << 20                     # GET bytes of the index files one read may take
+WHOLE_WIDTH = 1000                                 # pixels across of the whole-extent draw
+WHOLE_BYTES = 8 << 20                              # all bytes the add-layer step may fetch
 
 
 def sha256(path):
@@ -97,7 +101,14 @@ def serve(release, host, seen):
 
 
 def read(url, window, res, out_png):
-    options = ["-projwin", *map(str, window), "-of", "PNG"]
+    if window is None:
+        # What QGIS does when the layer is added: approximate statistics of a band, then a draw of
+        # the whole extent at about the width of a map window.
+        source = gdal.Open(url)
+        source.GetRasterBand(1).ComputeStatistics(True)
+        options = ["-outsize", str(WHOLE_WIDTH), "0", "-of", "PNG"]
+    else:
+        options = ["-projwin", *map(str, window), "-of", "PNG"]
     if res:
         options += ["-tr", str(res), str(res)]
     gdal.Translate(out_png, url, options=options)
@@ -127,7 +138,7 @@ def main():
     gdal.SetConfigOption("CPL_LOG", log)
     gdal.SetConfigOption("GDAL_DISABLE_READDIR_ON_OPEN", "EMPTY_DIR")
     reads, errors = {}, []
-    for name, window, res in (("alta_full_resolution", ALTA, None), ("utah_600m", UTAH, UTAH_RES)):
+    for name, window, res in (("alta_full_resolution", ALTA, None), ("utah_600m", UTAH, UTAH_RES), ("add_layer_whole_extent", None, None)):
         before = len(seen)
         log_at = os.path.getsize(log) if os.path.exists(log) else 0
         try:
@@ -142,6 +153,7 @@ def main():
                 f.seek(log_at)
                 fetched = re.findall(r"Downloading (\d+)-(\d+) \((\S+?)\)", f.read())
             index = [(int(a), int(b)) for a, b, u in fetched if u.endswith((STAC + "naip.parquet", STAC + "naip-overviews.parquet"))]
+            reads[name]["all_bytes"] = sum(int(b) - int(a) + 1 for a, b, _ in fetched)
             reads[name]["index_requests"] = len(index)
             reads[name]["index_bytes"] = sum(b - a + 1 for a, b in index)
             if server:
@@ -157,7 +169,8 @@ def main():
     whole = [s for s in seen if s.get("size") and s["status"] == 200 and s["method"] == "GET" and s["size"] > 1 << 20]
     downloads = re.findall(r"HTTP: Fetch\(https?://[^)]*\.tif", text)
     picture = lambda r: r is not None and 60 <= r["band1_mean"] <= 200 and r["alpha_max"] > 0
-    small = all(r is not None and r["index_bytes"] <= INDEX_BYTES_PER_READ for r in reads.values())
+    small = (all(r is not None and r["index_bytes"] <= INDEX_BYTES_PER_READ for r in reads.values())
+             and reads["add_layer_whole_extent"] is not None and reads["add_layer_whole_extent"]["all_bytes"] <= WHOLE_BYTES)
     passed = not errors and all(picture(r) for r in reads.values()) and small and imagery and not whole and not downloads
     report = {
         "schema_version": 1,
