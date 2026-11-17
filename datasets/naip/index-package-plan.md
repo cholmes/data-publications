@@ -104,3 +104,26 @@ Nathan chose to make the rebuild the release and then replace the hosted files w
   run: the hosted files read anonymously have the release's SHA-256.
 
 Checks 3 to 10 are unchanged. A failure keeps r2 as failed evidence, as before.
+
+## Addendum for r3 (2026-11-17 UTC, written after r2's result and before any r3 build)
+
+`index-20261116-r2` failed and is kept in `releases/index-20261116-r2-failed/` (build report and
+validator report). Checks 1a, 3, 4, 5, 6, 8 and 9 passed. What failed:
+
+- **1b, a real difference.** 2,452 quad footprints and their `bbox` differ from the hosted
+  file's by at most 7.1e-15 degrees. r2's pyproj carried PROJ 9.9.0; the hosted file was made
+  with pyproj 3.7.2, which carries PROJ 9.5.1.
+- **1c, a real difference.** The overview outlines differ from the hosted ones by up to 0.00099
+  degrees, so their `bbox` column differs; every outline still covers all its quads. r2 used GDAL
+  3.12.4; the hosted file was made with GDAL 3.13.1 and GEOS 3.14.1.
+- **7, the check was wrong.** 14,370 rows failed, all 2023 file names in five states, which carry
+  two dates: the day flown, then the day the file was made (README, and VALIDATION.md "A fault in
+  the index builders"). Every one is dated by the first. The plan said "the date at the end of its
+  file name", which is wrong for those names. Corrected: the date after the resolution field
+  (`..._060_<flown>[_<made>]`).
+
+For r3 the environment matches the libraries that wrote the hosted files (Homebrew Python on
+2026-11-16): GDAL 3.13.1 and GEOS 3.14.1 from conda-forge, pyarrow 23.0.1, and the PyPI wheel of
+pyproj 3.7.2 (PROJ 9.5.1), in the new `index-env.lock.txt`. The pass marks of 1a, 1b, 1c and 3 to
+10 are otherwise unchanged. If the files come out byte-identical to the hosted ones apart from the
+quad index's collection record, that is reported.

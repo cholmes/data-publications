@@ -267,7 +267,8 @@ def check_footprints(table, corners):
 def check_dates(table):
     wrong = []
     for item, when in zip(table.column("id").to_pylist(), table.column("datetime").to_pylist()):
-        m = re.search(r"_(\d{8})$", item)
+        # <state>_m_<block><quad>_<quarter>_<zone>_<res>_<flown>[_<made>]: the first date is the day flown
+        m = re.match(r"^[a-z]{2}_m_\d{7}_[ns][ew]_\d{2}_\d{3}_(\d{8})(_\d{8})?$", item)
         if not m or when.strftime("%Y%m%d") != m.group(1):
             wrong.append(item)
     return {"passed": not wrong, "wrong": failure_list(wrong)}
