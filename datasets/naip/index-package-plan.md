@@ -69,3 +69,38 @@ Any failed check is kept as failed evidence and blocks the prepared status.
   of files were compared with their receipts in the per-state hosted checks.
 - The listing is anonymous and free of charge to us; it is about 250 requests.
 - No requester-pays read, no paid run, no upload.
+
+## Addendum for r2 (2026-11-17 UTC, written after r1's result and before any r2 build)
+
+`index-20261116-r1` failed check 1 and is kept in `releases/index-20261116-r1-failed/`. The
+rebuilt quad index had the hosted rows and values but not its bytes: the hosted file was written
+by a newer pyarrow than the documented command uses, and its collection record still gives the
+first flight date of a year the index no longer lists (it was rewritten with `--from-index`,
+which keeps the old collection record).
+
+Nathan chose to make the rebuild the release and then replace the hosted files with it. For
+`index-20261116-r2`:
+
+- **Environment.** Both builders run in one conda-forge environment whose full package list is
+  committed as `datasets/naip/index-env.lock.txt` (`conda list --explicit`): Python 3.12,
+  GDAL 3.12.4, pyarrow 21.0.0, pyproj 3.8.0. The overview builder needs GDAL; the hosted
+  overview index was built with another GDAL and GEOS, so its outlines may differ in vertices.
+- **Inputs of the overview index.** The 116 state results under `overviews/national/results`
+  (`*-result.json`) and the national result of the year-rule build
+  (`colour-balance/years/national/national-result.json`, 114 sources, 38,077,264 bytes, the
+  size of the hosted national file). Their SHA-256 are recorded in the build report.
+- **Check 1 is replaced by 1a to 1c.**
+  - 1a. Two builds from the same commit give byte-identical files (and check 2 a third, from a
+    clean checkout).
+  - 1b. Quad index: rows, schema and every value equal the hosted file's; the collection record
+    differs only in its temporal extent, whose first date must be the earliest `datetime` of
+    the rows.
+  - 1c. Overview index: the same ids in the same order, and every column except `geometry`
+    equal to the hosted file's; the collection record may differ only in the same way as 1b.
+    For `geometry`, each state row's outline must cover the footprint of every quad of its
+    state, year and zone (checked by the validator with its own geometry code, allowing 1e-9
+    degrees); how far each outline is from the hosted one is reported, not passed or failed.
+- **After the files are replaced** (on Nathan's go for that action), the original check 1 is
+  run: the hosted files read anonymously have the release's SHA-256.
+
+Checks 3 to 10 are unchanged. A failure keeps r2 as failed evidence, as before.
