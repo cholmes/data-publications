@@ -83,7 +83,8 @@ publication:
       9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).'
     - 'Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview
       file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the
-      files for a place by querying the index on its `bbox` columns.'
+      files for a place by querying the index on its `bbox` columns. `stac/naip.gti` opens the index in
+      QGIS or GDAL as one mosaic (GDAL tile index), with `stac/naip-overviews.gti` for zoomed-out views.'
     readme_sections:
     - heading: How the two indexes are organized
       body: |-
