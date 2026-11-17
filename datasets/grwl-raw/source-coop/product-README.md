@@ -48,6 +48,23 @@ Independently maintained by [nthh](https://source.coop/nthh).
 - [Original download](https://zenodo.org/api/records/18624542/files/GRWL_vector_V01.01.zip/content)
 - [Dataset release](https://zenodo.org/records/18624542)
 
+## Release files
+
+- [grwl-raw-observations.parquet](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/assets/grwl-raw-observations.parquet) (asset)
+- [thumbnail.png](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/display/thumbnail.png) (display_derivatives)
+- [data-license.json](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/licenses/data-license.json) (data_license)
+- [source-license.json](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/licenses/source-license.json) (source_license)
+- [grwl-raw-observations-field-dictionary.json](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/metadata/grwl-raw-observations-field-dictionary.json) (field_dictionary)
+- [attribution.json](https://data.source.coop/nthh/grwl-raw/releases/raw-v01.01-local-r1/source/attribution.json) (source_attribution)
+
+## Display package
+
+Display release: `raw-v01.01-display-r3`. The manifest is pinned at SHA-256 `0910adf27da9265a9f02fb2c71f2d5b4a6e90f55330ae6d4a2d24c782d231915`.
+Display assets are separate immutable derivatives bound to this analytical release.
+- [Display manifest](https://data.source.coop/nthh/grwl-raw/display/raw-v01.01-display-r3/manifest.json)
+- [GRWL raw width observations at every zoom PMTiles](https://data.source.coop/nthh/grwl-raw/display/raw-v01.01-display-r3/assets/grwl-raw.pmtiles) (3190539066 bytes; SHA-256 `8b7c1061bd42845a4747d53e2149ad4c0682b3066478c7d367bbab046843dd60`)
+  - [Map style](https://data.source.coop/nthh/grwl-raw/display/raw-v01.01-display-r3/styles/width.json)
+
 ## Limitations
 
 - All 64,572,998 source records passed exact independent source comparison and a byte-identical clean analytical rebuild. Complete uploaded bytes and anonymous hosting, range, CORS, subset-query and browser checks passed.

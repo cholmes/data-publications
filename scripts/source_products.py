@@ -1042,6 +1042,10 @@ def render_consumer_readme(draft: dict[str, Any]) -> str:
             lines.append(f"- [{link['title']}]({link['url']})")
         lines.append("")
     lines.extend(["## Release files", ""])
+    # A product page is served at .../<owner>/<product> with no trailing slash, where a relative link
+    # resolves against the owner and breaks. Hosted pages therefore link to the files' own addresses.
+    base = (f"https://data.source.coop/{draft['owner']}/{draft['product_id']}/"
+            if draft.get("hosted") and draft.get("owner") and draft.get("product_id") else "")
     release_files = draft.get("release_files") or []
     if release_files and draft.get("release"):
         for item in release_files:
@@ -1049,7 +1053,7 @@ def render_consumer_readme(draft: dict[str, Any]) -> str:
             label = PurePosixPath(item["path"]).name
             href = (item["path"] if kind == "supplement"
                     else f"releases/{draft['release']}/{item['path']}")
-            lines.append(f"- [{label}]({href}) ({kind})")
+            lines.append(f"- [{label}]({base}{href}) ({kind})")
     else:
         lines.append("No release files are available.")
     display = draft.get("display_publication")
@@ -1058,11 +1062,11 @@ def render_consumer_readme(draft: dict[str, Any]) -> str:
         lines.extend([
             f"Display release: `{display['release']}`. The manifest is pinned at SHA-256 `{display['manifest_sha256']}`.",
             "Display assets are separate immutable derivatives bound to this analytical release.",
-            f"- [Display manifest](display/{display['release']}/manifest.json)",
+            f"- [Display manifest]({base}display/{display['release']}/manifest.json)",
         ])
         for asset in display.get("assets", []):
-            lines.append(f"- [{asset['title']} PMTiles]({asset['href']}) ({asset['size_bytes']} bytes; SHA-256 `{asset['sha256']}`)")
-            lines.append(f"  - [Map style]({asset['style_href']})")
+            lines.append(f"- [{asset['title']} PMTiles]({base}{asset['href']}) ({asset['size_bytes']} bytes; SHA-256 `{asset['sha256']}`)")
+            lines.append(f"  - [Map style]({base}{asset['style_href']})")
     else:
         lines.append("No versioned display package is recorded.")
     lines.extend(["", "## Limitations", ""])

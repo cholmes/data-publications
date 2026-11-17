@@ -62,6 +62,46 @@ Independently maintained by [nthh](https://source.coop/nthh).
 - [Processor: nthh](https://source.coop/nthh/lakeatlas)
 - [Producer: HydroSHEDS / HydroATLAS authors](https://www.hydrosheds.org/products/hydroatlas)
 
+## Release files
+
+- [lakeatlas-polygons.parquet](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/assets/lakeatlas-polygons.parquet) (asset)
+- [lakeatlas-pour-points.parquet](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/assets/lakeatlas-pour-points.parquet) (asset)
+- [thumbnail.png](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/display/thumbnail.png) (display_derivatives)
+- [data-license.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/licenses/data-license.json) (data_license)
+- [source-license.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/licenses/source-license.json) (source_license)
+- [lakeatlas-polygons-field-dictionary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/metadata/lakeatlas-polygons-field-dictionary.json) (field_dictionary)
+- [lakeatlas-pour-points-field-dictionary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/metadata/lakeatlas-pour-points-field-dictionary.json) (field_dictionary)
+- [clean-rebuild.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/clean-rebuild.json) (supporting_files)
+- [evidence-provenance.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/evidence-provenance.json) (supporting_files)
+- [rebuild-environment.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/rebuild-environment.json) (supporting_files)
+- [source-fidelity.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/source-fidelity.json) (supporting_files)
+- [source-inspection.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/source-inspection.json) (supporting_files)
+- [spatial-order-polygons-clean.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-order-polygons-clean.json) (supporting_files)
+- [spatial-order-polygons-primary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-order-polygons-primary.json) (supporting_files)
+- [spatial-order-pour-points-clean.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-order-pour-points-clean.json) (supporting_files)
+- [spatial-order-pour-points-primary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-order-pour-points-primary.json) (supporting_files)
+- [spatial-pruning-polygons-clean.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-polygons-clean.json) (supporting_files)
+- [spatial-pruning-polygons-primary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-polygons-primary.json) (supporting_files)
+- [spatial-pruning-pour-points-clean.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-pour-points-clean.json) (supporting_files)
+- [spatial-pruning-pour-points-primary.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-pour-points-primary.json) (supporting_files)
+- [ATTRIBUTION.md](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/source/ATTRIBUTION.md) (supporting_files)
+- [HydroATLAS_TechDoc_v10_1.pdf](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/source/HydroATLAS_TechDoc_v10_1.pdf) (supporting_files)
+- [LakeATLAS_Catalog_v10.pdf](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/source/LakeATLAS_Catalog_v10.pdf) (supporting_files)
+- [attribution.json](https://data.source.coop/nthh/lakeatlas/releases/lakeatlas-v1.0-r2/source/attribution.json) (source_attribution)
+- [field-semantics.json](https://data.source.coop/nthh/lakeatlas/metadata/field-semantics-v1/field-semantics.json) (supplement)
+- [README.md](https://data.source.coop/nthh/lakeatlas/metadata/field-semantics-v1/README.md) (supplement)
+- [build_semantics.py](https://data.source.coop/nthh/lakeatlas/metadata/field-semantics-v1/build_semantics.py) (supplement)
+
+## Display package
+
+Display release: `display-v1`. The manifest is pinned at SHA-256 `ed70989525111682a294b6aadf1118a1ebfaefff863d645c6c805c5e8eafb70f`.
+Display assets are separate immutable derivatives bound to this analytical release.
+- [Display manifest](https://data.source.coop/nthh/lakeatlas/display/display-v1/manifest.json)
+- [Lakeatlas Polygons PMTiles](https://data.source.coop/nthh/lakeatlas/display/display-v1/assets/lakeatlas-polygons.pmtiles) (1190009288 bytes; SHA-256 `394594baa10516b5bdea3841cdbbd7f8603412475059f846f5704386a72f71be`)
+  - [Map style](https://data.source.coop/nthh/lakeatlas/display/display-v1/styles/lakeatlas-polygons.json)
+- [Lakeatlas Pour Points PMTiles](https://data.source.coop/nthh/lakeatlas/display/display-v1/assets/lakeatlas-pour-points.pmtiles) (409205238 bytes; SHA-256 `68c28ecb4585378e0e729a5c72902214e935fa7645a6bef68372f0ec61bc4ffb`)
+  - [Map style](https://data.source.coop/nthh/lakeatlas/display/display-v1/styles/lakeatlas-pour-points.json)
+
 ## Limitations
 
 - Polygons and pour points are distinct producer layers, each retained separately.

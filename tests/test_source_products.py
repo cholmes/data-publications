@@ -694,7 +694,9 @@ class SourceProductTests(unittest.TestCase):
                          "https://data.source.coop/nthh/sample-product/releases/r1/")
         self.assertIn("Validated hosted release", consumer)
         self.assertIn("releases/r1/assets/data.parquet", consumer)
-        self.assertIn("[producer.md](metadata/v1/producer.md)", consumer)
+        # A hosted page links to full addresses: the page has no trailing slash, so relative links break.
+        self.assertIn("(https://data.source.coop/nthh/sample-product/releases/r1/assets/data.parquet)", consumer)
+        self.assertIn("[producer.md](https://data.source.coop/nthh/sample-product/metadata/v1/producer.md)", consumer)
         self.assertNotIn("no converted release", consumer)
         self.assertNotIn("No product has been created", review)
         self.assertIn("Hosted product", review)

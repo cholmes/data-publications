@@ -50,6 +50,33 @@ Independently maintained by [nthh](https://source.coop/nthh).
 - [Processor: nthh](https://source.coop/nthh/hydrolakes)
 - [Producer: Lehner and Messager / HydroSHEDS](https://www.hydrosheds.org/products/hydrolakes)
 
+## Release files
+
+- [hydrolakes-polygons.parquet](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/assets/hydrolakes-polygons.parquet) (asset)
+- [thumbnail.png](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/display/thumbnail.png) (display_derivatives)
+- [data-license.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/licenses/data-license.json) (data_license)
+- [source-license.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/licenses/source-license.json) (source_license)
+- [hydrolakes-polygons-field-dictionary.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/metadata/hydrolakes-polygons-field-dictionary.json) (field_dictionary)
+- [clean-rebuild-raw.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/clean-rebuild-raw.json) (supporting_files)
+- [evidence-provenance.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/evidence-provenance.json) (supporting_files)
+- [source-cache-eviction.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/source-cache-eviction.json) (supporting_files)
+- [source-document.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/source-document.json) (supporting_files)
+- [source-validation.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/source-validation.json) (supporting_files)
+- [spatial-order-clean-rebuild.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/spatial-order-clean-rebuild.json) (supporting_files)
+- [spatial-order-retained.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/spatial-order-retained.json) (supporting_files)
+- [spatial-pruning-clean-rebuild.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/spatial-pruning-clean-rebuild.json) (supporting_files)
+- [spatial-pruning-retained.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/provenance/spatial-pruning-retained.json) (supporting_files)
+- [HydroLAKES_TechDoc_v10.pdf](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/source/HydroLAKES_TechDoc_v10.pdf) (supporting_files)
+- [attribution.json](https://data.source.coop/nthh/hydrolakes/releases/v1-local-r3/source/attribution.json) (source_attribution)
+
+## Display package
+
+Display release: `display-v1`. The manifest is pinned at SHA-256 `f3dbb0d87553162a6b2a91172626eeecca9985fb8df54685ee64924ca826d841`.
+Display assets are separate immutable derivatives bound to this analytical release.
+- [Display manifest](https://data.source.coop/nthh/hydrolakes/display/display-v1/manifest.json)
+- [Hydrolakes Polygons PMTiles](https://data.source.coop/nthh/hydrolakes/display/display-v1/assets/hydrolakes-polygons.pmtiles) (1122881121 bytes; SHA-256 `2fc61a8257322bed3c71f86e3be92ed4835023bbb23f80bc9b2bb5167cb19d46`)
+  - [Map style](https://data.source.coop/nthh/hydrolakes/display/display-v1/styles/hydrolakes-polygons.json)
+
 ## Limitations
 
 - This release contains polygons; it does not include the separate HydroLAKES pour-point source layer.

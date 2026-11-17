@@ -23,31 +23,31 @@ Formats: `application/json`, `application/vnd.apache.parquet`, `application/vnd.
 
 ## Release files
 
-- [counties.parquet](releases/cb2023-r1/assets/counties.parquet) (asset)
-- [county-subdivisions.parquet](releases/cb2023-r1/assets/county-subdivisions.parquet) (asset)
-- [places.parquet](releases/cb2023-r1/assets/places.parquet) (asset)
-- [thumbnail.png](releases/cb2023-r1/display/thumbnail.png) (display_derivatives)
-- [data-license.json](releases/cb2023-r1/licenses/data-license.json) (data_license)
-- [source-license.json](releases/cb2023-r1/licenses/source-license.json) (source_license)
-- [counties-field-dictionary.json](releases/cb2023-r1/metadata/counties-field-dictionary.json) (field_dictionary)
-- [county-subdivisions-field-dictionary.json](releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json) (field_dictionary)
-- [places-field-dictionary.json](releases/cb2023-r1/metadata/places-field-dictionary.json) (field_dictionary)
-- [build-manifest.json](releases/cb2023-r1/provenance/build-manifest.json) (supporting_files)
-- [source-manifest.json](releases/cb2023-r1/provenance/source-manifest.json) (supporting_files)
-- [validation-plan.md](releases/cb2023-r1/provenance/validation-plan.md) (supporting_files)
-- [attribution.json](releases/cb2023-r1/source/attribution.json) (source_attribution)
+- [counties.parquet](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/counties.parquet) (asset)
+- [county-subdivisions.parquet](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet) (asset)
+- [places.parquet](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/places.parquet) (asset)
+- [thumbnail.png](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/display/thumbnail.png) (display_derivatives)
+- [data-license.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/data-license.json) (data_license)
+- [source-license.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/source-license.json) (source_license)
+- [counties-field-dictionary.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/counties-field-dictionary.json) (field_dictionary)
+- [county-subdivisions-field-dictionary.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json) (field_dictionary)
+- [places-field-dictionary.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/places-field-dictionary.json) (field_dictionary)
+- [build-manifest.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/build-manifest.json) (supporting_files)
+- [source-manifest.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/source-manifest.json) (supporting_files)
+- [validation-plan.md](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/validation-plan.md) (supporting_files)
+- [attribution.json](https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/source/attribution.json) (source_attribution)
 
 ## Display package
 
 Display release: `cb2023-display-r3`. The manifest is pinned at SHA-256 `b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164`.
 Display assets are separate immutable derivatives bound to this analytical release.
-- [Display manifest](display/cb2023-display-r3/manifest.json)
-- [Counties PMTiles](display/cb2023-display-r3/assets/census_counties.pmtiles) (23766772 bytes; SHA-256 `23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2`)
-  - [Map style](display/cb2023-display-r3/styles/census_counties.json)
-- [Cities, towns and census designated places PMTiles](display/cb2023-display-r3/assets/census_places.pmtiles) (37275676 bytes; SHA-256 `79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf`)
-  - [Map style](display/cb2023-display-r3/styles/census_places.json)
-- [Governing townships and towns PMTiles](display/cb2023-display-r3/assets/census_towns.pmtiles) (20349807 bytes; SHA-256 `a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5`)
-  - [Map style](display/cb2023-display-r3/styles/census_towns.json)
+- [Display manifest](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/manifest.json)
+- [Counties PMTiles](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles) (23766772 bytes; SHA-256 `23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2`)
+  - [Map style](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json)
+- [Cities, towns and census designated places PMTiles](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles) (37275676 bytes; SHA-256 `79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf`)
+  - [Map style](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json)
+- [Governing townships and towns PMTiles](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles) (20349807 bytes; SHA-256 `a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5`)
+  - [Map style](https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json)
 
 ## Limitations
 

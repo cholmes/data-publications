@@ -48,7 +48,27 @@ Independently maintained by [nthh](https://source.coop/nthh).
 - [Dataset release](https://doi.org/10.6084/m9.figshare.4725541.v6)
 - [Producer source](https://gee-community-catalog.org/projects/plastic)
 - [Original download](https://ndownloader.figshare.com/files/7714864)
-- [Processor: nthh](https://source.coop/nthh/river-plastic-inputs)
+
+## Release files
+
+- [AGENTS.md](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/AGENTS.md) (asset)
+- [LICENSE.txt](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/LICENSE.txt) (asset)
+- [README.md](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/README.md) (asset)
+- [catalog.json](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/catalog.json) (asset)
+- [dataset.yaml](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/dataset.yaml) (asset)
+- [AGENTS.md](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/AGENTS.md) (asset)
+- [README.md](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/README.md) (asset)
+- [collection.json](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/collection.json) (asset)
+- [quality.json](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/quality.json) (asset)
+- [river-plastic-inputs.parquet](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/river-plastic-inputs.parquet) (asset)
+- [river-plastic-inputs.pmtiles](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/river-plastic-inputs.pmtiles) (asset)
+- [schema.json](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/schema.json) (asset)
+- [annual-input.json](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/styles/annual-input.json) (asset)
+- [thumbnail.png](https://data.source.coop/nthh/river-plastic-inputs/releases/figshare-v6-r2/river-plastic-inputs/thumbnail.png) (asset)
+
+## Display package
+
+No versioned display package is recorded.
 
 ## Limitations
 
