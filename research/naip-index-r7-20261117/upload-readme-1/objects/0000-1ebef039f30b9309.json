@@ -1,0 +1,16 @@
+{
+  "bucket": "nthh",
+  "bytes_transferred": 8778,
+  "elapsed_seconds": 2.657,
+  "expected_sha256": "c9368c3e9231b00197d3e08de9269cf1b758c0de83cac4f67a4cc80aa7b5fd7d",
+  "expected_size_bytes": 8778,
+  "mutable": true,
+  "object_key": "naip/README.md",
+  "plan_sha256": "4c7d07400e2e7924f104b56f01ca9e69e859a9e7cefbc76e969ba985fff41dac",
+  "previous_remote_sha256": "7ee940ecd98798ce095b4bf5b8ffa2d571b9b2647a0a41f6ef20d571f69a218b",
+  "previous_remote_size_bytes": 7120,
+  "remote_sha256": "c9368c3e9231b00197d3e08de9269cf1b758c0de83cac4f67a4cc80aa7b5fd7d",
+  "resumable": true,
+  "schema_version": 1,
+  "status": "uploaded_verified"
+}

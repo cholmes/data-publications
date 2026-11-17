@@ -1,0 +1,12 @@
+{
+  "completed": 1,
+  "failed": 0,
+  "fresh_verified": 1,
+  "include_readme": true,
+  "mode": "execute",
+  "object_count": 1,
+  "plan_sha256": "4c7d07400e2e7924f104b56f01ca9e69e859a9e7cefbc76e969ba985fff41dac",
+  "reused_prior_verified": 0,
+  "schema_version": 1,
+  "status": "complete"
+}
