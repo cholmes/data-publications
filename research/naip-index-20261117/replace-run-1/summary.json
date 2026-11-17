@@ -1,0 +1,57 @@
+{
+ "schema_version": 1,
+ "mode": "execute",
+ "plan_sha256": "0b934d05384efe357764f7a94da3afe82ba13c23e20987722e9b7eb8af986790",
+ "product_id": "naip",
+ "objects": [
+  {
+   "object_key": "naip/stac/naip.parquet",
+   "before": {
+    "state": "expected_old_bytes",
+    "size_bytes": 44285451,
+    "sha256": "3d10f8ec3197fd4b52e11c22b3fc2da920a2b53fc8c1c45c20ebf122970e55c2"
+   },
+   "condition": "IfMatch",
+   "written_sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+   "size_bytes": 44289015,
+   "anonymous_readback": "verified",
+   "finished_utc": "2026-11-17T05:35:46.872177+00:00"
+  },
+  {
+   "object_key": "naip/stac/naip-overviews.parquet",
+   "before": {
+    "state": "expected_old_bytes",
+    "size_bytes": 512684,
+    "sha256": "9958456a8437f9591cb124d096ddf107b82e8e3e014ae65833ed21575445183d"
+   },
+   "condition": "IfMatch",
+   "written_sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+   "size_bytes": 516248,
+   "anonymous_readback": "verified",
+   "finished_utc": "2026-11-17T05:35:48.413198+00:00"
+  },
+  {
+   "object_key": "naip/stac/naip.fields.json",
+   "before": {
+    "state": "absent"
+   },
+   "condition": "IfNoneMatch",
+   "written_sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+   "size_bytes": 1536,
+   "anonymous_readback": "verified",
+   "finished_utc": "2026-11-17T05:35:49.159993+00:00"
+  },
+  {
+   "object_key": "naip/stac/naip-overviews.fields.json",
+   "before": {
+    "state": "absent"
+   },
+   "condition": "IfNoneMatch",
+   "written_sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+   "size_bytes": 1705,
+   "anonymous_readback": "verified",
+   "finished_utc": "2026-11-17T05:35:49.717525+00:00"
+  }
+ ],
+ "status": "complete"
+}

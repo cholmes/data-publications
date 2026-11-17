@@ -1,0 +1,13 @@
+{
+ "object_key": "naip/stac/naip.parquet",
+ "before": {
+  "state": "expected_old_bytes",
+  "size_bytes": 44285451,
+  "sha256": "3d10f8ec3197fd4b52e11c22b3fc2da920a2b53fc8c1c45c20ebf122970e55c2"
+ },
+ "condition": "IfMatch",
+ "written_sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+ "size_bytes": 44289015,
+ "anonymous_readback": "verified",
+ "finished_utc": "2026-11-17T05:35:46.872177+00:00"
+}

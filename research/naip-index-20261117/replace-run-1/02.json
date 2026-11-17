@@ -1,0 +1,11 @@
+{
+ "object_key": "naip/stac/naip.fields.json",
+ "before": {
+  "state": "absent"
+ },
+ "condition": "IfNoneMatch",
+ "written_sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+ "size_bytes": 1536,
+ "anonymous_readback": "verified",
+ "finished_utc": "2026-11-17T05:35:49.159993+00:00"
+}
