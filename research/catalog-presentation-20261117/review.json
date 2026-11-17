@@ -15,7 +15,8 @@
   },
   "map_layer_in_catalogue": {
    "status": "passed",
-   "evidence": "catalog/naip/collection.json asset overview_national; tests/test_publication_catalog_map_assets.py (6 tests)"
+   "evidence": "catalog/naip/collection.json asset overview_national; tests/test_publication_catalog_map_assets.py (6 tests)",
+   "note": "Roles changed from [visual, overview] to [overview] after the CI failure above."
   },
   "map_layer_draws": {
    "status": "passed",
@@ -54,5 +55,17 @@
    "browser/catalog-cards-renamed.png"
   ],
   "note": "Catalogue title, description, READMEs and the NAIP card carry the new name through publication.catalog.title_correction. The release package, its snapshot, the hosted index files' embedded metadata, and the title and README on Source Cooperative keep the old name until a separate upload."
+ },
+ "ci_failure_after_push": {
+  "run": "44038304324",
+  "commit": "a576e1f",
+  "failure": "Rashid conformance rule PTL-VIZ-002: a collection with a 'visual' asset must also register a 'style' asset. The national map picture carried roles [visual, overview]. This gate was not run locally before the push.",
+  "fix": "The map picture carries the overview role only; the generator and schema refuse any other role. Portolan draws any COG asset, so the map is unchanged.",
+  "evidence": [
+   "portolan-gate-after-fix.json (passed)",
+   "browser/portolan-map-r2-overview-role.json",
+   "browser/portolan-naip-map-overview-role.png"
+  ],
+  "local_ci": "Every command of .github/workflows/validate.yml was run locally after the fix and passed."
  }
 }

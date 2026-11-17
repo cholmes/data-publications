@@ -28,7 +28,7 @@ class MapAssetsTest(unittest.TestCase):
         evidence = evidence or {"status": "passed", "url": HREF, "size_bytes": 100, "sha256": SHA}
         data = json.dumps(evidence).encode()
         (self.root / "evidence.json").write_bytes(data)
-        entry = {"asset_id": "overview_national", "href": HREF, "type": pc.COG_TYPE, "roles": ["visual", "overview"],
+        entry = {"asset_id": "overview_national", "href": HREF, "type": pc.COG_TYPE, "roles": ["overview"],
                  "title": "National overview", "proj_code": "EPSG:3857", "size_bytes": 100, "sha256": SHA,
                  "evidence_path": "evidence.json", "evidence_sha256": hashlib.sha256(data).hexdigest()}
         entry.update(changes)
@@ -63,9 +63,9 @@ class MapAssetsTest(unittest.TestCase):
             with self.subTest(evidence=evidence), self.assertRaisesRegex(ValueError, "differs from its passed evidence"):
                 pc._add_map_assets(self.root, "p", self.record(evidence), {"assets": {}})
 
-    def test_refuses_non_visual_or_non_cog(self):
-        for changes in ({"roles": ["overview"]}, {"type": "image/png"}):
-            with self.subTest(changes=changes), self.assertRaisesRegex(ValueError, "visual Cloud-Optimized"):
+    def test_refuses_other_roles_or_non_cog(self):
+        for changes in ({"roles": ["visual", "overview"]}, {"roles": ["data"]}, {"type": "image/png"}):
+            with self.subTest(changes=changes), self.assertRaisesRegex(ValueError, "overview role"):
                 pc._add_map_assets(self.root, "p", self.record(**changes), {"assets": {}})
 
     def test_refuses_existing_asset_id(self):

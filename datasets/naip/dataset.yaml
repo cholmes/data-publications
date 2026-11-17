@@ -38,7 +38,7 @@ publication:
     - asset_id: overview_national
       href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
       type: image/tiff; application=geotiff; profile=cloud-optimized
-      roles: [visual, overview]
+      roles: [overview]
       title: National overview for drawing a map, latest flight of each state, about 306 m (not in the indexes package)
       proj_code: EPSG:3857
       size_bytes: 38077264

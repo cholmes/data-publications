@@ -571,7 +571,7 @@ PROJECTION_SCHEMA = "https://stac-extensions.github.io/projection/v2.0.0/schema.
 
 
 def _add_map_assets(root: Path, dataset_id: str, record: dict, collection: dict) -> None:
-    """Add hosted COG map layers listed under publication.catalog.map_assets.
+    """Add hosted COG map pictures listed under publication.catalog.map_assets.
 
     Each entry names a file already hosted outside the release package (for NAIP, the national
     overview). Its size and SHA-256 must equal those of a passed, checksum-pinned evidence report on
@@ -586,8 +586,10 @@ def _add_map_assets(root: Path, dataset_id: str, record: dict, collection: dict)
         https_url(href, f"{dataset_id} map asset href")
         if asset_id in assets:
             raise ValueError(f"Map asset ID already used: {dataset_id}/{asset_id}")
-        if entry["type"] != COG_TYPE or "visual" not in entry["roles"]:
-            raise ValueError(f"Map asset must be a visual Cloud-Optimized GeoTIFF: {dataset_id}/{asset_id}")
+        # The overview role, not visual: Portolan draws any COG asset, and its conformance gate
+        # (PTL-VIZ-002) asks a style asset of every collection holding a visual one.
+        if entry["type"] != COG_TYPE or list(entry["roles"]) != ["overview"]:
+            raise ValueError(f"Map asset must be a Cloud-Optimized GeoTIFF with the overview role: {dataset_id}/{asset_id}")
         evidence_bytes = inside(root, entry["evidence_path"]).read_bytes()
         if sha256_bytes(evidence_bytes) != entry["evidence_sha256"]:
             raise ValueError(f"Map asset evidence SHA-256 mismatch: {dataset_id}/{asset_id}")
