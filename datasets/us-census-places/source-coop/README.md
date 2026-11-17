@@ -54,13 +54,13 @@ No separate metadata supplements are recorded.
 
 ## Versioned display package
 
-- [Display manifest](display/cb2023-display-r2/manifest.json) (SHA-256 `2c3828c9aa555375993ccbc1a37fef0d19e40c9608a6e37d020a6205a55497c6`)
-- [Counties PMTiles](display/cb2023-display-r2/assets/census_counties.pmtiles) (23766772 bytes; SHA-256 `23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2`)
-  - [Map style](display/cb2023-display-r2/styles/census_counties.json)
-- [Cities, towns and census designated places PMTiles](display/cb2023-display-r2/assets/census_places.pmtiles) (37275676 bytes; SHA-256 `79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf`)
-  - [Map style](display/cb2023-display-r2/styles/census_places.json)
-- [Governing townships and towns PMTiles](display/cb2023-display-r2/assets/census_towns.pmtiles) (20349807 bytes; SHA-256 `a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5`)
-  - [Map style](display/cb2023-display-r2/styles/census_towns.json)
+- [Display manifest](display/cb2023-display-r3/manifest.json) (SHA-256 `b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164`)
+- [Counties PMTiles](display/cb2023-display-r3/assets/census_counties.pmtiles) (23766772 bytes; SHA-256 `23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2`)
+  - [Map style](display/cb2023-display-r3/styles/census_counties.json)
+- [Cities, towns and census designated places PMTiles](display/cb2023-display-r3/assets/census_places.pmtiles) (37275676 bytes; SHA-256 `79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf`)
+  - [Map style](display/cb2023-display-r3/styles/census_places.json)
+- [Governing townships and towns PMTiles](display/cb2023-display-r3/assets/census_towns.pmtiles) (20349807 bytes; SHA-256 `a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5`)
+  - [Map style](display/cb2023-display-r3/styles/census_towns.json)
 
 ## Limitations
 

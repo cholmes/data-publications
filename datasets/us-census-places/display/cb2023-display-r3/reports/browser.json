@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "archives_sha256": {
+    "census_counties": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+    "census_places": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+    "census_towns": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5"
+  },
+  "served_from": "loopback",
+  "views": [
+    {
+      "name": "Colorado, counties",
+      "layer": "census_counties",
+      "least": 40,
+      "zoom": 6.858638991054039,
+      "drawn": 106,
+      "labels": 87,
+      "under": {
+        "id": "31049",
+        "name": "Deuel",
+        "kind": "county"
+      },
+      "lit": true,
+      "passed": true
+    },
+    {
+      "name": "Franklin County OH, places",
+      "layer": "census_places",
+      "least": 10,
+      "zoom": 10.35694733139323,
+      "drawn": 48,
+      "labels": 43,
+      "under": {
+        "id": "3983580",
+        "name": "West Jefferson",
+        "kind": "incorporated"
+      },
+      "lit": true,
+      "passed": true
+    },
+    {
+      "name": "Franklin County OH, townships",
+      "layer": "census_towns",
+      "least": 5,
+      "zoom": 10.35694733139323,
+      "drawn": 50,
+      "labels": 35,
+      "under": {
+        "id": "3909751478",
+        "name": "Monroe",
+        "kind": "township"
+      },
+      "lit": true,
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "archive_requests": 24,
+  "archive_requests_without_range": 0,
+  "status": "passed"
+}

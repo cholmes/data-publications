@@ -52,14 +52,14 @@ publication:
     hosting_report_path: null
     hosting_report_sha256: null
   display:
-    release: cb2023-display-r2
-    manifest_path: datasets/us-census-places/display/cb2023-display-r2/manifest.json
-    manifest_sha256: 2c3828c9aa555375993ccbc1a37fef0d19e40c9608a6e37d020a6205a55497c6
-  local_display_bundle_directory: .local/us-census-places/display/cb2023-display-r2
+    release: cb2023-display-r3
+    manifest_path: datasets/us-census-places/display/cb2023-display-r3/manifest.json
+    manifest_sha256: b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164
+  local_display_bundle_directory: .local/us-census-places/display/cb2023-display-r3
   limits:
   - Packaged locally and checked on this machine only. Nothing is hosted, and no Source Cooperative
     product exists for it.
-  - The display package cb2023-display-r2 passed its checks on loopback only. Its first build, r1,
+  - The display package cb2023-display-r3 passed its checks on loopback only. Its first build, r1,
     failed three checks and is kept as failed evidence.
   source_coop:
     owner: nthh
