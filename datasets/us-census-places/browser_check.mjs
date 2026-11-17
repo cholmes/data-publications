@@ -52,7 +52,7 @@ const server=createServer((request,response)=>{
  const [,root,...rest]=path.split('/'),base=root==='display'?display:root==='modules'?modules:null,file=base&&normalize(join(base,...rest));
  if(!file||!file.startsWith(base)||!existsSync(file)||!statSync(file).isFile()){response.writeHead(404);response.end();return;}
  const size=statSync(file).size,range=/^bytes=(\d+)-(\d*)$/.exec(request.headers.range||''),head={'content-type':TYPES[extname(file)]||'application/octet-stream','access-control-allow-origin':'*','accept-ranges':'bytes'};
- if(file.endsWith('.pmtiles'))requests.push({range:request.headers.range||null});
+ if(file.endsWith('.pmtiles'))requests.push({file:rest.at(-1),range:request.headers.range||null});
  if(range){const start=Number(range[1]),end=Math.min(size-1,range[2]?Number(range[2]):size-1);response.writeHead(206,{...head,'content-range':`bytes ${start}-${end}/${size}`,'content-length':end-start+1});createReadStream(file,{start,end}).pipe(response);}
  else{response.writeHead(200,{...head,'content-length':size});createReadStream(file).pipe(response);}
 });
@@ -67,8 +67,8 @@ for(const [name,style,layer,bounds,least] of VIEWS){
  views.push({name,layer,least,...result,passed:result.drawn>=least&&result.labels>0&&Boolean(result.under?.name)&&result.lit===true});
 }
 await browser.close();server.close();
-const archive=join(display,'assets','outlines.pmtiles'),whole=requests.filter(r=>!r.range).length;
-const report={schema_version:1,archive_sha256:createHash('sha256').update(readFileSync(archive)).digest('hex'),served_from:'loopback',
+const whole=requests.filter(r=>!r.range).length,sha=name=>createHash('sha256').update(readFileSync(join(display,'assets',name+'.pmtiles'))).digest('hex');
+const report={schema_version:1,archives_sha256:Object.fromEntries([...new Set(VIEWS.map(v=>v[2]))].map(name=>[name,sha(name)])),served_from:'loopback',
  views,page_errors:errors,archive_requests:requests.length,archive_requests_without_range:whole,
  status:views.every(v=>v.passed)&&!errors.length&&requests.length>0&&whole===0?'passed':'failed'};
 writeFileSync(args.report,JSON.stringify(report,null,2)+'\n');

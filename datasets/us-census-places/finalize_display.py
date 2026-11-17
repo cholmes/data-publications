@@ -24,10 +24,10 @@ def main() -> None:
     manifest = json.loads(manifest_path.read_text())
     if manifest["status"] != "provisional":
         raise SystemExit("Only a provisional package can be finalised.")
-    archive = digest(args.display / "assets" / "outlines.pmtiles")
+    archive = {a["source_layer"]: digest(args.display / a["path"]) for a in manifest["assets"]}
     for label, path in (("validation", args.validation), ("browser", args.browser)):
         report = json.loads(path.read_text())
-        if report.get("status") != "passed" or report.get("archive_sha256") != archive:
+        if report.get("status") != "passed" or report.get("archives_sha256") != archive:
             raise SystemExit(f"The {label} report did not pass or is about another archive.")
         shutil.copyfile(path, args.display / "reports" / f"{label}.json")
     shutil.copyfile(manifest_path, args.display / "reports" / "provisional-manifest.json")

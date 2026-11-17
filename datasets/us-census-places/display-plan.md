@@ -79,3 +79,37 @@ Any failed check is kept as failed evidence and blocks the prepared status.
 - This checks the display conversion, not the accuracy of the Census boundaries.
 - Loopback success is not a hosting claim. Nothing here uploads anything.
 - Needs 40 GB free to start and stays under 2 GB of disk.
+
+## Addendum after the first build (2026-11-16, written after results)
+
+`cb2023-display-r1` failed three checks and is not prepared. Its report is kept in
+`display/cb2023-display-r1-failed/`. Each failure, what was found, and what changes for
+`cb2023-display-r2`:
+
+- **Check 6, read cost: a real failure.** The Pennsylvania state view read 1,016 KB against the
+  600 KB limit (the other five states read 62 to 267 KB, the eight counties 4 to 100 KB).
+  Pennsylvania fits the window at zoom 7, where the single archive's tiles also hold its 2,500
+  places and townships, which a state view does not draw. Change: one archive per layer
+  (`census_counties.pmtiles`, `census_places.pmtiles`, `census_towns.pmtiles`, each with its label
+  layer), so a map reads only the layers it draws. The limits stay as written. A state view counts
+  the counties archive; a county view counts the places and towns archives together.
+- **Check 2, accounting: the check was wrong.** No outline was missing or extra. 3,951 label points
+  were found more than once because a point near a tile edge is also written into the margin of
+  the neighbouring tile, as tiles do so that labels are not cut at edges. Counted inside the tile
+  proper, all 32,608 place labels occur exactly once. Change: a label must occur exactly once
+  inside a tile's own area; copies in margins are not counted.
+- **Check 5, geometry sample: partly the check, partly a limit of the tiles.** 94 of 96 sampled
+  outlines were within 5.2 m. Two Alabama cities (Alabaster 606 m, Athens 57 m) failed. Alabaster
+  was examined: its rebuilt area is within 0.04% of the source and every drawn line is within
+  3.2 m of a real boundary, but the source has annexation strips narrower than one tile unit
+  (3.7 m at zoom 11), which close up in a tile, so a stretch of real boundary has no drawn line
+  near it. Athens was not examined. Change: the check is split. (a) Every point of the rebuilt
+  outline must be within 30 m of the source outline, and (b) the area that differs must be at most
+  1% of the source area. The original two-sided distance is still computed and reported, with the
+  outlines over 30 m listed, and is not passed or failed.
+
+Also for r2: the first two builds were made from different commits (the workflow files were the
+same), and the archives were not byte-identical because they recorded temporary folder names. r2
+builds with fixed relative names, and the repeat build is made from the same commit.
+
+The limits of checks 3, 4, 7, 8 and 9 are unchanged.

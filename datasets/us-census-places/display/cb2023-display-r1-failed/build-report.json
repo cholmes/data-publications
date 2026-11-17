@@ -1,0 +1,54 @@
+{
+  "created_from_commit": "a77796aa4329c1b5186290303bd80c70b578f918",
+  "label_arguments": [
+    "--drop-rate=1",
+    "--no-feature-limit",
+    "--no-tile-size-limit"
+  ],
+  "max_threads": 2,
+  "names_rows": 52029,
+  "outline_arguments": [
+    "--no-feature-limit",
+    "--no-tile-size-limit",
+    "--no-tiny-polygon-reduction",
+    "--detect-shared-borders",
+    "--simplification=15",
+    "--simplify-only-low-zooms"
+  ],
+  "rows_drawn": {
+    "census_counties": 3235,
+    "census_places": 32608,
+    "census_towns": 16186
+  },
+  "sources": {
+    "counties": {
+      "bound_in_release_manifest": true,
+      "path": "assets/counties.parquet",
+      "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "size_bytes": 7405880
+    },
+    "county-subdivisions": {
+      "bound_in_release_manifest": true,
+      "path": "assets/county-subdivisions.parquet",
+      "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "size_bytes": 26703829
+    },
+    "places": {
+      "bound_in_release_manifest": true,
+      "path": "assets/places.parquet",
+      "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "size_bytes": 20737486
+    }
+  },
+  "tippecanoe": {
+    "binary_sha256": "c504719334e5335d60c66a01491707bdbfb773ebbfe3efc7c1c8239eb18d58d1",
+    "version": "2.79.0"
+  },
+  "workflow_files": {
+    "build_display.py": "6d22d3953ec05fd6de639b7743cf2217f6fdceb5777650cf5f8bb9a897ceeb62",
+    "display-plan.md": "0205c609f119d40d914b252c4ca265523e4850123a68dbec0bc90efcd22807d5",
+    "finalize_display.py": "5e4bab304a74ce057eb6f56f680040dde1bf9e0fe3ed476c9f2ae5932e6890b1",
+    "source.py": "7ba7120f51cb183be5f6d81a2e2a3c5963f23c3e768de17fdfa68e3b40bc3602",
+    "validate_display.py": "3672a4fb77579b6ebe6f4a3710dc4607214201b016681d316894bc98d97deeee"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "archive_bytes": 75615393,
+  "archive_sha256": "1cf0408fc02994c0f842fc67dbbb88ddefeb98a9b732833ce59fb40062399477",
+  "checks": {
+    "1_inputs": {
+      "passed": true,
+      "sha256": {
+        "counties": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+        "county-subdivisions": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+        "places": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe"
+      }
+    },
+    "2_accounting": {
+      "layers": {
+        "census_counties": {
+          "expected": 3235,
+          "found": 3235,
+          "labels_expected": 3235,
+          "labels_found": 3235,
+          "labels_not_exactly_one": 246,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        },
+        "census_places": {
+          "expected": 32608,
+          "found": 32608,
+          "labels_expected": 32608,
+          "labels_found": 32608,
+          "labels_not_exactly_one": 2580,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        },
+        "census_towns": {
+          "expected": 16186,
+          "found": 16186,
+          "labels_expected": 16186,
+          "labels_found": 16186,
+          "labels_not_exactly_one": 1125,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        }
+      },
+      "passed": false
+    },
+    "3_attributes": {
+      "first_differences": [],
+      "passed": true
+    },
+    "4_label_position": {
+      "first_over": [],
+      "limit_m": 30.0,
+      "passed": true,
+      "worst_m": 0.62
+    },
+    "5_geometry_sample": {
+      "layers": {
+        "census_counties": {
+          "over_limit": {},
+          "sampled": 32,
+          "worst_m": 5.14
+        },
+        "census_places": {
+          "over_limit": {
+            "0100820": 605.55,
+            "0102956": 56.51
+          },
+          "sampled": 32,
+          "worst_m": 605.55
+        },
+        "census_towns": {
+          "over_limit": {},
+          "sampled": 32,
+          "worst_m": 4.14
+        }
+      },
+      "limit_m": 30.0,
+      "note": "Pieces are clipped to their tile, joined, and closed by 1 m to remove tile seams.",
+      "passed": false
+    },
+    "6_read_cost": {
+      "county_limit_bytes": 400000,
+      "county_views": {
+        "Allegheny PA": {
+          "bytes": 100641,
+          "tile_zoom": 9,
+          "tiles": 4,
+          "zoom": 9.89
+        },
+        "Boulder CO": {
+          "bytes": 40023,
+          "tile_zoom": 10,
+          "tiles": 9,
+          "zoom": 10.36
+        },
+        "Cherry NE": {
+          "bytes": 4931,
+          "tile_zoom": 8,
+          "tiles": 2,
+          "zoom": 8.92
+        },
+        "Franklin OH": {
+          "bytes": 43115,
+          "tile_zoom": 10,
+          "tiles": 6,
+          "zoom": 10.37
+        },
+        "Fulton GA": {
+          "bytes": 56468,
+          "tile_zoom": 9,
+          "tiles": 6,
+          "zoom": 9.51
+        },
+        "Los Angeles CA": {
+          "bytes": 97298,
+          "tile_zoom": 7,
+          "tiles": 4,
+          "zoom": 7.94
+        },
+        "Polk IA": {
+          "bytes": 24462,
+          "tile_zoom": 10,
+          "tiles": 12,
+          "zoom": 10.2
+        },
+        "Travis TX": {
+          "bytes": 33464,
+          "tile_zoom": 9,
+          "tiles": 4,
+          "zoom": 9.74
+        }
+      },
+      "passed": false,
+      "state_limit_bytes": 600000,
+      "state_views": {
+        "CA": {
+          "bytes": 81289,
+          "tile_zoom": 5,
+          "tiles": 6,
+          "zoom": 5.65
+        },
+        "CO": {
+          "bytes": 62391,
+          "tile_zoom": 6,
+          "tiles": 6,
+          "zoom": 6.86
+        },
+        "GA": {
+          "bytes": 100570,
+          "tile_zoom": 6,
+          "tiles": 5,
+          "zoom": 6.76
+        },
+        "OH": {
+          "bytes": 139070,
+          "tile_zoom": 6,
+          "tiles": 6,
+          "zoom": 7.0
+        },
+        "PA": {
+          "bytes": 1016918,
+          "tile_zoom": 7,
+          "tiles": 6,
+          "zoom": 7.39
+        },
+        "TX": {
+          "bytes": 267263,
+          "tile_zoom": 5,
+          "tiles": 6,
+          "zoom": 5.58
+        }
+      }
+    },
+    "7_names_index": {
+      "expected_rows": 52029,
+      "passed": true,
+      "rows": 52029
+    },
+    "8_repeat_build": {
+      "archive_identical": false,
+      "names_index_identical": true,
+      "note": "If the archive differs, the second archive needs its own passing report.",
+      "passed": true
+    }
+  },
+  "dataset_id": "us-census-places",
+  "display_release": "cb2023-display-r1",
+  "schema_version": 1,
+  "status": "failed"
+}

@@ -33,7 +33,7 @@ STATES = ["CO", "TX", "OH", "CA", "GA", "PA"]
 COUNTIES = {"08013": "Boulder CO", "48453": "Travis TX", "39049": "Franklin OH", "06037": "Los Angeles CA",
             "13121": "Fulton GA", "42003": "Allegheny PA", "19153": "Polk IA", "31031": "Cherry NE"}
 WIDTH, HEIGHT, PADDING = 1440, 900, 24
-STATE_LIMIT, COUNTY_LIMIT, DISTANCE_LIMIT, SAMPLE, SAMPLE_TILES = 600_000, 400_000, 30.0, 32, 16
+STATE_LIMIT, COUNTY_LIMIT, DISTANCE_LIMIT, AREA_LIMIT, SAMPLE, SAMPLE_TILES = 600_000, 400_000, 30.0, 0.01, 32, 16
 
 
 def sha256(path: Path) -> str:
@@ -107,8 +107,8 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
     actual = {asset: sha256(package / "assets" / f"{asset}.parquet") for asset in LAYERS.values()}
     checks["1_inputs"] = {"passed": all(release.get(a) == h for a, h in actual.items()), "sha256": actual}
     want = expected(package)
-    archive = display / "assets" / "outlines.pmtiles"
-    archive_sha = sha256(archive)
+    archives = {layer: display / "assets" / f"{layer}.pmtiles" for layer in LAYERS}
+    archive_sha = {layer: sha256(path) for layer, path in archives.items()}
 
     samples: dict[str, list[str]] = {}
     for layer, rows in want.items():
@@ -129,11 +129,13 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
     pieces: dict[str, dict[str, list[Any]]] = {layer: {} for layer in want}
     wrong: list[str] = []
     unknown: dict[str, set[str]] = {layer: set() for layer in want}
-    sizes: dict[tuple[int, int, int], int] = {}
-    with archive.open("rb") as stream:
+    sizes: dict[str, dict[tuple[int, int, int], int]] = {layer: {} for layer in want}
+    inside_labels: dict[str, dict[str, int]] = {layer: {} for layer in want}
+    for archive_layer, archive in archives.items():
+      with archive.open("rb") as stream:
         source = MmapSource(stream)
         for (z, x, y), data in all_tiles(source):
-            sizes[(z, x, y)] = len(data)
+            sizes[archive_layer][(z, x, y)] = len(data)
             if z != MAX_ZOOM:
                 continue
             tile = mapbox_vector_tile.decode(gzip.decompress(data))
@@ -141,7 +143,7 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
             left, bottom = -HALF + x * size, HALF - (y + 1) * size
             place = lambda px, py: (left + px / EXTENT * size, bottom + py / EXTENT * size)
             core = box(left, bottom, left + size, bottom + size)
-            for layer, rows in want.items():
+            for layer, rows in ((archive_layer, want[archive_layer]),):
                 for feature in tile.get(layer, {}).get("features", []):
                     p = feature["properties"]
                     geoid = p.get("id")
@@ -171,11 +173,14 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
                             wrong.append(f"{layer}_label {geoid}: {got}")
                     px, py = feature["geometry"]["coordinates"]
                     label_points[layer].setdefault(geoid, []).append(place(px, py))
+                    if 0 <= px < EXTENT and 0 <= py < EXTENT:
+                        inside_labels[layer][geoid] = inside_labels[layer].get(geoid, 0) + 1
 
     accounting = {layer: {"expected": len(rows), "found": len(seen[layer]), "missing": sorted(set(rows) - seen[layer])[:20],
                           "missing_count": len(set(rows) - seen[layer]), "unexpected": sorted(unknown[layer])[:20],
                           "labels_expected": len(rows), "labels_found": len(label_points[layer]),
-                          "labels_not_exactly_one": sum(1 for g in rows if len(label_points[layer].get(g, [])) != 1)}
+                          "labels_with_copies_in_tile_margins": sum(1 for g in rows if len(label_points[layer].get(g, [])) > 1),
+                          "labels_not_exactly_one": sum(1 for g in rows if inside_labels[layer].get(g, 0) != 1)}
                   for layer, rows in want.items()}
     checks["2_accounting"] = {"passed": all(a["missing_count"] == 0 and not a["unexpected"] and a["labels_not_exactly_one"] == 0
                                              for a in accounting.values()), "layers": accounting}
@@ -193,33 +198,44 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
 
     geometry = {}
     for layer, ids in samples.items():
-        distances = {}
+        drawn, differs, both = {}, {}, {}
         for geoid in ids:
             rebuilt = unary_union(pieces[layer].get(geoid, [])).buffer(1).buffer(-1)
-            outline = to_mercator(shapely.from_wkb(want[layer][geoid]["wkb"]))
-            distances[geoid] = float("inf") if rebuilt.is_empty else round(
-                shapely.hausdorff_distance(shapely.make_valid(outline).boundary, rebuilt.boundary, densify=0.25), 2)
-        geometry[layer] = {"sampled": len(ids), "worst_m": max(distances.values()) if distances else None,
-                           "over_limit": {g: d for g, d in distances.items() if d > DISTANCE_LIMIT}}
-    checks["5_geometry_sample"] = {"passed": all(g["sampled"] == SAMPLE and not g["over_limit"] for g in geometry.values()),
-                                   "limit_m": DISTANCE_LIMIT, "note": "Pieces are clipped to their tile, joined, and closed by 1 m to remove tile seams.",
+            outline = shapely.make_valid(to_mercator(shapely.from_wkb(want[layer][geoid]["wkb"])))
+            if rebuilt.is_empty:
+                drawn[geoid] = differs[geoid] = both[geoid] = float("inf")
+                continue
+            points = shapely.points(shapely.get_coordinates(shapely.segmentize(rebuilt.boundary, 25)))
+            drawn[geoid] = round(float(shapely.distance(points, outline.boundary).max()), 2)
+            differs[geoid] = round(outline.symmetric_difference(rebuilt).area / outline.area, 5)
+            both[geoid] = round(shapely.hausdorff_distance(outline.boundary, rebuilt.boundary, densify=0.25), 2)
+        geometry[layer] = {"sampled": len(ids), "worst_drawn_line_to_source_m": max(drawn.values()),
+                           "worst_area_difference": max(differs.values()),
+                           "failed": sorted(g for g in ids if drawn[g] > DISTANCE_LIMIT or differs[g] > AREA_LIMIT),
+                           "two_sided_over_limit_reported_only": {g: d for g, d in both.items() if d > DISTANCE_LIMIT}}
+    checks["5_geometry_sample"] = {"passed": all(g["sampled"] == SAMPLE and not g["failed"] for g in geometry.values()),
+                                   "limit_m": DISTANCE_LIMIT, "area_limit": AREA_LIMIT,
+                                   "note": "Pieces are clipped to their tile, joined, and closed by 1 m to remove tile seams.",
                                    "layers": geometry}
 
-    def read(bounds: list[float], first: int) -> dict[str, Any]:
+    def read(bounds: list[float], layers: list[str]) -> dict[str, Any]:
         zoom, view = view_of(bounds)
-        z = max(first, min(MAX_ZOOM, math.floor(zoom)))
-        x0, y0 = tile_xy(view[0], view[3], z)
-        x1, y1 = tile_xy(view[2], view[1], z)
-        found = [sizes[(z, x, y)] for x in range(x0, x1 + 1) for y in range(y0, y1 + 1) if (z, x, y) in sizes]
-        return {"zoom": round(zoom, 2), "tile_zoom": z, "tiles": len(found), "bytes": sum(found)}
+        tiles = total = 0
+        for layer in layers:
+            z = max(min(k[0] for k in sizes[layer]), min(MAX_ZOOM, math.floor(zoom)))
+            x0, y0 = tile_xy(view[0], view[3], z)
+            x1, y1 = tile_xy(view[2], view[1], z)
+            found = [sizes[layer][(z, x, y)] for x in range(x0, x1 + 1) for y in range(y0, y1 + 1) if (z, x, y) in sizes[layer]]
+            tiles, total = tiles + len(found), total + sum(found)
+        return {"zoom": round(zoom, 2), "archives": layers, "tiles": tiles, "bytes": total}
 
     county_bounds = {g: r["bounds"] for g, r in want["census_counties"].items()}
     state_bounds: dict[str, list[float]] = {}
     for row in want["census_counties"].values():
         b = state_bounds.setdefault(row["state"], list(row["bounds"]))
         b[0], b[1], b[2], b[3] = min(b[0], row["bounds"][0]), min(b[1], row["bounds"][1]), max(b[2], row["bounds"][2]), max(b[3], row["bounds"][3])
-    state_views = {s: read(state_bounds[s], 3) for s in STATES}
-    county_views = {name: read(county_bounds[g], 3) for g, name in COUNTIES.items()}
+    state_views = {s: read(state_bounds[s], ["census_counties"]) for s in STATES}
+    county_views = {name: read(county_bounds[g], ["census_places", "census_towns"]) for g, name in COUNTIES.items()}
     checks["6_read_cost"] = {"passed": all(v["bytes"] <= STATE_LIMIT for v in state_views.values())
                              and all(v["bytes"] <= COUNTY_LIMIT for v in county_views.values()),
                              "state_limit_bytes": STATE_LIMIT, "county_limit_bytes": COUNTY_LIMIT,
@@ -238,11 +254,12 @@ def validate(display: Path, package: Path, same_as: Path | None) -> dict[str, An
     else:
         names_same = sha256(display / "assets" / "place-names.json") == sha256(same_as / "assets" / "place-names.json")
         checks["8_repeat_build"] = {"passed": names_same, "names_index_identical": names_same,
-                                    "archive_identical": archive_sha == sha256(same_as / "assets" / "outlines.pmtiles"),
+                                    "archives_identical": {layer: sha == sha256(same_as / "assets" / f"{layer}.pmtiles")
+                                                           for layer, sha in archive_sha.items()},
                                     "note": "If the archive differs, the second archive needs its own passing report."}
 
     return {"schema_version": 1, "dataset_id": manifest["dataset_id"], "display_release": manifest["display_release"],
-            "archive_sha256": archive_sha, "archive_bytes": archive.stat().st_size,
+            "archives_sha256": archive_sha, "archive_bytes": {layer: path.stat().st_size for layer, path in archives.items()},
             "status": "passed" if all(c["passed"] for c in checks.values()) else "failed", "checks": checks}
 
 

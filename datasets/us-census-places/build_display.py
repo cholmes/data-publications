@@ -3,7 +3,7 @@
     build_display.py --package PACKAGED_RELEASE --output NEW_DIR [--allow-uncommitted]
 
 Reads only the three GeoParquet files of the packaged release (checked against its manifest).
-Writes assets/outlines.pmtiles, assets/place-names.json, one MapLibre style per layer and a
+Writes assets/<layer>.pmtiles (an outline layer and its label layer), assets/place-names.json, one MapLibre style per layer and a
 manifest with status "provisional". finalize_display.py marks it prepared after the checks pass.
 Needs tippecanoe v2.79.0 and tile-join on PATH.
 """
@@ -27,7 +27,7 @@ from source import digest
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-DATASET, ANALYTIC_RELEASE, DISPLAY_RELEASE = "us-census-places", "cb2023-r1", "cb2023-display-r1"
+DATASET, ANALYTIC_RELEASE, DISPLAY_RELEASE = "us-census-places", "cb2023-r1", "cb2023-display-r2"
 TIPPECANOE_LOCK = REPO / "datasets/grwl/tippecanoe.lock.json"
 MAX_ZOOM = 11
 KINDS = ["county", "incorporated", "unincorporated", "township"]
@@ -95,9 +95,9 @@ def tippecanoe(lock: dict[str, Any]) -> str:
     return path
 
 
-def style(layer: str, width: float) -> dict[str, Any]:
+def style(layer: str, width: float) -> dict[str, Any]:  # one archive per layer
     return {"version": 8, "name": layer, "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
-            "sources": {"data": {"type": "vector", "url": "../assets/outlines.pmtiles", "promoteId": "id"}},
+            "sources": {"data": {"type": "vector", "url": f"../assets/{layer}.pmtiles", "promoteId": "id"}},
             "layers": [
                 {"id": f"{layer}-line", "type": "line", "source": "data", "source-layer": layer,
                  "paint": {"line-color": LINE, "line-opacity": 0.75, "line-width": width}},
@@ -126,7 +126,8 @@ def build(package: Path, output: Path, allow_uncommitted: bool) -> dict[str, Any
     for folder in ("assets", "styles", "reports"):
         (output / folder).mkdir(parents=True)
     environment = {**os.environ, "TIPPECANOE_MAX_THREADS": "2"}
-    names, assets, parts, sources = [], [], [], {}
+    names, assets, sources = [], [], {}
+    join = shutil.which("tile-join")
     with tempfile.TemporaryDirectory(dir=output) as scratch:
         for layer, asset, first, title, width in LAYERS:
             source = package / "assets" / f"{asset}.parquet"
@@ -137,22 +138,24 @@ def build(package: Path, output: Path, allow_uncommitted: bool) -> dict[str, Any
             rows = rows_of(layer, source)
             outline_json, label_json = Path(scratch) / f"{layer}.geojsonl", Path(scratch) / f"{layer}_label.geojsonl"
             features(rows, outline_json, label_json)
-            for name, data, flags in ((layer, outline_json, OUTLINE_ARGS), (f"{layer}_label", label_json, LABEL_ARGS)):
-                part = Path(scratch) / f"{name}.pmtiles"
-                subprocess.run([binary, "-q", "-f", "-o", str(part), "-l", name, f"-Z{first}", f"-z{MAX_ZOOM}", *flags,
-                                str(data)], check=True, env=environment)
-                parts.append(str(part))
+            # Relative names inside the scratch folder, so no temporary path is recorded in the archive.
+            for name, flags in ((layer, OUTLINE_ARGS), (f"{layer}_label", LABEL_ARGS)):
+                subprocess.run([binary, "-q", "-f", "-o", f"{name}.pmtiles", "-l", name, "-n", name, "-N", ATTRIBUTION,
+                                f"-Z{first}", f"-z{MAX_ZOOM}", *flags, f"{name}.geojsonl"], check=True, env=environment, cwd=scratch)
+            archive = output / "assets" / f"{layer}.pmtiles"
+            subprocess.run([join, "-q", "-f", "--no-tile-size-limit", "-n", layer, "-N", ATTRIBUTION, "-o", "joined.pmtiles",
+                            f"{layer}.pmtiles", f"{layer}_label.pmtiles"], check=True, env=environment, cwd=scratch,
+                           stderr=subprocess.DEVNULL)
+            shutil.move(str(Path(scratch) / "joined.pmtiles"), archive)
             names.extend(rows)
             json_write(output / "styles" / f"{layer}.json", style(layer, width))
-            assets.append({"id": layer.replace("_", "-"), "title": title, "path": "assets/outlines.pmtiles",
+            assets.append({"id": layer.replace("_", "-"), "title": title, "path": f"assets/{layer}.pmtiles",
+                           "sha256": digest(archive), "size_bytes": archive.stat().st_size,
                            "style_path": f"styles/{layer}.json", "source_layer": layer,
                            "labels": {"source_layer": f"{layer}_label", "geometry_type": "point"},
                            "geometry_type": "polygon", "id_field": "id", "id_encoding": "property",
                            "attribute_fields": ["name", "state", "kind", "population", "xmin", "ymin", "xmax", "ymax"],
                            "min_zoom": first, "max_zoom": MAX_ZOOM, "source_rows": len(rows), "source_asset": sources[asset]})
-        archive = output / "assets" / "outlines.pmtiles"
-        subprocess.run([shutil.which("tile-join"), "-q", "-f", "--no-tile-size-limit", "-o", str(archive), *parts],
-                       check=True, env=environment, stderr=subprocess.DEVNULL)
     if not all(s["bound_in_release_manifest"] for s in sources.values()):
         raise SystemExit(f"A GeoParquet file does not match the release manifest: {sources}")
     names.sort(key=lambda r: (r["population"] is None, -(r["population"] or 0), -r["area"]))
@@ -162,8 +165,6 @@ def build(package: Path, output: Path, allow_uncommitted: bool) -> dict[str, Any
                       for r in names]}
     (output / "assets" / "place-names.json").write_text(json.dumps(index, separators=(",", ":"), ensure_ascii=False),
                                                         encoding="utf-8")
-    for item in assets:
-        item.update(sha256=digest(archive), size_bytes=archive.stat().st_size)
     json_write(output / "reports" / "build-report.json", {
         "created_from_commit": commit, "tippecanoe": {"version": lock["version"], "binary_sha256": lock["binary_sha256"]},
         "outline_arguments": OUTLINE_ARGS, "label_arguments": LABEL_ARGS, "max_threads": 2, "sources": sources,
@@ -192,7 +193,7 @@ def main() -> None:
     parser.add_argument("--allow-uncommitted", action="store_true")
     args = parser.parse_args()
     result = build(args.package.resolve(), args.output.resolve(), args.allow_uncommitted)
-    print(json.dumps({"archive_bytes": result["assets"][0]["size_bytes"], "names_rows": result["names_index"]["rows"],
+    print(json.dumps({"archive_bytes": {a["source_layer"]: a["size_bytes"] for a in result["assets"]}, "names_rows": result["names_index"]["rows"],
                       "rows_drawn": {a["source_layer"]: a["source_rows"] for a in result["assets"]}}, indent=2))
     sys.exit(0)
 
