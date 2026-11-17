@@ -1,0 +1,197 @@
+{
+ "schema_version": 1,
+ "plan": "datasets/naip/index-package-plan.md, addendum for r6, check 12",
+ "gdal": "3.12.4",
+ "release_files": {
+  "naip.gti": {
+   "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+   "size_bytes": 3858
+  },
+  "naip-overviews.gti": {
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "size_bytes": 957
+  },
+  "naip.parquet": {
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261
+  },
+  "naip-overviews.parquet": {
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918
+  }
+ },
+ "opened": "/vsicurl/http://127.0.0.1:<port>/nthh/naip/stac/naip.gti",
+ "reads": {
+  "alta_full_resolution": {
+   "size": [
+    2800,
+    2200
+   ],
+   "band1_mean": 108.574,
+   "alpha_max": 255.0,
+   "all_bytes": 5359547,
+   "index_requests": 8,
+   "index_bytes": 1580923,
+   "index_bytes_served": 1585738
+  },
+  "utah_600m": {
+   "size": [
+    944,
+    963
+   ],
+   "band1_mean": 164.967,
+   "alpha_max": 255.0,
+   "all_bytes": 2725965,
+   "index_requests": 1,
+   "index_bytes": 425984,
+   "index_bytes_served": 425984
+  },
+  "add_layer_whole_extent": {
+   "size": [
+    1000,
+    451
+   ],
+   "band1_mean": 130.857,
+   "alpha_max": 255.0,
+   "all_bytes": 573440,
+   "index_requests": 0,
+   "index_bytes": 0,
+   "index_bytes_served": 0
+  }
+ },
+ "errors": [],
+ "imagery_files_read": [
+  "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+  "https://data.source.coop/nthh/naip/ut/2021/60cm/rgb/40111/m_4011127_ne_12_060_20211121.tif",
+  "https://data.source.coop/nthh/naip/ut/2021/60cm/rgb/40111/m_4011128_nw_12_060_20211121.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011128_nw_12_060_20240830.tif"
+ ],
+ "index_files_read_whole": [],
+ "imagery_downloaded_whole": [],
+ "server_requests": 111,
+ "index_requests": [
+  {
+   "method": "HEAD",
+   "path": "/nthh/naip/stac/naip.gti",
+   "status": 200,
+   "start": 0,
+   "bytes": 3858,
+   "size": 3858
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.gti",
+   "status": 206,
+   "start": 0,
+   "bytes": 3858,
+   "size": 3858
+  },
+  {
+   "method": "HEAD",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 200,
+   "start": 0,
+   "bytes": 45445261,
+   "size": 45445261
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 206,
+   "start": 0,
+   "bytes": 16384,
+   "size": 45445261
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 206,
+   "start": 45432832,
+   "bytes": 12429,
+   "size": 45445261
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 206,
+   "start": 45367296,
+   "bytes": 65536,
+   "size": 45445261
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 206,
+   "start": 45334528,
+   "bytes": 32768,
+   "size": 45445261
+  },
+  {
+   "method": "HEAD",
+   "path": "/nthh/naip/stac/naip-overviews.gti",
+   "status": 200,
+   "start": 0,
+   "bytes": 957,
+   "size": 957
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip-overviews.gti",
+   "status": 206,
+   "start": 0,
+   "bytes": 957,
+   "size": 957
+  },
+  {
+   "method": "HEAD",
+   "path": "/nthh/naip/stac/naip-overviews.parquet",
+   "status": 200,
+   "start": 0,
+   "bytes": 519918,
+   "size": 519918
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip-overviews.parquet",
+   "status": 206,
+   "start": 0,
+   "bytes": 16384,
+   "size": 519918
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip-overviews.parquet",
+   "status": 206,
+   "start": 507904,
+   "bytes": 12014,
+   "size": 519918
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip-overviews.parquet",
+   "status": 206,
+   "start": 442368,
+   "bytes": 65536,
+   "size": 519918
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip.parquet",
+   "status": 206,
+   "start": 16072704,
+   "bytes": 1359872,
+   "size": 45445261
+  },
+  {
+   "method": "GET",
+   "path": "/nthh/naip/stac/naip-overviews.parquet",
+   "status": 206,
+   "start": 16384,
+   "bytes": 425984,
+   "size": 519918
+  }
+ ],
+ "redirects": 96,
+ "status": "passed"
+}

@@ -1,0 +1,43 @@
+{
+ "status": "passed",
+ "assets": [
+  {
+   "asset_id": "quads",
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261
+  },
+  {
+   "asset_id": "overviews",
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918
+  }
+ ],
+ "evidence": {
+  "validator": "datasets/naip/check_index_release.py",
+  "report": "check.json",
+  "bound_to_these_files": true,
+  "checks": {
+   "1b_quad_values_equal_hosted": true,
+   "1c_overview_values_equal_hosted": true,
+   "3_accounting_against_receipts": true,
+   "4_size_and_checksum": true,
+   "5_hosted_listing": true,
+   "6_footprint": true,
+   "7_flight_date": true,
+   "8_overview_index": true,
+   "9_fault_tests": true,
+   "11_gti": true
+  },
+  "receipts": 246773,
+  "listing": {
+   "sha256": "0613fc214096776b4a4130eadbbe5dce682eeb7625b7c99f4f08f011e46feefe",
+   "files": 246895,
+   "pages": 247,
+   "listed_from": "https://data.source.coop/nthh?list-type=2&prefix=naip/"
+  },
+  "left_out_state_years": {
+   "pa-2024": 1118,
+   "wv-2024": 101
+  }
+ }
+}
