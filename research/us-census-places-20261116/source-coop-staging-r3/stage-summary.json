@@ -1,0 +1,14 @@
+{
+  "blockers": [],
+  "created": false,
+  "creation_ready": true,
+  "hosted": false,
+  "immutable_file_count": 68,
+  "immutable_total_bytes": 139653671,
+  "product_count": 1,
+  "ready_for_creation": true,
+  "ready_for_review": true,
+  "ready_for_upload": false,
+  "schema_version": 1,
+  "status": "verified_exact_file_plan"
+}

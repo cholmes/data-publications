@@ -23,7 +23,8 @@ from typing import Any
 
 ENDPOINT = "https://data.source.coop"
 BUCKET = "nthh"
-ALLOWED_PRODUCTS = frozenset({"river-plastic-inputs", "hydrolakes", "free-flowing-rivers", "lakeatlas", "grwl-raw"})
+ALLOWED_PRODUCTS = frozenset({"river-plastic-inputs", "hydrolakes", "free-flowing-rivers", "lakeatlas", "grwl-raw",
+                              "us-census-places"})
 MAX_BYTES = 25_000_000_000
 PART_BYTES = 64 * 1024 * 1024
 STREAM_BYTES = 8 * 1024 * 1024
