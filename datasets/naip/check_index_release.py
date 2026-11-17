@@ -281,7 +281,8 @@ def check_dates(table):
 
 
 def geo_without_crs(table):
-    """The release's geo metadata less its crs, which r5 writes out and the hosted files leave implicit."""
+    """Geo metadata less its crs: r5 wrote the crs out where the files before it left it implicit,
+    so the comparison leaves it aside on both sides and check 1b/1c test the release's crs alone."""
     geo = json.loads(table.schema.metadata[b"geo"])
     geo["columns"]["geometry"].pop("crs", None)
     return geo
@@ -307,7 +308,7 @@ def compare_meta(release, hosted, collection, first_date, changes=NO_CHANGES):
         m["collections"][collection]["extent"]["temporal"] = None
     return {"rest_equal": a2 == b2, "release_interval": ta, "hosted_interval": tb,
             "first_date_is_earliest_row": ta[0][0][:10] == first_date,
-            "geo_equal": geo_without_crs(release) == json.loads(hosted.schema.metadata[b"geo"]),
+            "geo_equal": geo_without_crs(release) == geo_without_crs(hosted),
             "crs_is_crs84": json.loads(release.schema.metadata[b"geo"])["columns"]["geometry"].get("crs", {}).get("id") == {"authority": "OGC", "code": "CRS84"}}
 
 

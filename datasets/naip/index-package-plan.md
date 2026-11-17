@@ -202,3 +202,12 @@ included HEAD requests at the file's full size (47.5 MB for Alta). Counted as GE
 read takes about 1.5 MB of the quad index: the first 16 KiB, the footer, and one 1.36 MB range.
 The fourth run counts GET bytes only, records every index request, and adds a mark: neither read
 takes more than 8 MiB of the index files.
+
+### Amendment to checks 1b and 1c (written after the first r6 check, before the second)
+
+The first check of r6 (`check-r6-1.json`, kept) failed 1b and 1c on `geo_equal` alone; every
+value, the schema and the collection records matched with the stated changes made. The
+comparison left out `crs` on the release's side only, as written for r5, whose hosted
+predecessor had none; hosted r5 has it. Both files' `geo` metadata is byte-identical to hosted
+r5's. The comparison now leaves `crs` out on both sides, and the release's `crs` must still be
+OGC:CRS84.
