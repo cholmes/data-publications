@@ -209,6 +209,12 @@
     "uri": "s3://nthh/naip"
   },
   "publication_status": "published",
+  "readme_sections": [
+    {
+      "body": "Each index is a single GeoParquet file in the STAC GeoParquet layout: one row per STAC Item, with\nthe file's address in the `image` asset. There are no Item JSON files and no partitions. The\nSTAC Collection is stored in the file's own metadata under the `stac-geoparquet` key, and the\nGeoParquet metadata under `geo`.\n\n`stac/naip.parquet` has 245,554 rows, one per quarter quad file, covering 213,436 places; a place\nflown in more than one listed year has a row for each. Its columns:\n\n- `id`: state and file name, for example `ut_m_4011127_ne_12_060_20240816`.\n- `geometry`: the footprint polygon, WKB in longitude and latitude; `bbox`: its extent as\n  `xmin`, `ymin`, `xmax`, `ymax`.\n- `datetime`: the flight date, at 00:00 UTC.\n- `gsd` (0.3 or 0.6 m), `naip:state`, `naip:year`.\n- `proj:code`, `proj:epsg`, `proj:bbox`, `proj:shape`, `proj:transform`: the file's UTM grid.\n- `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a\n  multihash), `type` and `roles`.\n- `naip:run`: the conversion run that made the file.\n\n`stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except\n`naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and\n`naip:quads` (how many quarter quads it was made from). The national file's row has no state\nor year.\n\nRows of the quad index are ordered along a Hilbert curve through the centre of each footprint,\nnewest flight first at the same place, with states and years mixed. They are written in 30\nrow groups of about 8,192 rows, with statistics and a page index, so a query for a small area\nreads a few row groups instead of the whole 44 MB file. For the newest picture of a place, keep\nthe row with the latest `datetime`.\n\nThe quarter quads around Alta, Utah, newest first:\n\n```sql\nSELECT id, datetime, assets.image.href AS href\nFROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet')\nWHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65\n  AND bbox.ymin < 40.60 AND bbox.ymax > 40.58\nORDER BY datetime DESC;\n```",
+      "heading": "How the two indexes are organized"
+    }
+  ],
   "ready_for_creation": true,
   "ready_for_review": true,
   "related_dataset_links": [],

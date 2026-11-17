@@ -10,6 +10,47 @@ One file per quarter quad per state-year, from flights of 2021 to 2025. Each fil
 - Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).
 - Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns.
 
+## How the two indexes are organized
+
+Each index is a single GeoParquet file in the STAC GeoParquet layout: one row per STAC Item, with
+the file's address in the `image` asset. There are no Item JSON files and no partitions. The
+STAC Collection is stored in the file's own metadata under the `stac-geoparquet` key, and the
+GeoParquet metadata under `geo`.
+
+`stac/naip.parquet` has 245,554 rows, one per quarter quad file, covering 213,436 places; a place
+flown in more than one listed year has a row for each. Its columns:
+
+- `id`: state and file name, for example `ut_m_4011127_ne_12_060_20240816`.
+- `geometry`: the footprint polygon, WKB in longitude and latitude; `bbox`: its extent as
+  `xmin`, `ymin`, `xmax`, `ymax`.
+- `datetime`: the flight date, at 00:00 UTC.
+- `gsd` (0.3 or 0.6 m), `naip:state`, `naip:year`.
+- `proj:code`, `proj:epsg`, `proj:bbox`, `proj:shape`, `proj:transform`: the file's UTM grid.
+- `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a
+  multihash), `type` and `roles`.
+- `naip:run`: the conversion run that made the file.
+
+`stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except
+`naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and
+`naip:quads` (how many quarter quads it was made from). The national file's row has no state
+or year.
+
+Rows of the quad index are ordered along a Hilbert curve through the centre of each footprint,
+newest flight first at the same place, with states and years mixed. They are written in 30
+row groups of about 8,192 rows, with statistics and a page index, so a query for a small area
+reads a few row groups instead of the whole 44 MB file. For the newest picture of a place, keep
+the row with the latest `datetime`.
+
+The quarter quads around Alta, Utah, newest first:
+
+```sql
+SELECT id, datetime, assets.image.href AS href
+FROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet')
+WHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65
+  AND bbox.ymin < 40.60 AND bbox.ymax > 40.58
+ORDER BY datetime DESC;
+```
+
 ## Files
 
 Use GeoParquet for analysis. Field dictionaries describe columns and units.

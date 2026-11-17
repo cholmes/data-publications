@@ -453,6 +453,17 @@
               "minItems": 1,
               "items": {"type": "string", "minLength": 1}
             },
+            "readme_sections": {
+              "description": "Sections written into the product README after Layout, such as how an index is organized.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["heading", "body"],
+                "properties": {"heading": {"type": "string", "minLength": 1}, "body": {"type": "string", "minLength": 1}}
+              }
+            },
             "flat_layout": {
               "type": "object",
               "additionalProperties": false,

@@ -786,6 +786,15 @@ def draft_for(root: Path, record: dict[str, Any]) -> tuple[dict[str, Any], str, 
         if not isinstance(layout, list) or not all(isinstance(line, str) and line.strip() for line in layout):
             raise ProductError(f"{record['id']}: file_layout must be a list of non-empty strings")
         draft["file_layout"] = layout
+    if config.get("readme_sections"):
+        # Optional sections written into the consumer README after Layout, such as how an index is organized.
+        sections = config["readme_sections"]
+        if not isinstance(sections, list) or not all(
+                isinstance(item, dict) and set(item) == {"heading", "body"}
+                and all(isinstance(item[key], str) and item[key].strip() for key in ("heading", "body"))
+                for item in sections):
+            raise ProductError(f"{record['id']}: readme_sections must be a list of {{heading, body}} strings")
+        draft["readme_sections"] = sections
     if config.get("flat_layout") is not None:
         from flat_publication import load_flat_layout
         try:
@@ -962,6 +971,8 @@ def render_flat_consumer_readme(draft: dict[str, Any]) -> str:
         lines.extend(["## Layout", ""])
         lines.extend(f"- {line}" for line in draft["file_layout"])
         lines.append("")
+    for section in draft.get("readme_sections") or []:
+        lines.extend([f"## {section['heading']}", "", section["body"].strip(), ""])
     lines.extend(["## Files", "",
                   ("Use GeoParquet for analysis and PMTiles for maps. Field dictionaries describe columns and units."
                    if has_tiles else "Use GeoParquet for analysis. Field dictionaries describe columns and units."), "",

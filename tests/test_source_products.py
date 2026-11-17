@@ -800,6 +800,15 @@ class SourceProductTests(unittest.TestCase):
         self.assertNotIn("PMTiles", readme)
         self.assertNotIn("checksum manifests", readme)
 
+    def test_flat_readme_writes_sections_after_layout(self):
+        draft = {"title": "T", "summary": "S", "temporal_note": "N", "owner": "nthh", "product_id": "p",
+                 "dataset_id": "p", "attribution": "A", "license_note": "L", "limitations": ["X"],
+                 "file_layout": ["Images under `a/<b>.tif`."],
+                 "readme_sections": [{"heading": "How the index is organized", "body": "One row per item.\n"}],
+                 "flat_layout": {"files": [{"filename": "stac/p.parquet", "size_bytes": 2000000}]}}
+        readme = products.render_flat_consumer_readme(draft)
+        self.assertIn("- Images under `a/<b>.tif`.\n\n## How the index is organized\n\nOne row per item.\n\n## Files", readme)
+
     def test_projjson_is_json(self):
         self.assertEqual(products.content_type("verification/workflow/crs84.projjson"), "application/json")
 
