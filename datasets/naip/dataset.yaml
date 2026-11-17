@@ -14,7 +14,28 @@ triage:
     display copy matched its pixels. All 52 state-years (221,255 files, 11.03 TB) are hosted in the
     unlisted product as of 2026-11-14 and each passed the hosted checks.
 publication:
-  status: candidate
+  status: prepared
+  release: index-20261116-r5
+  manifest_path: datasets/naip/releases/index-20261116-r5/manifest.json
+  manifest_sha256: 102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80
+  validation_path: datasets/naip/releases/index-20261116-r5/source-fidelity.json
+  release_receipt_path: datasets/naip/releases/index-20261116-r5/package-receipt.json
+  conversion_git_commit: 4a8b335408d437c94b47fbd6727dcd354d2a78e8
+  local_bundle_directory: .local/naip/package/index-20261116-r5
+  catalog:
+    snapshot_path: datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json
+    snapshot_sha256: 31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9
+    package_base_url: null
+    hosting_report_path: null
+    hosting_report_sha256: null
+  limits:
+  - The package is the two STAC GeoParquet index files, not the imagery. The imagery and the index
+    files at stac/ are hosted in the unlisted product; this release, a versioned copy of the index
+    files, has not been uploaded.
+  - The release files differ from the hosted stac/ files only in their GeoParquet metadata (the CRS
+    is written out, and the quad index's first flight date is that of its earliest row). Replacing
+    the hosted stac/ files with them has not been done.
+  - Index releases r1 to r4 failed checks and are kept as failed evidence (index-package-plan.md).
   source_coop:
     owner: nthh
     owner_status: confirmed
@@ -37,8 +58,9 @@ publication:
       product.
     attribution: USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations
       (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.
-    temporal_note: One file per quarter quad per state-year. Each file name ends in the date it was
-      flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.
+    temporal_note: One file per quarter quad per state-year, from flights of 2021 to 2025. Each file
+      name holds the date it was flown; a 2023 name then holds a second date, the day the file was
+      made. The quad index gives the flight date of every file.
     limitations:
     - Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with
       overviews at quality 75 and colour at half resolution. The near-infrared band and the

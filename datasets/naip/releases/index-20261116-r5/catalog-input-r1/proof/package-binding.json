@@ -1,0 +1,85 @@
+{
+  "asset_sha256": {
+    "overviews": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+    "quads": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12"
+  },
+  "bound_files": {
+    "AGENTS.md": {
+      "sha256": "c18a20671c4714b23cdd93f9ea705c048d626e9daaeb2ffcfe63a2894d884163",
+      "size_bytes": 496
+    },
+    "README.md": {
+      "sha256": "4486ef6d02c70512d9aeaeeb28659c7c7e940382bffc44e27083c88a14e9baba",
+      "size_bytes": 1845
+    },
+    "catalog.json": {
+      "sha256": "55d585d23c32b458bafaebf50a1564e4116a983c28446f578fa0f6f9c9f2e365",
+      "size_bytes": 1519
+    },
+    "collection.json": {
+      "sha256": "a1182e7e83071219cdd20542f5478decf739e61d08c093cdb28bdb3896a3b2e8",
+      "size_bytes": 9897
+    },
+    "licenses/software/LICENSE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358
+    },
+    "licenses/software/NOTICE": {
+      "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+      "size_bytes": 788
+    },
+    "provenance/build-manifest.json": {
+      "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+      "size_bytes": 15637
+    },
+    "provenance/check.json": {
+      "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+      "size_bytes": 9333
+    },
+    "provenance/index-env.lock.txt": {
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566
+    },
+    "provenance/index-package-plan.md": {
+      "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "size_bytes": 9961
+    }
+  },
+  "clean_rebuild_report_sha256": "53f824d40534e131b136646d032698f5c91ecc3d27e82fe71bd442f1d1254c77",
+  "dataset_record_sha256": "d8219b6e89ba654344c9e770fca01c89401b6d9fdb550d6434d4e8033c3f6fa7",
+  "manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+  "source_attribution_sha256": "69165e5646183d3fbcb7f2f236541ead5542e54a1122ee129d695c3232b4485c",
+  "source_fidelity_report_sha256": "51e5e38278d613d946974f815a282af97792baa43ae278480931a6363cd9ea3c",
+  "verification_sha256": {
+    "clean-rebuild.json": "53f824d40534e131b136646d032698f5c91ecc3d27e82fe71bd442f1d1254c77",
+    "local-http-duckdb-validation.json": "9300c0d667d3e42e78c3bea00d1a9ef00bf58c1bc37ffda1e8f42cfd714fb407",
+    "package-integrity-validation.json": "0848e462ebb4324f4137580d9ca1e7b4c53c8fe1c5d88216edf08d2efed70e47",
+    "portolan-validation.json": "2e2ea96facb0102b6aac04bbc66747983f0b8d75e734bd361ee1ea369b4d9b82",
+    "source-fidelity.json": "51e5e38278d613d946974f815a282af97792baa43ae278480931a6363cd9ea3c",
+    "stac-node-validation.json": "b2a70da0d6a5a185685373333df10281901d7feaab55517513d6bcf0d810504d"
+  },
+  "workflow_sha256": {
+    "datasets/naip/build_index_release.py": "80253082ec86a117f1f2dd1bd50309e7797d27dd9040f6ed6331a016741762b5",
+    "datasets/naip/build_overview_index.py": "446686f9606437fdba0b23a8290b3fed0225dec15c2ed2c7e9660c9db85baab5",
+    "datasets/naip/build_stac_index.py": "0f8cd135ec22c880b5a70f9a44d97ce74f73a9eb3abef39624ab863720fe239c",
+    "datasets/naip/check_index_release.py": "3fbd60ac5f29ad264110f04f5dc0945d0b1b8f5f169bb6161061102a627b45bb",
+    "datasets/naip/crs84.projjson": "2576eef69d139b270f7269bb7deea9302023416a6b5d9ac9589ae4765a10c8d2",
+    "datasets/naip/evidence/receipt-dirs-62.json": "20b0821e07dc0da9407b503c1662c81e24428646ad3b4a8e3f660bb122c993ff",
+    "datasets/naip/index-env.lock.txt": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "datasets/naip/index-package-plan.md": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+    "datasets/naip/partial_years.py": "92a67f2589b8865c6ef13b86d4a73b11de3fcb3c3275d195cadf0777ce63690e",
+    "datasets/naip/releases/index-20261116-r5/package-spec.json": "ce92401041e4336c1a95491455840145be8959b548686d5b9332a0b95f4081d7",
+    "datasets/naip/write_index_reports.py": "bf07c22c952bc32ea001408b86d0b41898dfc307c6bb0085b2a37b1bdd4ccace",
+    "scripts/release_tools/AGENTS.md": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+    "scripts/release_tools/README.md": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+    "scripts/release_tools/add_spatial_bounds.py": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+    "scripts/release_tools/package-lock.json": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+    "scripts/release_tools/package.json": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+    "scripts/release_tools/package_release.py": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+    "scripts/release_tools/pyproject.toml": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+    "scripts/release_tools/serve.py": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+    "scripts/release_tools/test_package_release.py": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+    "scripts/release_tools/test_spatial_bounds.py": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+    "scripts/release_tools/uv.lock": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b"
+  }
+}

@@ -1,0 +1,433 @@
+{
+ "schema_version": 1,
+ "plan": "datasets/naip/index-package-plan.md",
+ "release_files": {
+  "naip.parquet": {
+   "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+   "size_bytes": 44289015
+  },
+  "naip-overviews.parquet": {
+   "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+   "size_bytes": 516248
+  }
+ },
+ "hosted_files": {
+  "naip.parquet": {
+   "sha256": "3d10f8ec3197fd4b52e11c22b3fc2da920a2b53fc8c1c45c20ebf122970e55c2",
+   "size_bytes": 44285451
+  },
+  "naip-overviews.parquet": {
+   "sha256": "9958456a8437f9591cb124d096ddf107b82e8e3e014ae65833ed21575445183d",
+   "size_bytes": 512684
+  }
+ },
+ "listing": {
+  "sha256": "5d688589a76b2cf7de4538c5eeec071833e7af5b5ed56710c4923e496e5bf285",
+  "files": 246892,
+  "pages": 247,
+  "listed_from": "https://data.source.coop/nthh?list-type=2&prefix=naip/"
+ },
+ "receipts": 246773,
+ "listed_state_years": 59,
+ "left_out_state_years": {
+  "pa-2024": 1118,
+  "wv-2024": 101
+ },
+ "checks": {
+  "1b_quad_values_equal_hosted": {
+   "passed": true,
+   "rows": [
+    245554,
+    245554
+   ],
+   "schema_equal": true,
+   "columns_differing": [],
+   "metadata": {
+    "rest_equal": true,
+    "release_interval": [
+     [
+      "2021-06-16T00:00:00Z",
+      "2025-11-17T00:00:00Z"
+     ]
+    ],
+    "hosted_interval": [
+     [
+      "2010-06-24T00:00:00Z",
+      "2025-11-17T00:00:00Z"
+     ]
+    ],
+    "first_date_is_earliest_row": true,
+    "geo_equal": true,
+    "crs_is_crs84": true
+   }
+  },
+  "1c_overview_values_equal_hosted": {
+   "passed": true,
+   "same_ids_same_order": true,
+   "columns_differing_except_geometry": [],
+   "metadata": {
+    "rest_equal": true,
+    "release_interval": [
+     [
+      "2021-06-16T00:00:00Z",
+      "2025-11-17T00:00:00Z"
+     ]
+    ],
+    "hosted_interval": [
+     [
+      "2021-06-16T00:00:00Z",
+      "2025-11-17T00:00:00Z"
+     ]
+    ],
+    "first_date_is_earliest_row": true,
+    "geo_equal": true,
+    "crs_is_crs84": true
+   },
+   "outlines_not_covering_quads": {},
+   "outline_distance_to_hosted_degrees_reported": {
+    "max": 0.0,
+    "by_item": {
+     "wa-2023-utm10": 0.0,
+     "or-2024-utm10": 0.0,
+     "ca-2024-utm10": 0.0,
+     "or-2022-utm10": 0.0,
+     "ca-2022-utm10": 0.0,
+     "nv-2024-utm10": 0.0,
+     "wa-2023-utm11": 0.0,
+     "or-2024-utm11": 0.0,
+     "ca-2024-utm11": 0.0,
+     "nv-2024-utm11": 0.0,
+     "id-2025-utm11": 0.0,
+     "id-2024-utm11": 0.0,
+     "mt-2025-utm11": 0.0,
+     "mt-2024-utm11": 0.0,
+     "az-2025-utm12": 0.0,
+     "ut-2021-utm11": 0.0,
+     "ut-2024-utm11": 0.0,
+     "mt-2024-utm12": 0.0,
+     "ut-2021-utm12": 0.0,
+     "ut-2024-utm12": 0.0,
+     "mt-2025-utm12": 0.0,
+     "id-2025-utm12": 0.0,
+     "wy-2024-utm12": 0.0,
+     "co-2023-utm12": 0.0,
+     "nm-2024-utm12": 0.0,
+     "co-2023-utm13": 0.0,
+     "wy-2024-utm13": 0.0,
+     "mt-2025-utm13": 0.0,
+     "nm-2024-utm13": 0.0,
+     "tx-2024-utm13": 0.0,
+     "ne-2024-utm13": 0.0,
+     "nd-2025-utm13": 0.0,
+     "nd-2024-utm13": 0.0,
+     "sd-2025-utm13": 0.0,
+     "ne-2025-utm13": 0.0,
+     "ok-2025-utm13": 0.0,
+     "ks-2025-utm13": 0.0,
+     "ne-2024-utm14": 0.0,
+     "tx-2024-utm14": 0.0,
+     "nd-2025-utm14": 0.0,
+     "nd-2024-utm14": 0.0,
+     "sd-2025-utm14": 0.0,
+     "ne-2025-utm14": 0.0,
+     "ks-2025-utm14": 0.0,
+     "ok-2025-utm14": 0.0,
+     "mn-2025-utm14": 0.0,
+     "ia-2025-utm14": 0.0,
+     "ne-2024-utm15": 0.0,
+     "tx-2024-utm15": 0.0,
+     "mn-2025-utm15": 0.0,
+     "ia-2025-utm15": 0.0,
+     "ne-2025-utm15": 0.0,
+     "ks-2025-utm15": 0.0,
+     "ok-2025-utm15": 0.0,
+     "mo-2024-utm15": 0.0,
+     "ar-2025-utm15": 0.0,
+     "la-2025-utm15": 0.0,
+     "wi-2024-utm15": 0.0,
+     "ms-2025-utm15": 0.0,
+     "il-2025-utm15": 0.0,
+     "mi-2024-utm15": 0.0,
+     "tn-2025-utm15": 0.0,
+     "wi-2024-utm16": 0.0,
+     "mn-2025-utm16": 0.0,
+     "mi-2024-utm16": 0.0,
+     "il-2025-utm16": 0.0,
+     "ar-2025-utm16": 0.0,
+     "tn-2025-utm16": 0.0,
+     "ms-2025-utm16": 0.0,
+     "la-2025-utm16": 0.0,
+     "ky-2024-utm16": 0.0,
+     "al-2025-utm16": 0.0,
+     "in-2024-utm16": 0.0,
+     "in-2025-utm16": 0.0,
+     "fl-2025-utm16": 0.0,
+     "ga-2025-utm16": 0.0,
+     "oh-2025-utm16": 0.0,
+     "nc-2024-utm16": 0.0,
+     "nc-2025-utm16": 0.0,
+     "nc-2024-utm17": 0.0,
+     "mi-2024-utm17": 0.0,
+     "oh-2025-utm17": 0.0,
+     "ky-2024-utm17": 0.0,
+     "tn-2025-utm17": 0.0,
+     "nc-2025-utm17": 0.0,
+     "ga-2025-utm17": 0.0,
+     "fl-2025-utm17": 0.0,
+     "va-2025-utm17": 0.0,
+     "sc-2025-utm17": 0.0,
+     "wv-2022-utm17": 0.0,
+     "fl-2023-utm17": 0.0,
+     "pa-2022-utm17": 0.0,
+     "ny-2024-utm17": 0.0,
+     "md-2023-utm18": 0.0,
+     "pa-2022-utm18": 0.0,
+     "wv-2022-utm18": 0.0,
+     "nc-2024-utm18": 0.0,
+     "ny-2024-utm18": 0.0,
+     "va-2025-utm18": 0.0,
+     "nc-2025-utm18": 0.0,
+     "de-2023-utm18": 0.0,
+     "nj-2025-utm18": 0.0,
+     "ct-2025-utm18": 0.0,
+     "ma-2025-utm18": 0.0,
+     "vt-2025-utm18": 0.0,
+     "nh-2025-utm18": 0.0,
+     "vt-2025-utm19": 0.0,
+     "nh-2025-utm19": 0.0,
+     "ma-2025-utm19": 0.0,
+     "ct-2025-utm19": 0.0,
+     "ny-2024-utm19": 0.0,
+     "ri-2025-utm19": 0.0,
+     "me-2025-utm19": 0.0,
+     "me-2024-utm19": 0.0
+    },
+    "note": "sampled vertices, both directions; not passed or failed"
+   }
+  },
+  "3_accounting_against_receipts": {
+   "passed": true,
+   "rows": 245554,
+   "expected": 245554,
+   "missing": {
+    "count": 0,
+    "first": []
+   },
+   "extra": {
+    "count": 0,
+    "first": []
+   },
+   "extra_from_left_out_years": 0,
+   "twice": {
+    "count": 0,
+    "first": []
+   }
+  },
+  "4_size_and_checksum": {
+   "passed": true,
+   "wrong": {
+    "count": 0,
+    "first": []
+   }
+  },
+  "5_hosted_listing": {
+   "quads": {
+    "passed": true,
+    "rows": 245554,
+    "absent": {
+     "count": 0,
+     "first": []
+    },
+    "size_differs": {
+     "count": 0,
+     "first": []
+    },
+    "table": "quads"
+   },
+   "overviews": {
+    "passed": true,
+    "rows": 115,
+    "absent": {
+     "count": 0,
+     "first": []
+    },
+    "size_differs": {
+     "count": 0,
+     "first": []
+    },
+    "table": "overviews"
+   },
+   "passed": true
+  },
+  "6_footprint": {
+   "quads": {
+    "passed": true,
+    "bbox_not_bounds": {
+     "count": 0,
+     "first": []
+    },
+    "ring_not_closed": {
+     "count": 0,
+     "first": []
+    },
+    "corner_off_outline": {
+     "count": 0,
+     "first": []
+    },
+    "worst_corner_degrees": 0.0
+   },
+   "overviews": {
+    "passed": true,
+    "bbox_not_bounds": {
+     "count": 0,
+     "first": []
+    },
+    "ring_not_closed": {
+     "count": 0,
+     "first": []
+    }
+   },
+   "passed": true
+  },
+  "7_flight_date": {
+   "passed": true,
+   "wrong": {
+    "count": 0,
+    "first": []
+   }
+  },
+  "8_overview_index": {
+   "passed": true,
+   "state_rows": 114,
+   "expected_state_rows": 114,
+   "missing": {
+    "count": 0,
+    "first": []
+   },
+   "extra": {
+    "count": 0,
+    "first": []
+   },
+   "rows_of_unlisted_years": {
+    "count": 0,
+    "first": []
+   },
+   "national_quads": 245554,
+   "quad_rows": 245554
+  },
+  "9_fault_tests": {
+   "passed": true,
+   "cases": [
+    {
+     "change": "a row removed",
+     "expected_failing_check": "3",
+     "checks_passed": {
+      "1b": false,
+      "3": false,
+      "4": true,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a row duplicated",
+     "expected_failing_check": "3",
+     "checks_passed": {
+      "1b": false,
+      "3": false,
+      "4": true,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a size changed",
+     "expected_failing_check": "4",
+     "checks_passed": {
+      "1b": false,
+      "3": true,
+      "4": false,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a checksum changed",
+     "expected_failing_check": "4",
+     "checks_passed": {
+      "1b": false,
+      "3": true,
+      "4": false,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "an address changed",
+     "expected_failing_check": "3",
+     "checks_passed": {
+      "1b": false,
+      "3": false,
+      "4": true,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a bbox value changed",
+     "expected_failing_check": "6",
+     "checks_passed": {
+      "1b": false,
+      "3": true,
+      "4": true,
+      "6": false,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a footprint byte changed",
+     "expected_failing_check": "6",
+     "checks_passed": {
+      "1b": false,
+      "3": true,
+      "4": true,
+      "6": false,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "a datetime changed",
+     "expected_failing_check": "7",
+     "checks_passed": {
+      "1b": false,
+      "3": true,
+      "4": true,
+      "6": true,
+      "7": false
+     },
+     "rejected_for_stated_reason": true
+    },
+    {
+     "change": "rows of a left-out year added back",
+     "expected_failing_check": "3",
+     "checks_passed": {
+      "1b": false,
+      "3": false,
+      "4": true,
+      "6": true,
+      "7": true
+     },
+     "rejected_for_stated_reason": true
+    }
+   ]
+  }
+ },
+ "status": "passed"
+}

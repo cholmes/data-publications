@@ -1,9 +1,108 @@
 {
-  "assets": [],
+  "assets": [
+    {
+      "asset_id": "overviews",
+      "checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+      "href": "assets/overviews.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "size_bytes": 516248,
+      "title": "Overview file index (STAC GeoParquet)"
+    },
+    {
+      "asset_id": "overviews_fields",
+      "checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+      "href": "metadata/overviews-field-dictionary.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1705,
+      "title": "overviews field dictionary"
+    },
+    {
+      "asset_id": "quads",
+      "checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+      "href": "assets/quads.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "size_bytes": 44289015,
+      "title": "Quarter-quad index (STAC GeoParquet)"
+    },
+    {
+      "asset_id": "quads_fields",
+      "checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+      "href": "metadata/quads-field-dictionary.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1536,
+      "title": "quads field dictionary"
+    },
+    {
+      "asset_id": "support-1",
+      "checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+      "href": "provenance/build-manifest.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 15637,
+      "title": "Build commit, environment, input checksums and output facts"
+    },
+    {
+      "asset_id": "support-2",
+      "checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+      "href": "provenance/check.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 9333,
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+    },
+    {
+      "asset_id": "support-3",
+      "checksum": "12207ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "href": "provenance/index-env.lock.txt",
+      "media_type": "text/plain",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 10566,
+      "title": "Locked build environment (conda explicit list and one pip wheel)"
+    },
+    {
+      "asset_id": "support-4",
+      "checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "href": "provenance/index-package-plan.md",
+      "media_type": "text/markdown",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 9961,
+      "title": "Checks written before the first build, with addenda"
+    },
+    {
+      "asset_id": "thumbnail",
+      "checksum": "12205401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+      "href": "display/thumbnail.png",
+      "media_type": "image/png",
+      "roles": [
+        "thumbnail"
+      ],
+      "size_bytes": 4826,
+      "title": "Sampled display-only overview; not an analytic asset"
+    }
+  ],
   "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
   "blockers": [
-    "Source Cooperative account verification is not recorded",
-    "canonical publication status is candidate, not prepared or published"
+    "Source Cooperative account verification is not recorded"
   ],
   "created": false,
   "creation_ready": false,
@@ -26,7 +125,7 @@
     "The overview files are for drawing a map, not for measurement. A state file holds one flight year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each state, so neighbouring states can differ in year and in tone.",
     "Adjacent quarter quads overlap, as they do in the source."
   ],
-  "local_readiness": "blocked",
+  "local_readiness": "prepared",
   "owner": "nthh",
   "owner_status": "confirmed",
   "product_id": "naip",
@@ -34,12 +133,73 @@
     "status": "proposed",
     "uri": "s3://nthh/naip"
   },
-  "publication_status": "candidate",
+  "publication_status": "prepared",
   "ready_for_creation": false,
   "ready_for_review": true,
   "related_dataset_links": [],
-  "release": null,
-  "release_files": [],
+  "release": "index-20261116-r5",
+  "release_files": [
+    {
+      "kind": "asset",
+      "path": "assets/overviews.parquet",
+      "size_bytes": 516248
+    },
+    {
+      "kind": "asset",
+      "path": "assets/quads.parquet",
+      "size_bytes": 44289015
+    },
+    {
+      "kind": "display_derivatives",
+      "path": "display/thumbnail.png",
+      "size_bytes": 4826
+    },
+    {
+      "kind": "data_license",
+      "path": "licenses/data-license.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "source_license",
+      "path": "licenses/source-license.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "field_dictionary",
+      "path": "metadata/overviews-field-dictionary.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "field_dictionary",
+      "path": "metadata/quads-field-dictionary.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/build-manifest.json",
+      "size_bytes": 15637
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/check.json",
+      "size_bytes": 9333
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/index-env.lock.txt",
+      "size_bytes": 10566
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/index-package-plan.md",
+      "size_bytes": 9961
+    },
+    {
+      "kind": "source_attribution",
+      "path": "source/attribution.json",
+      "size_bytes": null
+    }
+  ],
   "review_context": {
     "asset_integrity": null,
     "local_followup": [],
@@ -49,14 +209,177 @@
   },
   "schema_version": 1,
   "snapshot_binding": {
-    "manifest_path": null,
-    "manifest_sha256": null,
-    "release": null,
-    "snapshot_path": null,
-    "snapshot_sha256": null
+    "bound_file_count": 10,
+    "local_metadata_integrity": "passed",
+    "manifest_path": "datasets/naip/releases/index-20261116-r5/manifest.json",
+    "manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+    "package_binding_sha256": "bfc345769844a0d3b71324152c1a2e898dd8bd0cca069c27306ebb98f4d6ed93",
+    "package_binding_status": "verified",
+    "release": "index-20261116-r5",
+    "snapshot_file_count": 4,
+    "snapshot_path": "datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json",
+    "snapshot_sha256": "31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9"
   },
-  "snapshot_collection": null,
-  "source_links": [],
+  "snapshot_collection": {
+    "assets": [
+      {
+        "asset_id": "overviews",
+        "checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+        "href": "assets/overviews.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "roles": [
+          "data"
+        ],
+        "size_bytes": 516248,
+        "title": "Overview file index (STAC GeoParquet)"
+      },
+      {
+        "asset_id": "overviews_fields",
+        "checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+        "href": "metadata/overviews-field-dictionary.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1705,
+        "title": "overviews field dictionary"
+      },
+      {
+        "asset_id": "quads",
+        "checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+        "href": "assets/quads.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "roles": [
+          "data"
+        ],
+        "size_bytes": 44289015,
+        "title": "Quarter-quad index (STAC GeoParquet)"
+      },
+      {
+        "asset_id": "quads_fields",
+        "checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+        "href": "metadata/quads-field-dictionary.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1536,
+        "title": "quads field dictionary"
+      },
+      {
+        "asset_id": "support-1",
+        "checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+        "href": "provenance/build-manifest.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 15637,
+        "title": "Build commit, environment, input checksums and output facts"
+      },
+      {
+        "asset_id": "support-2",
+        "checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+        "href": "provenance/check.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 9333,
+        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+      },
+      {
+        "asset_id": "support-3",
+        "checksum": "12207ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+        "href": "provenance/index-env.lock.txt",
+        "media_type": "text/plain",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 10566,
+        "title": "Locked build environment (conda explicit list and one pip wheel)"
+      },
+      {
+        "asset_id": "support-4",
+        "checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+        "href": "provenance/index-package-plan.md",
+        "media_type": "text/markdown",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 9961,
+        "title": "Checks written before the first build, with addenda"
+      },
+      {
+        "asset_id": "thumbnail",
+        "checksum": "12205401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+        "href": "display/thumbnail.png",
+        "media_type": "image/png",
+        "roles": [
+          "thumbnail"
+        ],
+        "size_bytes": 4826,
+        "title": "Sampled display-only overview; not an analytic asset"
+      }
+    ],
+    "description": "The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+    "extent": {
+      "spatial": {
+        "bbox": [
+          [
+            -125.15624999999999,
+            23.241346102386135,
+            -66.09375,
+            49.83798245308484
+          ]
+        ]
+      },
+      "temporal": {
+        "interval": [
+          [
+            "2021-06-16T00:00:00Z",
+            "2025-11-17T00:00:00Z"
+          ]
+        ]
+      }
+    },
+    "id": "naip",
+    "license": "other",
+    "providers": [
+      {
+        "name": "USDA Farm Production and Conservation Business Center",
+        "roles": [
+          "producer",
+          "licensor"
+        ],
+        "url": "https://www.fpacbc.usda.gov/"
+      },
+      {
+        "description": "Local candidate package only; the package has not been hosted.",
+        "name": "nthh",
+        "roles": [
+          "host",
+          "processor"
+        ],
+        "url": "https://github.com/nthh/data-publications"
+      }
+    ],
+    "title": "NAIP display copies"
+  },
+  "source_links": [
+    {
+      "title": "Host: nthh",
+      "url": "https://github.com/nthh/data-publications"
+    },
+    {
+      "title": "Dataset release",
+      "url": "https://registry.opendata.aws/naip/"
+    },
+    {
+      "title": "Producer: USDA Farm Production and Conservation Business Center",
+      "url": "https://www.fpacbc.usda.gov/"
+    }
+  ],
   "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.",
   "supplements": [],
   "tags": [
@@ -66,6 +389,6 @@
     "united-states",
     "cog"
   ],
-  "temporal_note": "One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.",
+  "temporal_note": "One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.",
   "title": "NAIP display copies"
 }

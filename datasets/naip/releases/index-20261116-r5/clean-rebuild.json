@@ -1,0 +1,45 @@
+{
+ "status": "passed",
+ "assets": [
+  {
+   "asset_id": "quads",
+   "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+   "size_bytes": 44289015
+  },
+  {
+   "asset_id": "overviews",
+   "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+   "size_bytes": 516248
+  }
+ ],
+ "evidence": {
+  "commit": "4a8b335408d437c94b47fbd6727dcd354d2a78e8",
+  "builds": 2,
+  "clean_checkout_builds": 1,
+  "byte_identical": true,
+  "same_commit_unchanged_builders": true,
+  "environments": [
+   {
+    "lock_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "python": "3.12.16",
+    "gdal": "3.13.1",
+    "pyarrow": "23.0.1",
+    "pyproj": "3.7.2"
+   },
+   {
+    "lock_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "python": "3.12.16",
+    "gdal": "3.13.1",
+    "pyarrow": "23.0.1",
+    "pyproj": "3.7.2"
+   },
+   {
+    "lock_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "python": "3.12.16",
+    "gdal": "3.13.1",
+    "pyarrow": "23.0.1",
+    "pyproj": "3.7.2"
+   }
+  ]
+ }
+}

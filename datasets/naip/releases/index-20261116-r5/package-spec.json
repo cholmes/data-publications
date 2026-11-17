@@ -4,7 +4,7 @@
   "title": "NAIP display copies",
   "release_id": "index-20261116-r5",
   "release_version": "1.0.0",
-  "output_dir": "../../../../.local/naip/package/index-20261116-r5",
+  "output_dir": "../../../../../data-publications-naip/.local/naip/package/index-20261116-r5",
   "catalog_id": "naip",
   "processor": {
     "name": "nthh",
@@ -40,14 +40,14 @@
   "assets": [
     {
       "asset_id": "quads",
-      "path": "../../../../.local/naip/index-r5-build-a/naip.parquet",
+      "path": "../../../../../data-publications-naip/.local/naip/index-r5c-build-a/naip.parquet",
       "identifier_column": "id",
       "title": "Quarter-quad index (STAC GeoParquet)",
       "description": "One STAC item per hosted quarter-quad COG: 245,554 rows. Each row gives the file's address, size and checksum, its footprint in degrees, its CRS, bounds and transform, and the flight date from its name. Pennsylvania 2024 and West Virginia 2024, which cover part of each state, are not listed. Rows follow a Hilbert curve."
     },
     {
       "asset_id": "overviews",
-      "path": "../../../../.local/naip/index-r5-build-a/naip-overviews.parquet",
+      "path": "../../../../../data-publications-naip/.local/naip/index-r5c-build-a/naip-overviews.parquet",
       "identifier_column": "id",
       "title": "Overview file index (STAC GeoParquet)",
       "description": "One STAC item per hosted overview file: 114 state files (one state, year and UTM zone at 9.6 m) and the national file (EPSG:3857, about 306 m). A state file's footprint is an outline of its quads. Coarsest first."
@@ -103,7 +103,7 @@
     -111.5,
     40.65
   ],
-  "code_revision": "PENDING",
+  "code_revision": "4a8b335408d437c94b47fbd6727dcd354d2a78e8",
   "workflow_paths": [
     "datasets/naip/build_stac_index.py",
     "datasets/naip/build_overview_index.py",

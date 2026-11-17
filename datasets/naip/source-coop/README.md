@@ -4,8 +4,8 @@
 
 - Dataset: `naip` (NAIP display copies)
 - Product ID: `naip`
-- Local publication status: `candidate`
-- Local readiness: `blocked`
+- Local publication status: `prepared`
+- Local readiness: `prepared`
 - Owner: `nthh` (confirmed)
 - Canonical publication review stage: `not recorded`
 - Creation readiness: `false`
@@ -21,11 +21,13 @@ The proposed Source Cooperative maintainer is separate from the immutable releas
 
 - Producer attribution: USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.
 - License note: NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.
-- Temporal scope: One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.
+- Temporal scope: One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.
 
 ## Sources and DOI references
 
-No source or DOI links are recorded.
+- [Host: nthh](https://github.com/nthh/data-publications)
+- [Dataset release](https://registry.opendata.aws/naip/)
+- [Producer: USDA Farm Production and Conservation Business Center](https://www.fpacbc.usda.gov/)
 
 ## Related datasets
 
@@ -37,7 +39,15 @@ No separate metadata supplements are recorded.
 
 ## Snapshot assets
 
-No release assets are included in this draft.
+- `overviews`: Overview file index (STAC GeoParquet) (application/vnd.apache.parquet)
+- `overviews_fields`: overviews field dictionary (application/json)
+- `quads`: Quarter-quad index (STAC GeoParquet) (application/vnd.apache.parquet)
+- `quads_fields`: quads field dictionary (application/json)
+- `support-1`: Build commit, environment, input checksums and output facts (application/json)
+- `support-2`: Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests (application/json)
+- `support-3`: Locked build environment (conda explicit list and one pip wheel) (text/plain)
+- `support-4`: Checks written before the first build, with addenda (text/markdown)
+- `thumbnail`: Sampled display-only overview; not an analytic asset (image/png)
 
 ## Versioned display package
 
@@ -59,4 +69,3 @@ Planned source proxy: `s3://nthh/naip`. Check separate creation and hosting rece
 ## Blockers
 
 - Source Cooperative account verification is not recorded
-- canonical publication status is candidate, not prepared or published

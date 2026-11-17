@@ -10683,7 +10683,7 @@
       "family_key": null,
       "decision": "publish_conversion",
       "priority": "pilot_review",
-      "publication_status": "candidate",
+      "publication_status": "prepared",
       "intake": {
         "kind": "producer",
         "reference_url": "https://registry.opendata.aws/naip/",
@@ -10705,7 +10705,7 @@
         ],
         "license_note": "NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.",
         "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
-        "temporal_note": "One file per quarter quad per state-year. Each file name ends in the date it was flown. Utah 2024 was flown from 2024-06-23 to 2024-08-31.",
+        "temporal_note": "One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.",
         "limitations": [
           "Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
           "Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.",

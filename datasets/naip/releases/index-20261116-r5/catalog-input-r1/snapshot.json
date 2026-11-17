@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "dataset_id": "naip",
+  "release": "index-20261116-r5",
+  "package_manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+  "collection_path": "collection.json",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "c18a20671c4714b23cdd93f9ea705c048d626e9daaeb2ffcfe63a2894d884163",
+      "size_bytes": 496
+    },
+    {
+      "path": "README.md",
+      "sha256": "4486ef6d02c70512d9aeaeeb28659c7c7e940382bffc44e27083c88a14e9baba",
+      "size_bytes": 1845
+    },
+    {
+      "path": "collection.json",
+      "sha256": "a1182e7e83071219cdd20542f5478decf739e61d08c093cdb28bdb3896a3b2e8",
+      "size_bytes": 9897
+    },
+    {
+      "path": "display/thumbnail.png",
+      "sha256": "5401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+      "size_bytes": 4826
+    }
+  ],
+  "binding_proof": {
+    "path": "proof/package-binding.json",
+    "sha256": "bfc345769844a0d3b71324152c1a2e898dd8bd0cca069c27306ebb98f4d6ed93"
+  }
+}

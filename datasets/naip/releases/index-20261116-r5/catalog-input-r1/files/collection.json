@@ -1,0 +1,381 @@
+{
+  "assets": {
+    "overviews": {
+      "file:checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+      "file:size": 516248,
+      "href": "assets/overviews.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Overview file index (STAC GeoParquet)",
+      "type": "application/vnd.apache.parquet"
+    },
+    "overviews_fields": {
+      "file:checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+      "file:size": 1705,
+      "href": "metadata/overviews-field-dictionary.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "overviews field dictionary",
+      "type": "application/json"
+    },
+    "quads": {
+      "file:checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+      "file:size": 44289015,
+      "href": "assets/quads.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Quarter-quad index (STAC GeoParquet)",
+      "type": "application/vnd.apache.parquet"
+    },
+    "quads_fields": {
+      "file:checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+      "file:size": 1536,
+      "href": "metadata/quads-field-dictionary.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "quads field dictionary",
+      "type": "application/json"
+    },
+    "support-1": {
+      "file:checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+      "file:size": 15637,
+      "href": "provenance/build-manifest.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Build commit, environment, input checksums and output facts",
+      "type": "application/json"
+    },
+    "support-2": {
+      "file:checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+      "file:size": 9333,
+      "href": "provenance/check.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests",
+      "type": "application/json"
+    },
+    "support-3": {
+      "file:checksum": "12207ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "file:size": 10566,
+      "href": "provenance/index-env.lock.txt",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Locked build environment (conda explicit list and one pip wheel)",
+      "type": "text/plain"
+    },
+    "support-4": {
+      "file:checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "file:size": 9961,
+      "href": "provenance/index-package-plan.md",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Checks written before the first build, with addenda",
+      "type": "text/markdown"
+    },
+    "thumbnail": {
+      "file:checksum": "12205401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+      "file:size": 4826,
+      "href": "display/thumbnail.png",
+      "roles": [
+        "thumbnail"
+      ],
+      "title": "Sampled display-only overview; not an analytic asset",
+      "type": "image/png"
+    }
+  },
+  "created": "2026-11-17T05:01:25Z",
+  "description": "The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -125.15624999999999,
+          23.241346102386135,
+          -66.09375,
+          49.83798245308484
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-06-16T00:00:00Z",
+          "2025-11-17T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "id": "naip",
+  "license": "other",
+  "links": [
+    {
+      "href": "catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "href": "catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "README.md",
+      "rel": "describedby",
+      "type": "text/markdown"
+    },
+    {
+      "href": "AGENTS.md",
+      "rel": "agents",
+      "type": "text/markdown"
+    },
+    {
+      "href": "display/thumbnail.png",
+      "rel": "thumbnail",
+      "type": "image/png"
+    },
+    {
+      "href": "https://registry.opendata.aws/naip/",
+      "rel": "via",
+      "title": "National Agriculture Imagery Program (NAIP) on AWS, s3://naip-analytic",
+      "type": "text/html"
+    },
+    {
+      "href": "https://registry.opendata.aws/naip/",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "portolan:version": "0.2.0",
+  "providers": [
+    {
+      "name": "USDA Farm Production and Conservation Business Center",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.fpacbc.usda.gov/"
+    },
+    {
+      "description": "Local candidate package only; the package has not been hosted.",
+      "name": "nthh",
+      "roles": [
+        "host",
+        "processor"
+      ],
+      "url": "https://github.com/nthh/data-publications"
+    }
+  ],
+  "sci:citation": "USDA Farm Production and Conservation Business Center. National Agriculture Imagery Program (NAIP), 2021 to 2025 flights, from s3://naip-analytic on AWS.",
+  "stac_extensions": [
+    "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json"
+  ],
+  "stac_version": "1.1.0",
+  "table:columns": [
+    {
+      "asset": "quads",
+      "name": "stac_version",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "stac_extensions",
+      "type": "list<element: string>"
+    },
+    {
+      "asset": "quads",
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "collection",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "quads",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "quads",
+      "name": "gsd",
+      "type": "double"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:state",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:year",
+      "type": "int64"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:code",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:epsg",
+      "type": "int64"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:bbox",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:shape",
+      "type": "list<element: int64>"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:transform",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "links",
+      "type": "list<element: struct<href: string, rel: string, title: string>>"
+    },
+    {
+      "asset": "quads",
+      "name": "assets",
+      "type": "struct<image: struct<file:checksum: string, file:size: int64, href: string, roles: list<element: string>, title: string, type: string>>"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:run",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "stac_version",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "stac_extensions",
+      "type": "list<element: string>"
+    },
+    {
+      "asset": "overviews",
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "collection",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "overviews",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "start_datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "end_datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "gsd",
+      "type": "double"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:state",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:year",
+      "type": "int64"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:code",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:epsg",
+      "type": "int64"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:bbox",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:shape",
+      "type": "list<element: int64>"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:transform",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "links",
+      "type": "list<element: struct<href: string, rel: string, title: string>>"
+    },
+    {
+      "asset": "overviews",
+      "name": "assets",
+      "type": "struct<image: struct<file:checksum: string, file:size: int64, href: string, roles: list<element: string>, title: string, type: string>>"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:quads",
+      "type": "int64"
+    }
+  ],
+  "title": "NAIP display copies",
+  "type": "Collection",
+  "updated": "2026-11-17T05:01:25Z",
+  "version": "1.0.0"
+}
