@@ -1,0 +1,73 @@
+{
+ "datasets": {
+  "us-census-places": {
+   "queries": [
+    {
+     "id_column": "GEOID",
+     "ids": [
+      "04001",
+      "09110",
+      "01003"
+     ],
+     "name": "us-census-places-parquet-1",
+     "path": "assets/counties.parquet",
+     "selection": {
+      "row_count": 3235,
+      "row_group_count": 7,
+      "row_groups": [
+       0,
+       3,
+       6
+      ],
+      "selected_from": "row_group_min_statistics"
+     }
+    },
+    {
+     "id_column": "GEOID",
+     "ids": [
+      "0401292480",
+      "2300102060",
+      "6601017650"
+     ],
+     "name": "us-census-places-parquet-2",
+     "path": "assets/county-subdivisions.parquet",
+     "selection": {
+      "row_count": 36367,
+      "row_group_count": 72,
+      "row_groups": [
+       0,
+       36,
+       71
+      ],
+      "selected_from": "row_group_min_statistics"
+     }
+    },
+    {
+     "id_column": "GEOID",
+     "ids": [
+      "0400870",
+      "0901150",
+      "0204670"
+     ],
+     "name": "us-census-places-parquet-3",
+     "path": "assets/places.parquet",
+     "selection": {
+      "row_count": 32608,
+      "row_group_count": 64,
+      "row_groups": [
+       0,
+       32,
+       63
+      ],
+      "selected_from": "row_group_min_statistics"
+     }
+    }
+   ],
+   "release": "cb2023-r1"
+  }
+ },
+ "frozen_at": "2026-11-17T02:30:00Z",
+ "plan_sha256": "4d76361d110f5e1fc943e2e29c3ca3dd0ce126153cf2bd06b58b63c50108920f",
+ "schema_version": 1,
+ "selection_method": "IDs are Parquet row-group minimum statistics of GEOID from the first, middle and last row groups; only those row groups and the GEOID column were read to confirm each ID occurs once. Hosted comparison returns all attributes and geometry for each ID."
+}
