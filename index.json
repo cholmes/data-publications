@@ -10678,7 +10678,7 @@
     {
       "id": "naip",
       "record_path": "datasets/naip/dataset.yaml",
-      "title": "NAIP display copies",
+      "title": "NAIP visualization COGs",
       "community_url": null,
       "family_key": null,
       "decision": "publish_conversion",
@@ -10709,7 +10709,7 @@
           "evidence_sha256": "5515f007abc95b38131ac42d95f358a07d4b6f8d950e38d1a202916635460cdc"
         },
         "product_id": "naip",
-        "title": "NAIP display copies",
+        "title": "NAIP visualization COGs",
         "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.",
         "file_layout": [
           "Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.",

@@ -1,4 +1,4 @@
-# Publishing the NAIP display copies to Source Cooperative
+# Publishing the NAIP visualization COGs to Source Cooperative
 
 Written 2026-11-11, before any file was uploaded. It holds the steps from the converted pilot
 files to a published product, and the checks that were set for those steps before running them.

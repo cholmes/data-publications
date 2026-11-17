@@ -1,0 +1,67 @@
+{
+ "schema_version": 1,
+ "viewport": {
+  "width": 1200,
+  "height": 720,
+  "device_scale_factor": 1
+ },
+ "bounds": [
+  [
+   -125,
+   24
+  ],
+  [
+   -66.5,
+   49.5
+  ]
+ ],
+ "land": {
+  "path": "scripts/cloud_viewer/src/land.geojson",
+  "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9"
+ },
+ "cases": [
+  {
+   "dataset_id": "naip",
+   "title": "NAIP visualization COGs",
+   "subtitle": "Latest flight of each state, 2021 to 2025 \u00b7 national overview, about 306 m",
+   "attribution": "USDA FPAC Business Center (NAIP) \u00b7 public domain",
+   "bounds": [
+    [
+     -125.2,
+     23.2
+    ],
+    [
+     -66.1,
+     49.9
+    ]
+   ],
+   "image": {
+    "path": ".local/naip/presentation-20261117/national-2048.png",
+    "sha256": "4abcb3327191df088127313c6ec650def456959c74e6242c8e5034b67302cb57",
+    "coordinates": [
+     [
+      -125.15625,
+      49.837982453
+     ],
+     [
+      -66.09375,
+      49.837982453
+     ],
+     [
+      -66.09375,
+      23.241346102
+     ],
+     [
+      -125.15625,
+      23.241346102
+     ]
+    ],
+    "source": {
+     "url": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+     "sha256": "85e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a",
+     "size_bytes": 38077264
+    }
+   }
+  }
+ ]
+}

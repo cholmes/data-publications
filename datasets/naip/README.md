@@ -1,4 +1,4 @@
-# NAIP display copies
+# NAIP visualization COGs
 
 The National Agriculture Imagery Program (NAIP) flies the United States at 30 or 60 cm. On AWS it
 is published twice: `s3://naip-analytic` holds the four-band data, and `s3://naip-visualization`

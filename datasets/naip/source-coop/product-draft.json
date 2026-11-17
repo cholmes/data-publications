@@ -105,7 +105,7 @@
   "created": true,
   "creation_ready": true,
   "dataset_id": "naip",
-  "dataset_title": "NAIP display copies",
+  "dataset_title": "NAIP visualization COGs",
   "display_publication": null,
   "draft_type": "source_coop_product_draft",
   "file_layout": [
@@ -560,5 +560,5 @@
     "cog"
   ],
   "temporal_note": "One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.",
-  "title": "NAIP display copies"
+  "title": "NAIP visualization COGs"
 }

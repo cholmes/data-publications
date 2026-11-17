@@ -1,8 +1,8 @@
-# NAIP display copies
+# NAIP visualization COGs
 
 **Locally generated metadata:** product creation, object uploads, and hosting checks have separate execution receipts.
 
-- Dataset: `naip` (NAIP display copies)
+- Dataset: `naip` (NAIP visualization COGs)
 - Product ID: `naip`
 - Local publication status: `published`
 - Local readiness: `prepared`

@@ -1,4 +1,4 @@
-# NAIP display copies: query guidance
+# NAIP visualization COGs: query guidance
 
 One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.
 

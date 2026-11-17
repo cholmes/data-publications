@@ -188,6 +188,17 @@
                 }
               ]
             },
+            "title_correction": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["from", "to", "reason"],
+              "description": "Explicit rename of a published product in the catalogue; the released package and hosted files keep the old name.",
+              "properties": {
+                "from": {"type": "string", "minLength": 1},
+                "to": {"type": "string", "minLength": 1},
+                "reason": {"type": "string", "minLength": 1}
+              }
+            },
             "processor_correction": {
               "type": "object",
               "additionalProperties": false,

@@ -42,5 +42,17 @@
  },
  "not_done": [
   "No upload, listing change, push or Pages deploy."
- ]
+ ],
+ "rename": {
+  "from": "NAIP display copies",
+  "to": "NAIP visualization COGs",
+  "chosen_on": "2026-11-17",
+  "status": "passed",
+  "evidence": [
+   "render/render-r4-renamed.json (plan-r2.json)",
+   "browser/portolan-cards-r2-renamed.json",
+   "browser/catalog-cards-renamed.png"
+  ],
+  "note": "Catalogue title, description, READMEs and the NAIP card carry the new name through publication.catalog.title_correction. The release package, its snapshot, the hosted index files' embedded metadata, and the title and README on Source Cooperative keep the old name until a separate upload."
+ }
 }

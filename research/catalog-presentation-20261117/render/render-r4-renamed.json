@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "502cf96f18eb27895622db0fc31a863d383242e6e5697c28dc5934c42854c8a8",
+  "inputs": {
+    "renderer_sha256": "571cbfb6e5ee6daa19a866e0aeb6c41edc5983dbb4da33a70552f64c777f54f7",
+    "client_sha256": "3d5d73ce160be35ab0ef3665755a52de430f64feef861ff219ca52a001bb8219",
+    "package_lock_sha256": "c08d6ea58375a87a11982e7df58aa4f335343084aa8a7d1e7328eb7420f791d7",
+    "land_sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+    "plan_sha256": "502cf96f18eb27895622db0fc31a863d383242e6e5697c28dc5934c42854c8a8",
+    "naip_collection_sha256": "a585e8a43e88774c130830551fdc612adf062a0470a5385e75f220dffbf2a8a6",
+    "naip_image_sha256": "4abcb3327191df088127313c6ec650def456959c74e6242c8e5034b67302cb57",
+    "worker_sha256": "0bf06492bdb7ba3d4132b78e435621bfba60d5250967991c02b1a73affea8cd5",
+    "bundle_sha256": "aa01d9919be6d0122f37829ddf80bf6e70c44fd87f172d5991ab80d5f06dc743"
+  },
+  "browser_version": "157.0.8103.79",
+  "cases": [
+    {
+      "dataset_id": "naip",
+      "status": "rendered_pending_visual_review",
+      "requests": [],
+      "total_bytes": 0,
+      "camera": {
+        "center": [
+          -95.65,
+          37.738849500053746
+        ],
+        "zoom": 3.5175382743157138,
+        "bounds": [
+          [
+            -132.4882727192167,
+            22.521110589242497
+          ],
+          [
+            -58.81172728078458,
+            50.372236360394055
+          ]
+        ]
+      },
+      "source_layer": null,
+      "rendered_features": 0,
+      "decoded_tile_count": 0,
+      "decoded_features": 0,
+      "opaque_image_pixels": 1311110,
+      "png_sha256": "93ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd",
+      "png_size_bytes": 648798
+    }
+  ],
+  "status": "rendered_pending_visual_review"
+}

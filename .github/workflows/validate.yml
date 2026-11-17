@@ -42,7 +42,7 @@ jobs:
           uv run --locked python scripts/test_catalog.py
           uv run --locked python -m unittest tests.test_record_layout tests.test_dataset_availability -v
           uv run --locked python -m unittest discover -s tests -p test_publication_catalog.py -v
-          uv run --locked python -m unittest tests.test_publication_catalog_map_assets -v
+          uv run --locked python -m unittest tests.test_publication_catalog_map_assets tests.test_publication_catalog_title_correction -v
           uv run --locked python -m unittest discover -s tests -p test_candidate_discovery.py -v
           uv run --locked python -m unittest tests.test_source_products tests.test_lakeatlas_semantics tests.test_flat_publication tests.test_support_publication tests.test_source_retirement -v
           uv run --locked python scripts/source_products.py check

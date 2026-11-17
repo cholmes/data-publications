@@ -87,8 +87,8 @@
         "thumbnail"
       ],
       "title": "National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif",
-      "file:size": 648031,
-      "file:checksum": "12207b808953af2c63a6e7e5ceeebb404cb259b5706ac8a2ea8e9496a058585b1e5e"
+      "file:size": 648798,
+      "file:checksum": "122093ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd"
     },
     "overview_national": {
       "href": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
@@ -104,7 +104,7 @@
     }
   },
   "created": "2026-11-17T05:01:25Z",
-  "description": "The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+  "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
   "extent": {
     "spatial": {
       "bbox": [
@@ -411,7 +411,7 @@
       "type": "int64"
     }
   ],
-  "title": "NAIP display copies",
+  "title": "NAIP visualization COGs",
   "type": "Collection",
   "updated": "2026-11-17T00:00:00Z",
   "version": "1.0.0"

@@ -1,6 +1,6 @@
 schema_version: 1
 id: naip
-title: NAIP display copies
+title: NAIP visualization COGs
 intake:
   kind: producer
   reference_url: https://registry.opendata.aws/naip/
@@ -28,6 +28,12 @@ publication:
     package_base_url: https://data.source.coop/nthh/naip/releases/index-20261116-r5/
     hosting_report_path: research/naip-index-20261117/hosting-report.json
     hosting_report_sha256: 079c94fbb4b6e9fbadb188da291ee29f2d5adccd0f8e2a1c04571e294ff521c8
+    title_correction:
+      from: NAIP display copies
+      to: NAIP visualization COGs
+      reason: Renamed on 2026-11-17 after publication. The name follows the AWS naip-visualization
+        bucket whose settings and layout these files match. The release package, its snapshot and
+        the metadata inside the hosted index files keep the old name.
     map_assets:
     - asset_id: overview_national
       href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
@@ -40,8 +46,8 @@ publication:
       evidence_path: research/catalog-presentation-20261117/national-file-r2.json
       evidence_sha256: d0e500445411971d6f216d55097b312e4d5a7a8c2b148934a0fd15f7b128a841
     thumbnail:
-      path: datasets/naip/presentation/conus-v1/thumbnail.png
-      sha256: 7b808953af2c63a6e7e5ceeebb404cb259b5706ac8a2ea8e9496a058585b1e5e
+      path: datasets/naip/presentation/conus-v2/thumbnail.png
+      sha256: 93ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd
       title: National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif
   limits:
   - The package is the two STAC GeoParquet index files, not the imagery. Its index files and field
@@ -68,7 +74,7 @@ publication:
       evidence_path: research/source-publication-20261106/account-verification.json
       evidence_sha256: 5515f007abc95b38131ac42d95f358a07d4b6f8d950e38d1a202916635460cdc
     product_id: naip
-    title: NAIP display copies
+    title: NAIP visualization COGs
     summary: RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the
       naip-analytic MRF files with the settings, file names and key layout of the AWS
       naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and

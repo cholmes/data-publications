@@ -1,4 +1,4 @@
-# Validation: NAIP display copies
+# Validation: NAIP visualization COGs
 
 ## What was decided before the runs (2026-11-10)
 

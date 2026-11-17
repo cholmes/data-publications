@@ -50,7 +50,7 @@
     {
       "rel": "child",
       "href": "naip/collection.json",
-      "title": "NAIP display copies",
+      "title": "NAIP visualization COGs",
       "type": "application/json"
     },
     {

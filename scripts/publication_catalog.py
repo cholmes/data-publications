@@ -544,6 +544,27 @@ def _set_catalog_thumbnail(collection: dict, thumbnail: tuple[dict, bytes], data
     put(f"{dataset_id}/{href}", data)
 
 
+def _apply_title_correction(snapshot_collection: dict, collection: dict, dataset_id: str, record: dict) -> None:
+    """Rename a published product in the catalogue without touching its released package.
+
+    publication.catalog.title_correction {from, to, reason}: the snapshot's Collection title must be
+    `from` and the record's title must be `to`. The generated title already comes from the record;
+    this also replaces every exact occurrence of `from` in the description. The package, its
+    snapshot and hosted files keep the old name.
+    """
+    correction = ((record.get("publication") or {}).get("catalog") or {}).get("title_correction")
+    if correction is None:
+        return
+    old, new = correction["from"], correction["to"]
+    if snapshot_collection.get("title") != old:
+        raise ValueError(f"Title correction does not match the snapshot title: {dataset_id}")
+    if record.get("title") != new:
+        raise ValueError(f"Title correction must equal the record title: {dataset_id}")
+    collection["title"] = new
+    if isinstance(collection.get("description"), str):
+        collection["description"] = collection["description"].replace(old, new)
+
+
 COG_TYPE = "image/tiff; application=geotiff; profile=cloud-optimized"
 FILE_SCHEMA = "https://stac-extensions.github.io/file/v2.1.0/schema.json"
 PROJECTION_SCHEMA = "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
@@ -1139,6 +1160,7 @@ def _generated(root: Path, config: dict) -> dict[str, bytes]:
         if thumbnail is not None:
             _set_catalog_thumbnail(out_collection, thumbnail, dataset_id, put)
         _set_public_host(out_collection, dataset_id, record)
+        _apply_title_correction(collection, out_collection, dataset_id, record)
         from flat_publication import apply_flat_layout
         flat_layout = apply_flat_layout(root, record, out_collection, tree)
         from support_publication import apply_support_layout
