@@ -192,3 +192,7 @@ The first run (`check-gti-open-r6-1.json`, kept) failed before reading anything:
 `naip-index` environment's GDAL 3.12.4 has no Parquet driver. Check 12 now runs in the Python
 that ships inside QGIS 4.2.1, whose GDAL 3.12.4 has the Parquet and GTI drivers; that is the
 GDAL a QGIS user opens the file with. The pass marks are unchanged.
+
+The second run (`check-gti-open-r6-2.json`, kept) also failed before reading: started outside the
+app, QGIS's Python did not find PROJ's database. The third run sets `PROJ_DATA` and `GDAL_DATA` to
+the app's own folders, as QGIS does when it starts. Nothing else changes.

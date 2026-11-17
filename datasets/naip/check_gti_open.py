@@ -7,7 +7,8 @@ Run with the Python inside QGIS 4.2.1 (GDAL 3.12.4 with its Parquet and GTI driv
 naip-index environment has GDAL 3.12.4 without the Parquet driver. On macOS:
 
     Q=/Applications/QGIS-final-4_2_1.app/Contents; R=$Q/Resources/python3.12
-    PYTHONPATH="$R:$R/lib-dynload:$R/site-packages" $Q/MacOS/python3.12 check_gti_open.py ...
+    PROJ_DATA=$Q/Resources/qgis/proj GDAL_DATA=$Q/Resources/qgis/gdal \
+        PYTHONPATH="$R:$R/lib-dynload:$R/site-packages" $Q/MacOS/python3.12 check_gti_open.py ...
 
 A loopback
 server answers /nthh/naip/stac/<name> from the release's four files, with byte ranges, and sends
