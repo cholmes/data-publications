@@ -54,6 +54,12 @@
       "type": "application/json"
     },
     {
+      "rel": "child",
+      "href": "us-census-places/collection.json",
+      "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+      "type": "application/json"
+    },
+    {
       "rel": "vcs",
       "href": "https://github.com/nthh/data-publications",
       "title": "Repository",
@@ -78,5 +84,5 @@
       "type": "text/html"
     }
   ],
-  "updated": "2026-11-12T22:20:00Z"
+  "updated": "2026-11-17T00:23:11Z"
 }

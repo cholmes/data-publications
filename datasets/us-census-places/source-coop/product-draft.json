@@ -113,7 +113,7 @@
   ],
   "attribution": "Source: US Census Bureau, 2023 cartographic boundary files, gazetteer files and vintage 2023 population estimates.",
   "blockers": [],
-  "created": false,
+  "created": true,
   "creation_ready": true,
   "dataset_id": "us-census-places",
   "dataset_title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
@@ -156,7 +156,7 @@
     "release": "cb2023-display-r3"
   },
   "draft_type": "source_coop_product_draft",
-  "hosted": false,
+  "hosted": true,
   "independent_maintainer_proposal": {
     "owner": "nthh",
     "relationship": "new Source Cooperative product proposal; immutable package metadata is unchanged",
@@ -174,10 +174,10 @@
   "owner_status": "confirmed",
   "product_id": "us-census-places",
   "proposed_source_proxy": {
-    "status": "proposed",
+    "status": "hosted",
     "uri": "s3://nthh/us-census-places"
   },
-  "publication_status": "prepared",
+  "publication_status": "published",
   "ready_for_creation": true,
   "ready_for_review": true,
   "related_dataset_links": [
@@ -268,6 +268,7 @@
   "schema_version": 1,
   "snapshot_binding": {
     "bound_file_count": 9,
+    "hosted_package_base_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/",
     "local_metadata_integrity": "passed",
     "manifest_path": "datasets/us-census-places/releases/cb2023-r1/manifest.json",
     "manifest_sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",

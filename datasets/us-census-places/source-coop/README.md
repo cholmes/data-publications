@@ -4,12 +4,12 @@
 
 - Dataset: `us-census-places` (US Census counties, places and county subdivisions, 2023 cartographic boundaries)
 - Product ID: `us-census-places`
-- Local publication status: `prepared`
+- Local publication status: `published`
 - Local readiness: `prepared`
 - Owner: `nthh` (confirmed)
 - Canonical publication review stage: `not recorded`
 - Creation readiness: `true`
-- Hosted: `false`
+- Hosted: `true`
 
 ## Summary
 
@@ -71,4 +71,4 @@ No separate metadata supplements are recorded.
 
 ## Source Cooperative route
 
-Planned source proxy: `s3://nthh/us-census-places`. Check separate creation and hosting receipts for current state.
+Hosted product: `s3://nthh/us-census-places`. The published release is bound to a checksum-verified hosting report.

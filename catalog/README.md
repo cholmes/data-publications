@@ -2,7 +2,7 @@
 
 Reproducible geospatial datasets with pinned sources, documented transformations and verified release evidence.
 
-Published collections: 5.
+Published collections: 6.
 
 This catalog indexes published metadata with pinned package releases and prior hosting attestations.
 
@@ -15,5 +15,4 @@ Provenance: generated from canonical dataset.yaml records and checksum-bound met
 - [HydroLAKES v1.0: Polygons](hydrolakes/collection.json)
 - [HydroATLAS LakeATLAS v1.0 — global hydro-environmental lake attributes](lakeatlas/collection.json)
 - [Global river plastic inputs — Lebreton et al. (2017)](river-plastic-inputs/collection.json)
-
-[Catalog query conventions](AGENTS.md).
+- [US Census counties, places and county subdivisions, 2023 cartographic boundaries](us-census-places/collection.json)

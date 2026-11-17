@@ -1,0 +1,596 @@
+{
+  "assets": {
+    "counties": {
+      "file:checksum": "1220e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "file:size": 7405880,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/counties.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Counties and county equivalents",
+      "type": "application/vnd.apache.parquet"
+    },
+    "counties_fields": {
+      "file:checksum": "1220844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+      "file:size": 1198,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/counties-field-dictionary.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "counties field dictionary",
+      "type": "application/json"
+    },
+    "county-subdivisions": {
+      "file:checksum": "12204176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "file:size": 26703829,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "County subdivisions",
+      "type": "application/vnd.apache.parquet"
+    },
+    "county-subdivisions_fields": {
+      "file:checksum": "12207b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+      "file:size": 1335,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "county-subdivisions field dictionary",
+      "type": "application/json"
+    },
+    "places": {
+      "file:checksum": "1220485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "file:size": 20737486,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/places.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Incorporated places and census designated places",
+      "type": "application/vnd.apache.parquet"
+    },
+    "places_fields": {
+      "file:checksum": "122066fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+      "file:size": 1194,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/places-field-dictionary.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "places field dictionary",
+      "type": "application/json"
+    },
+    "support-1": {
+      "file:checksum": "122025e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+      "file:size": 1883,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/source-manifest.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Pinned Census inputs: address, size and SHA-256",
+      "type": "application/json"
+    },
+    "support-2": {
+      "file:checksum": "1220a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+      "file:size": 4442,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/build-manifest.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Build commit, tool versions and output facts",
+      "type": "application/json"
+    },
+    "support-3": {
+      "file:checksum": "12202a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+      "file:size": 6388,
+      "href": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/validation-plan.md",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Checks written before the first build",
+      "type": "text/markdown"
+    },
+    "thumbnail": {
+      "file:checksum": "1220b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+      "file:size": 6899,
+      "href": "display/thumbnail.png",
+      "roles": [
+        "thumbnail"
+      ],
+      "title": "Sampled display-only overview; not an analytic asset",
+      "type": "image/png"
+    },
+    "display_tiles_census-counties": {
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "roles": [
+        "visual"
+      ],
+      "title": "Counties",
+      "file:size": 23766772,
+      "file:checksum": "122023e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2"
+    },
+    "display_style_census-counties": {
+      "href": "display/cb2023-display-r3/styles/census_counties.json",
+      "type": "application/vnd.mapbox.style+json",
+      "roles": [
+        "style",
+        "default"
+      ],
+      "title": "Counties display style",
+      "file:size": 1971,
+      "file:checksum": "1220d6bb12a8cff8ccffcdf3e9f7586cc64ff7409bf410042c0975ec8b6be6deb8d2"
+    },
+    "display_tiles_census-places": {
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "roles": [
+        "visual"
+      ],
+      "title": "Cities, towns and census designated places",
+      "file:size": 37275676,
+      "file:checksum": "122079520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf"
+    },
+    "display_style_census-places": {
+      "href": "display/cb2023-display-r3/styles/census_places.json",
+      "type": "application/vnd.mapbox.style+json",
+      "roles": [
+        "style"
+      ],
+      "title": "Cities, towns and census designated places display style",
+      "file:size": 1955,
+      "file:checksum": "12205e96eb8f5993fd0dfc3066adccf0e04a2e1061c5df345584d96dee9e6fd2818a"
+    },
+    "display_tiles_census-towns": {
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "roles": [
+        "visual"
+      ],
+      "title": "Governing townships and towns",
+      "file:size": 20349807,
+      "file:checksum": "1220a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5"
+    },
+    "display_style_census-towns": {
+      "href": "display/cb2023-display-r3/styles/census_towns.json",
+      "type": "application/vnd.mapbox.style+json",
+      "roles": [
+        "style"
+      ],
+      "title": "Governing townships and towns display style",
+      "file:size": 1948,
+      "file:checksum": "12209da05be01dde7a1514deaad99c6330205c23f771c892b667868135d7042c20c4"
+    }
+  },
+  "created": "2026-11-17T00:23:11Z",
+  "description": "The 2023 Census cartographic boundary files for counties, places and county subdivisions as three GeoParquet files. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve. These are boundaries generalised for mapping at 1:500,000, as of 1 January 2023, not legal boundaries.",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.146711,
+          -14.548699,
+          179.77847,
+          71.387815
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-01-01T00:00:00Z",
+          "2023-07-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "id": "us-census-places",
+  "license": "other",
+  "links": [
+    {
+      "href": "display/thumbnail.png",
+      "rel": "thumbnail",
+      "type": "image/png"
+    },
+    {
+      "href": "https://www2.census.gov/geo/tiger/GENZ2023/shp/",
+      "rel": "via",
+      "title": "US Census Bureau cartographic boundary files, 2023",
+      "type": "text/html"
+    },
+    {
+      "href": "https://www.census.gov/about/policies/citation.html",
+      "rel": "license",
+      "type": "text/html"
+    },
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Counties",
+      "pmtiles:layers": [
+        "census_counties"
+      ]
+    },
+    {
+      "rel": "style",
+      "href": "display/cb2023-display-r3/styles/census_counties.json",
+      "type": "application/vnd.mapbox.style+json",
+      "title": "Counties display style"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Cities, towns and census designated places",
+      "pmtiles:layers": [
+        "census_places"
+      ]
+    },
+    {
+      "rel": "style",
+      "href": "display/cb2023-display-r3/styles/census_places.json",
+      "type": "application/vnd.mapbox.style+json",
+      "title": "Cities, towns and census designated places display style"
+    },
+    {
+      "rel": "pmtiles",
+      "href": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "title": "Governing townships and towns",
+      "pmtiles:layers": [
+        "census_towns"
+      ]
+    },
+    {
+      "rel": "style",
+      "href": "display/cb2023-display-r3/styles/census_towns.json",
+      "type": "application/vnd.mapbox.style+json",
+      "title": "Governing townships and towns display style"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/nthh/data-publications",
+      "title": "Repository",
+      "type": "text/html"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/nthh/data-publications/issues",
+      "title": "Issues",
+      "type": "text/html"
+    },
+    {
+      "rel": "about",
+      "href": "https://source.coop/nthh",
+      "title": "Hosting",
+      "type": "text/html"
+    },
+    {
+      "rel": "alternate",
+      "href": "https://browser.portolan-sdi.org/#/external/nthh.github.io/data-publications/us-census-places/collection.json",
+      "title": "Browser view",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "US Census Bureau",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.census.gov/"
+    },
+    {
+      "description": "Independent data processing and hosting on Source Cooperative.",
+      "name": "nthh",
+      "roles": [
+        "processor",
+        "host"
+      ],
+      "url": "https://source.coop/nthh/us-census-places"
+    }
+  ],
+  "sci:citation": "US Census Bureau. 2023 cartographic boundary files (1:500,000): counties, places and county subdivisions; 2023 gazetteer files; vintage 2023 subcounty population estimates.",
+  "stac_extensions": [
+    "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.3.0/schema.json"
+  ],
+  "stac_version": "1.1.0",
+  "table:columns": [
+    {
+      "asset": "counties",
+      "name": "STATEFP",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "COUNTYFP",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "COUNTYNS",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "GEOIDFQ",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "GEOID",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "NAME",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "NAMELSAD",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "STUSPS",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "STATE_NAME",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "LSAD",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "ALAND",
+      "type": "int64"
+    },
+    {
+      "asset": "counties",
+      "name": "AWATER",
+      "type": "int64"
+    },
+    {
+      "asset": "counties",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "counties",
+      "name": "source_row",
+      "type": "int64"
+    },
+    {
+      "asset": "counties",
+      "name": "gaz_funcstat",
+      "type": "string"
+    },
+    {
+      "asset": "counties",
+      "name": "popest_2023",
+      "type": "int64"
+    },
+    {
+      "asset": "counties",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "places",
+      "name": "STATEFP",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "PLACEFP",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "PLACENS",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "GEOIDFQ",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "GEOID",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "NAME",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "NAMELSAD",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "STUSPS",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "STATE_NAME",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "LSAD",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "ALAND",
+      "type": "int64"
+    },
+    {
+      "asset": "places",
+      "name": "AWATER",
+      "type": "int64"
+    },
+    {
+      "asset": "places",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "places",
+      "name": "source_row",
+      "type": "int64"
+    },
+    {
+      "asset": "places",
+      "name": "gaz_funcstat",
+      "type": "string"
+    },
+    {
+      "asset": "places",
+      "name": "popest_2023",
+      "type": "int64"
+    },
+    {
+      "asset": "places",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "STATEFP",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "COUNTYFP",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "COUSUBFP",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "COUSUBNS",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "GEOIDFQ",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "GEOID",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "NAME",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "NAMELSAD",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "STUSPS",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "NAMELSADCO",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "STATE_NAME",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "LSAD",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "ALAND",
+      "type": "int64"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "AWATER",
+      "type": "int64"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "source_row",
+      "type": "int64"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "gaz_funcstat",
+      "type": "string"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "popest_2023",
+      "type": "int64"
+    },
+    {
+      "asset": "county-subdivisions",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    }
+  ],
+  "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+  "type": "Collection",
+  "updated": "2026-11-17T00:23:11Z",
+  "version": "1.0.0"
+}

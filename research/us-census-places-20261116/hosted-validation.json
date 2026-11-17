@@ -1,0 +1,2184 @@
+{
+  "checked_at": "2026-11-17T02:44:26.760905Z",
+  "checks": {
+    "anonymous_access": "passed",
+    "asset_checksums": "passed",
+    "browser_render": "passed",
+    "catalog_links": "passed",
+    "cors": "passed",
+    "range_requests": "passed",
+    "subset_query": "passed"
+  },
+  "dataset_id": "us-census-places",
+  "display_manifest_sha256": "b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164",
+  "display_package_base_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/",
+  "display_release": "cb2023-display-r3",
+  "evidence": {
+    "asset_checksum_scope": "Full remote bytes were SHA-256 verified in original upload attempt receipts. For reused objects, this run binds their original byte proofs and separately checks current HEAD and anonymous range samples; current HEAD is not a fresh full-byte hash.",
+    "browser_evidence": {
+      "blocked_requests": [],
+      "browser_cases_sha256": "47c4da6e1c80626d5899341fdbc86a6f2830048248a095b69bd43c6544f4bb11",
+      "case_ids": [
+        "us-census-places-census-counties-colorado",
+        "us-census-places-census-places-franklin-county-oh",
+        "us-census-places-census-towns-franklin-county-oh"
+      ],
+      "cases": [
+        {
+          "blocked_requests": [],
+          "dataset_id": "us-census-places",
+          "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "display_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "errors": [],
+          "id": "us-census-places-census-counties-colorado",
+          "layer_id": "census-counties",
+          "least_outlines": 40,
+          "render": {
+            "drawn": 106,
+            "labels": 87,
+            "lit": true,
+            "source_urls": [
+              "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            ],
+            "under": {
+              "id": "31049",
+              "kind": "county",
+              "name": "Deuel"
+            },
+            "zoom": 6.858638991054039
+          },
+          "requests": [
+            {
+              "body_bytes": 16384,
+              "body_sha256": "3bf11d9e95e189d39d99c2bdf10f97fc0c982fcec02531eb4e93040bfd0d87e3",
+              "content_length": 16384,
+              "content_range": "bytes 0-16383/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=0-16383",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 8142,
+              "body_sha256": "5c22af81dd85a1c278b57ef92b9ccab2e2bbd1f9f79d9d07a5ade0cde6b45d93",
+              "content_length": 8142,
+              "content_range": "bytes 4474-12615/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=4474-12615",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 10600,
+              "body_sha256": "691d0c79012c6f8be43df1d290ab4b6db974ee140abe8dd0e44dab1ee38443bf",
+              "content_length": 10600,
+              "content_range": "bytes 1808357-1818956/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=1808357-1818956",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 7403,
+              "body_sha256": "4a7c4a112832aed816ccd2419dc3489fff9dd76d91ff443a88d393d2e9b594e6",
+              "content_length": 7403,
+              "content_range": "bytes 1800954-1808356/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=1800954-1808356",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 6571,
+              "body_sha256": "54f982a9d3be1cd419022824afcdf7262e369d7d9286b3e1bf2be1b0f281a20b",
+              "content_length": 6571,
+              "content_range": "bytes 1999528-2006098/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=1999528-2006098",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 6313,
+              "body_sha256": "fe6cb1dce89e5bd736e6081a4d4c037af6490de2d068b09465b1f9e8463af63a",
+              "content_length": 6313,
+              "content_range": "bytes 2006099-2012411/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=2006099-2012411",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 16487,
+              "body_sha256": "ff0783f035964638697d9f96c9f1be33226156baad7dc7c70acb538f27f3877a",
+              "content_length": 16487,
+              "content_range": "bytes 1907672-1924158/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=1907672-1924158",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            },
+            {
+              "body_bytes": 15017,
+              "body_sha256": "8454e1284afc9344895eddcf31c19e23bd77c516f9eafd23260201c070e47d26",
+              "content_length": 15017,
+              "content_range": "bytes 1984511-1999527/23766772",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+              "range": "bytes=1984511-1999527",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+            }
+          ],
+          "status": "passed",
+          "transferred_bytes": 86917,
+          "view": {
+            "bounds": [
+              -109.06,
+              36.99,
+              -102.04,
+              41
+            ],
+            "name": "colorado"
+          }
+        },
+        {
+          "blocked_requests": [],
+          "dataset_id": "us-census-places",
+          "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "display_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "errors": [],
+          "id": "us-census-places-census-places-franklin-county-oh",
+          "layer_id": "census-places",
+          "least_outlines": 10,
+          "render": {
+            "drawn": 48,
+            "labels": 43,
+            "lit": true,
+            "source_urls": [
+              "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            ],
+            "under": {
+              "id": "3983580",
+              "kind": "incorporated",
+              "name": "West Jefferson"
+            },
+            "zoom": 10.35694733139323
+          },
+          "requests": [
+            {
+              "body_bytes": 16384,
+              "body_sha256": "3d5b20ff10db5ffb9eab596cc276a18a40d393e297ac71ceafa17019a84bed13",
+              "content_length": 16384,
+              "content_range": "bytes 0-16383/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=0-16383",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 7875,
+              "body_sha256": "5b543ca0911b3b69d24bc0c66faae53852ad6b7a65d507665d850a213d9a1e42",
+              "content_length": 7875,
+              "content_range": "bytes 13015-20889/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=13015-20889",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 6378,
+              "body_sha256": "fd419103e9f3cdb7456e842f7e227db85dc20e7c22907bc58c90fad3704f64a9",
+              "content_length": 6378,
+              "content_range": "bytes 17298040-17304417/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17298040-17304417",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 5253,
+              "body_sha256": "cddcf8b368ca646a3182b26b0edf04ade820638e4511b45e5be70852ff1d19af",
+              "content_length": 5253,
+              "content_range": "bytes 17292787-17298039/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17292787-17298039",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 3439,
+              "body_sha256": "8b21a23fe31e2f1b695e82c689fdc4606b0f44f94c023922f3ef82377928773f",
+              "content_length": 3439,
+              "content_range": "bytes 17348098-17351536/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17348098-17351536",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 4034,
+              "body_sha256": "c63f34ef37d470ae04d8fcdbfa8056a21cac9a3b09d8aabd0d09f6bf19012267",
+              "content_length": 4034,
+              "content_range": "bytes 17253130-17257163/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17253130-17257163",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 1730,
+              "body_sha256": "e2169e28cacba02f7c8058437cda5dfdfbd4236baaa3a3f858733b70eff16945",
+              "content_length": 1730,
+              "content_range": "bytes 17304418-17306147/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17304418-17306147",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            },
+            {
+              "body_bytes": 976,
+              "body_sha256": "185f3938c291b7aeec1a1816059d0cdf80ac4eca37918f1dd855e013cd5be076",
+              "content_length": 976,
+              "content_range": "bytes 17347122-17348097/37275676",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+              "range": "bytes=17347122-17348097",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+            }
+          ],
+          "status": "passed",
+          "transferred_bytes": 46069,
+          "view": {
+            "bounds": [
+              -83.26,
+              39.81,
+              -82.77,
+              40.16
+            ],
+            "name": "franklin-county-oh"
+          }
+        },
+        {
+          "blocked_requests": [],
+          "dataset_id": "us-census-places",
+          "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "display_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "errors": [],
+          "id": "us-census-places-census-towns-franklin-county-oh",
+          "layer_id": "census-towns",
+          "least_outlines": 5,
+          "render": {
+            "drawn": 50,
+            "labels": 35,
+            "lit": true,
+            "source_urls": [
+              "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            ],
+            "under": {
+              "id": "3909751478",
+              "kind": "township",
+              "name": "Monroe"
+            },
+            "zoom": 10.35694733139323
+          },
+          "requests": [
+            {
+              "body_bytes": 16384,
+              "body_sha256": "c01f4c6f890552969b2bd9b3b7329d40467080d52091945acfa2bd0d4bf2fb55",
+              "content_length": 16384,
+              "content_range": "bytes 0-16383/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=0-16383",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 8354,
+              "body_sha256": "c6275a2941df80162257bc713d16dbd6e07b1c05747c58553d776cb823b906dc",
+              "content_length": 8354,
+              "content_range": "bytes 3986-12339/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=3986-12339",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 5261,
+              "body_sha256": "15b1ee52bb6f99861597902ce3cfa22521cd3dad052dd85892b2fe3cf85bfe50",
+              "content_length": 5261,
+              "content_range": "bytes 9911105-9916365/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9911105-9916365",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 4299,
+              "body_sha256": "f4831859e00d89a904d1023a0f6c76a8edfb2dbf291c01320f20b6ef89d21062",
+              "content_length": 4299,
+              "content_range": "bytes 9906806-9911104/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9906806-9911104",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 3257,
+              "body_sha256": "fff3228ef2bbd006dcc7569f53a807b14f26fe1eed4888d089e1f88418a1b36d",
+              "content_length": 3257,
+              "content_range": "bytes 9971634-9974890/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9971634-9974890",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 3143,
+              "body_sha256": "35a6efeccf8d3ae371fccc9bcc82989d6e527e83ac44371f4939906dc33003c9",
+              "content_length": 3143,
+              "content_range": "bytes 9847564-9850706/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9847564-9850706",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 2373,
+              "body_sha256": "abdec0a8f12255ad174be284d6a1f4cd6fc920ae0e9d1d7a2280bdcd9567b1c3",
+              "content_length": 2373,
+              "content_range": "bytes 9916366-9918738/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9916366-9918738",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            },
+            {
+              "body_bytes": 2570,
+              "body_sha256": "685dde39b6b563e5b447f63f026ffd0e9f469650e198146498713e9b10901cb0",
+              "content_length": 2570,
+              "content_range": "bytes 9969064-9971633/20349807",
+              "content_type": "application/vnd.pmtiles",
+              "cors": "*",
+              "expose_headers": "*",
+              "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+              "range": "bytes=9969064-9971633",
+              "status": 206,
+              "status_check": "passed",
+              "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+            }
+          ],
+          "status": "passed",
+          "transferred_bytes": 45641,
+          "view": {
+            "bounds": [
+              -83.26,
+              39.81,
+              -82.77,
+              40.16
+            ],
+            "name": "franklin-county-oh"
+          }
+        }
+      ],
+      "checked_at": "2026-11-17T02:42:26.342Z",
+      "dataset_id": "us-census-places",
+      "display_release": "cb2023-display-r3",
+      "errors": [],
+      "expected_case_count": 3,
+      "other_hosts_contacted": [
+        "",
+        "tiles.openfreemap.org"
+      ],
+      "plan_sha256": "4d76361d110f5e1fc943e2e29c3ca3dd0ce126153cf2bd06b58b63c50108920f",
+      "planned_object_prefixes": [
+        "us-census-places/releases/cb2023-r1/",
+        "us-census-places/display/cb2023-display-r3/"
+      ],
+      "planned_object_url_prefixes": [
+        "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/",
+        "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/"
+      ],
+      "product_id": "us-census-places",
+      "release": "cb2023-r1",
+      "schema_version": 1,
+      "screenshots": [
+        "us-census-places-census-counties-colorado.png",
+        "us-census-places-census-places-franklin-county-oh.png",
+        "us-census-places-census-towns-franklin-county-oh.png"
+      ],
+      "selected_dataset_id": "us-census-places",
+      "status": "passed",
+      "style_requests": [
+        {
+          "body_bytes": 1901,
+          "body_sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+          "case_id": "us-census-places-census-counties-colorado",
+          "content_length": 1901,
+          "content_range": null,
+          "content_type": "application/json",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+          "range": null,
+          "status": 200,
+          "status_check": "passed",
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json"
+        },
+        {
+          "body_bytes": 1885,
+          "body_sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+          "case_id": "us-census-places-census-places-franklin-county-oh",
+          "content_length": 1885,
+          "content_range": null,
+          "content_type": "application/json",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+          "range": null,
+          "status": 200,
+          "status_check": "passed",
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json"
+        },
+        {
+          "body_bytes": 1878,
+          "body_sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+          "case_id": "us-census-places-census-towns-franklin-county-oh",
+          "content_length": 1878,
+          "content_range": null,
+          "content_type": "application/json",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+          "range": null,
+          "status": 200,
+          "status_check": "passed",
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json"
+        }
+      ],
+      "tested_object_urls": [
+        "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+        "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+        "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+      ],
+      "total_transferred_bytes": 178627,
+      "transfer_ceiling_bytes_per_case": 134217728,
+      "transfer_ceiling_bytes_total": 1073741824,
+      "transport_validation": {
+        "evidence_path": "research/us-census-places-20261116/hosted-browser-r1-run/hosted-browser-evidence.json",
+        "evidence_sha256": "d23bf038d098c9c9e4c113927a79f103ac68bef4128a81a745ce392bdbe1a3f1",
+        "footer_exceptions_checked": 0,
+        "metadata_policy_path": null,
+        "metadata_policy_sha256": null,
+        "requests_checked": 24,
+        "scope": "Browser report fields checked against independent plan/policy; response bytes are not re-fetched here.",
+        "selected_case_bytes": 178627
+      },
+      "ui_origin": "http://127.0.0.1:52633",
+      "viewer_build": "SHA-256 of hosted_browser_check.mjs, which holds the page; map libraries come from the node_modules given",
+      "viewer_build_sha256": "b9cf9f6f98029dab7d400505287683a52453d4fbdc973d845a02f7af43d11df3",
+      "viewer_config_sha256": "8763b3c857aefb6f80b4acec62ecd7ba5c90595997313bad05816706d05304f8"
+    },
+    "catalog_inventory": {
+      "catalog": [
+        "catalog.json"
+      ],
+      "collections": [
+        "collection.json"
+      ],
+      "documentation": [
+        "AGENTS.md",
+        "README.md",
+        "verification/workflow/datasets/us-census-places/README.md",
+        "verification/workflow/scripts/release_tools/AGENTS.md",
+        "verification/workflow/scripts/release_tools/README.md"
+      ],
+      "styles": [
+        "styles/census_counties.json",
+        "styles/census_places.json",
+        "styles/census_towns.json"
+      ]
+    },
+    "catalog_link_scope": "Immutable product package catalog/collection/styles/docs only; the aggregate Portolan catalog is not deployed or checked by this per-product run. External assets with sole role 'source' are provenance references; their bytes and transport are not checked.",
+    "cors": [
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb641d6cde6d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/23766772",
+          "Content-Type": "application/vnd.pmtiles",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "ETag": "\"182ccd6ade883167026092ec53f76804\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:22:50 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qZqw6u2ZXzDgqCCictqQR8%2BugN4D%2F9Ga8K1B0MT%2FnCEeXGD5M6SkR7rYHGGYXzrBTxoOQy0hyrp8KDcA4Koc4ae3Rg70PKw5WTb1Wg5xvEu1q5GVshVJV1oW9QURlBnX9faqS4ugwU5Y2Ig%2Br5Bi\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=3,cfOrigin;dur=0,cfWorker;dur=102",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=98, dispatch;dur=98, backend;dur=94",
+          "x-amz-id-2": "yyQyyNcgGpnC4fYskburQ4bLzys+x0k/MFYFVduMcPa5p5UNH7kgnf/I8GDee2Lf218AKhdyXbi37KIZn/6BjA1PCAa4DqDK",
+          "x-amz-request-id": "70DHKW614JXV4B20",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "0pBe0nwjhOfg863oSOFpu4JEky2E1Dcp",
+          "x-request-id": "a5bb641d6cde6d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb641cfc616d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=QMRzM6A20ItJUKdW2v91HGfvvoA8tXJll8Dd4YoJOCjIOljxkRYOWOs7JlVv79R4KpO252Wnta2EHCUGnVjr6nHqPAWCS7Tf4S2e2B1Ra8WnpCiZlbIJ2QdFnxNx%2BHpdnQWm1FTvKOkDmRmF%2BMvp\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=2,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+      },
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb641eeef96d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/37275676",
+          "Content-Type": "application/vnd.pmtiles",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "ETag": "\"1ba1e9d2a32905b2ab8c32e6590fa793\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:22:58 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1FMWh4I%2BY%2BASwCFMA3mJQd63%2Blin7DtvEbmWAE7cIlIe%2Fy7qEb4ptpELnegysnEvqPSbYfcSPpUmAWtxavZ3ukdNkH90uZ6sOYVv4XLXzaPojJIHA4%2BCgU297NeR6mbktmBxItWcbwzG2%2Bi8hw46\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=1,cfOrigin;dur=0,cfWorker;dur=223",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=218, dispatch;dur=218, backend;dur=213",
+          "x-amz-id-2": "Y2D4zNPVrb0Tos7niVwOU3r89IEQDepiQjMI0tLamac5Czb2X/scZ1wPZjK9LBUEr0DkPh/p2uY=",
+          "x-amz-request-id": "70DXM6VPVE7R5J3A",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "DPBFBcTNelN2BJSF73BWi5DEWJsMXZje",
+          "x-request-id": "a5bb641eeef96d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb641e8e3f6d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=3gViAiUlJYW8wvZwTx2d6KQD0%2FljBaG%2BtubvD2Kd%2FAZlSiNpG0n3Th%2BuHcwkLZhLWVAaa4MEnRrK9QBZHzR8pa20q1yapv8fDSySQ0yAPUnRWRpZ9%2FHF0D%2BlFwvQ13OZI7BEPsBaaep06S64rDBF\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=2,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+      },
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb6421099b6d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/20349807",
+          "Content-Type": "application/vnd.pmtiles",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "ETag": "\"da48a01ed6d31a8bce7cc6cd3f211098\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:23:05 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=gGvLq9irfRM%2BhILoby%2B41dMMJzdS2tEpuVsbiZl7LSsXirUdfQo8bVlTIXfXd6GDxBFSsaisJch7B8TyLTzcQcHWoug7RRFu3uB7gDqK9yMMpf4eNpRRwjjIYEhK7hgZURMpMcUv6%2BAK2Mb%2F6AAQ\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=4,cfOrigin;dur=0,cfWorker;dur=96",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=88, dispatch;dur=88, backend;dur=83",
+          "x-amz-id-2": "BguwUhvtyev3AudmK/Pqfb0N2kT34yRikE7EmhXNn3Q8ZOwTjxnUD6acWG+uCM3aRpVGekZylSA=",
+          "x-amz-request-id": "70DHFXY5E7F4XKTK",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "u7qMoqMHaPgKYrMU6cLz83WHR1Bc1482",
+          "x-request-id": "a5bb6421099b6d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb6420a92f6d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zcjNhDjZ7JBxeXJrC9AxKgomb0cFYJOlRGRuivdBbOKQQ6RYLzKBOEWB3nc%2FkUkIRnV1wTEBJrIf%2FPOzpy2%2F9dFbg4Hi5LlJ6nE2N%2BisVQX1l9qQ6T%2FH7mSg7%2Fxb5IYbu9tSJkUd6qwbwOsh8ocV\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=2,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+      },
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb64226b256d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/7405880",
+          "Content-Type": "application/vnd.apache.parquet",
+          "Date": "Tue, 17 Nov 2026 02:44:01 GMT",
+          "ETag": "\"779799fb1b81f5d14331aa97162c1078\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:23:16 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=OPs3oA3YLg51%2BNI1%2FpptfB5MqFyBC7kvzKcqaKg3qLgqosI%2BMocNbMr%2BOXqU9ZxkkrnUD6pBotpc1wcDxjBWBTRK3CgR25uHzj2hT9sk%2FDgUt%2BsYda6Ntv5RWPbnDNJ99Tz1izjHHN5j60cfp6J%2F\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=4,cfOrigin;dur=0,cfWorker;dur=58",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=54, dispatch;dur=54, backend;dur=48",
+          "x-amz-id-2": "9dz3sGm9mHOdAgejG4Wtz+k7lcEZwQwlfp4BZfeZ/xVVPkHofxnA1CAp6xzOMqmuMtltCvpq0ddk8VrwUH6qdohhfAvRM6sa",
+          "x-amz-request-id": "VP32P4FW4HATGXB4",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "TWlJcFzW8LbZ47e7av6iLvCyVcaabBgf",
+          "x-request-id": "a5bb64226b256d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb64220ac76d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:00 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=DcvopzmFZefP9Z7afynlJ8fseXSUn2yAgwPH2KxY5VvpQCN5chx9M%2BzUt0hAjEuRInovQzhkUJ2tKPaqrzxDbZVHwZ3gNnkSVi%2FPUHkRmjMqg1BNiTWt1xKsNr0rzFx6EJHvohsNMwNwkVxuvD%2Bv\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=2,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/counties.parquet"
+      },
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb64239cdf6d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/26703829",
+          "Content-Type": "application/vnd.apache.parquet",
+          "Date": "Tue, 17 Nov 2026 02:44:01 GMT",
+          "ETag": "\"2032a0157c71ee985d13a8f318fa0a47\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:23:20 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=5uI6Ug3T68QBmKqd8x3Ui030CrQn9WGCEZWpCQBeawq6DyHHA0rPxMsJt5FUmqZrda2SwmfyC1slhq%2FbJUl699FkUtng1gYb97NLuVeB8ph2cjy5rHtYmSY0Z%2FK4hnC2pMYl5IWm3kHfhbh4Qn0s\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=1,cfOrigin;dur=0,cfWorker;dur=65",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=60, dispatch;dur=60, backend;dur=55",
+          "x-amz-id-2": "Op8zFYSatTdc5fMSLa5Hfes601QKmK66rvfvtVKTh5jqh96O589bssB6JmC094+RweONiOQjNv0=",
+          "x-amz-request-id": "VP319Z538HDWEBSG",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "tA6faVZyL2z..aNUENJ9qV1NiXCjylci",
+          "x-request-id": "a5bb64239cdf6d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb64232c526d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:01 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=fx0FzVFuXbj3WRk7fMKNq1TB50rSkv%2F%2BIbTntfNAD0jtEnB%2F501sJ5fjNG8P8O4Ec7BAO7qfROqoW9ysuukNptBgHHQa%2FJFT2shuwWqsfbi7%2BfErreWOnD6%2BpK4di1h4O28v1eqwyPOAx6eVYtsp\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=2,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet"
+      },
+      {
+        "get_headers": {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "CF-Cache-Status": "DYNAMIC",
+          "CF-Ray": "a5bb6424ce4d6d9b-LAS",
+          "Cache-Control": "private, no-cache, no-transform",
+          "Connection": "close",
+          "Content-Length": "1",
+          "Content-Range": "bytes 0-0/20737486",
+          "Content-Type": "application/vnd.apache.parquet",
+          "Date": "Tue, 17 Nov 2026 02:44:01 GMT",
+          "ETag": "\"d798eb059a8891f2469c037bd09d934b\"",
+          "Last-Modified": "Tue, 17 Nov 2026 02:23:26 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=v6KwBrwaryGV650FCgh95V4%2BsYFeoq977pDQ9xQpKSqucxnNP5dLKkgF5Vm%2Fi16K%2Ff97MqjeCpQXOivyYRlzcR96Asw08xi3f7cX%2FNKESvxxvMuNlBjBh6KsKEurTMi%2B0KBdh2yGfAroJqmG%2BV7b\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=1,cfOrigin;dur=0,cfWorker;dur=66",
+          "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "total;dur=61, dispatch;dur=61, backend;dur=57",
+          "x-amz-id-2": "SAQp3s00JWWeq3vWIcpdH/iXt8buKi8urPgzQyL1P742f91H5HfiqrH0WwdO5lhRBE68jhaijkM=",
+          "x-amz-request-id": "VP39HJKM7VRN2FPT",
+          "x-amz-server-side-encryption": "AES256",
+          "x-amz-version-id": "z7WeKQB4_3eCpoSq7AG.AtZxus6pytqd",
+          "x-request-id": "a5bb6424ce4d6d9b"
+        },
+        "get_passed": true,
+        "get_status": 206,
+        "preflight_headers": {
+          "Access-Control-Allow-Origin": "*",
+          "CF-RAY": "a5bb64246ddd6d9b-LAS",
+          "Connection": "close",
+          "Date": "Tue, 17 Nov 2026 02:44:01 GMT",
+          "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=rEHEuCnOhvQaLQpbdahy9dQI%2BYr3W8bAa4%2FJcaONnSIrwMXSsW8OCjR8OLdP5eJdEn4c6%2FTJj6GX1XFzH07HNtZKSZr5mczXLC04R0Efx48%2Bn8JwyteU7FXQ%2BuTbGnm8ZC1%2B7zSwKj4XAPqU2iyq\"}]}",
+          "Server": "cloudflare",
+          "Server-Timing": "cfEdge;dur=3,cfOrigin;dur=0,cfWorker;dur=0",
+          "access-control-allow-headers": "*",
+          "access-control-allow-methods": "GET, HEAD, PUT, POST, DELETE, OPTIONS",
+          "access-control-expose-headers": "*",
+          "access-control-max-age": "7200",
+          "alt-svc": "h3=\":443\"; ma=86400"
+        },
+        "preflight_note": "credentialless request; Fetch wildcard CORS fields apply",
+        "preflight_passed": true,
+        "preflight_status": 204,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/places.parquet"
+      }
+    ],
+    "display_manifest": {
+      "object_key": "us-census-places/display/cb2023-display-r3/manifest.json",
+      "sha256": "b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164",
+      "size_bytes": 5382
+    },
+    "duckdb_remote_transfer_bytes_instrumented": false,
+    "json_asset_links": [
+      {
+        "link": "link:root",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json"
+      },
+      {
+        "link": "link:child",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json"
+      },
+      {
+        "link": "link:describedby",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/README.md"
+      },
+      {
+        "link": "link:agents",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/AGENTS.md"
+      },
+      {
+        "link": "link:thumbnail",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/display/thumbnail.png"
+      },
+      {
+        "link": "link:root",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json"
+      },
+      {
+        "link": "link:parent",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json"
+      },
+      {
+        "link": "link:describedby",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/README.md"
+      },
+      {
+        "link": "link:agents",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/AGENTS.md"
+      },
+      {
+        "link": "link:thumbnail",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/display/thumbnail.png"
+      },
+      {
+        "link": "asset:counties",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/counties.parquet"
+      },
+      {
+        "link": "asset:counties_fields",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/counties-field-dictionary.json"
+      },
+      {
+        "link": "asset:county-subdivisions",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet"
+      },
+      {
+        "link": "asset:county-subdivisions_fields",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json"
+      },
+      {
+        "link": "asset:places",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/places.parquet"
+      },
+      {
+        "link": "asset:places_fields",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/places-field-dictionary.json"
+      },
+      {
+        "link": "asset:support-1",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/source-manifest.json"
+      },
+      {
+        "link": "asset:support-2",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/build-manifest.json"
+      },
+      {
+        "link": "asset:support-3",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/validation-plan.md"
+      },
+      {
+        "link": "asset:thumbnail",
+        "source_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json",
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/display/thumbnail.png"
+      },
+      {
+        "link": "style-source:data",
+        "source_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json",
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+      },
+      {
+        "link": "style-source:data",
+        "source_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json",
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+      },
+      {
+        "link": "style-source:data",
+        "source_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json",
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+      }
+    ],
+    "metadata_gets": [
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "51cc677bc973a24e2021674ae64fdd376e57acd1d8e997a26463f31c1200e72c",
+        "size_bytes": 387,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/README.md"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "9e5c5429ba80fe18ac8ecc2fe0db2fbe02cc3ff4c07faf90a81f821f64bc657a",
+        "size_bytes": 2870876,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/place-names.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164",
+        "size_bytes": 5382,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/manifest.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "4118c28443ba2e7586d13d39d04a2ddda9e1cb73192a1c5648623f8b13dfe087",
+        "size_bytes": 1453,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/reports/browser.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "1a28dfc49202cabb7f451d48ade2a05ad416770f3e1ca09f2cbe06cc14c58af4",
+        "size_bytes": 1848,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/reports/build-report.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "957e15a83e0d2ed1e8d7b46738562bf21c37d69b455adc54d038a7318def4dc2",
+        "size_bytes": 4931,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/reports/provisional-manifest.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "58d12e989f813463202100b6187ecd33e8176bfa07684d44aea8e1fd45789958",
+        "size_bytes": 6366,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/reports/validation.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+        "size_bytes": 1901,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+        "size_bytes": 1885,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+        "size_bytes": 1878,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "27b6d9fe3276a66f0ac9f428be6da9a9da425e6343246fcfb7c8793b314e50fe",
+        "size_bytes": 538,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/AGENTS.md"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "4b034d2c1faf4ae99356f9528f7e862e58d0b41e613fb87dd1ce86d7c0baabb3",
+        "size_bytes": 1966,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/README.md"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "194252fa34d7fed770b79041f1ce9870cb0f27b417468f60afc70a2896bb14ce",
+        "size_bytes": 1795,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/catalog.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "de8e356bdde1124325b5fbd30652beaeaef332532dad9b68b52e890ef0d6932d",
+        "size_bytes": 11334,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/collection.json"
+      },
+      {
+        "content_type": "application/yaml",
+        "ndjson_record_count": null,
+        "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2",
+        "size_bytes": 1881,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/dataset.yaml"
+      },
+      {
+        "content_type": "image/png",
+        "ndjson_record_count": null,
+        "sha256": "b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+        "size_bytes": 6899,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/display/thumbnail.png"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "56e21002e2a2e6d1af94248bfb84cb59ae4028ae0c696f19c2a42396e1351b0e",
+        "size_bytes": 1342,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/clean-rebuild.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "28c5b0089396c437a0031628ad0bca8fd8d1652c0d12c2ed933fe34bc3b2730d",
+        "size_bytes": 132,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/final-package-verification.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "93b8c8262dc557899e62bcdc8a19d3058c2a330ebbe98832b5c2edde76ce2685",
+        "size_bytes": 3994,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/local-http-duckdb-validation.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "4d8cc92a252b6ffe2397f179af1508b2c5d356d21713eec615107c460dc72a4c",
+        "size_bytes": 5686,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/package-binding.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "10fa183738b7e27680308f19a2a9ea8cb9669db6da5f7f8aa04c0729070d1ca6",
+        "size_bytes": 632,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/package-integrity-validation.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "75809708542c69ff3b39a098d517717dd67076bfc901ef48637789ea19da433f",
+        "size_bytes": 1996,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/portolan-validation.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "50da818652746570567f1847bf91732cf11594ee4271d06fab87faf160f228c5",
+        "size_bytes": 4061,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/source-fidelity.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "d53a5d44a30252c890fc9044e3953219aba5363e34d20a3fb539e97b6f7f3dfc",
+        "size_bytes": 555,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/evidence/stac-node-validation.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "caac4d1a4d1170a9ba8858a53bffb18b4170b093c1fc9250259dd566f8024bec",
+        "size_bytes": 331,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/data-license.json"
+      },
+      {
+        "content_type": "text/plain",
+        "ndjson_record_count": null,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "size_bytes": 11358,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/software/LICENSE"
+      },
+      {
+        "content_type": "text/plain",
+        "ndjson_record_count": null,
+        "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+        "size_bytes": 788,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/software/NOTICE"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "42ea1e200f70870cef640714a3bee85cabbf1ed2535a1b32e2e425fad769b3ac",
+        "size_bytes": 92,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/licenses/source-license.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+        "size_bytes": 12931,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/manifest.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+        "size_bytes": 1198,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/counties-field-dictionary.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "7b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+        "size_bytes": 1335,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "66fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+        "size_bytes": 1194,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/metadata/places-field-dictionary.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "5d0760f1e1deb825a098df5ab87cab2046544b23fceef65077961dd3ab9f4a52",
+        "size_bytes": 1034,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/package-receipt.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+        "size_bytes": 4442,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/build-manifest.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "25e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+        "size_bytes": 1883,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/source-manifest.json"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+        "size_bytes": 6388,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/provenance/validation-plan.md"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "eaacb081972902ff0be2451ea2fddd7d4c319a24ce6f93f3d24bc7d9bf3105e6",
+        "size_bytes": 317,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/source/attribution.json"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "a746e9745ab4b4650942897d5aca83bcaf44ebfa8c5dbfbb73d1ce1d84b4f11f",
+        "size_bytes": 2465,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/README.md"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "7b9532368e07d2ac221a04d07353107a421cb63a0b00a7fb058fa3b9771a3a5a",
+        "size_bytes": 10908,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/build.py"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "0ce88eac236113cb7f714361877424c109773b8f3579bac0efd2f989442f6acb",
+        "size_bytes": 1709,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/common.py"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "3519674f79b0b166cfd4766422174975aac3bbf8ce99da3b63d381e048190aac",
+        "size_bytes": 2176,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/compare_rebuild.py"
+      },
+      {
+        "content_type": "application/yaml",
+        "ndjson_record_count": null,
+        "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2",
+        "size_bytes": 1881,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/dataset.yaml"
+      },
+      {
+        "content_type": "application/toml",
+        "ndjson_record_count": null,
+        "sha256": "ec64bba9dea1d89078307f50ce7f706bf1f1bc809cb548a1b693ff11625ac4d4",
+        "size_bytes": 349,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/pyproject.toml"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+        "size_bytes": 4442,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/build-manifest.json"
+      },
+      {
+        "content_type": "text/plain",
+        "ndjson_record_count": null,
+        "sha256": "fb2a527c43e897f842ead22f3c8e2bc57b995b06ae8c0ac2b572bdaa7011f19e",
+        "size_bytes": 248,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/fault-tests.txt"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "32168cbadaa7fef0ecab1c44fbe7d48cd2eb923b65bde41acc4451fa6283d26b",
+        "size_bytes": 6235,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/package-spec.json"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "7ba7120f51cb183be5f6d81a2e2a3c5963f23c3e768de17fdfa68e3b40bc3602",
+        "size_bytes": 4132,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/source.py"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "671c1bf87c0f853ceb29126cd2249bda743a7339c4b67526d1d38628fd53d444",
+        "size_bytes": 3761,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/test_faults.py"
+      },
+      {
+        "content_type": "text/plain",
+        "ndjson_record_count": null,
+        "sha256": "b48c2326a35d48a9cdae16c67287c98c2558cef117cc983f19166df789d2a5ec",
+        "size_bytes": 64921,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/uv.lock"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "356a47b83b54ca4c5e61fa7d91d478980b1076ec042f9c7a0e760ad501d9b24c",
+        "size_bytes": 10014,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/validate.py"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+        "size_bytes": 6388,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/validation-plan.md"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+        "size_bytes": 857,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/AGENTS.md"
+      },
+      {
+        "content_type": "text/markdown",
+        "ndjson_record_count": null,
+        "sha256": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+        "size_bytes": 15314,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/README.md"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+        "size_bytes": 21945,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/add_spatial_bounds.py"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+        "size_bytes": 54306,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package-lock.json"
+      },
+      {
+        "content_type": "application/json",
+        "ndjson_record_count": null,
+        "sha256": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+        "size_bytes": 142,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package.json"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+        "size_bytes": 63322,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package_release.py"
+      },
+      {
+        "content_type": "application/toml",
+        "ndjson_record_count": null,
+        "sha256": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+        "size_bytes": 259,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/pyproject.toml"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+        "size_bytes": 2789,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/serve.py"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+        "size_bytes": 10209,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/test_package_release.py"
+      },
+      {
+        "content_type": "text/x-python",
+        "ndjson_record_count": null,
+        "sha256": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+        "size_bytes": 8062,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/test_spatial_bounds.py"
+      },
+      {
+        "content_type": "text/plain",
+        "ndjson_record_count": null,
+        "sha256": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b",
+        "size_bytes": 134378,
+        "status": 200,
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/uv.lock"
+      }
+    ],
+    "package_manifest": {
+      "object_key": "us-census-places/releases/cb2023-r1/manifest.json",
+      "sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+      "size_bytes": 12931
+    },
+    "plan_sha256": "4d76361d110f5e1fc943e2e29c3ca3dd0ce126153cf2bd06b58b63c50108920f",
+    "prior_full_byte_proofs": [],
+    "query_controls": [
+      {
+        "id_column": "GEOID",
+        "ids": [
+          "04001",
+          "09110",
+          "01003"
+        ],
+        "name": "us-census-places-parquet-1",
+        "path": "assets/counties.parquet",
+        "selection": {
+          "row_count": 3235,
+          "row_group_count": 7,
+          "row_groups": [
+            0,
+            3,
+            6
+          ],
+          "selected_from": "row_group_min_statistics"
+        }
+      },
+      {
+        "id_column": "GEOID",
+        "ids": [
+          "0401292480",
+          "2300102060",
+          "6601017650"
+        ],
+        "name": "us-census-places-parquet-2",
+        "path": "assets/county-subdivisions.parquet",
+        "selection": {
+          "row_count": 36367,
+          "row_group_count": 72,
+          "row_groups": [
+            0,
+            36,
+            71
+          ],
+          "selected_from": "row_group_min_statistics"
+        }
+      },
+      {
+        "id_column": "GEOID",
+        "ids": [
+          "0400870",
+          "0901150",
+          "0204670"
+        ],
+        "name": "us-census-places-parquet-3",
+        "path": "assets/places.parquet",
+        "selection": {
+          "row_count": 32608,
+          "row_group_count": 64,
+          "row_groups": [
+            0,
+            32,
+            63
+          ],
+          "selected_from": "row_group_min_statistics"
+        }
+      }
+    ],
+    "query_controls_sha256": "244003b4291b7bee85a7712d41953ce668e27c85a33cf4a6b57bea7d238ae366",
+    "range_samples": [
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/23766772",
+            "content_type": "application/vnd.pmtiles",
+            "end": 65535,
+            "sha256": "a1ec49182dc05a63f41ead50f2f942f5a5ce6a52fa59bd86617e12dc25bb6c65",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 11850618-11916153/23766772",
+            "content_type": "application/vnd.pmtiles",
+            "end": 11916153,
+            "sha256": "23b9784a3309dec74d1e2b12265803ebc766f927b5534a4852ed271fce5bd66e",
+            "start": 11850618,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 23701236-23766771/23766772",
+            "content_type": "application/vnd.pmtiles",
+            "end": 23766771,
+            "sha256": "b56fcc70a1a981483f5863e113e34d5151602c94c05fd2c5593d45ed1ec9ff9f",
+            "start": 23701236,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+      },
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/37275676",
+            "content_type": "application/vnd.pmtiles",
+            "end": 65535,
+            "sha256": "a67ded93e2a52a62be5ef307389c5fad85e034a50e3d46583a590e6f1afd2da4",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 18605070-18670605/37275676",
+            "content_type": "application/vnd.pmtiles",
+            "end": 18670605,
+            "sha256": "46a4f43b9a2862fb4ab69611e548bab51467272ca6eba59bb451db5babf4e15c",
+            "start": 18605070,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 37210140-37275675/37275676",
+            "content_type": "application/vnd.pmtiles",
+            "end": 37275675,
+            "sha256": "b19b75e020c664b603befb18078838849ddf7748be1cfeebbffc8e88ac8537bf",
+            "start": 37210140,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+      },
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/20349807",
+            "content_type": "application/vnd.pmtiles",
+            "end": 65535,
+            "sha256": "1e1e904ac9bea109979f9ac38cdf594cfb5715d93fc1c0f91b6e802ce8112142",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 10142135-10207670/20349807",
+            "content_type": "application/vnd.pmtiles",
+            "end": 10207670,
+            "sha256": "91bcd47df591b0d641669a983a13e6ef9669d8a957a3b188d3cce194efa54f85",
+            "start": 10142135,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 20284271-20349806/20349807",
+            "content_type": "application/vnd.pmtiles",
+            "end": 20349806,
+            "sha256": "aa214f02c05897254d3d312f6035ebb3735210457ae45f02860857297fe0b745",
+            "start": 20284271,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+      },
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/7405880",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 65535,
+            "sha256": "ef01b4016619040d0f8eb6a2566f44ef014102c6d61e9982997fbc87b2e50a05",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 3670172-3735707/7405880",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 3735707,
+            "sha256": "06db162da12ab09ea2d30202fa1f5f1401a49fe1f28e6875d11068b146eaaa02",
+            "start": 3670172,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 7340344-7405879/7405880",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 7405879,
+            "sha256": "605ae1e639dad1da7a50d106dc31e695101b322440ede2e9bda5545d68cfd87f",
+            "start": 7340344,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/counties.parquet"
+      },
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/26703829",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 65535,
+            "sha256": "f95307e7b24e320f3ca038b33928f704e56bff74b352e52d7baa5cb3497403f1",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 13319146-13384681/26703829",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 13384681,
+            "sha256": "6450321c4f03ca19167efaafa927278eaa4731bf1b32d1835d34d8cff59b5cd8",
+            "start": 13319146,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 26638293-26703828/26703829",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 26703828,
+            "sha256": "8f0e91844d952b8524fe55288e56fd5cb24de55ac4a8b204686ed939800de4df",
+            "start": 26638293,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet"
+      },
+      {
+        "samples": [
+          {
+            "content_range": "bytes 0-65535/20737486",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 65535,
+            "sha256": "9d90713645b0031b60099bcc6e3ff29df88f186742708098f29ab25bffd2329b",
+            "start": 0,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 10335975-10401510/20737486",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 10401510,
+            "sha256": "74ef3b8fa246970c7b7981ccc037110f4e356501797c827bb6c3961214d5ab9e",
+            "start": 10335975,
+            "status": 206
+          },
+          {
+            "content_range": "bytes 20671950-20737485/20737486",
+            "content_type": "application/vnd.apache.parquet",
+            "end": 20737485,
+            "sha256": "7f760f7e55d42723ff6dc6d377147e588ff6d00d46472836435975d9abda39ae",
+            "start": 20671950,
+            "status": 206
+          }
+        ],
+        "url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/assets/places.parquet"
+      }
+    ],
+    "receipt_checksums": [
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/README.md",
+        "sha256": "51cc677bc973a24e2021674ae64fdd376e57acd1d8e997a26463f31c1200e72c",
+        "size_bytes": 387
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+        "sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+        "size_bytes": 23766772
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+        "sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+        "size_bytes": 37275676
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+        "sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+        "size_bytes": 20349807
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/assets/place-names.json",
+        "sha256": "9e5c5429ba80fe18ac8ecc2fe0db2fbe02cc3ff4c07faf90a81f821f64bc657a",
+        "size_bytes": 2870876
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/manifest.json",
+        "sha256": "b6e7c08220ab117cc242b4324c447681e893fc8fa4ab447f7e544bcf14600164",
+        "size_bytes": 5382
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/reports/browser.json",
+        "sha256": "4118c28443ba2e7586d13d39d04a2ddda9e1cb73192a1c5648623f8b13dfe087",
+        "size_bytes": 1453
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/reports/build-report.json",
+        "sha256": "1a28dfc49202cabb7f451d48ade2a05ad416770f3e1ca09f2cbe06cc14c58af4",
+        "size_bytes": 1848
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/reports/provisional-manifest.json",
+        "sha256": "957e15a83e0d2ed1e8d7b46738562bf21c37d69b455adc54d038a7318def4dc2",
+        "size_bytes": 4931
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/reports/validation.json",
+        "sha256": "58d12e989f813463202100b6187ecd33e8176bfa07684d44aea8e1fd45789958",
+        "size_bytes": 6366
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/styles/census_counties.json",
+        "sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+        "size_bytes": 1901
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/styles/census_places.json",
+        "sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+        "size_bytes": 1885
+      },
+      {
+        "object_key": "us-census-places/display/cb2023-display-r3/styles/census_towns.json",
+        "sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+        "size_bytes": 1878
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/AGENTS.md",
+        "sha256": "27b6d9fe3276a66f0ac9f428be6da9a9da425e6343246fcfb7c8793b314e50fe",
+        "size_bytes": 538
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/README.md",
+        "sha256": "4b034d2c1faf4ae99356f9528f7e862e58d0b41e613fb87dd1ce86d7c0baabb3",
+        "size_bytes": 1966
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/assets/counties.parquet",
+        "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+        "size_bytes": 7405880
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/assets/county-subdivisions.parquet",
+        "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+        "size_bytes": 26703829
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/assets/places.parquet",
+        "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+        "size_bytes": 20737486
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/catalog.json",
+        "sha256": "194252fa34d7fed770b79041f1ce9870cb0f27b417468f60afc70a2896bb14ce",
+        "size_bytes": 1795
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/collection.json",
+        "sha256": "de8e356bdde1124325b5fbd30652beaeaef332532dad9b68b52e890ef0d6932d",
+        "size_bytes": 11334
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/dataset.yaml",
+        "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2",
+        "size_bytes": 1881
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/display/thumbnail.png",
+        "sha256": "b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+        "size_bytes": 6899
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/clean-rebuild.json",
+        "sha256": "56e21002e2a2e6d1af94248bfb84cb59ae4028ae0c696f19c2a42396e1351b0e",
+        "size_bytes": 1342
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/final-package-verification.json",
+        "sha256": "28c5b0089396c437a0031628ad0bca8fd8d1652c0d12c2ed933fe34bc3b2730d",
+        "size_bytes": 132
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/local-http-duckdb-validation.json",
+        "sha256": "93b8c8262dc557899e62bcdc8a19d3058c2a330ebbe98832b5c2edde76ce2685",
+        "size_bytes": 3994
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/package-binding.json",
+        "sha256": "4d8cc92a252b6ffe2397f179af1508b2c5d356d21713eec615107c460dc72a4c",
+        "size_bytes": 5686
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/package-integrity-validation.json",
+        "sha256": "10fa183738b7e27680308f19a2a9ea8cb9669db6da5f7f8aa04c0729070d1ca6",
+        "size_bytes": 632
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/portolan-validation.json",
+        "sha256": "75809708542c69ff3b39a098d517717dd67076bfc901ef48637789ea19da433f",
+        "size_bytes": 1996
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/source-fidelity.json",
+        "sha256": "50da818652746570567f1847bf91732cf11594ee4271d06fab87faf160f228c5",
+        "size_bytes": 4061
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/evidence/stac-node-validation.json",
+        "sha256": "d53a5d44a30252c890fc9044e3953219aba5363e34d20a3fb539e97b6f7f3dfc",
+        "size_bytes": 555
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/licenses/data-license.json",
+        "sha256": "caac4d1a4d1170a9ba8858a53bffb18b4170b093c1fc9250259dd566f8024bec",
+        "size_bytes": 331
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/licenses/software/LICENSE",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "size_bytes": 11358
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/licenses/software/NOTICE",
+        "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+        "size_bytes": 788
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/licenses/source-license.json",
+        "sha256": "42ea1e200f70870cef640714a3bee85cabbf1ed2535a1b32e2e425fad769b3ac",
+        "size_bytes": 92
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/manifest.json",
+        "sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+        "size_bytes": 12931
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/metadata/counties-field-dictionary.json",
+        "sha256": "844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+        "size_bytes": 1198
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/metadata/county-subdivisions-field-dictionary.json",
+        "sha256": "7b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+        "size_bytes": 1335
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/metadata/places-field-dictionary.json",
+        "sha256": "66fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+        "size_bytes": 1194
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/package-receipt.json",
+        "sha256": "5d0760f1e1deb825a098df5ab87cab2046544b23fceef65077961dd3ab9f4a52",
+        "size_bytes": 1034
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/provenance/build-manifest.json",
+        "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+        "size_bytes": 4442
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/provenance/source-manifest.json",
+        "sha256": "25e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+        "size_bytes": 1883
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/provenance/validation-plan.md",
+        "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+        "size_bytes": 6388
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/source/attribution.json",
+        "sha256": "eaacb081972902ff0be2451ea2fddd7d4c319a24ce6f93f3d24bc7d9bf3105e6",
+        "size_bytes": 317
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/README.md",
+        "sha256": "a746e9745ab4b4650942897d5aca83bcaf44ebfa8c5dbfbb73d1ce1d84b4f11f",
+        "size_bytes": 2465
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/build.py",
+        "sha256": "7b9532368e07d2ac221a04d07353107a421cb63a0b00a7fb058fa3b9771a3a5a",
+        "size_bytes": 10908
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/common.py",
+        "sha256": "0ce88eac236113cb7f714361877424c109773b8f3579bac0efd2f989442f6acb",
+        "size_bytes": 1709
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/compare_rebuild.py",
+        "sha256": "3519674f79b0b166cfd4766422174975aac3bbf8ce99da3b63d381e048190aac",
+        "size_bytes": 2176
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/dataset.yaml",
+        "sha256": "4a1c7c2eecb79b5d6165311e7aacf9bdb88e1a00ee8e9a539f55f6b212c607e2",
+        "size_bytes": 1881
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/pyproject.toml",
+        "sha256": "ec64bba9dea1d89078307f50ce7f706bf1f1bc809cb548a1b693ff11625ac4d4",
+        "size_bytes": 349
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/build-manifest.json",
+        "sha256": "a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+        "size_bytes": 4442
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/fault-tests.txt",
+        "sha256": "fb2a527c43e897f842ead22f3c8e2bc57b995b06ae8c0ac2b572bdaa7011f19e",
+        "size_bytes": 248
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/releases/cb2023-r1/package-spec.json",
+        "sha256": "32168cbadaa7fef0ecab1c44fbe7d48cd2eb923b65bde41acc4451fa6283d26b",
+        "size_bytes": 6235
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/source.py",
+        "sha256": "7ba7120f51cb183be5f6d81a2e2a3c5963f23c3e768de17fdfa68e3b40bc3602",
+        "size_bytes": 4132
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/test_faults.py",
+        "sha256": "671c1bf87c0f853ceb29126cd2249bda743a7339c4b67526d1d38628fd53d444",
+        "size_bytes": 3761
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/uv.lock",
+        "sha256": "b48c2326a35d48a9cdae16c67287c98c2558cef117cc983f19166df789d2a5ec",
+        "size_bytes": 64921
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/validate.py",
+        "sha256": "356a47b83b54ca4c5e61fa7d91d478980b1076ec042f9c7a0e760ad501d9b24c",
+        "size_bytes": 10014
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/datasets/us-census-places/validation-plan.md",
+        "sha256": "2a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+        "size_bytes": 6388
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/AGENTS.md",
+        "sha256": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+        "size_bytes": 857
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/README.md",
+        "sha256": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+        "size_bytes": 15314
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+        "sha256": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+        "size_bytes": 21945
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package-lock.json",
+        "sha256": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+        "size_bytes": 54306
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package.json",
+        "sha256": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+        "size_bytes": 142
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/package_release.py",
+        "sha256": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+        "size_bytes": 63322
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/pyproject.toml",
+        "sha256": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+        "size_bytes": 259
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/serve.py",
+        "sha256": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+        "size_bytes": 2789
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/test_package_release.py",
+        "sha256": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+        "size_bytes": 10209
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+        "sha256": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+        "size_bytes": 8062
+      },
+      {
+        "object_key": "us-census-places/releases/cb2023-r1/verification/workflow/scripts/release_tools/uv.lock",
+        "sha256": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b",
+        "size_bytes": 134378
+      }
+    ],
+    "receipt_object_count": 68,
+    "subset_queries": [
+      {
+        "footer_rows": 3235,
+        "id_multiplicity": {
+          "01003": 1,
+          "04001": 1,
+          "09110": 1
+        },
+        "ids": [
+          "04001",
+          "09110",
+          "01003"
+        ],
+        "name": "us-census-places-parquet-1",
+        "path": "assets/counties.parquet",
+        "result_sha256": "9a315a784f6dc72df7694939b1fa16a0a41e1700da8006350555263b5b27cb37",
+        "rows": 3
+      },
+      {
+        "footer_rows": 36367,
+        "id_multiplicity": {
+          "0401292480": 1,
+          "2300102060": 1,
+          "6601017650": 1
+        },
+        "ids": [
+          "0401292480",
+          "2300102060",
+          "6601017650"
+        ],
+        "name": "us-census-places-parquet-2",
+        "path": "assets/county-subdivisions.parquet",
+        "result_sha256": "2fc8f150cc84e41bf17801235b17b741f025b018a8f1407341849ae81516981f",
+        "rows": 3
+      },
+      {
+        "footer_rows": 32608,
+        "id_multiplicity": {
+          "0204670": 1,
+          "0400870": 1,
+          "0901150": 1
+        },
+        "ids": [
+          "0400870",
+          "0901150",
+          "0204670"
+        ],
+        "name": "us-census-places-parquet-3",
+        "path": "assets/places.parquet",
+        "result_sha256": "51a3dad3555bcc1bcec31138decefc96296b62323305759753f3d3985b8780e6",
+        "rows": 3
+      }
+    ]
+  },
+  "failures": [],
+  "package_base_url": "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/",
+  "package_manifest_sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+  "release": "cb2023-r1",
+  "schema_version": 1,
+  "status": "passed"
+}

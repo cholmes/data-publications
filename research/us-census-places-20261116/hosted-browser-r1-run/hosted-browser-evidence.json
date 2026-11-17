@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "dataset_id": "us-census-places",
+  "selected_dataset_id": "us-census-places",
+  "product_id": "us-census-places",
+  "release": "cb2023-r1",
+  "display_release": "cb2023-display-r3",
+  "status": "passed",
+  "plan_sha256": "4d76361d110f5e1fc943e2e29c3ca3dd0ce126153cf2bd06b58b63c50108920f",
+  "browser_cases_sha256": "47c4da6e1c80626d5899341fdbc86a6f2830048248a095b69bd43c6544f4bb11",
+  "viewer_config_sha256": "8763b3c857aefb6f80b4acec62ecd7ba5c90595997313bad05816706d05304f8",
+  "viewer_build_sha256": "b9cf9f6f98029dab7d400505287683a52453d4fbdc973d845a02f7af43d11df3",
+  "viewer_build": "SHA-256 of hosted_browser_check.mjs, which holds the page; map libraries come from the node_modules given",
+  "checked_at": "2026-11-17T02:42:26.342Z",
+  "ui_origin": "http://127.0.0.1:52633",
+  "case_ids": [
+    "us-census-places-census-counties-colorado",
+    "us-census-places-census-places-franklin-county-oh",
+    "us-census-places-census-towns-franklin-county-oh"
+  ],
+  "expected_case_count": 3,
+  "tested_object_urls": [
+    "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+    "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+    "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+  ],
+  "screenshots": [
+    "us-census-places-census-counties-colorado.png",
+    "us-census-places-census-places-franklin-county-oh.png",
+    "us-census-places-census-towns-franklin-county-oh.png"
+  ],
+  "planned_object_prefixes": [
+    "us-census-places/releases/cb2023-r1/",
+    "us-census-places/display/cb2023-display-r3/"
+  ],
+  "planned_object_url_prefixes": [
+    "https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/",
+    "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/"
+  ],
+  "transfer_ceiling_bytes_per_case": 134217728,
+  "transfer_ceiling_bytes_total": 1073741824,
+  "total_transferred_bytes": 178627,
+  "cases": [
+    {
+      "id": "us-census-places-census-counties-colorado",
+      "dataset_id": "us-census-places",
+      "layer_id": "census-counties",
+      "view": {
+        "bounds": [
+          -109.06,
+          36.99,
+          -102.04,
+          41
+        ],
+        "name": "colorado"
+      },
+      "status": "passed",
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+      "display_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+      "least_outlines": 40,
+      "render": {
+        "zoom": 6.858638991054039,
+        "drawn": 106,
+        "labels": 87,
+        "under": {
+          "id": "31049",
+          "name": "Deuel",
+          "kind": "county"
+        },
+        "lit": true,
+        "source_urls": [
+          "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles"
+        ]
+      },
+      "requests": [
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=0-16383",
+          "status": 206,
+          "content_range": "bytes 0-16383/23766772",
+          "content_length": 16384,
+          "body_bytes": 16384,
+          "body_sha256": "3bf11d9e95e189d39d99c2bdf10f97fc0c982fcec02531eb4e93040bfd0d87e3",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=4474-12615",
+          "status": 206,
+          "content_range": "bytes 4474-12615/23766772",
+          "content_length": 8142,
+          "body_bytes": 8142,
+          "body_sha256": "5c22af81dd85a1c278b57ef92b9ccab2e2bbd1f9f79d9d07a5ade0cde6b45d93",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=1808357-1818956",
+          "status": 206,
+          "content_range": "bytes 1808357-1818956/23766772",
+          "content_length": 10600,
+          "body_bytes": 10600,
+          "body_sha256": "691d0c79012c6f8be43df1d290ab4b6db974ee140abe8dd0e44dab1ee38443bf",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=1800954-1808356",
+          "status": 206,
+          "content_range": "bytes 1800954-1808356/23766772",
+          "content_length": 7403,
+          "body_bytes": 7403,
+          "body_sha256": "4a7c4a112832aed816ccd2419dc3489fff9dd76d91ff443a88d393d2e9b594e6",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=1999528-2006098",
+          "status": 206,
+          "content_range": "bytes 1999528-2006098/23766772",
+          "content_length": 6571,
+          "body_bytes": 6571,
+          "body_sha256": "54f982a9d3be1cd419022824afcdf7262e369d7d9286b3e1bf2be1b0f281a20b",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=2006099-2012411",
+          "status": 206,
+          "content_range": "bytes 2006099-2012411/23766772",
+          "content_length": 6313,
+          "body_bytes": 6313,
+          "body_sha256": "fe6cb1dce89e5bd736e6081a4d4c037af6490de2d068b09465b1f9e8463af63a",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=1907672-1924158",
+          "status": 206,
+          "content_range": "bytes 1907672-1924158/23766772",
+          "content_length": 16487,
+          "body_bytes": 16487,
+          "body_sha256": "ff0783f035964638697d9f96c9f1be33226156baad7dc7c70acb538f27f3877a",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+          "range": "bytes=1984511-1999527",
+          "status": 206,
+          "content_range": "bytes 1984511-1999527/23766772",
+          "content_length": 15017,
+          "body_bytes": 15017,
+          "body_sha256": "8454e1284afc9344895eddcf31c19e23bd77c516f9eafd23260201c070e47d26",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+          "status_check": "passed"
+        }
+      ],
+      "transferred_bytes": 86917,
+      "errors": [],
+      "blocked_requests": []
+    },
+    {
+      "id": "us-census-places-census-places-franklin-county-oh",
+      "dataset_id": "us-census-places",
+      "layer_id": "census-places",
+      "view": {
+        "bounds": [
+          -83.26,
+          39.81,
+          -82.77,
+          40.16
+        ],
+        "name": "franklin-county-oh"
+      },
+      "status": "passed",
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+      "display_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+      "least_outlines": 10,
+      "render": {
+        "zoom": 10.35694733139323,
+        "drawn": 48,
+        "labels": 43,
+        "under": {
+          "id": "3983580",
+          "name": "West Jefferson",
+          "kind": "incorporated"
+        },
+        "lit": true,
+        "source_urls": [
+          "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+        ]
+      },
+      "requests": [
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=0-16383",
+          "status": 206,
+          "content_range": "bytes 0-16383/37275676",
+          "content_length": 16384,
+          "body_bytes": 16384,
+          "body_sha256": "3d5b20ff10db5ffb9eab596cc276a18a40d393e297ac71ceafa17019a84bed13",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=13015-20889",
+          "status": 206,
+          "content_range": "bytes 13015-20889/37275676",
+          "content_length": 7875,
+          "body_bytes": 7875,
+          "body_sha256": "5b543ca0911b3b69d24bc0c66faae53852ad6b7a65d507665d850a213d9a1e42",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17298040-17304417",
+          "status": 206,
+          "content_range": "bytes 17298040-17304417/37275676",
+          "content_length": 6378,
+          "body_bytes": 6378,
+          "body_sha256": "fd419103e9f3cdb7456e842f7e227db85dc20e7c22907bc58c90fad3704f64a9",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17292787-17298039",
+          "status": 206,
+          "content_range": "bytes 17292787-17298039/37275676",
+          "content_length": 5253,
+          "body_bytes": 5253,
+          "body_sha256": "cddcf8b368ca646a3182b26b0edf04ade820638e4511b45e5be70852ff1d19af",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17348098-17351536",
+          "status": 206,
+          "content_range": "bytes 17348098-17351536/37275676",
+          "content_length": 3439,
+          "body_bytes": 3439,
+          "body_sha256": "8b21a23fe31e2f1b695e82c689fdc4606b0f44f94c023922f3ef82377928773f",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17253130-17257163",
+          "status": 206,
+          "content_range": "bytes 17253130-17257163/37275676",
+          "content_length": 4034,
+          "body_bytes": 4034,
+          "body_sha256": "c63f34ef37d470ae04d8fcdbfa8056a21cac9a3b09d8aabd0d09f6bf19012267",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17304418-17306147",
+          "status": 206,
+          "content_range": "bytes 17304418-17306147/37275676",
+          "content_length": 1730,
+          "body_bytes": 1730,
+          "body_sha256": "e2169e28cacba02f7c8058437cda5dfdfbd4236baaa3a3f858733b70eff16945",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+          "range": "bytes=17347122-17348097",
+          "status": 206,
+          "content_range": "bytes 17347122-17348097/37275676",
+          "content_length": 976,
+          "body_bytes": 976,
+          "body_sha256": "185f3938c291b7aeec1a1816059d0cdf80ac4eca37918f1dd855e013cd5be076",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+          "status_check": "passed"
+        }
+      ],
+      "transferred_bytes": 46069,
+      "errors": [],
+      "blocked_requests": []
+    },
+    {
+      "id": "us-census-places-census-towns-franklin-county-oh",
+      "dataset_id": "us-census-places",
+      "layer_id": "census-towns",
+      "view": {
+        "bounds": [
+          -83.26,
+          39.81,
+          -82.77,
+          40.16
+        ],
+        "name": "franklin-county-oh"
+      },
+      "status": "passed",
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+      "display_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+      "least_outlines": 5,
+      "render": {
+        "zoom": 10.35694733139323,
+        "drawn": 50,
+        "labels": 35,
+        "under": {
+          "id": "3909751478",
+          "name": "Monroe",
+          "kind": "township"
+        },
+        "lit": true,
+        "source_urls": [
+          "pmtiles://https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles"
+        ]
+      },
+      "requests": [
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=0-16383",
+          "status": 206,
+          "content_range": "bytes 0-16383/20349807",
+          "content_length": 16384,
+          "body_bytes": 16384,
+          "body_sha256": "c01f4c6f890552969b2bd9b3b7329d40467080d52091945acfa2bd0d4bf2fb55",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=3986-12339",
+          "status": 206,
+          "content_range": "bytes 3986-12339/20349807",
+          "content_length": 8354,
+          "body_bytes": 8354,
+          "body_sha256": "c6275a2941df80162257bc713d16dbd6e07b1c05747c58553d776cb823b906dc",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9911105-9916365",
+          "status": 206,
+          "content_range": "bytes 9911105-9916365/20349807",
+          "content_length": 5261,
+          "body_bytes": 5261,
+          "body_sha256": "15b1ee52bb6f99861597902ce3cfa22521cd3dad052dd85892b2fe3cf85bfe50",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9906806-9911104",
+          "status": 206,
+          "content_range": "bytes 9906806-9911104/20349807",
+          "content_length": 4299,
+          "body_bytes": 4299,
+          "body_sha256": "f4831859e00d89a904d1023a0f6c76a8edfb2dbf291c01320f20b6ef89d21062",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9971634-9974890",
+          "status": 206,
+          "content_range": "bytes 9971634-9974890/20349807",
+          "content_length": 3257,
+          "body_bytes": 3257,
+          "body_sha256": "fff3228ef2bbd006dcc7569f53a807b14f26fe1eed4888d089e1f88418a1b36d",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9847564-9850706",
+          "status": 206,
+          "content_range": "bytes 9847564-9850706/20349807",
+          "content_length": 3143,
+          "body_bytes": 3143,
+          "body_sha256": "35a6efeccf8d3ae371fccc9bcc82989d6e527e83ac44371f4939906dc33003c9",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9916366-9918738",
+          "status": 206,
+          "content_range": "bytes 9916366-9918738/20349807",
+          "content_length": 2373,
+          "body_bytes": 2373,
+          "body_sha256": "abdec0a8f12255ad174be284d6a1f4cd6fc920ae0e9d1d7a2280bdcd9567b1c3",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        },
+        {
+          "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+          "range": "bytes=9969064-9971633",
+          "status": 206,
+          "content_range": "bytes 9969064-9971633/20349807",
+          "content_length": 2570,
+          "body_bytes": 2570,
+          "body_sha256": "685dde39b6b563e5b447f63f026ffd0e9f469650e198146498713e9b10901cb0",
+          "content_type": "application/vnd.pmtiles",
+          "cors": "*",
+          "expose_headers": "*",
+          "planned_sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+          "status_check": "passed"
+        }
+      ],
+      "transferred_bytes": 45641,
+      "errors": [],
+      "blocked_requests": []
+    }
+  ],
+  "style_requests": [
+    {
+      "case_id": "us-census-places-census-counties-colorado",
+      "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json",
+      "range": null,
+      "status": 200,
+      "content_range": null,
+      "content_length": 1901,
+      "body_bytes": 1901,
+      "body_sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+      "content_type": "application/json",
+      "cors": "*",
+      "expose_headers": "*",
+      "planned_sha256": "350c277429f6a631d2c6106e0eb75a9c4cc1e8baea02218f1a8d8e1bc547ebd6",
+      "status_check": "passed"
+    },
+    {
+      "case_id": "us-census-places-census-places-franklin-county-oh",
+      "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json",
+      "range": null,
+      "status": 200,
+      "content_range": null,
+      "content_length": 1885,
+      "body_bytes": 1885,
+      "body_sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+      "content_type": "application/json",
+      "cors": "*",
+      "expose_headers": "*",
+      "planned_sha256": "9ad6c1ff273ded25f103e5c96d960fc8e247eabdae30aeead3f779a9131152c7",
+      "status_check": "passed"
+    },
+    {
+      "case_id": "us-census-places-census-towns-franklin-county-oh",
+      "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json",
+      "range": null,
+      "status": 200,
+      "content_range": null,
+      "content_length": 1878,
+      "body_bytes": 1878,
+      "body_sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+      "content_type": "application/json",
+      "cors": "*",
+      "expose_headers": "*",
+      "planned_sha256": "a02afc13d35676a7140f754989e839b7f680e4688f80d20416a09272fefcfab3",
+      "status_check": "passed"
+    }
+  ],
+  "other_hosts_contacted": [
+    "",
+    "tiles.openfreemap.org"
+  ],
+  "blocked_requests": [],
+  "errors": []
+}

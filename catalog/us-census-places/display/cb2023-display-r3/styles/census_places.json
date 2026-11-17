@@ -1,0 +1,93 @@
+{
+  "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "census_places-fill",
+      "paint": {
+        "fill-color": "#f3d27a",
+        "fill-opacity": [
+          "case",
+          [
+            "boolean",
+            [
+              "feature-state",
+              "lit"
+            ],
+            false
+          ],
+          0.16,
+          0.03
+        ]
+      },
+      "source": "data",
+      "source-layer": "census_places",
+      "type": "fill"
+    },
+    {
+      "id": "census_places-line",
+      "paint": {
+        "line-color": "#f3d27a",
+        "line-opacity": 0.75,
+        "line-width": 0.9
+      },
+      "source": "data",
+      "source-layer": "census_places",
+      "type": "line"
+    },
+    {
+      "id": "census_places-label",
+      "layout": {
+        "symbol-sort-key": [
+          "-",
+          0,
+          [
+            "coalesce",
+            [
+              "get",
+              "population"
+            ],
+            [
+              "*",
+              20,
+              [
+                "coalesce",
+                [
+                  "get",
+                  "area"
+                ],
+                0
+              ]
+            ]
+          ]
+        ],
+        "text-field": [
+          "get",
+          "name"
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-max-width": 7,
+        "text-padding": 6,
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "#f3d27a",
+        "text-halo-color": "rgba(10,14,12,0.85)",
+        "text-halo-width": 1.4
+      },
+      "source": "data",
+      "source-layer": "census_places_label",
+      "type": "symbol"
+    }
+  ],
+  "name": "census_places",
+  "sources": {
+    "data": {
+      "promoteId": "id",
+      "type": "vector",
+      "url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles"
+    }
+  },
+  "version": 8
+}

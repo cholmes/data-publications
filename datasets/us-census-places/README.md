@@ -3,11 +3,13 @@
 The Census Bureau's 2023 cartographic boundary files (1:500,000) for counties, places and county
 subdivisions, converted from zipped shapefiles to one GeoParquet file per layer.
 
-**Status (2026-11-16):** prepared. Release `cb2023-r1` was built from committed code, passed the
-checks of the validation plan and the shared packager, and rebuilt byte-identically in a clean
-checkout. The display package `cb2023-display-r3` (three outline tile files and a names index) passed the
-checks of [display-plan.md](display-plan.md); its first build failed three and is kept in
-`display/cb2023-display-r1-failed/`. Nothing is hosted and nothing is in the public catalogue.
+**Status (2026-11-17):** published, unlisted, at [source.coop/nthh/us-census-places](https://source.coop/nthh/us-census-places).
+Release `cb2023-r1` was built from committed code, passed the checks of the validation plan and the
+shared packager, and rebuilt byte-identically in a clean checkout. The display package
+`cb2023-display-r3` (three outline tile files and a names index) passed the checks of
+[display-plan.md](display-plan.md); its first build failed three and is kept in
+`display/cb2023-display-r1-failed/`. The 68 hosted files passed the hosted checks
+([report](../../research/us-census-places-20261116/hosted-validation.json)).
 
 | File | Rows | What a row is |
 | --- | ---: | --- |

@@ -14835,7 +14835,7 @@
       "family_key": null,
       "decision": "publish_conversion",
       "priority": "pilot_review",
-      "publication_status": "prepared",
+      "publication_status": "published",
       "intake": {
         "kind": "producer",
         "reference_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html",

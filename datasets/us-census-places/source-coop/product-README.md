@@ -2,7 +2,7 @@
 
 Shore-clipped outlines of US counties, cities and other places, and county subdivisions, from the Census Bureau's 2023 cartographic boundary files, as GeoParquet with government status and 2023 population estimates added, and a display package of outline tiles and a names index for choosing places on a map.
 
-**Selected release:** `cb2023-r1`. This link structure describes the prepared package; public hosting and validation have not been checked by this generator.
+**Validated hosted release:** `cb2023-r1`. The canonical record binds the public Source Cooperative package and its completed hosting checks.
 
 ## Scope and formats
 
@@ -61,4 +61,4 @@ Display assets are separate immutable derivatives bound to this analytical relea
 - [Census TIGER/Line 2024 counties and places (cboettig/census)](https://source.coop/cboettig/census)
 - [HIFLD archive with Census TIGER 2024 counties, places and county subdivisions (seerai/hifld)](https://source.coop/seerai/hifld)
 
-Public hosting and scientific validation status must be checked independently.
+Public hosting checks are bound in the canonical report. Scientific validation retains its documented scope.
