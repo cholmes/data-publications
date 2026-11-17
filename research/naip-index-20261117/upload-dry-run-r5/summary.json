@@ -1,0 +1,12 @@
+{
+  "completed": 51,
+  "failed": 0,
+  "fresh_verified": 0,
+  "include_readme": false,
+  "mode": "dry_run",
+  "object_count": 51,
+  "plan_sha256": "61e075c6117a9dd1bd5e556f841cb6e1ab54a012b16aadbd51ef75a2bc85c947",
+  "reused_prior_verified": 0,
+  "schema_version": 1,
+  "status": "complete"
+}

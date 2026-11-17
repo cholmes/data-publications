@@ -788,6 +788,9 @@ class SourceProductTests(unittest.TestCase):
         self.assertEqual(products.content_type("licenses/software/LICENSE"), "text/plain")
         self.assertEqual(products.content_type("licenses/software/NOTICE"), "text/plain")
 
+    def test_projjson_is_json(self):
+        self.assertEqual(products.content_type("verification/workflow/crs84.projjson"), "application/json")
+
     def test_tampered_asset_is_rejected_and_failure_report_is_preserved(self):
         self.write_draft()
         (self.package / "assets" / "data.parquet").write_bytes(b"changed bytes!")

@@ -23,7 +23,7 @@ from typing import Any
 
 ENDPOINT = "https://data.source.coop"
 BUCKET = "nthh"
-ALLOWED_PRODUCTS = frozenset({"river-plastic-inputs", "hydrolakes", "free-flowing-rivers", "lakeatlas", "grwl-raw",
+ALLOWED_PRODUCTS = frozenset({"naip", "river-plastic-inputs", "hydrolakes", "free-flowing-rivers", "lakeatlas", "grwl-raw",
                               "us-census-places"})
 MAX_BYTES = 25_000_000_000
 PART_BYTES = 64 * 1024 * 1024
@@ -45,7 +45,7 @@ MIME_BY_SUFFIX = {
     ".svg": "image/svg+xml", ".tif": "image/tiff", ".tiff": "image/tiff",
     ".toml": "application/toml", ".txt": "text/plain", ".webp": "image/webp",
     ".xml": "application/xml", ".yaml": "application/yaml", ".yml": "application/yaml",
-    ".gz": "application/gzip", ".lock": "text/plain",
+    ".gz": "application/gzip", ".lock": "text/plain", ".projjson": "application/json",
 }
 
 

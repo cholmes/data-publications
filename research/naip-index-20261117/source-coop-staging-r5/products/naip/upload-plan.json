@@ -1,0 +1,977 @@
+{
+  "blockers": [
+    "Source Cooperative account verification is not recorded"
+  ],
+  "bucket": "nthh",
+  "created": false,
+  "creation_ready": false,
+  "dataset_id": "naip",
+  "display_publication": null,
+  "endpoint": "https://data.source.coop",
+  "hosted": false,
+  "immutable_file_count": 51,
+  "immutable_files": [
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/AGENTS.md",
+      "path": "AGENTS.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/AGENTS.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/AGENTS.md",
+      "sha256": "c18a20671c4714b23cdd93f9ea705c048d626e9daaeb2ffcfe63a2894d884163",
+      "size_bytes": 496,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "AGENTS.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/README.md",
+      "path": "README.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/README.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/README.md",
+      "sha256": "4486ef6d02c70512d9aeaeeb28659c7c7e940382bffc44e27083c88a14e9baba",
+      "size_bytes": 1845,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "README.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/vnd.apache.parquet",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/assets/overviews.parquet",
+      "path": "assets/overviews.parquet",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/overviews.parquet",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/assets/overviews.parquet",
+      "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+      "size_bytes": 516248,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "assets/overviews.parquet"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/vnd.apache.parquet",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/assets/quads.parquet",
+      "path": "assets/quads.parquet",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/quads.parquet",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/assets/quads.parquet",
+      "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+      "size_bytes": 44289015,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "assets/quads.parquet"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/catalog.json",
+      "path": "catalog.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/catalog.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/catalog.json",
+      "sha256": "55d585d23c32b458bafaebf50a1564e4116a983c28446f578fa0f6f9c9f2e365",
+      "size_bytes": 1519,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "catalog.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/collection.json",
+      "path": "collection.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/collection.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/collection.json",
+      "sha256": "a1182e7e83071219cdd20542f5478decf739e61d08c093cdb28bdb3896a3b2e8",
+      "size_bytes": 9897,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "collection.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/yaml",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/dataset.yaml",
+      "path": "dataset.yaml",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/dataset.yaml",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/dataset.yaml",
+      "sha256": "d8219b6e89ba654344c9e770fca01c89401b6d9fdb550d6434d4e8033c3f6fa7",
+      "size_bytes": 28836,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "dataset.yaml"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "image/png",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/display/thumbnail.png",
+      "path": "display/thumbnail.png",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/display/thumbnail.png",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/display/thumbnail.png",
+      "sha256": "5401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+      "size_bytes": 4826,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "display/thumbnail.png"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/clean-rebuild.json",
+      "path": "evidence/clean-rebuild.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/clean-rebuild.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/clean-rebuild.json",
+      "sha256": "53f824d40534e131b136646d032698f5c91ecc3d27e82fe71bd442f1d1254c77",
+      "size_bytes": 1109,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/clean-rebuild.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_receipt_digest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/final-package-verification.json",
+      "path": "evidence/final-package-verification.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/final-package-verification.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/final-package-verification.json",
+      "sha256": "1cf1682c126df6f88e95b7158a9a89fc981cbc557e55d59366aa3ec79751d211",
+      "size_bytes": 132,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/final-package-verification.json"
+      }
+    },
+    {
+      "binding_status": "inventory_only_unbound",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/local-http-duckdb-validation.json",
+      "path": "evidence/local-http-duckdb-validation.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/local-http-duckdb-validation.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/local-http-duckdb-validation.json",
+      "sha256": "9300c0d667d3e42e78c3bea00d1a9ef00bf58c1bc37ffda1e8f42cfd714fb407",
+      "size_bytes": 2797,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/local-http-duckdb-validation.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_receipt_digest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/package-binding.json",
+      "path": "evidence/package-binding.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/package-binding.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/package-binding.json",
+      "sha256": "bfc345769844a0d3b71324152c1a2e898dd8bd0cca069c27306ebb98f4d6ed93",
+      "size_bytes": 5315,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/package-binding.json"
+      }
+    },
+    {
+      "binding_status": "inventory_only_unbound",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/package-integrity-validation.json",
+      "path": "evidence/package-integrity-validation.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/package-integrity-validation.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/package-integrity-validation.json",
+      "sha256": "0848e462ebb4324f4137580d9ca1e7b4c53c8fe1c5d88216edf08d2efed70e47",
+      "size_bytes": 510,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/package-integrity-validation.json"
+      }
+    },
+    {
+      "binding_status": "inventory_only_unbound",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/portolan-validation.json",
+      "path": "evidence/portolan-validation.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/portolan-validation.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/portolan-validation.json",
+      "sha256": "2e2ea96facb0102b6aac04bbc66747983f0b8d75e734bd361ee1ea369b4d9b82",
+      "size_bytes": 1967,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/portolan-validation.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/source-fidelity.json",
+      "path": "evidence/source-fidelity.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/source-fidelity.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/source-fidelity.json",
+      "sha256": "51e5e38278d613d946974f815a282af97792baa43ae278480931a6363cd9ea3c",
+      "size_bytes": 1069,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/source-fidelity.json"
+      }
+    },
+    {
+      "binding_status": "inventory_only_unbound",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/evidence/stac-node-validation.json",
+      "path": "evidence/stac-node-validation.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/evidence/stac-node-validation.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/evidence/stac-node-validation.json",
+      "sha256": "b2a70da0d6a5a185685373333df10281901d7feaab55517513d6bcf0d810504d",
+      "size_bytes": 555,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "evidence/stac-node-validation.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/licenses/data-license.json",
+      "path": "licenses/data-license.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/licenses/data-license.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/licenses/data-license.json",
+      "sha256": "fe172b925aac49de5c4670e6c3c650e7cd658ac8be4684cb1ab97cd9e9321f1f",
+      "size_bytes": 356,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "licenses/data-license.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/plain",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/licenses/software/LICENSE",
+      "path": "licenses/software/LICENSE",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/licenses/software/LICENSE",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/licenses/software/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "licenses/software/LICENSE"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/plain",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/licenses/software/NOTICE",
+      "path": "licenses/software/NOTICE",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/licenses/software/NOTICE",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/licenses/software/NOTICE",
+      "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+      "size_bytes": 788,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "licenses/software/NOTICE"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/licenses/source-license.json",
+      "path": "licenses/source-license.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/licenses/source-license.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/licenses/source-license.json",
+      "sha256": "23eff59f27ea503e7799931714f00da262af2b7056d9014b1ea01a4f2307b5dd",
+      "size_bytes": 76,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "licenses/source-license.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest_hash",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/manifest.json",
+      "path": "manifest.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/manifest.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/manifest.json",
+      "sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+      "size_bytes": 11052,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "manifest.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/metadata/overviews-field-dictionary.json",
+      "path": "metadata/overviews-field-dictionary.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/overviews-field-dictionary.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/metadata/overviews-field-dictionary.json",
+      "sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+      "size_bytes": 1705,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "metadata/overviews-field-dictionary.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/metadata/quads-field-dictionary.json",
+      "path": "metadata/quads-field-dictionary.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/quads-field-dictionary.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/metadata/quads-field-dictionary.json",
+      "sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+      "size_bytes": 1536,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "metadata/quads-field-dictionary.json"
+      }
+    },
+    {
+      "binding_status": "inventory_only_unbound",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/package-receipt.json",
+      "path": "package-receipt.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/package-receipt.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/package-receipt.json",
+      "sha256": "a39798cee68d63c692bb82980f466d553032bf04c46bdf04bbc3566a609b3173",
+      "size_bytes": 870,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "package-receipt.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/provenance/build-manifest.json",
+      "path": "provenance/build-manifest.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/build-manifest.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/provenance/build-manifest.json",
+      "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+      "size_bytes": 15637,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "provenance/build-manifest.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/provenance/check.json",
+      "path": "provenance/check.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/check.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/provenance/check.json",
+      "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+      "size_bytes": 9333,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "provenance/check.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/plain",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+      "path": "provenance/index-env.lock.txt",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "provenance/index-env.lock.txt"
+      }
+    },
+    {
+      "binding_status": "bound_by_package_receipt",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+      "path": "provenance/index-package-plan.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+      "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "size_bytes": 9961,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "provenance/index-package-plan.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/source/attribution.json",
+      "path": "source/attribution.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/source/attribution.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/source/attribution.json",
+      "sha256": "69165e5646183d3fbcb7f2f236541ead5542e54a1122ee129d695c3232b4485c",
+      "size_bytes": 384,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "source/attribution.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_index_release.py",
+      "path": "verification/workflow/datasets/naip/build_index_release.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_index_release.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_index_release.py",
+      "sha256": "80253082ec86a117f1f2dd1bd50309e7797d27dd9040f6ed6331a016741762b5",
+      "size_bytes": 4018,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/build_index_release.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_overview_index.py",
+      "path": "verification/workflow/datasets/naip/build_overview_index.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_overview_index.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_overview_index.py",
+      "sha256": "446686f9606437fdba0b23a8290b3fed0225dec15c2ed2c7e9660c9db85baab5",
+      "size_bytes": 13085,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/build_overview_index.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_stac_index.py",
+      "path": "verification/workflow/datasets/naip/build_stac_index.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_stac_index.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/build_stac_index.py",
+      "sha256": "0f8cd135ec22c880b5a70f9a44d97ce74f73a9eb3abef39624ab863720fe239c",
+      "size_bytes": 12928,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/build_stac_index.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/check_index_release.py",
+      "path": "verification/workflow/datasets/naip/check_index_release.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/check_index_release.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/check_index_release.py",
+      "sha256": "3fbd60ac5f29ad264110f04f5dc0945d0b1b8f5f169bb6161061102a627b45bb",
+      "size_bytes": 23513,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/check_index_release.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/crs84.projjson",
+      "path": "verification/workflow/datasets/naip/crs84.projjson",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/crs84.projjson",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/crs84.projjson",
+      "sha256": "2576eef69d139b270f7269bb7deea9302023416a6b5d9ac9589ae4765a10c8d2",
+      "size_bytes": 1903,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/crs84.projjson"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/evidence/receipt-dirs-62.json",
+      "path": "verification/workflow/datasets/naip/evidence/receipt-dirs-62.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/evidence/receipt-dirs-62.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/evidence/receipt-dirs-62.json",
+      "sha256": "20b0821e07dc0da9407b503c1662c81e24428646ad3b4a8e3f660bb122c993ff",
+      "size_bytes": 1934,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/evidence/receipt-dirs-62.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/plain",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-env.lock.txt",
+      "path": "verification/workflow/datasets/naip/index-env.lock.txt",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-env.lock.txt",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-env.lock.txt",
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/index-env.lock.txt"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-package-plan.md",
+      "path": "verification/workflow/datasets/naip/index-package-plan.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-package-plan.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/index-package-plan.md",
+      "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "size_bytes": 9961,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/index-package-plan.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/partial_years.py",
+      "path": "verification/workflow/datasets/naip/partial_years.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/partial_years.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/partial_years.py",
+      "sha256": "92a67f2589b8865c6ef13b86d4a73b11de3fcb3c3275d195cadf0777ce63690e",
+      "size_bytes": 1671,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/partial_years.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/releases/index-20261116-r5/package-spec.json",
+      "path": "verification/workflow/datasets/naip/releases/index-20261116-r5/package-spec.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/releases/index-20261116-r5/package-spec.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/releases/index-20261116-r5/package-spec.json",
+      "sha256": "ce92401041e4336c1a95491455840145be8959b548686d5b9332a0b95f4081d7",
+      "size_bytes": 5451,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/releases/index-20261116-r5/package-spec.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/datasets/naip/write_index_reports.py",
+      "path": "verification/workflow/datasets/naip/write_index_reports.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/write_index_reports.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/datasets/naip/write_index_reports.py",
+      "sha256": "bf07c22c952bc32ea001408b86d0b41898dfc307c6bb0085b2a37b1bdd4ccace",
+      "size_bytes": 3311,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/datasets/naip/write_index_reports.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/AGENTS.md",
+      "path": "verification/workflow/scripts/release_tools/AGENTS.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/AGENTS.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/AGENTS.md",
+      "sha256": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+      "size_bytes": 857,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/AGENTS.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/README.md",
+      "path": "verification/workflow/scripts/release_tools/README.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/README.md",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/README.md",
+      "sha256": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+      "size_bytes": 15314,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/README.md"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "path": "verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "sha256": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+      "size_bytes": 21945,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/add_spatial_bounds.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package-lock.json",
+      "path": "verification/workflow/scripts/release_tools/package-lock.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package-lock.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package-lock.json",
+      "sha256": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+      "size_bytes": 54306,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/package-lock.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/json",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package.json",
+      "path": "verification/workflow/scripts/release_tools/package.json",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package.json",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package.json",
+      "sha256": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+      "size_bytes": 142,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/package.json"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package_release.py",
+      "path": "verification/workflow/scripts/release_tools/package_release.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package_release.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/package_release.py",
+      "sha256": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+      "size_bytes": 63322,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/package_release.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "application/toml",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/pyproject.toml",
+      "path": "verification/workflow/scripts/release_tools/pyproject.toml",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/pyproject.toml",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/pyproject.toml",
+      "sha256": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+      "size_bytes": 259,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/pyproject.toml"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/serve.py",
+      "path": "verification/workflow/scripts/release_tools/serve.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/serve.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/serve.py",
+      "sha256": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+      "size_bytes": 2789,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/serve.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_package_release.py",
+      "path": "verification/workflow/scripts/release_tools/test_package_release.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_package_release.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_package_release.py",
+      "sha256": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+      "size_bytes": 10209,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/test_package_release.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/x-python",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "path": "verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "sha256": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+      "size_bytes": 8062,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/test_spatial_bounds.py"
+      }
+    },
+    {
+      "binding_status": "bound_by_canonical_manifest",
+      "bucket": "nthh",
+      "content_type": "text/plain",
+      "endpoint": "https://data.source.coop",
+      "object_key": "naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/uv.lock",
+      "path": "verification/workflow/scripts/release_tools/uv.lock",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/uv.lock",
+      "s3_uri_proposed": "s3://nthh/naip/releases/index-20261116-r5/verification/workflow/scripts/release_tools/uv.lock",
+      "sha256": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b",
+      "size_bytes": 134378,
+      "source": {
+        "dataset_id": "naip",
+        "kind": "package",
+        "path": "verification/workflow/scripts/release_tools/uv.lock"
+      }
+    }
+  ],
+  "immutable_total_bytes": 45339682,
+  "independent_maintainer_proposal": {
+    "owner": "nthh",
+    "relationship": "new Source Cooperative product proposal; immutable package metadata is unchanged",
+    "status": "confirmed"
+  },
+  "integrity_status": "local_package_metadata_verified",
+  "manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+  "mutable_metadata": [
+    {
+      "binding_status": "canonical_generated_consumer_copy",
+      "bucket": "nthh",
+      "content_type": "text/markdown",
+      "endpoint": "https://data.source.coop",
+      "mutable": true,
+      "object_key": "naip/README.md",
+      "raw_url_proposed": "https://data.source.coop/nthh/naip/README.md",
+      "requires_finalized_publication_copy": false,
+      "s3_uri_proposed": "s3://nthh/naip/README.md",
+      "sha256": "cd53a315c6b6a546f732167e2ebb203740e193243930c58f6efab9fdc9fdba41",
+      "size_bytes": 4751,
+      "source": {
+        "kind": "repository",
+        "path": "datasets/naip/source-coop/product-README.md"
+      },
+      "upload_allowed": false
+    }
+  ],
+  "owner": "nthh",
+  "owner_status": "confirmed",
+  "package_binding": {
+    "bound_file_count": 10,
+    "receipt_digest_bound_file_count": 2,
+    "sha256": "bfc345769844a0d3b71324152c1a2e898dd8bd0cca069c27306ebb98f4d6ed93",
+    "status": "verified",
+    "unbound_inventory_file_count": 5
+  },
+  "plan_status": "locally_hashed_exact_file_inventory",
+  "product_id": "naip",
+  "product_metadata": {
+    "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
+    "license_note": "NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.",
+    "limitations": [
+      "Display copy only. The files hold red, green and blue as lossy JPEG at quality 65, with overviews at quality 75 and colour at half resolution. The near-infrared band and the lossless pixels stay in s3://naip-analytic.",
+      "Four Pennsylvania 2024 files carry a 2010 flight date in their names, as they do in the source.",
+      "Pennsylvania 2024 (1,118 quads) and West Virginia 2024 (101 quads) cover only part of each state. Their files are hosted, under pa/2024/ and wv/2024/ and as overviews/pa-2024-utm18.tif and overviews/wv-2024-utm17.tif, but the two indexes do not list them and the national file is made without them. Both states are listed whole from 2022, so a map that draws the newest file over a place shows one flight per state. The rule is a count. A year holding under 90% of the quads of an older year of the same state is not listed.",
+      "The 2024 folders of the source lack every quad numbered xx12023 (California and Oregon at 120 W), and Florida 2025 lacks a strip of south Florida. Those places are filled with only the missing quads from California 2022, Oregon 2022 and Florida 2023. They differ from their neighbours in year, season and tone.",
+      "The overview files are for drawing a map, not for measurement. A state file holds one flight year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each state, so neighbouring states can differ in year and in tone.",
+      "Adjacent quarter quads overlap, as they do in the source."
+    ],
+    "related_dataset_links": [],
+    "source_links": [
+      {
+        "title": "Host: nthh",
+        "url": "https://github.com/nthh/data-publications"
+      },
+      {
+        "title": "Dataset release",
+        "url": "https://registry.opendata.aws/naip/"
+      },
+      {
+        "title": "Producer: USDA Farm Production and Conservation Business Center",
+        "url": "https://www.fpacbc.usda.gov/"
+      }
+    ],
+    "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.",
+    "tags": [
+      "naip",
+      "aerial-imagery",
+      "usda",
+      "united-states",
+      "cog"
+    ],
+    "temporal_note": "One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file."
+  },
+  "public_validation_status": "not_checked_by_this_tool",
+  "publication_status": "prepared",
+  "ready_for_creation": false,
+  "ready_for_review": true,
+  "ready_for_upload": false,
+  "release": "index-20261116-r5",
+  "review_context": {
+    "asset_integrity": null,
+    "local_followup": [],
+    "public_followup": [],
+    "stage": null,
+    "status_basis": "canonical publication status plus local manifest/snapshot hashes; this tool does not rerun scientific or public-host validation"
+  },
+  "schema_version": 1,
+  "snapshot_sha256": "31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9",
+  "source_proxy": {
+    "status": "proposed",
+    "uri": "s3://nthh/naip"
+  },
+  "title": "NAIP display copies"
+}
