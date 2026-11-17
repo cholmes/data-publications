@@ -63,6 +63,7 @@ MIME_BY_SUFFIX = {
     ".gz": "application/gzip",
     ".lock": "text/plain",
     ".projjson": "application/json",
+    ".gti": "application/xml",
 }
 EXTENSIONLESS_TEXT_NAMES = {"LICENSE", "NOTICE"}
 HOSTING_CHECKS = ("anonymous_access", "range_requests", "cors", "asset_checksums",

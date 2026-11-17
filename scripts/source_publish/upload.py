@@ -46,6 +46,7 @@ MIME_BY_SUFFIX = {
     ".toml": "application/toml", ".txt": "text/plain", ".webp": "image/webp",
     ".xml": "application/xml", ".yaml": "application/yaml", ".yml": "application/yaml",
     ".gz": "application/gzip", ".lock": "text/plain", ".projjson": "application/json",
+    ".gti": "application/xml",
 }
 
 

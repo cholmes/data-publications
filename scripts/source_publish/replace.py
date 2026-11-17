@@ -29,7 +29,8 @@ from upload import ALLOWED_PRODUCTS, BUCKET, ENDPOINT, S3Session, UploadError, _
 
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 MAX_BYTES = 256 * 1024 * 1024
-TYPES = {".parquet": "application/vnd.apache.parquet", ".json": "application/json", ".md": "text/markdown"}
+TYPES = {".parquet": "application/vnd.apache.parquet", ".json": "application/json", ".md": "text/markdown",
+         ".gti": "application/xml"}
 
 
 def sha256_bytes(data: bytes) -> str:
