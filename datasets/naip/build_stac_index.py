@@ -51,6 +51,11 @@ EXTENSIONS = [
 ]
 
 
+# Longitude and latitude, written out: GeoParquet reads an absent crs as this, and the
+# catalogue's packager wants it stated.
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "crs84.projjson")) as _f:
+    CRS84 = json.load(_f)
+
 def hilbert(lon, lat, order=16):
     """Distance along a Hilbert curve of 2**order cells per side over the whole lon/lat plane."""
     n = 1 << order
@@ -130,7 +135,7 @@ def table_of(rows, links):
     bbox = pa.StructArray.from_arrays([pa.array([r["bbox"][k] for r in rows], pa.float64()) for k in names], names=names)
     table = table.set_column(table.schema.get_field_index("bbox"), "bbox", bbox)
     geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
-        "encoding": "WKB", "geometry_types": ["Polygon"],
+        "encoding": "WKB", "crs": CRS84, "geometry_types": ["Polygon"],
         "bbox": [min(r["bbox"]["xmin"] for r in rows), min(r["bbox"]["ymin"] for r in rows),
                  max(r["bbox"]["xmax"] for r in rows), max(r["bbox"]["ymax"] for r in rows)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}

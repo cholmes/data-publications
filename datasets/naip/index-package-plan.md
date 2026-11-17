@@ -140,3 +140,16 @@ with upper-case quarters (`_NE_`) and 5,018 Missouri 2024 names with upper-case 
 two-digit resolution (`_15_30_`), as the source names them. Every one is dated by its flight
 date. The pattern now accepts either case for the quarter and two or three digits for the
 resolution. Nothing else changes; r4 is built again from the commit that holds this addendum.
+
+## Addendum for r5 (2026-11-17 UTC, written after r4's result and before the r5 build)
+
+`index-20261116-r4` passed checks 1a, 1b, 1c and 2 to 9 (reports in
+`releases/index-20261116-r4-failed/`) and failed check 10: the shared packager refuses a
+GeoParquet file whose geometry column does not state its CRS. Both index files leave `crs` out,
+which GeoParquet reads as OGC:CRS84, but the packager wants it written.
+
+For r5 both builders write the CRS as the PROJJSON of OGC:CRS84 (`crs84.projjson`), and nothing
+else changes. Both files therefore differ from the hosted ones in their `geo` metadata, and both
+hosted files are to be replaced (each on Nathan's go). Checks 1b and 1c now compare `geo` without
+its `crs`, and require the release's `crs` to carry the id OGC:CRS84. The other marks are
+unchanged.

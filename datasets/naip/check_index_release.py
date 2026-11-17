@@ -274,6 +274,13 @@ def check_dates(table):
     return {"passed": not wrong, "wrong": failure_list(wrong)}
 
 
+def geo_without_crs(table):
+    """The release's geo metadata less its crs, which r5 writes out and the hosted files leave implicit."""
+    geo = json.loads(table.schema.metadata[b"geo"])
+    geo["columns"]["geometry"].pop("crs", None)
+    return geo
+
+
 def stac_meta(table):
     return json.loads(table.schema.metadata[b"stac-geoparquet"])
 
@@ -288,14 +295,15 @@ def compare_meta(release, hosted, collection, first_date):
         m["collections"][collection]["extent"]["temporal"] = None
     return {"rest_equal": a2 == b2, "release_interval": ta, "hosted_interval": tb,
             "first_date_is_earliest_row": ta[0][0][:10] == first_date,
-            "geo_equal": release.schema.metadata[b"geo"] == hosted.schema.metadata[b"geo"]}
+            "geo_equal": geo_without_crs(release) == json.loads(hosted.schema.metadata[b"geo"]),
+            "crs_is_crs84": json.loads(release.schema.metadata[b"geo"])["columns"]["geometry"].get("crs", {}).get("id") == {"authority": "OGC", "code": "CRS84"}}
 
 
 def check_quad_values(release, hosted):
     meta = compare_meta(release, hosted, "naip", min(release.column("datetime").to_pylist()).strftime("%Y-%m-%d"))
     schema_equal = release.schema.remove_metadata() == hosted.schema.remove_metadata()
     differing = [n for n in release.column_names if n not in hosted.column_names or not release.column(n).equals(hosted.column(n))]
-    passed = schema_equal and release.num_rows == hosted.num_rows and not differing and meta["rest_equal"] and meta["first_date_is_earliest_row"] and meta["geo_equal"]
+    passed = schema_equal and release.num_rows == hosted.num_rows and not differing and meta["rest_equal"] and meta["first_date_is_earliest_row"] and meta["geo_equal"] and meta["crs_is_crs84"]
     return {"passed": passed, "rows": [release.num_rows, hosted.num_rows], "schema_equal": schema_equal, "columns_differing": differing, "metadata": meta}
 
 
@@ -330,7 +338,7 @@ def check_overview_values(release, hosted, quads, results):
             step_a, step_b = max(1, len(pts_a) // 2000), max(1, len(pts_b) // 2000)
             d = max(point_segment_distance(pts_a[::step_a], other).max(), point_segment_distance(pts_b[::step_b], outline).max())
             distances[item] = round(float(d), 9)
-    passed = same_ids and not differing and meta["rest_equal"] and meta["first_date_is_earliest_row"] and meta["geo_equal"] and not uncovered
+    passed = same_ids and not differing and meta["rest_equal"] and meta["first_date_is_earliest_row"] and meta["geo_equal"] and meta["crs_is_crs84"] and not uncovered
     return {"passed": passed, "same_ids_same_order": same_ids, "columns_differing_except_geometry": differing, "metadata": meta,
             "outlines_not_covering_quads": uncovered,
             "outline_distance_to_hosted_degrees_reported": {"max": max(distances.values(), default=0), "by_item": distances,

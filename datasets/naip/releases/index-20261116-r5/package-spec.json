@@ -1,0 +1,129 @@
+{
+  "dataset_record_path": "../../dataset.yaml",
+  "dataset_id": "naip",
+  "title": "NAIP display copies",
+  "release_id": "index-20261116-r5",
+  "release_version": "1.0.0",
+  "output_dir": "../../../../.local/naip/package/index-20261116-r5",
+  "catalog_id": "naip",
+  "processor": {
+    "name": "nthh",
+    "roles": [
+      "host",
+      "processor"
+    ],
+    "url": "https://github.com/nthh/data-publications",
+    "description": "Local candidate package only; the package has not been hosted."
+  },
+  "source_attribution": {
+    "url": "https://registry.opendata.aws/naip/",
+    "title": "National Agriculture Imagery Program (NAIP) on AWS, s3://naip-analytic",
+    "version": "2021 to 2025 flights",
+    "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP)",
+    "license": {
+      "identifier": "other",
+      "url": "https://registry.opendata.aws/naip/"
+    }
+  },
+  "producers": [
+    {
+      "name": "USDA Farm Production and Conservation Business Center",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.fpacbc.usda.gov/"
+    }
+  ],
+  "source_fidelity_report_path": "source-fidelity.json",
+  "clean_rebuild_report_path": "clean-rebuild.json",
+  "assets": [
+    {
+      "asset_id": "quads",
+      "path": "../../../../.local/naip/index-r5-build-a/naip.parquet",
+      "identifier_column": "id",
+      "title": "Quarter-quad index (STAC GeoParquet)",
+      "description": "One STAC item per hosted quarter-quad COG: 245,554 rows. Each row gives the file's address, size and checksum, its footprint in degrees, its CRS, bounds and transform, and the flight date from its name. Pennsylvania 2024 and West Virginia 2024, which cover part of each state, are not listed. Rows follow a Hilbert curve."
+    },
+    {
+      "asset_id": "overviews",
+      "path": "../../../../.local/naip/index-r5-build-a/naip-overviews.parquet",
+      "identifier_column": "id",
+      "title": "Overview file index (STAC GeoParquet)",
+      "description": "One STAC item per hosted overview file: 114 state files (one state, year and UTM zone at 9.6 m) and the national file (EPSG:3857, about 306 m). A state file's footprint is an outline of its quads. Coarsest first."
+    }
+  ],
+  "supporting_files": [
+    {
+      "path": "build-manifest.json",
+      "package_path": "provenance/build-manifest.json",
+      "title": "Build commit, environment, input checksums and output facts",
+      "media_type": "application/json"
+    },
+    {
+      "path": "check.json",
+      "package_path": "provenance/check.json",
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests",
+      "media_type": "application/json"
+    },
+    {
+      "path": "../../index-env.lock.txt",
+      "package_path": "provenance/index-env.lock.txt",
+      "title": "Locked build environment (conda explicit list and one pip wheel)",
+      "media_type": "text/plain"
+    },
+    {
+      "path": "../../index-package-plan.md",
+      "package_path": "provenance/index-package-plan.md",
+      "title": "Checks written before the first build, with addenda",
+      "media_type": "text/markdown"
+    }
+  ],
+  "data_license": {
+    "license": "other",
+    "url": "https://registry.opendata.aws/naip/",
+    "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP)",
+    "note": "NAIP imagery is in the public domain. USDA asks for credit. These index files describe a format conversion, not a USDA product.",
+    "stac_license": "other"
+  },
+  "source_license": {
+    "identifier": "other",
+    "url": "https://registry.opendata.aws/naip/"
+  },
+  "stac_license": "other",
+  "citation": "USDA Farm Production and Conservation Business Center. National Agriculture Imagery Program (NAIP), 2021 to 2025 flights, from s3://naip-analytic on AWS.",
+  "description": "The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+  "temporal_interval": [
+    "2021-06-16T00:00:00Z",
+    "2025-11-17T00:00:00Z"
+  ],
+  "validation_bbox": [
+    -111.7,
+    40.5,
+    -111.5,
+    40.65
+  ],
+  "code_revision": "PENDING",
+  "workflow_paths": [
+    "datasets/naip/build_stac_index.py",
+    "datasets/naip/build_overview_index.py",
+    "datasets/naip/partial_years.py",
+    "datasets/naip/crs84.projjson",
+    "datasets/naip/build_index_release.py",
+    "datasets/naip/check_index_release.py",
+    "datasets/naip/write_index_reports.py",
+    "datasets/naip/index-env.lock.txt",
+    "datasets/naip/index-package-plan.md",
+    "datasets/naip/evidence/receipt-dirs-62.json",
+    "datasets/naip/releases/index-20261116-r5/package-spec.json",
+    "scripts/release_tools/package_release.py",
+    "scripts/release_tools/serve.py",
+    "scripts/release_tools/pyproject.toml",
+    "scripts/release_tools/uv.lock",
+    "scripts/release_tools/package.json",
+    "scripts/release_tools/package-lock.json",
+    "scripts/release_tools/README.md",
+    "scripts/release_tools/AGENTS.md",
+    "scripts/release_tools/test_package_release.py"
+  ]
+}

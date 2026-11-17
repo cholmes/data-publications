@@ -50,6 +50,11 @@ EXTENSIONS = ["https://stac-extensions.github.io/projection/v2.0.0/schema.json",
               "https://stac-extensions.github.io/file/v2.1.0/schema.json"]
 
 
+# Longitude and latitude, written out: GeoParquet reads an absent crs as this, and the
+# catalogue's packager wants it stated.
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "crs84.projjson")) as _f:
+    CRS84 = json.load(_f)
+
 def collection(rows):
     days = lambda key, pick: pick(r[key] for r in rows).strftime("%Y-%m-%dT%H:%M:%SZ")
     return {
@@ -207,7 +212,7 @@ def main():
     boxes = [r["bbox"] for r in rows]
     kinds = {ogr.CreateGeometryFromWkb(r["geometry"]).GetGeometryName().title().replace("polygon", "Polygon") for r in rows}
     geo = {"version": "1.1.0", "primary_column": "geometry", "columns": {"geometry": {
-        "encoding": "WKB", "geometry_types": sorted(kinds),
+        "encoding": "WKB", "crs": CRS84, "geometry_types": sorted(kinds),
         "bbox": [min(b["xmin"] for b in boxes), min(b["ymin"] for b in boxes), max(b["xmax"] for b in boxes), max(b["ymax"] for b in boxes)],
         "covering": {"bbox": {k: ["bbox", k] for k in ("xmin", "ymin", "xmax", "ymax")}}}}}
     stac = {"version": "1.1.0", "collections": {"naip-overviews": collection(rows)}}
