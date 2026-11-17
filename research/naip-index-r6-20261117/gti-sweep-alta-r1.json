@@ -1,0 +1,387 @@
+{
+ "schema_version": 1,
+ "url": "/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti",
+ "center": [
+  -111.625,
+  40.59
+ ],
+ "pixels": [
+  800,
+  600
+ ],
+ "gdal": "3.12.4",
+ "levels": [
+  {
+   "res_degrees": 5e-06,
+   "approx_metres": 0,
+   "view_degrees": [
+    0.004,
+    0.003
+   ],
+   "seconds": 8.6,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 1580923,
+   "imagery_requests": 24,
+   "imagery_bytes": 1933312,
+   "imagery_files": {
+    "quad": 4,
+    "state_overview": 0,
+    "national": 0
+   },
+   "largest_file_bytes": 802816,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 98.46,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 1e-05,
+   "approx_metres": 1,
+   "view_degrees": [
+    0.008,
+    0.006
+   ],
+   "seconds": 7.6,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 1580923,
+   "imagery_requests": 26,
+   "imagery_bytes": 1999447,
+   "imagery_files": {
+    "quad": 4,
+    "state_overview": 0,
+    "national": 0
+   },
+   "largest_file_bytes": 754517,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 105.02,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 2e-05,
+   "approx_metres": 2,
+   "view_degrees": [
+    0.016,
+    0.012
+   ],
+   "seconds": 7.2,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 1580923,
+   "imagery_requests": 30,
+   "imagery_bytes": 3412482,
+   "imagery_files": {
+    "quad": 4,
+    "state_overview": 0,
+    "national": 0
+   },
+   "largest_file_bytes": 1146880,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 107.82,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 4e-05,
+   "approx_metres": 3,
+   "view_degrees": [
+    0.032,
+    0.024
+   ],
+   "seconds": 6.0,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 1580923,
+   "imagery_requests": 20,
+   "imagery_bytes": 2232740,
+   "imagery_files": {
+    "quad": 4,
+    "state_overview": 0,
+    "national": 0
+   },
+   "largest_file_bytes": 692278,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 119.38,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 8e-05,
+   "approx_metres": 7,
+   "view_degrees": [
+    0.064,
+    0.048
+   ],
+   "seconds": 5.3,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 12,
+   "imagery_bytes": 835584,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 2,
+    "national": 0
+   },
+   "largest_file_bytes": 442368,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 114.75,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00016,
+   "approx_metres": 13,
+   "view_degrees": [
+    0.128,
+    0.096
+   ],
+   "seconds": 6.2,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 20,
+   "imagery_bytes": 2752512,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 2,
+    "national": 0
+   },
+   "largest_file_bytes": 1425408,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 102.93,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00032,
+   "approx_metres": 27,
+   "view_degrees": [
+    0.256,
+    0.192
+   ],
+   "seconds": 7.6,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 20,
+   "imagery_bytes": 2476827,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 2,
+    "national": 0
+   },
+   "largest_file_bytes": 1286390,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 97.44,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00064,
+   "approx_metres": 54,
+   "view_degrees": [
+    0.512,
+    0.384
+   ],
+   "seconds": 5.5,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 20,
+   "imagery_bytes": 2561616,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 2,
+    "national": 0
+   },
+   "largest_file_bytes": 1327712,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 113.33,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00128,
+   "approx_metres": 108,
+   "view_degrees": [
+    1.024,
+    0.768
+   ],
+   "seconds": 5.7,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 20,
+   "imagery_bytes": 2178162,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 2,
+    "national": 0
+   },
+   "largest_file_bytes": 1156731,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 126.08,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00256,
+   "approx_metres": 216,
+   "view_degrees": [
+    2.048,
+    1.536
+   ],
+   "seconds": 4.6,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 7,
+   "imagery_bytes": 901120,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 0,
+    "national": 1
+   },
+   "largest_file_bytes": 901120,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 129.93,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.00512,
+   "approx_metres": 432,
+   "view_degrees": [
+    4.096,
+    3.072
+   ],
+   "seconds": 4.4,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 8,
+   "imagery_bytes": 696411,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 0,
+    "national": 1
+   },
+   "largest_file_bytes": 696411,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 157.23,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  },
+  {
+   "res_degrees": 0.01,
+   "approx_metres": 843,
+   "view_degrees": [
+    8.0,
+    6.0
+   ],
+   "seconds": 5.7,
+   "ok": true,
+   "index_requests": 8,
+   "index_bytes": 647035,
+   "imagery_requests": 8,
+   "imagery_bytes": 983040,
+   "imagery_files": {
+    "quad": 0,
+    "state_overview": 0,
+    "national": 1
+   },
+   "largest_file_bytes": 983040,
+   "whole_downloads": 0,
+   "picture": {
+    "size": [
+     800,
+     600
+    ],
+    "band1_mean": 159.64,
+    "alpha_max": 255.0,
+    "alpha_mean": 255.0
+   },
+   "error": null
+  }
+ ]
+}
