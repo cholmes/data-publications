@@ -1,0 +1,133 @@
+{
+  "dataset_record_path": "../../dataset.yaml",
+  "dataset_id": "us-census-places",
+  "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+  "release_id": "cb2023-r1",
+  "release_version": "1.0.0",
+  "output_dir": "../../../../.local/us-census-places/package/cb2023-r1",
+  "catalog_id": "us-census-places",
+  "processor": {
+    "name": "nthh",
+    "roles": [
+      "host",
+      "processor"
+    ],
+    "url": "https://github.com/nthh/data-publications",
+    "description": "Local candidate package only; public hosting has not occurred."
+  },
+  "source_attribution": {
+    "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/",
+    "title": "US Census Bureau cartographic boundary files, 2023",
+    "version": "2023, 1:500,000",
+    "attribution": "Source: US Census Bureau",
+    "license": {
+      "identifier": "other",
+      "url": "https://www.census.gov/about/policies/citation.html"
+    }
+  },
+  "producers": [
+    {
+      "name": "US Census Bureau",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.census.gov/"
+    }
+  ],
+  "source_fidelity_report_path": "source-fidelity.json",
+  "clean_rebuild_report_path": "clean-rebuild.json",
+  "assets": [
+    {
+      "asset_id": "counties",
+      "path": "../../../../.local/us-census-places/cb2023-r1/data/counties.parquet",
+      "identifier_column": "GEOID",
+      "title": "Counties and county equivalents",
+      "description": "3,235 counties and equivalents, including Puerto Rico and the island areas. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve."
+    },
+    {
+      "asset_id": "places",
+      "path": "../../../../.local/us-census-places/cb2023-r1/data/places.parquet",
+      "identifier_column": "GEOID",
+      "title": "Incorporated places and census designated places",
+      "description": "32,608 places. gaz_funcstat A marks an incorporated place with an active government; census designated places carry no population estimate. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve."
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "path": "../../../../.local/us-census-places/cb2023-r1/data/county-subdivisions.parquet",
+      "identifier_column": "GEOID",
+      "title": "County subdivisions",
+      "description": "36,367 county subdivisions. gaz_funcstat A marks a township or town with an active government, found in 20 states. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve."
+    }
+  ],
+  "supporting_files": [
+    {
+      "path": "source-manifest.json",
+      "package_path": "provenance/source-manifest.json",
+      "title": "Pinned Census inputs: address, size and SHA-256",
+      "media_type": "application/json"
+    },
+    {
+      "path": "build-manifest.json",
+      "package_path": "provenance/build-manifest.json",
+      "title": "Build commit, tool versions and output facts",
+      "media_type": "application/json"
+    },
+    {
+      "path": "../../validation-plan.md",
+      "package_path": "provenance/validation-plan.md",
+      "title": "Checks written before the first build",
+      "media_type": "text/markdown"
+    }
+  ],
+  "data_license": {
+    "license": "other",
+    "url": "https://www.census.gov/about/policies/citation.html",
+    "attribution": "Source: US Census Bureau",
+    "note": "US Government work in the public domain. The Census Bureau asks to be cited as the source. These files are a format conversion, not a Census Bureau product.",
+    "stac_license": "other"
+  },
+  "source_license": {
+    "identifier": "other",
+    "url": "https://www.census.gov/about/policies/citation.html"
+  },
+  "stac_license": "other",
+  "citation": "US Census Bureau. 2023 cartographic boundary files (1:500,000): counties, places and county subdivisions; 2023 gazetteer files; vintage 2023 subcounty population estimates.",
+  "description": "The 2023 Census cartographic boundary files for counties, places and county subdivisions as three GeoParquet files. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve. These are boundaries generalised for mapping at 1:500,000, as of 1 January 2023, not legal boundaries.",
+  "temporal_interval": [
+    "2023-01-01T00:00:00Z",
+    "2023-07-01T00:00:00Z"
+  ],
+  "validation_bbox": [
+    -105.6,
+    39.5,
+    -104.6,
+    40.3
+  ],
+  "code_revision": "5464a777f6be8f1530a5bbbd3060080d070b4ac1",
+  "workflow_paths": [
+    "datasets/us-census-places/build.py",
+    "datasets/us-census-places/common.py",
+    "datasets/us-census-places/source.py",
+    "datasets/us-census-places/validate.py",
+    "datasets/us-census-places/compare_rebuild.py",
+    "datasets/us-census-places/test_faults.py",
+    "datasets/us-census-places/pyproject.toml",
+    "datasets/us-census-places/uv.lock",
+    "datasets/us-census-places/dataset.yaml",
+    "datasets/us-census-places/validation-plan.md",
+    "datasets/us-census-places/README.md",
+    "datasets/us-census-places/releases/cb2023-r1/package-spec.json",
+    "datasets/us-census-places/releases/cb2023-r1/build-manifest.json",
+    "datasets/us-census-places/releases/cb2023-r1/fault-tests.txt",
+    "scripts/release_tools/package_release.py",
+    "scripts/release_tools/serve.py",
+    "scripts/release_tools/pyproject.toml",
+    "scripts/release_tools/uv.lock",
+    "scripts/release_tools/package.json",
+    "scripts/release_tools/package-lock.json",
+    "scripts/release_tools/README.md",
+    "scripts/release_tools/AGENTS.md",
+    "scripts/release_tools/test_package_release.py"
+  ]
+}
