@@ -1,0 +1,41 @@
+{
+ "schema_version": 1,
+ "mode": "dry_run",
+ "plan_sha256": "0b934d05384efe357764f7a94da3afe82ba13c23e20987722e9b7eb8af986790",
+ "product_id": "naip",
+ "objects": [
+  {
+   "object_key": "naip/stac/naip.parquet",
+   "before": {
+    "state": "expected_old_bytes",
+    "size_bytes": 44285451,
+    "sha256": "3d10f8ec3197fd4b52e11c22b3fc2da920a2b53fc8c1c45c20ebf122970e55c2"
+   },
+   "local": "verified"
+  },
+  {
+   "object_key": "naip/stac/naip-overviews.parquet",
+   "before": {
+    "state": "expected_old_bytes",
+    "size_bytes": 512684,
+    "sha256": "9958456a8437f9591cb124d096ddf107b82e8e3e014ae65833ed21575445183d"
+   },
+   "local": "verified"
+  },
+  {
+   "object_key": "naip/stac/naip.fields.json",
+   "before": {
+    "state": "absent"
+   },
+   "local": "verified"
+  },
+  {
+   "object_key": "naip/stac/naip-overviews.fields.json",
+   "before": {
+    "state": "absent"
+   },
+   "local": "verified"
+  }
+ ],
+ "status": "complete"
+}

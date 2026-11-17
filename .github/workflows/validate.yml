@@ -46,7 +46,7 @@ jobs:
           uv run --locked python -m unittest tests.test_source_products tests.test_lakeatlas_semantics tests.test_flat_publication tests.test_support_publication tests.test_source_retirement -v
           uv run --locked python scripts/source_products.py check
       - name: Check publication execution refusal controls offline
-        run: uv run --locked --project scripts/source_publish python -m pytest tests/test_source_upload.py tests/test_source_api.py tests/test_hosted_validation.py tests/test_browser_range_evidence.py tests/test_hosted_ndjson.py tests/test_hosted_catalog_scope.py tests/test_bounded_http.py tests/test_query_hints.py tests/test_hosted_viewer.py -q
+        run: uv run --locked --project scripts/source_publish python -m pytest tests/test_source_upload.py tests/test_source_api.py tests/test_hosted_validation.py tests/test_browser_range_evidence.py tests/test_hosted_ndjson.py tests/test_hosted_catalog_scope.py tests/test_bounded_http.py tests/test_query_hints.py tests/test_hosted_viewer.py tests/test_source_replace.py -q
       - name: Check GEE comparison refusal controls and retained findings offline
         run: |
           uv run --locked --project scripts/gee_validation python -m unittest tests.test_gee_request_contract tests.test_gee_release_comparison tests.test_gee_provenance tests.test_gee_geometry_diagnostic tests.test_gee_attribute_diagnostics tests.test_provenance_archive -v
