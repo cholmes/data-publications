@@ -95,7 +95,7 @@ def read_layer(cache: Path, asset: str) -> tuple[pa.Table, str]:
     if not pyproj.CRS.from_user_input(info["crs"]).equals(pyproj.CRS.from_epsg(4269), ignore_axis_order=True):
         raise ValueError(f"{asset}: unexpected CRS {info['crs']}")
     meta, table = pyogrio.read_arrow(uri)
-    return table, meta["geometry_name"]
+    return table, meta["geometry_name"] or "wkb_geometry"
 
 
 def build_layer(cache: Path, asset: str, path: Path) -> dict[str, Any]:

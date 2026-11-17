@@ -123,7 +123,7 @@ def check_layer(cache: Path, asset: str, path: Path) -> dict[str, Any]:
         need(a.type == b.type, f"{asset}.{name}: type {b.type}, source {a.type}")
         need(a.null_count == b.null_count and a.is_null().equals(b.is_null()), f"{asset}.{name}: nulls differ")
         need(a.equals(b), f"{asset}.{name}: values differ")
-    source_wkb = source[meta["geometry_name"]].cast(pa.binary()).to_pylist()
+    source_wkb = source[meta["geometry_name"] or "wkb_geometry"].cast(pa.binary()).to_pylist()
     output_wkb = restored["geometry"].to_pylist()
     need(out.schema.field("geometry").type == pa.binary(), f"{asset}: geometry is not WKB binary")
     for row, (a, b) in enumerate(zip(source_wkb, output_wkb), start=1):
