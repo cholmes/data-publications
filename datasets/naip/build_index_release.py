@@ -47,16 +47,16 @@ def main():
     parser.add_argument("--artifacts", required=True)
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
-    root = os.path.abspath(args.artifacts)
-    if os.path.exists(args.out):
+    root, out = os.path.abspath(args.artifacts), os.path.abspath(args.out)
+    if os.path.exists(out):
         sys.exit("Use a new output folder; earlier builds are kept.")
-    os.makedirs(args.out)
+    os.makedirs(out)
     with open(os.path.join(HERE, "evidence", "receipt-dirs-62.json")) as f:
         dirs = json.load(f)
     results = sorted(os.path.relpath(p, root) for p in glob.glob(os.path.join(root, OVERVIEW_RESULTS)))
     results.append(NATIONAL_RESULT)
-    quads = os.path.join(args.out, "naip.parquet")
-    overviews = os.path.join(args.out, "naip-overviews.parquet")
+    quads = os.path.join(out, "naip.parquet")
+    overviews = os.path.join(out, "naip-overviews.parquet")
     run = lambda *command: subprocess.run([sys.executable, *command], check=True, cwd=HERE)
     run("build_stac_index.py", quads, *[os.path.join(root, d) for d in dirs],
         "--overviews", FILES + "stac/naip-overviews.parquet")
@@ -78,7 +78,7 @@ def main():
                    "overview_results": {r: sha256(os.path.join(root, r)) for r in results}},
         "outputs": {os.path.basename(p): {"size_bytes": os.path.getsize(p), "sha256": sha256(p)} for p in (quads, overviews)},
     }
-    with open(os.path.join(args.out, "build.json"), "w") as f:
+    with open(os.path.join(out, "build.json"), "w") as f:
         json.dump(report, f, indent=1)
         f.write("\n")
     print(json.dumps(report["outputs"], indent=1))
