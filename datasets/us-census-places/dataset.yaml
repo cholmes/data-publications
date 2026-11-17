@@ -10,7 +10,8 @@ triage:
   priority: pilot_review
   rationale: A map of the national NAIP mosaic needs outlines to click through (state, county, city
     or township), names to label and a place search. The Census Bureau publishes these boundaries as
-    zipped shapefiles only. On 2026-11-16 Overture divisions were compared as the existing
+    zipped shapefiles only. Two other publishers host TIGER-based copies on Source Cooperative (see
+    related_datasets); neither has shore-clipped outlines, townships as tiles, or a names index. On 2026-11-16 Overture divisions were compared as the existing
     alternative and matched 18,269 of 19,514 incorporated places and 418 of 12,523 unincorporated
     ones; reading sorted GeoParquet directly for a map view missed limits set beforehand, where
     tiles met them. This record converts the three boundary files to GeoParquet with a display
@@ -54,3 +55,36 @@ publication:
   - Packaged locally and checked on this machine only. Nothing is hosted, and no Source Cooperative
     product exists for it.
   - No display package yet. The outline tiles and the names index are a separate step.
+related_datasets:
+- id: cboettig-census-2024
+  title: Census TIGER/Line 2024 counties and places (cboettig/census)
+  relationship: alternative
+  url: https://source.coop/cboettig/census
+  use_case: National counties and places as GeoParquet and PMTiles, from the full-resolution TIGER/Line files.
+  comparison: Counties and places only, no county subdivisions. TIGER/Line 2024 geometry, which runs
+    out into coastal water, where the cartographic boundary files used here are clipped to the shore
+    and generalised. Its tiles carry NAME, GEOID and FUNCSTAT but no bounds, state abbreviation,
+    population or label points. On 2026-11-16 its tiles read 89 to 359 KB for three whole-state
+    views and 36 to 91 KB for three whole-county views, within the limits of display-plan.md.
+  spatial_coverage: 50 states, DC, Puerto Rico and the island areas
+  formats: [GeoParquet, PMTiles]
+  access: Tile headers, layer fields and six map views were read anonymously on 2026-11-16. The
+    GeoParquet files were listed, not opened.
+  reviewed_on: '2026-11-16'
+  evidence:
+  - title: Product page
+    url: https://source.coop/cboettig/census
+- id: seerai-hifld
+  title: HIFLD archive with Census TIGER 2024 counties, places and county subdivisions (seerai/hifld)
+  relationship: alternative
+  url: https://source.coop/seerai/hifld
+  use_case: The same three layers, with tracts and block groups, as GeoParquet.
+  comparison: Holds all three layers, with incorporated places and census designated places as two
+    datasets, from the TIGER 2024 geodatabase. GeoParquet only, as directories of part files; no
+    tiles. Its READMEs were read; no data file was opened, so schema and row counts are unchecked.
+  formats: [GeoParquet]
+  access: Listed anonymously and READMEs read on 2026-11-16; data files not opened.
+  reviewed_on: '2026-11-16'
+  evidence:
+  - title: Product page
+    url: https://source.coop/seerai/hifld

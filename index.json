@@ -14840,7 +14840,49 @@
         "kind": "producer",
         "reference_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html",
         "added_on": "2026-11-16"
-      }
+      },
+      "related_datasets": [
+        {
+          "id": "cboettig-census-2024",
+          "title": "Census TIGER/Line 2024 counties and places (cboettig/census)",
+          "relationship": "alternative",
+          "url": "https://source.coop/cboettig/census",
+          "use_case": "National counties and places as GeoParquet and PMTiles, from the full-resolution TIGER/Line files.",
+          "comparison": "Counties and places only, no county subdivisions. TIGER/Line 2024 geometry, which runs out into coastal water, where the cartographic boundary files used here are clipped to the shore and generalised. Its tiles carry NAME, GEOID and FUNCSTAT but no bounds, state abbreviation, population or label points. On 2026-11-16 its tiles read 89 to 359 KB for three whole-state views and 36 to 91 KB for three whole-county views, within the limits of display-plan.md.",
+          "spatial_coverage": "50 states, DC, Puerto Rico and the island areas",
+          "formats": [
+            "GeoParquet",
+            "PMTiles"
+          ],
+          "access": "Tile headers, layer fields and six map views were read anonymously on 2026-11-16. The GeoParquet files were listed, not opened.",
+          "reviewed_on": "2026-11-16",
+          "evidence": [
+            {
+              "title": "Product page",
+              "url": "https://source.coop/cboettig/census"
+            }
+          ]
+        },
+        {
+          "id": "seerai-hifld",
+          "title": "HIFLD archive with Census TIGER 2024 counties, places and county subdivisions (seerai/hifld)",
+          "relationship": "alternative",
+          "url": "https://source.coop/seerai/hifld",
+          "use_case": "The same three layers, with tracts and block groups, as GeoParquet.",
+          "comparison": "Holds all three layers, with incorporated places and census designated places as two datasets, from the TIGER 2024 geodatabase. GeoParquet only, as directories of part files; no tiles. Its READMEs were read; no data file was opened, so schema and row counts are unchecked.",
+          "formats": [
+            "GeoParquet"
+          ],
+          "access": "Listed anonymously and READMEs read on 2026-11-16; data files not opened.",
+          "reviewed_on": "2026-11-16",
+          "evidence": [
+            {
+              "title": "Product page",
+              "url": "https://source.coop/seerai/hifld"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "us_ftype_fgroup",

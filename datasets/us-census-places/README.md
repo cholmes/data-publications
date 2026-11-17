@@ -50,3 +50,28 @@ before the first build, in [validation-plan.md](validation-plan.md).
 US Census Bureau: cartographic boundary files, gazetteer files and population estimates. These
 are US Government works in the public domain; cite the Census Bureau as the source. The scripts
 here are Apache-2.0.
+
+<!-- related-datasets:start -->
+
+## Related datasets
+
+Generated from `related_datasets` in [dataset.yaml](dataset.yaml). These references describe alternatives and complementary uses; they do not add datasets to the processing queue. The comparisons are based on the cited documentation, not an equivalence or accuracy benchmark.
+
+### [Census TIGER/Line 2024 counties and places (cboettig/census)](<https://source.coop/cboettig/census>)
+
+- **Relationship:** Alternative. National counties and places as GeoParquet and PMTiles, from the full-resolution TIGER/Line files.
+- **Coverage:** 50 states, DC, Puerto Rico and the island areas
+- **Formats:** GeoParquet, PMTiles
+- **Access:** Tile headers, layer fields and six map views were read anonymously on 2026-11-16. The GeoParquet files were listed, not opened.
+- **Comparison:** Counties and places only, no county subdivisions. TIGER/Line 2024 geometry, which runs out into coastal water, where the cartographic boundary files used here are clipped to the shore and generalised. Its tiles carry NAME, GEOID and FUNCSTAT but no bounds, state abbreviation, population or label points. On 2026-11-16 its tiles read 89 to 359 KB for three whole-state views and 36 to 91 KB for three whole-county views, within the limits of display-plan.md.
+- **Reviewed:** 2026-11-16. **Sources:** [Product page](<https://source.coop/cboettig/census>).
+
+### [HIFLD archive with Census TIGER 2024 counties, places and county subdivisions (seerai/hifld)](<https://source.coop/seerai/hifld>)
+
+- **Relationship:** Alternative. The same three layers, with tracts and block groups, as GeoParquet.
+- **Formats:** GeoParquet
+- **Access:** Listed anonymously and READMEs read on 2026-11-16; data files not opened.
+- **Comparison:** Holds all three layers, with incorporated places and census designated places as two datasets, from the TIGER 2024 geodatabase. GeoParquet only, as directories of part files; no tiles. Its READMEs were read; no data file was opened, so schema and row counts are unchecked.
+- **Reviewed:** 2026-11-16. **Sources:** [Product page](<https://source.coop/seerai/hifld>).
+
+<!-- related-datasets:end -->
