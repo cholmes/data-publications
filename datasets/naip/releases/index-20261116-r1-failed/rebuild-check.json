@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "check": "1. Rebuild equals the hosted bytes (index-package-plan.md)",
+ "checked_on": "2026-11-17",
+ "status": "failed",
+ "asset": "quads",
+ "hosted": {"path": "stac/naip.parquet", "bytes": 44285451, "sha256_first_24": "3d10f8ec3197fd4b52e11c22", "written_by": "parquet-cpp-arrow version 23.0.1"},
+ "rebuilt": {"from": "receipts of the 62 runs in evidence/receipt-dirs-62.json", "builder_commit": "49b9c5e", "bytes": 44285091, "sha256_first_24": "eebc863a558ad149d58e9edf", "written_by": "parquet-cpp-arrow version 21.0.0"},
+ "same": ["245,554 rows in the same order", "every column's values", "schema", "30 row groups of the same sizes", "geo metadata"],
+ "different": [
+  "The hosted file was written with pyarrow 23.0.1; the builder's documented command pins 21.0.0. The footer differs by 360 bytes.",
+  "The hosted file's collection record gives the first date as 2010-06-24. No row is older than 2021-06-16. The 2010 date came from four Pennsylvania 2024 quads that the file no longer lists, so the hosted file was made by rewriting the earlier index, not from receipts, and kept the earlier collection record. The rebuild from receipts gives 2021-06-16."
+ ],
+ "consequence": "Release index-20261116-r1 is not prepared. The overview index was not rebuilt in this attempt."
+}
