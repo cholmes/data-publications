@@ -25,7 +25,7 @@ The proposed Source Cooperative maintainer is separate from the immutable releas
 
 ## Sources and DOI references
 
-- [Host: nthh](https://github.com/nthh/data-publications)
+- [Processor: nthh](https://source.coop/nthh/us-census-places)
 - [Producer: US Census Bureau](https://www.census.gov/)
 - [License terms](https://www.census.gov/about/policies/citation.html)
 - [Original download](https://www2.census.gov/geo/tiger/GENZ2023/shp/)

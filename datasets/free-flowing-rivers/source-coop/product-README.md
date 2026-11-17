@@ -49,26 +49,7 @@ Independently maintained by [nthh](https://source.coop/nthh).
 - [Original download](https://ndownloader.figshare.com/files/15090536)
 - [Producer: Bernhard Lehner](https://orcid.org/0000-0003-3712-2581)
 - [Producer: Günther Grill](https://orcid.org/0000-0003-4860-3575)
-
-## Release files
-
-- [ffr-reach-network-v1.parquet](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/assets/ffr-reach-network-v1.parquet) (asset)
-- [thumbnail.png](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/display/thumbnail.png) (display_derivatives)
-- [data-license.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/licenses/data-license.json) (data_license)
-- [source-license.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/licenses/source-license.json) (source_license)
-- [ffr-reach-network-v1-field-dictionary.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/metadata/ffr-reach-network-v1-field-dictionary.json) (field_dictionary)
-- [attribution.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/source/attribution.json) (source_attribution)
-- [source-field-dictionary.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/source/source-field-dictionary.json) (supporting_files)
-- [source-inspection.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/source/source-inspection.json) (supporting_files)
-- [source-metadata.json](https://data.source.coop/nthh/free-flowing-rivers/releases/figshare-v1-local-r2/source/source-metadata.json) (supporting_files)
-
-## Display package
-
-Display release: `display-v1`. The manifest is pinned at SHA-256 `2f7046f914ff49749dffd20df9c6c5010706710b881af915633766da4d91fb6d`.
-Display assets are separate immutable derivatives bound to this analytical release.
-- [Display manifest](https://data.source.coop/nthh/free-flowing-rivers/display/display-v1/manifest.json)
-- [Ffr Reaches PMTiles](https://data.source.coop/nthh/free-flowing-rivers/display/display-v1/assets/ffr-reaches.pmtiles) (3570445458 bytes; SHA-256 `6e248eba5ecdf58ee28705a8f567be9497836f0a1c6c078b50327a1599ecdce3`)
-  - [Map style](https://data.source.coop/nthh/free-flowing-rivers/display/display-v1/styles/ffr-reaches.json)
+- [Processor: nthh](https://source.coop/nthh/free-flowing-rivers)
 
 ## Limitations
 

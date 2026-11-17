@@ -587,7 +587,7 @@ def collection_links(collection: dict[str, Any] | None) -> list[dict[str, str]]:
             links.append({"title": title, "url": url})
     role_titles = {
         "producer": "Producer",
-        "processor": "Converter",
+        "processor": "Processor",
         "host": "Host",
         "licensor": "Licensor",
     }

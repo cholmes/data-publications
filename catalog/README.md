@@ -16,3 +16,5 @@ Provenance: generated from canonical dataset.yaml records and checksum-bound met
 - [HydroATLAS LakeATLAS v1.0 — global hydro-environmental lake attributes](lakeatlas/collection.json)
 - [Global river plastic inputs — Lebreton et al. (2017)](river-plastic-inputs/collection.json)
 - [US Census counties, places and county subdivisions, 2023 cartographic boundaries](us-census-places/collection.json)
+
+[Catalog query conventions](AGENTS.md).

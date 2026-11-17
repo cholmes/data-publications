@@ -16,7 +16,7 @@ Formats: `application/json`, `application/vnd.apache.parquet`, `application/vnd.
 - License: US Government work in the public domain. The Census Bureau asks to be cited as the source. These files are a format conversion, not a Census Bureau product.
 - Temporal scope: Boundaries as of 1 January 2023. Population estimates are for 1 July 2023.
 
-- [Host: nthh](https://github.com/nthh/data-publications)
+- [Processor: nthh](https://source.coop/nthh/us-census-places)
 - [Producer: US Census Bureau](https://www.census.gov/)
 - [License terms](https://www.census.gov/about/policies/citation.html)
 - [Original download](https://www2.census.gov/geo/tiger/GENZ2023/shp/)
