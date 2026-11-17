@@ -19,7 +19,11 @@ resolution and the whole of Utah at about 600 m, and records every request the s
 every imagery request GDAL made (from its debug log). The check passes when both reads give a
 picture (band 1 mean between 60 and 200, alpha not all zero), every imagery request is a byte
 range, no index file is read whole, and neither read takes more than 8 MiB of the index files
-(GET bytes; HEAD requests carry no body and are not counted).
+(the ranges GDAL's debug log says it fetched; HEAD requests carry no body).
+
+With --hosted there is no server: the script opens /vsicurl/<host>/nthh/naip/stac/naip.gti, the
+hosted file, with the same reads and marks (hosted check 8). --release then names the local files
+whose checksums the report records.
 """
 import argparse
 import hashlib
@@ -107,6 +111,8 @@ def main():
     parser.add_argument("--release", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--host", default="https://data.source.coop")
+    parser.add_argument("--hosted", action="store_true",
+                        help="open the hosted stac/naip.gti on --host directly, with no loopback server (hosted check 8)")
     args = parser.parse_args()
     if os.path.exists(args.out):
         sys.exit("Use a new output path; earlier results are kept.")
@@ -114,8 +120,8 @@ def main():
     work = args.out + ".work"
     os.makedirs(work)
     seen = []
-    server = serve(release, args.host, seen)
-    url = f"/vsicurl/http://127.0.0.1:{server.server_address[1]}{STAC}naip.gti"
+    server = None if args.hosted else serve(release, args.host, seen)
+    url = f"/vsicurl/{args.host}{STAC}naip.gti" if args.hosted else f"/vsicurl/http://127.0.0.1:{server.server_address[1]}{STAC}naip.gti"
     log = os.path.join(work, "gdal-debug.txt")
     gdal.SetConfigOption("CPL_DEBUG", "ON")
     gdal.SetConfigOption("CPL_LOG", log)
@@ -123,6 +129,7 @@ def main():
     reads, errors = {}, []
     for name, window, res in (("alta_full_resolution", ALTA, None), ("utah_600m", UTAH, UTAH_RES)):
         before = len(seen)
+        log_at = os.path.getsize(log) if os.path.exists(log) else 0
         try:
             reads[name] = read(url, window, res, os.path.join(work, name + ".png"))
         except RuntimeError as e:
@@ -130,15 +137,23 @@ def main():
             reads[name] = None
         reads.setdefault(name, None)
         if reads[name] is not None:
-            index = [s for s in seen[before:] if s.get("size") and s["method"] == "GET"]
+            # GDAL's own record of the ranges it fetched: "VSICURL: Downloading <start>-<end> (<url>)".
+            with open(log, errors="replace") as f:
+                f.seek(log_at)
+                fetched = re.findall(r"Downloading (\d+)-(\d+) \((\S+?)\)", f.read())
+            index = [(int(a), int(b)) for a, b, u in fetched if u.endswith((STAC + "naip.parquet", STAC + "naip-overviews.parquet"))]
             reads[name]["index_requests"] = len(index)
-            reads[name]["index_bytes"] = sum(s["bytes"] for s in index)
-    server.shutdown()
+            reads[name]["index_bytes"] = sum(b - a + 1 for a, b in index)
+            if server:
+                served = [s for s in seen[before:] if s.get("size") and s["method"] == "GET"]
+                reads[name]["index_bytes_served"] = sum(s["bytes"] for s in served)
+    if server:
+        server.shutdown()
     gdal.SetConfigOption("CPL_LOG", None)
     with open(log, errors="replace") as f:
         text = f.read()
     # GDAL's own record of each imagery request: the effective URL and the range it asked for.
-    imagery = sorted(set(re.findall(r"https://data\.source\.coop/nthh/naip/(?!stac/)[^\s?]+\.tif", text)))
+    imagery = sorted(set(re.findall(r"https://data\.source\.coop/nthh/naip/(?!stac/)[^\s?)]+\.tif", text)))
     whole = [s for s in seen if s.get("size") and s["status"] == 200 and s["method"] == "GET" and s["size"] > 1 << 20]
     downloads = re.findall(r"HTTP: Fetch\(https?://[^)]*\.tif", text)
     picture = lambda r: r is not None and 60 <= r["band1_mean"] <= 200 and r["alpha_max"] > 0
@@ -146,10 +161,11 @@ def main():
     passed = not errors and all(picture(r) for r in reads.values()) and small and imagery and not whole and not downloads
     report = {
         "schema_version": 1,
-        "plan": "datasets/naip/index-package-plan.md, addendum for r6, check 12",
+        "plan": ("research/naip-index-r6-20261117/hosting-criteria.md, check 8" if args.hosted
+                 else "datasets/naip/index-package-plan.md, addendum for r6, check 12"),
         "gdal": gdal.__version__,
         "release_files": {n: {"sha256": sha256(os.path.join(release, n)), "size_bytes": os.path.getsize(os.path.join(release, n))} for n in FILES},
-        "opened": url.replace(f":{server.server_address[1]}", ":<port>"),
+        "opened": url.replace(f":{server.server_address[1]}", ":<port>") if server else url,
         "reads": reads,
         "errors": errors,
         "imagery_files_read": imagery,
@@ -157,7 +173,7 @@ def main():
         "imagery_downloaded_whole": downloads,
         "server_requests": len(seen),
         "index_requests": [s for s in seen if s.get("size")],
-        "redirects": sum(1 for s in seen if s["status"] == 302),
+        "redirects": sum(1 for s in seen if s["status"] == 302) if server else None,
         "status": "passed" if passed else "failed",
     }
     with open(args.out, "w") as f:

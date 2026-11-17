@@ -15,13 +15,13 @@ triage:
     unlisted product as of 2026-11-14 and each passed the hosted checks.
 publication:
   status: published
-  release: index-20261116-r5
-  manifest_path: datasets/naip/releases/index-20261116-r5/manifest.json
-  manifest_sha256: 102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80
-  validation_path: datasets/naip/releases/index-20261116-r5/source-fidelity.json
-  release_receipt_path: datasets/naip/releases/index-20261116-r5/package-receipt.json
-  conversion_git_commit: 4a8b335408d437c94b47fbd6727dcd354d2a78e8
-  local_bundle_directory: .local/naip/package/index-20261116-r5
+  release: index-20261117-r6
+  manifest_path: datasets/naip/releases/index-20261117-r6/manifest.json
+  manifest_sha256: 8ae714a167d8a2e6bed6ba099fe6294c1ab6e4b2ef96714b567eb9035e91a222
+  validation_path: datasets/naip/releases/index-20261117-r6/source-fidelity.json
+  release_receipt_path: datasets/naip/releases/index-20261117-r6/package-receipt.json
+  conversion_git_commit: 3f8b56eafd5bd35c946d0a427cb92e74aa7ce4a5
+  local_bundle_directory: .local/naip/package/index-20261117-r6
   catalog:
     snapshot_path: datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json
     snapshot_sha256: 31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9
