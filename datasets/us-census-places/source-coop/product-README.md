@@ -8,7 +8,7 @@ Shore-clipped outlines of US counties, cities and other places, and county subdi
 
 The 2023 Census cartographic boundary files for counties, places and county subdivisions as three GeoParquet files. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve. These are boundaries generalised for mapping at 1:500,000, as of 1 January 2023, not legal boundaries.
 
-Formats: `application/json`, `application/vnd.apache.parquet`, `image/png`, `text/markdown`.
+Formats: `application/json`, `application/vnd.apache.parquet`, `application/vnd.pmtiles`, `image/png`, `text/markdown`.
 
 ## Producer, source, and license
 
@@ -39,7 +39,15 @@ Formats: `application/json`, `application/vnd.apache.parquet`, `image/png`, `tex
 
 ## Display package
 
-No versioned display package is recorded.
+Display release: `cb2023-display-r2`. The manifest is pinned at SHA-256 `2c3828c9aa555375993ccbc1a37fef0d19e40c9608a6e37d020a6205a55497c6`.
+Display assets are separate immutable derivatives bound to this analytical release.
+- [Display manifest](display/cb2023-display-r2/manifest.json)
+- [Counties PMTiles](display/cb2023-display-r2/assets/census_counties.pmtiles) (23766772 bytes; SHA-256 `23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2`)
+  - [Map style](display/cb2023-display-r2/styles/census_counties.json)
+- [Cities, towns and census designated places PMTiles](display/cb2023-display-r2/assets/census_places.pmtiles) (37275676 bytes; SHA-256 `79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf`)
+  - [Map style](display/cb2023-display-r2/styles/census_places.json)
+- [Governing townships and towns PMTiles](display/cb2023-display-r2/assets/census_towns.pmtiles) (20349807 bytes; SHA-256 `a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5`)
+  - [Map style](display/cb2023-display-r2/styles/census_towns.json)
 
 ## Limitations
 

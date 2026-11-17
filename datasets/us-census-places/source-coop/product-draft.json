@@ -117,7 +117,44 @@
   "creation_ready": true,
   "dataset_id": "us-census-places",
   "dataset_title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
-  "display_publication": null,
+  "display_publication": {
+    "assets": [
+      {
+        "href": "display/cb2023-display-r2/assets/census_counties.pmtiles",
+        "id": "census-counties",
+        "path": "assets/census_counties.pmtiles",
+        "sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+        "size_bytes": 23766772,
+        "style_href": "display/cb2023-display-r2/styles/census_counties.json",
+        "style_path": "styles/census_counties.json",
+        "title": "Counties"
+      },
+      {
+        "href": "display/cb2023-display-r2/assets/census_places.pmtiles",
+        "id": "census-places",
+        "path": "assets/census_places.pmtiles",
+        "sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+        "size_bytes": 37275676,
+        "style_href": "display/cb2023-display-r2/styles/census_places.json",
+        "style_path": "styles/census_places.json",
+        "title": "Cities, towns and census designated places"
+      },
+      {
+        "href": "display/cb2023-display-r2/assets/census_towns.pmtiles",
+        "id": "census-towns",
+        "path": "assets/census_towns.pmtiles",
+        "sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+        "size_bytes": 20349807,
+        "style_href": "display/cb2023-display-r2/styles/census_towns.json",
+        "style_path": "styles/census_towns.json",
+        "title": "Governing townships and towns"
+      }
+    ],
+    "manifest_href": "display/cb2023-display-r2/manifest.json",
+    "manifest_path": "datasets/us-census-places/display/cb2023-display-r2/manifest.json",
+    "manifest_sha256": "2c3828c9aa555375993ccbc1a37fef0d19e40c9608a6e37d020a6205a55497c6",
+    "release": "cb2023-display-r2"
+  },
   "draft_type": "source_coop_product_draft",
   "hosted": false,
   "independent_maintainer_proposal": {

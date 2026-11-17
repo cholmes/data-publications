@@ -1,0 +1,173 @@
+{
+  "analytic_release": "cb2023-r1",
+  "assets": [
+    {
+      "attribute_fields": [
+        "name",
+        "state",
+        "kind",
+        "population",
+        "xmin",
+        "ymin",
+        "xmax",
+        "ymax"
+      ],
+      "geometry_type": "polygon",
+      "id": "census-counties",
+      "id_encoding": "property",
+      "id_field": "id",
+      "labels": {
+        "geometry_type": "point",
+        "source_layer": "census_counties_label"
+      },
+      "max_zoom": 11,
+      "min_zoom": 3,
+      "path": "assets/census_counties.pmtiles",
+      "sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+      "size_bytes": 23766772,
+      "source_asset": {
+        "bound_in_release_manifest": true,
+        "path": "assets/counties.parquet",
+        "sha256": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+        "size_bytes": 7405880
+      },
+      "source_layer": "census_counties",
+      "source_rows": 3235,
+      "style_path": "styles/census_counties.json",
+      "title": "Counties"
+    },
+    {
+      "attribute_fields": [
+        "name",
+        "state",
+        "kind",
+        "population",
+        "xmin",
+        "ymin",
+        "xmax",
+        "ymax"
+      ],
+      "geometry_type": "polygon",
+      "id": "census-places",
+      "id_encoding": "property",
+      "id_field": "id",
+      "labels": {
+        "geometry_type": "point",
+        "source_layer": "census_places_label"
+      },
+      "max_zoom": 11,
+      "min_zoom": 7,
+      "path": "assets/census_places.pmtiles",
+      "sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+      "size_bytes": 37275676,
+      "source_asset": {
+        "bound_in_release_manifest": true,
+        "path": "assets/places.parquet",
+        "sha256": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+        "size_bytes": 20737486
+      },
+      "source_layer": "census_places",
+      "source_rows": 32608,
+      "style_path": "styles/census_places.json",
+      "title": "Cities, towns and census designated places"
+    },
+    {
+      "attribute_fields": [
+        "name",
+        "state",
+        "kind",
+        "population",
+        "xmin",
+        "ymin",
+        "xmax",
+        "ymax"
+      ],
+      "geometry_type": "polygon",
+      "id": "census-towns",
+      "id_encoding": "property",
+      "id_field": "id",
+      "labels": {
+        "geometry_type": "point",
+        "source_layer": "census_towns_label"
+      },
+      "max_zoom": 11,
+      "min_zoom": 7,
+      "path": "assets/census_towns.pmtiles",
+      "sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+      "size_bytes": 20349807,
+      "source_asset": {
+        "bound_in_release_manifest": true,
+        "path": "assets/county-subdivisions.parquet",
+        "sha256": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+        "size_bytes": 26703829
+      },
+      "source_layer": "census_towns",
+      "source_rows": 16186,
+      "style_path": "styles/census_towns.json",
+      "title": "Governing townships and towns"
+    }
+  ],
+  "attribution": "Source: US Census Bureau, 2023 cartographic boundary files, gazetteer files and population estimates",
+  "dataset_id": "us-census-places",
+  "display_release": "cb2023-display-r2",
+  "files": {
+    "README.md": {
+      "sha256": "fce78173c132b94ec871e72e226b8b8f084f89c6c82fb165707cac6733c68e09",
+      "size_bytes": 387
+    },
+    "assets/census_counties.pmtiles": {
+      "sha256": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+      "size_bytes": 23766772
+    },
+    "assets/census_places.pmtiles": {
+      "sha256": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+      "size_bytes": 37275676
+    },
+    "assets/census_towns.pmtiles": {
+      "sha256": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5",
+      "size_bytes": 20349807
+    },
+    "assets/place-names.json": {
+      "sha256": "9e5c5429ba80fe18ac8ecc2fe0db2fbe02cc3ff4c07faf90a81f821f64bc657a",
+      "size_bytes": 2870876
+    },
+    "reports/browser.json": {
+      "sha256": "4118c28443ba2e7586d13d39d04a2ddda9e1cb73192a1c5648623f8b13dfe087",
+      "size_bytes": 1453
+    },
+    "reports/build-report.json": {
+      "sha256": "7061cc3f4b93c54d1484f6b9a02e448713fde505125450a43a25c36b33f06d2a",
+      "size_bytes": 1848
+    },
+    "reports/provisional-manifest.json": {
+      "sha256": "b032a947345752d75da61b56738cc80df979a12e88cfcff49772932076341a6c",
+      "size_bytes": 4931
+    },
+    "reports/validation.json": {
+      "sha256": "02b08ac299980c11cae76de70ff13cace813d397aade75fc12fd169b8c7d594b",
+      "size_bytes": 6366
+    },
+    "styles/census_counties.json": {
+      "sha256": "9bd314bdfa75f414ac17d12f063bb6cd365cc55087a35b1419327e986d7caa4c",
+      "size_bytes": 1476
+    },
+    "styles/census_places.json": {
+      "sha256": "cb72315a8c4bb043022dfd7ff2eec42600fc6e7b606f3fb94eca5392f362214d",
+      "size_bytes": 1464
+    },
+    "styles/census_towns.json": {
+      "sha256": "36bd743e528bfbbccf2e304ff31f38d05a72969097fa18e2f93af041d9c0631f",
+      "size_bytes": 1459
+    }
+  },
+  "names_index": {
+    "path": "assets/place-names.json",
+    "rows": 52029
+  },
+  "schema_version": 1,
+  "source_license": {
+    "identifier": "other",
+    "url": "https://www.census.gov/about/policies/citation.html"
+  },
+  "status": "prepared"
+}

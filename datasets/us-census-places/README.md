@@ -5,8 +5,9 @@ subdivisions, converted from zipped shapefiles to one GeoParquet file per layer.
 
 **Status (2026-11-16):** prepared. Release `cb2023-r1` was built from committed code, passed the
 checks of the validation plan and the shared packager, and rebuilt byte-identically in a clean
-checkout. Nothing is hosted and nothing is in the public catalogue. The display package (outline
-tiles and a names index) is not built here yet.
+checkout. The display package `cb2023-display-r2` (three outline tile files and a names index) passed the
+checks of [display-plan.md](display-plan.md); its first build failed three and is kept in
+`display/cb2023-display-r1-failed/`. Nothing is hosted and nothing is in the public catalogue.
 
 | File | Rows | What a row is |
 | --- | ---: | --- |

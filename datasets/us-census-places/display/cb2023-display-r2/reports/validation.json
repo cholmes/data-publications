@@ -1,0 +1,250 @@
+{
+  "archive_bytes": {
+    "census_counties": 23766772,
+    "census_places": 37275676,
+    "census_towns": 20349807
+  },
+  "archives_sha256": {
+    "census_counties": "23e2e5abf8a7cc3c94e81c5d345adbf5d2a893c21e7c0467a885a1070b925ac2",
+    "census_places": "79520f8f8bb67d09b6e443539865494bf80d02049dcd9a2a8869544db987cadf",
+    "census_towns": "a56dc97780b3e0d71393f211a1025e8e2fffbbdc95432164bf344f6c3e3a2be5"
+  },
+  "checks": {
+    "1_inputs": {
+      "passed": true,
+      "sha256": {
+        "counties": "e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+        "county-subdivisions": "4176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+        "places": "485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe"
+      }
+    },
+    "2_accounting": {
+      "layers": {
+        "census_counties": {
+          "expected": 3235,
+          "found": 3235,
+          "labels_expected": 3235,
+          "labels_found": 3235,
+          "labels_not_exactly_one": 0,
+          "labels_with_copies_in_tile_margins": 246,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        },
+        "census_places": {
+          "expected": 32608,
+          "found": 32608,
+          "labels_expected": 32608,
+          "labels_found": 32608,
+          "labels_not_exactly_one": 0,
+          "labels_with_copies_in_tile_margins": 2580,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        },
+        "census_towns": {
+          "expected": 16186,
+          "found": 16186,
+          "labels_expected": 16186,
+          "labels_found": 16186,
+          "labels_not_exactly_one": 0,
+          "labels_with_copies_in_tile_margins": 1125,
+          "missing": [],
+          "missing_count": 0,
+          "unexpected": []
+        }
+      },
+      "passed": true
+    },
+    "3_attributes": {
+      "first_differences": [],
+      "passed": true
+    },
+    "4_label_position": {
+      "first_over": [],
+      "limit_m": 30.0,
+      "passed": true,
+      "worst_m": 0.62
+    },
+    "5_geometry_sample": {
+      "area_limit": 0.01,
+      "layers": {
+        "census_counties": {
+          "failed": [],
+          "sampled": 32,
+          "two_sided_over_limit_reported_only": {},
+          "worst_area_difference": 0.00014,
+          "worst_drawn_line_to_source_m": 4.89
+        },
+        "census_places": {
+          "failed": [],
+          "sampled": 32,
+          "two_sided_over_limit_reported_only": {
+            "0100820": 605.55,
+            "0102956": 56.51
+          },
+          "worst_area_difference": 0.00405,
+          "worst_drawn_line_to_source_m": 3.47
+        },
+        "census_towns": {
+          "failed": [],
+          "sampled": 32,
+          "two_sided_over_limit_reported_only": {},
+          "worst_area_difference": 0.00057,
+          "worst_drawn_line_to_source_m": 4.14
+        }
+      },
+      "limit_m": 30.0,
+      "note": "Pieces are clipped to their tile, joined, and closed by 1 m to remove tile seams.",
+      "passed": true
+    },
+    "6_read_cost": {
+      "county_limit_bytes": 400000,
+      "county_views": {
+        "Allegheny PA": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 96826,
+          "tiles": 8,
+          "zoom": 9.89
+        },
+        "Boulder CO": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 34643,
+          "tiles": 9,
+          "zoom": 10.36
+        },
+        "Cherry NE": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 3412,
+          "tiles": 3,
+          "zoom": 8.92
+        },
+        "Franklin OH": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 42713,
+          "tiles": 12,
+          "zoom": 10.37
+        },
+        "Fulton GA": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 46056,
+          "tiles": 6,
+          "zoom": 9.51
+        },
+        "Los Angeles CA": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 92681,
+          "tiles": 4,
+          "zoom": 7.94
+        },
+        "Polk IA": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 20104,
+          "tiles": 12,
+          "zoom": 10.2
+        },
+        "Travis TX": {
+          "archives": [
+            "census_places",
+            "census_towns"
+          ],
+          "bytes": 28935,
+          "tiles": 4,
+          "zoom": 9.74
+        }
+      },
+      "passed": true,
+      "state_limit_bytes": 600000,
+      "state_views": {
+        "CA": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 81289,
+          "tiles": 6,
+          "zoom": 5.65
+        },
+        "CO": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 62391,
+          "tiles": 6,
+          "zoom": 6.86
+        },
+        "GA": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 100570,
+          "tiles": 5,
+          "zoom": 6.76
+        },
+        "OH": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 139070,
+          "tiles": 6,
+          "zoom": 7.0
+        },
+        "PA": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 45356,
+          "tiles": 6,
+          "zoom": 7.39
+        },
+        "TX": {
+          "archives": [
+            "census_counties"
+          ],
+          "bytes": 267263,
+          "tiles": 6,
+          "zoom": 5.58
+        }
+      }
+    },
+    "7_names_index": {
+      "expected_rows": 52029,
+      "passed": true,
+      "rows": 52029
+    },
+    "8_repeat_build": {
+      "archives_identical": {
+        "census_counties": true,
+        "census_places": true,
+        "census_towns": true
+      },
+      "names_index_identical": true,
+      "note": "If the archive differs, the second archive needs its own passing report.",
+      "passed": true
+    }
+  },
+  "dataset_id": "us-census-places",
+  "display_release": "cb2023-display-r2",
+  "schema_version": 1,
+  "status": "passed"
+}
