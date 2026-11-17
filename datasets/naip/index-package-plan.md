@@ -185,3 +185,10 @@ absolute), which check 11 must reject. New checks:
 
 Check 1 (bytes equal the hosted files) does not apply to r6: its files are meant to differ. Check
 2 (clean checkout gives the same bytes) and checks 3 to 10 are unchanged.
+
+### Amendment to check 12 (written after its first run, before the second)
+
+The first run (`check-gti-open-r6-1.json`, kept) failed before reading anything: the
+`naip-index` environment's GDAL 3.12.4 has no Parquet driver. Check 12 now runs in the Python
+that ships inside QGIS 4.2.1, whose GDAL 3.12.4 has the Parquet and GTI drivers; that is the
+GDAL a QGIS user opens the file with. The pass marks are unchanged.

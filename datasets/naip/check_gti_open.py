@@ -3,7 +3,13 @@
 
     python check_gti_open.py --release DIR --out NEW_FILE [--host https://data.source.coop]
 
-Run with GDAL 3.12.4, the version in QGIS 4.2.1 (~/.cache/folia/envs/naip-index). A loopback
+Run with the Python inside QGIS 4.2.1 (GDAL 3.12.4 with its Parquet and GTI drivers); the
+naip-index environment has GDAL 3.12.4 without the Parquet driver. On macOS:
+
+    Q=/Applications/QGIS-final-4_2_1.app/Contents; R=$Q/Resources/python3.12
+    PYTHONPATH="$R:$R/lib-dynload:$R/site-packages" $Q/MacOS/python3.12 check_gti_open.py ...
+
+A loopback
 server answers /nthh/naip/stac/<name> from the release's four files, with byte ranges, and sends
 every other path to the host with a 302, so a relative tile address in the index reaches the
 hosted imagery as it will once the files are at stac/. The script opens
