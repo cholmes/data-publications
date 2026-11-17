@@ -127,3 +127,16 @@ For r3 the environment matches the libraries that wrote the hosted files (Homebr
 pyproj 3.7.2 (PROJ 9.5.1), in the new `index-env.lock.txt`. The pass marks of 1a, 1b, 1c and 3 to
 10 are otherwise unchanged. If the files come out byte-identical to the hosted ones apart from the
 quad index's collection record, that is reported.
+
+## Addendum for r4 (2026-11-17 UTC, written after r3's result and before the r4 build)
+
+`index-20261116-r3` failed check 7 only and is kept in `releases/index-20261116-r3-failed/`. Its
+overview index is byte-identical to the hosted file; its quad index differs from the hosted one
+only in the collection record's first date (2021-06-16, the earliest row; hosted 2010-06-24),
+and checks 1a, 1b, 1c, 3, 4, 5, 6, 8 and 9 passed.
+
+**Check 7, the corrected pattern was too narrow.** 12,647 rows failed: 7,629 Arizona 2025 names
+with upper-case quarters (`_NE_`) and 5,018 Missouri 2024 names with upper-case quarters and a
+two-digit resolution (`_15_30_`), as the source names them. Every one is dated by its flight
+date. The pattern now accepts either case for the quarter and two or three digits for the
+resolution. Nothing else changes; r4 is built again from the commit that holds this addendum.

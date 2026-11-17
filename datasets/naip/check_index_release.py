@@ -268,7 +268,7 @@ def check_dates(table):
     wrong = []
     for item, when in zip(table.column("id").to_pylist(), table.column("datetime").to_pylist()):
         # <state>_m_<block><quad>_<quarter>_<zone>_<res>_<flown>[_<made>]: the first date is the day flown
-        m = re.match(r"^[a-z]{2}_m_\d{7}_[ns][ew]_\d{2}_\d{3}_(\d{8})(_\d{8})?$", item)
+        m = re.match(r"^[a-z]{2}_m_\d{7}_[nsNS][ewEW]_\d{2}_\d{2,3}_(\d{8})(_\d{8})?$", item)
         if not m or when.strftime("%Y%m%d") != m.group(1):
             wrong.append(item)
     return {"passed": not wrong, "wrong": failure_list(wrong)}
