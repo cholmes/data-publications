@@ -1,0 +1,39 @@
+schema_version: 1
+id: us-census-places
+title: US Census counties, places and county subdivisions, 2023 cartographic boundaries
+intake:
+  kind: producer
+  reference_url: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+  added_on: '2026-11-16'
+triage:
+  decision: publish_conversion
+  priority: pilot_review
+  rationale: A map of the national NAIP mosaic needs outlines to click through (state, county, city
+    or township), names to label and a place search. The Census Bureau publishes these boundaries as
+    zipped shapefiles only. On 2026-11-16 Overture divisions were compared as the existing
+    alternative and matched 18,269 of 19,514 incorporated places and 418 of 12,523 unincorporated
+    ones; reading sorted GeoParquet directly for a map view missed limits set beforehand, where
+    tiles met them. This record converts the three boundary files to GeoParquet with a display
+    package beside them.
+source:
+  producer: US Census Bureau
+  version: 2023 cartographic boundary files, 1:500,000; 2023 gazetteer files; vintage 2023 population
+    estimates
+  url: https://www2.census.gov/geo/tiger/GENZ2023/shp/
+  license: Public domain (US Government work). The Census Bureau asks to be cited as the source.
+  license_url: https://www.census.gov/about/policies/citation.html
+  pins: datasets/us-census-places/source.py
+  boundary_date: '2023-01-01'
+  population_estimate_date: '2023-07-01'
+  version_checked_on: '2026-11-16'
+build:
+  entrypoint: datasets/us-census-places/build.py
+  validator: datasets/us-census-places/validate.py
+  environment: datasets/us-census-places/uv.lock
+  acceptance_criteria: datasets/us-census-places/validation-plan.md
+  release: cb2023-r1
+  outputs:
+  - format: GeoParquet
+    role: analytic vector data, one file per layer (counties, places, county-subdivisions)
+publication:
+  status: candidate
