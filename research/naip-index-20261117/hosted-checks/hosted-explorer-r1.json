@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "page": "https://experiments.folia.sh/stac-geoparquet/?lng=-111.64&lat=40.59&zoom=14&execution=browser",
+  "index_requests": [],
+  "index_response_statuses": [],
+  "quad_requests": 0,
+  "first_quads": [],
+  "page_errors": [],
+  "status": "failed"
+}

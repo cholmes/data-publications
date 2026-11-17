@@ -27,3 +27,14 @@ failed as written; a failure is kept and blocks the published status.
    headless Chrome at Alta, Utah, zoom 14, reading in the browser (`execution=browser`): it
    requests `stac/naip.parquet` only with byte ranges, then requests at least one quad COG from
    `data.source.coop/nthh/naip/`, and the page reports no error. Request lists are recorded.
+
+## Amendment to check 7 (written after its first run, before the second)
+
+The first run (`hosted-explorer-r1.json`) failed: it saw no request to
+`data.source.coop/nthh/naip/stac/naip.parquet`. The production explorer reads NAIP through its
+range cache (`naip-range-cache.me-521.workers.dev/nthh/naip/…`), which passes requests on to
+`data.source.coop`, so the address in the check was wrong. Check 7 now counts requests to either
+address for the index and the quad COGs, with the rest unchanged, and adds: the footer
+(`bytes=-131072`), the first 64 KiB and the 64 KiB at byte 20,000,000 read through the cache have
+the same SHA-256 as the same ranges read from `data.source.coop`, and the cache reports the
+release's size (44,289,015 bytes) in `Content-Range`.
