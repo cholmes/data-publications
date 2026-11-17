@@ -26,8 +26,8 @@ publication:
     snapshot_path: datasets/naip/releases/index-20261117-r7/catalog-input-r1/snapshot.json
     snapshot_sha256: b811cc8f9e231f08d1b3281a62878f518ebaf8557e9072d9b1d247d31512d744
     package_base_url: https://data.source.coop/nthh/naip/releases/index-20261117-r7/
-    hosting_report_path: research/naip-index-20261117/hosting-report.json
-    hosting_report_sha256: 079c94fbb4b6e9fbadb188da291ee29f2d5adccd0f8e2a1c04571e294ff521c8
+    hosting_report_path: research/naip-index-r7-20261117/hosting-report.json
+    hosting_report_sha256: 50ef582304140566bd6e753048e27bb386db321c001952e8ed1a9a693b31217d
     map_assets:
     - asset_id: overview_national
       href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
@@ -62,8 +62,8 @@ publication:
     flat_layout:
       manifest_path: datasets/naip/source-coop/flat-20261117-r7/manifest.json
       manifest_sha256: 313e3b2097bd2f2c5391269ad1d8fb30934a56fb39ab2c7a675bca92adadcf22
-      hosting_report_path: research/naip-index-20261117/flat-hosting.json
-      hosting_report_sha256: ad9b2d12ae090d97a75311cdd94f88173a8bfe414b357fb8e2cccd8c40dd18ed
+      hosting_report_path: research/naip-index-r7-20261117/flat-hosting.json
+      hosting_report_sha256: 181ba1d39e03360c91c0e0a156cfb0e3375f963b54daf70cfcae661840ca0f98
     owner: nthh
     owner_status: confirmed
     account_verification:

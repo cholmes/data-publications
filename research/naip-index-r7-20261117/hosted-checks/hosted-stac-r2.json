@@ -1,0 +1,267 @@
+{
+ "schema_version": 1,
+ "criteria": "research/naip-index-r7-20261117/hosting-criteria.md",
+ "base": "https://data.source.coop/nthh/naip/",
+ "checks": {
+  "anonymous_access": "passed",
+  "asset_checksums": "passed",
+  "range_requests": "passed",
+  "cors": "passed",
+  "subset_query": "passed",
+  "catalog_links": "passed"
+ },
+ "files": [
+  {
+   "filename": "stac/naip.parquet",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 45445261,
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "ranges": [
+    {
+     "range": "0-3",
+     "status": 206,
+     "content_range": "bytes 0-3/45445261",
+     "passed": true
+    },
+    {
+     "range": "45445253-45445260",
+     "status": 206,
+     "content_range": "bytes 45445253-45445260/45445261",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip-overviews.parquet",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 519918,
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "ranges": [
+    {
+     "range": "0-3",
+     "status": 206,
+     "content_range": "bytes 0-3/519918",
+     "passed": true
+    },
+    {
+     "range": "519910-519917",
+     "status": 206,
+     "content_range": "bytes 519910-519917/519918",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip.fields.json",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 1607,
+   "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/1607",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip-overviews.fields.json",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 1776,
+   "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/1776",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip.gti",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 3858,
+   "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/3858",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip-overviews.gti",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 957,
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/957",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  }
+ ],
+ "subset_query": [
+  {
+   "filename": "stac/naip.parquet",
+   "window": [
+    -111.7,
+    40.5,
+    -111.5,
+    40.65
+   ],
+   "hosted_rows": 40,
+   "local_rows": 40,
+   "equal": true
+  },
+  {
+   "filename": "stac/naip-overviews.parquet",
+   "window": [
+    -114.1,
+    36.9,
+    -109.0,
+    42.1
+   ],
+   "hosted_rows": 12,
+   "local_rows": 12,
+   "equal": true
+  }
+ ],
+ "quad_rows_hosted": 245554,
+ "catalog_links": [
+  {
+   "href": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.gti",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.parquet",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip.fields.json",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip.gti",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://data.source.coop/nthh/naip/stac/naip.parquet",
+   "kind": "source",
+   "status": 200,
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+   "passed": true
+  },
+  {
+   "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json",
+   "kind": "git",
+   "exists_at_revision": true,
+   "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+   "passed": true
+  }
+ ]
+}

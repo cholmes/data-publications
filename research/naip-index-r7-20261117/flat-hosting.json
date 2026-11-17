@@ -1,0 +1,75 @@
+{
+ "schema_version": 1,
+ "dataset_id": "naip",
+ "layout_id": "flat-20261117-r7",
+ "manifest_sha256": "313e3b2097bd2f2c5391269ad1d8fb30934a56fb39ab2c7a675bca92adadcf22",
+ "checked_at": "2026-11-17T18:20:33.953326+00:00",
+ "checks": {
+  "anonymous_access": "passed",
+  "range_requests": "passed",
+  "cors": "passed",
+  "asset_checksums": "passed",
+  "subset_query": "passed",
+  "catalog_links": "passed",
+  "browser_render": "passed",
+  "gti_open": "passed"
+ },
+ "status": "passed",
+ "evidence": [
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-stac-r2.json",
+   "sha256": "b305ea097dea53b2f02a595e3a230a6847a5a51ab3002383864f6e8fbc66fcdf"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-explorer-r1.json",
+   "sha256": "1e91ffcfbb0e5e29942b9c189d0a1170e7d56da128bb967296f54f3739d794d5"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-gti-r1.json",
+   "sha256": "c7fd0c0a39e87137565dfcf38309423eb00ed5e836832002ea24885d868e01fe"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/replace-run-1/summary.json",
+   "sha256": "dcd50813634dddbc357de0c3fec7a09e3be054fbb02182a631e503ea1981a13f"
+  }
+ ],
+ "criteria": "research/naip-index-r7-20261117/hosting-criteria.md",
+ "files": [
+  {
+   "filename": "stac/naip.parquet",
+   "status": "verified",
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261
+  },
+  {
+   "filename": "stac/naip-overviews.parquet",
+   "status": "verified",
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918
+  },
+  {
+   "filename": "stac/naip.fields.json",
+   "status": "verified",
+   "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "size_bytes": 1607
+  },
+  {
+   "filename": "stac/naip-overviews.fields.json",
+   "status": "verified",
+   "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "size_bytes": 1776
+  },
+  {
+   "filename": "stac/naip.gti",
+   "status": "verified",
+   "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+   "size_bytes": 3858
+  },
+  {
+   "filename": "stac/naip-overviews.gti",
+   "status": "verified",
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "size_bytes": 957
+  }
+ ]
+}

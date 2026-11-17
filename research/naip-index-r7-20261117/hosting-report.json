@@ -1,0 +1,38 @@
+{
+ "schema_version": 1,
+ "dataset_id": "naip",
+ "release": "index-20261117-r7",
+ "package_manifest_sha256": "de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d",
+ "package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/",
+ "checked_at": "2026-11-17T18:20:33.953326+00:00",
+ "checks": {
+  "anonymous_access": "passed",
+  "range_requests": "passed",
+  "cors": "passed",
+  "asset_checksums": "passed",
+  "subset_query": "passed",
+  "catalog_links": "passed",
+  "browser_render": "passed",
+  "gti_open": "passed"
+ },
+ "status": "passed",
+ "evidence": [
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-stac-r2.json",
+   "sha256": "b305ea097dea53b2f02a595e3a230a6847a5a51ab3002383864f6e8fbc66fcdf"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-explorer-r1.json",
+   "sha256": "1e91ffcfbb0e5e29942b9c189d0a1170e7d56da128bb967296f54f3739d794d5"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/hosted-checks/hosted-gti-r1.json",
+   "sha256": "c7fd0c0a39e87137565dfcf38309423eb00ed5e836832002ea24885d868e01fe"
+  },
+  {
+   "path": "research/naip-index-r7-20261117/replace-run-1/summary.json",
+   "sha256": "dcd50813634dddbc357de0c3fec7a09e3be054fbb02182a631e503ea1981a13f"
+  }
+ ],
+ "note": "The package base names the release's package layout; that prefix was never hosted. Every catalogue address is rewritten to the files at stac/ (flat layout) or to the repository (support layout), and the support layout refuses a catalogue that still names a releases/ address. The checks are those of the stac/ files."
+}

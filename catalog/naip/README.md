@@ -8,7 +8,7 @@ One file per quarter quad per state-year, from flights of 2021 to 2025. Each fil
 
 - Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.
 - Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).
-- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns.
+- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti` opens the index in QGIS or GDAL as one mosaic (GDAL tile index), with `stac/naip-overviews.gti` for zoomed-out views.
 
 ## How the two indexes are organized
 
@@ -29,6 +29,9 @@ flown in more than one listed year has a row for each. Its columns:
 - `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a
   multihash), `type` and `roles`.
 - `naip:run`: the conversion run that made the file.
+- `naip:gti_location`: the file's address relative to `stac/`, for example
+  `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; it is
+  the location column of `stac/naip.gti` (below). Use `href` for anything else.
 
 `stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except
 `naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and
@@ -38,7 +41,7 @@ or year.
 Rows of the quad index are ordered along a Hilbert curve through the centre of each footprint,
 newest flight first at the same place, with states and years mixed. They are written in 30
 row groups of about 8,192 rows, with statistics and a page index, so a query for a small area
-reads a few row groups instead of the whole 44 MB file. For the newest picture of a place, keep
+reads a few row groups instead of the whole 45 MB file. For the newest picture of a place, keep
 the row with the latest `datetime`.
 
 The quarter quads around Alta, Utah, newest first:
@@ -51,16 +54,38 @@ WHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65
 ORDER BY datetime DESC;
 ```
 
+## Open in QGIS or GDAL
+
+`stac/naip.gti` opens every quarter quad as one mosaic in QGIS (Layer > Add Layer > Add Raster
+Layer, with this address as the source) and in GDAL 3.9 or later:
+
+```
+/vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti
+```
+
+`empty_dir=yes` tells GDAL not to look for side files (`.aux.xml`, `.msk`, `.ovr`) next to each
+quad, which do not exist; without it a first view of a new area makes about 170 extra requests
+and takes about four times as long. The plain `/vsicurl/https://...` address works too.
+
+It is a GDAL tile index (GTI) over `stac/naip.parquet`: newest flight on top, in NAD83 longitude
+and latitude at about 0.5 m, with an alpha band so the masked edge of each quad stays clear.
+Zoomed out it draws the 9.6 m state files and then the national file, through
+`stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range:
+a first view of a new area is about 25 requests, a few seconds, and panning nearby is read from
+what is already fetched. Its reader needs the Parquet driver, which QGIS includes.
+
 ## Files
 
 Use GeoParquet for analysis. Field dictionaries describe columns and units.
 
 | File | Size |
 | --- | ---: |
-| [stac/naip.parquet](https://data.source.coop/nthh/naip/stac/naip.parquet) | 44.29 MB |
-| [stac/naip-overviews.parquet](https://data.source.coop/nthh/naip/stac/naip-overviews.parquet) | 516.2 kB |
-| [stac/naip.fields.json](https://data.source.coop/nthh/naip/stac/naip.fields.json) | 1.5 kB |
-| [stac/naip-overviews.fields.json](https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json) | 1.7 kB |
+| [stac/naip.parquet](https://data.source.coop/nthh/naip/stac/naip.parquet) | 45.45 MB |
+| [stac/naip-overviews.parquet](https://data.source.coop/nthh/naip/stac/naip-overviews.parquet) | 519.9 kB |
+| [stac/naip.fields.json](https://data.source.coop/nthh/naip/stac/naip.fields.json) | 1.6 kB |
+| [stac/naip-overviews.fields.json](https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json) | 1.8 kB |
+| [stac/naip.gti](https://data.source.coop/nthh/naip/stac/naip.gti) | 3.9 kB |
+| [stac/naip-overviews.gti](https://data.source.coop/nthh/naip/stac/naip-overviews.gti) | 1.0 kB |
 
 ## Schema
 

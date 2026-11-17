@@ -2,69 +2,69 @@
   "assets": [
     {
       "asset_id": "overviews",
-      "checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+      "checksum": "1220f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
       "href": "assets/overviews.parquet",
       "media_type": "application/vnd.apache.parquet",
       "roles": [
         "data"
       ],
-      "size_bytes": 516248,
+      "size_bytes": 519918,
       "title": "Overview file index (STAC GeoParquet)"
     },
     {
       "asset_id": "overviews_fields",
-      "checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+      "checksum": "12201496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
       "href": "metadata/overviews-field-dictionary.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 1705,
+      "size_bytes": 1776,
       "title": "overviews field dictionary"
     },
     {
       "asset_id": "quads",
-      "checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+      "checksum": "12202252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
       "href": "assets/quads.parquet",
       "media_type": "application/vnd.apache.parquet",
       "roles": [
         "data"
       ],
-      "size_bytes": 44289015,
+      "size_bytes": 45445261,
       "title": "Quarter-quad index (STAC GeoParquet)"
     },
     {
       "asset_id": "quads_fields",
-      "checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+      "checksum": "1220d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
       "href": "metadata/quads-field-dictionary.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 1536,
+      "size_bytes": 1607,
       "title": "quads field dictionary"
     },
     {
       "asset_id": "support-1",
-      "checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+      "checksum": "1220aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
       "href": "provenance/build-manifest.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 15637,
+      "size_bytes": 15894,
       "title": "Build commit, environment, input checksums and output facts"
     },
     {
       "asset_id": "support-2",
-      "checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+      "checksum": "1220286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
       "href": "provenance/check.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 9333,
-      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+      "size_bytes": 11285,
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
     },
     {
       "asset_id": "support-3",
@@ -79,14 +79,69 @@
     },
     {
       "asset_id": "support-4",
-      "checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+      "checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
       "href": "provenance/index-package-plan.md",
       "media_type": "text/markdown",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 9961,
+      "size_bytes": 15726,
       "title": "Checks written before the first build, with addenda"
+    },
+    {
+      "asset_id": "support-5",
+      "checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "href": "provenance/check-gti-open.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 4299,
+      "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+    },
+    {
+      "asset_id": "support-6",
+      "checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "href": "provenance/changes.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 129,
+      "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+    },
+    {
+      "asset_id": "support-7",
+      "checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+      "href": "metadata/gti/naip.gti",
+      "media_type": "application/xml",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 3858,
+      "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
+    },
+    {
+      "asset_id": "support-8",
+      "checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+      "href": "metadata/gti/naip-overviews.gti",
+      "media_type": "application/xml",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 957,
+      "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
+    },
+    {
+      "asset_id": "support-9",
+      "checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+      "href": "provenance/check-gti-open-on-r6.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 5501,
+      "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
     },
     {
       "asset_id": "thumbnail",
@@ -111,7 +166,7 @@
   "file_layout": [
     "Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.",
     "Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).",
-    "Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns."
+    "Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti` opens the index in QGIS or GDAL as one mosaic (GDAL tile index), with `stac/naip-overviews.gti` for zoomed-out views."
   ],
   "flat_layout": {
     "dataset_id": "naip",
@@ -124,11 +179,11 @@
         "roles": [
           "data"
         ],
-        "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
-        "size_bytes": 44289015,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/quads.parquet",
-        "source_sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
-        "source_size_bytes": 44289015,
+        "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+        "size_bytes": 45445261,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/assets/quads.parquet",
+        "source_sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+        "source_size_bytes": 45445261,
         "title": "Quarter-quad index (STAC GeoParquet)"
       },
       {
@@ -139,11 +194,11 @@
         "roles": [
           "data"
         ],
-        "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
-        "size_bytes": 516248,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/overviews.parquet",
-        "source_sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
-        "source_size_bytes": 516248,
+        "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+        "size_bytes": 519918,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/assets/overviews.parquet",
+        "source_sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+        "source_size_bytes": 519918,
         "title": "Overview file index (STAC GeoParquet)"
       },
       {
@@ -154,11 +209,11 @@
         "roles": [
           "metadata"
         ],
-        "sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
-        "size_bytes": 1536,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/quads-field-dictionary.json",
-        "source_sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
-        "source_size_bytes": 1536,
+        "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+        "size_bytes": 1607,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/quads-field-dictionary.json",
+        "source_sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+        "source_size_bytes": 1607,
         "title": "quads field dictionary"
       },
       {
@@ -169,20 +224,50 @@
         "roles": [
           "metadata"
         ],
-        "sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
-        "size_bytes": 1705,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/overviews-field-dictionary.json",
-        "source_sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
-        "source_size_bytes": 1705,
+        "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+        "size_bytes": 1776,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/overviews-field-dictionary.json",
+        "source_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+        "source_size_bytes": 1776,
         "title": "overviews field dictionary"
+      },
+      {
+        "asset_id": "support-7",
+        "filename": "stac/naip.gti",
+        "media_type": "application/xml",
+        "operation": "copy",
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+        "size_bytes": 3858,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/gti/naip.gti",
+        "source_sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+        "source_size_bytes": 3858,
+        "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
+      },
+      {
+        "asset_id": "support-8",
+        "filename": "stac/naip-overviews.gti",
+        "media_type": "application/xml",
+        "operation": "copy",
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+        "size_bytes": 957,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/gti/naip-overviews.gti",
+        "source_sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+        "source_size_bytes": 957,
+        "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
       }
     ],
-    "layout_id": "flat-20261117",
-    "note": "The release package was never hosted under releases/; its index files and field dictionaries were put at these keys directly (research/naip-index-20261117/replace-run-1).",
+    "layout_id": "flat-20261117-r7",
+    "note": "The release package was never hosted under releases/; its files were put at these keys directly (research/naip-index-r7-20261117/replace-run-1).",
     "owner": "nthh",
     "product_id": "naip",
     "schema_version": 1,
-    "source_release": "index-20261116-r5",
+    "source_release": "index-20261117-r7",
     "updated": "2026-11-17T00:00:00Z"
   },
   "hosted": true,
@@ -211,24 +296,28 @@
   "publication_status": "published",
   "readme_sections": [
     {
-      "body": "Each index is a single GeoParquet file in the STAC GeoParquet layout: one row per STAC Item, with\nthe file's address in the `image` asset. There are no Item JSON files and no partitions. The\nSTAC Collection is stored in the file's own metadata under the `stac-geoparquet` key, and the\nGeoParquet metadata under `geo`.\n\n`stac/naip.parquet` has 245,554 rows, one per quarter quad file, covering 213,436 places; a place\nflown in more than one listed year has a row for each. Its columns:\n\n- `id`: state and file name, for example `ut_m_4011127_ne_12_060_20240816`.\n- `geometry`: the footprint polygon, WKB in longitude and latitude; `bbox`: its extent as\n  `xmin`, `ymin`, `xmax`, `ymax`.\n- `datetime`: the flight date, at 00:00 UTC.\n- `gsd` (0.3 or 0.6 m), `naip:state`, `naip:year`.\n- `proj:code`, `proj:epsg`, `proj:bbox`, `proj:shape`, `proj:transform`: the file's UTM grid.\n- `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a\n  multihash), `type` and `roles`.\n- `naip:run`: the conversion run that made the file.\n\n`stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except\n`naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and\n`naip:quads` (how many quarter quads it was made from). The national file's row has no state\nor year.\n\nRows of the quad index are ordered along a Hilbert curve through the centre of each footprint,\nnewest flight first at the same place, with states and years mixed. They are written in 30\nrow groups of about 8,192 rows, with statistics and a page index, so a query for a small area\nreads a few row groups instead of the whole 44 MB file. For the newest picture of a place, keep\nthe row with the latest `datetime`.\n\nThe quarter quads around Alta, Utah, newest first:\n\n```sql\nSELECT id, datetime, assets.image.href AS href\nFROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet')\nWHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65\n  AND bbox.ymin < 40.60 AND bbox.ymax > 40.58\nORDER BY datetime DESC;\n```",
+      "body": "Each index is a single GeoParquet file in the STAC GeoParquet layout: one row per STAC Item, with\nthe file's address in the `image` asset. There are no Item JSON files and no partitions. The\nSTAC Collection is stored in the file's own metadata under the `stac-geoparquet` key, and the\nGeoParquet metadata under `geo`.\n\n`stac/naip.parquet` has 245,554 rows, one per quarter quad file, covering 213,436 places; a place\nflown in more than one listed year has a row for each. Its columns:\n\n- `id`: state and file name, for example `ut_m_4011127_ne_12_060_20240816`.\n- `geometry`: the footprint polygon, WKB in longitude and latitude; `bbox`: its extent as\n  `xmin`, `ymin`, `xmax`, `ymax`.\n- `datetime`: the flight date, at 00:00 UTC.\n- `gsd` (0.3 or 0.6 m), `naip:state`, `naip:year`.\n- `proj:code`, `proj:epsg`, `proj:bbox`, `proj:shape`, `proj:transform`: the file's UTM grid.\n- `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a\n  multihash), `type` and `roles`.\n- `naip:run`: the conversion run that made the file.\n- `naip:gti_location`: the file's address relative to `stac/`, for example\n  `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; it is\n  the location column of `stac/naip.gti` (below). Use `href` for anything else.\n\n`stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except\n`naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and\n`naip:quads` (how many quarter quads it was made from). The national file's row has no state\nor year.\n\nRows of the quad index are ordered along a Hilbert curve through the centre of each footprint,\nnewest flight first at the same place, with states and years mixed. They are written in 30\nrow groups of about 8,192 rows, with statistics and a page index, so a query for a small area\nreads a few row groups instead of the whole 45 MB file. For the newest picture of a place, keep\nthe row with the latest `datetime`.\n\nThe quarter quads around Alta, Utah, newest first:\n\n```sql\nSELECT id, datetime, assets.image.href AS href\nFROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet')\nWHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65\n  AND bbox.ymin < 40.60 AND bbox.ymax > 40.58\nORDER BY datetime DESC;\n```",
       "heading": "How the two indexes are organized"
+    },
+    {
+      "body": "`stac/naip.gti` opens every quarter quad as one mosaic in QGIS (Layer > Add Layer > Add Raster\nLayer, with this address as the source) and in GDAL 3.9 or later:\n\n```\n/vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti\n```\n\n`empty_dir=yes` tells GDAL not to look for side files (`.aux.xml`, `.msk`, `.ovr`) next to each\nquad, which do not exist; without it a first view of a new area makes about 170 extra requests\nand takes about four times as long. The plain `/vsicurl/https://...` address works too.\n\nIt is a GDAL tile index (GTI) over `stac/naip.parquet`: newest flight on top, in NAD83 longitude\nand latitude at about 0.5 m, with an alpha band so the masked edge of each quad stays clear.\nZoomed out it draws the 9.6 m state files and then the national file, through\n`stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range:\na first view of a new area is about 25 requests, a few seconds, and panning nearby is read from\nwhat is already fetched. Its reader needs the Parquet driver, which QGIS includes.",
+      "heading": "Open in QGIS or GDAL"
     }
   ],
   "ready_for_creation": true,
   "ready_for_review": true,
   "related_dataset_links": [],
-  "release": "index-20261116-r5",
+  "release": "index-20261117-r7",
   "release_files": [
     {
       "kind": "asset",
       "path": "assets/overviews.parquet",
-      "size_bytes": 516248
+      "size_bytes": 519918
     },
     {
       "kind": "asset",
       "path": "assets/quads.parquet",
-      "size_bytes": 44289015
+      "size_bytes": 45445261
     },
     {
       "kind": "display_derivatives",
@@ -246,6 +335,16 @@
       "size_bytes": null
     },
     {
+      "kind": "supporting_files",
+      "path": "metadata/gti/naip-overviews.gti",
+      "size_bytes": 957
+    },
+    {
+      "kind": "supporting_files",
+      "path": "metadata/gti/naip.gti",
+      "size_bytes": 3858
+    },
+    {
       "kind": "field_dictionary",
       "path": "metadata/overviews-field-dictionary.json",
       "size_bytes": null
@@ -258,12 +357,27 @@
     {
       "kind": "supporting_files",
       "path": "provenance/build-manifest.json",
-      "size_bytes": 15637
+      "size_bytes": 15894
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/changes.json",
+      "size_bytes": 129
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/check-gti-open-on-r6.json",
+      "size_bytes": 5501
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/check-gti-open.json",
+      "size_bytes": 4299
     },
     {
       "kind": "supporting_files",
       "path": "provenance/check.json",
-      "size_bytes": 9333
+      "size_bytes": 11285
     },
     {
       "kind": "supporting_files",
@@ -273,7 +387,7 @@
     {
       "kind": "supporting_files",
       "path": "provenance/index-package-plan.md",
-      "size_bytes": 9961
+      "size_bytes": 15726
     },
     {
       "kind": "source_attribution",
@@ -290,85 +404,85 @@
   },
   "schema_version": 1,
   "snapshot_binding": {
-    "bound_file_count": 10,
-    "hosted_package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/",
+    "bound_file_count": 15,
+    "hosted_package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/",
     "local_metadata_integrity": "passed",
-    "manifest_path": "datasets/naip/releases/index-20261116-r5/manifest.json",
-    "manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
-    "package_binding_sha256": "bfc345769844a0d3b71324152c1a2e898dd8bd0cca069c27306ebb98f4d6ed93",
+    "manifest_path": "datasets/naip/releases/index-20261117-r7/manifest.json",
+    "manifest_sha256": "de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d",
+    "package_binding_sha256": "eb846e9b9b8b5ca98e8a01db1d2070e867bf6025cf4d20296fd8bfd484711745",
     "package_binding_status": "verified",
-    "release": "index-20261116-r5",
+    "release": "index-20261117-r7",
     "snapshot_file_count": 4,
-    "snapshot_path": "datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json",
-    "snapshot_sha256": "31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9"
+    "snapshot_path": "datasets/naip/releases/index-20261117-r7/catalog-input-r1/snapshot.json",
+    "snapshot_sha256": "b811cc8f9e231f08d1b3281a62878f518ebaf8557e9072d9b1d247d31512d744"
   },
   "snapshot_collection": {
     "assets": [
       {
         "asset_id": "overviews",
-        "checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+        "checksum": "1220f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
         "href": "assets/overviews.parquet",
         "media_type": "application/vnd.apache.parquet",
         "roles": [
           "data"
         ],
-        "size_bytes": 516248,
+        "size_bytes": 519918,
         "title": "Overview file index (STAC GeoParquet)"
       },
       {
         "asset_id": "overviews_fields",
-        "checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+        "checksum": "12201496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
         "href": "metadata/overviews-field-dictionary.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 1705,
+        "size_bytes": 1776,
         "title": "overviews field dictionary"
       },
       {
         "asset_id": "quads",
-        "checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+        "checksum": "12202252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
         "href": "assets/quads.parquet",
         "media_type": "application/vnd.apache.parquet",
         "roles": [
           "data"
         ],
-        "size_bytes": 44289015,
+        "size_bytes": 45445261,
         "title": "Quarter-quad index (STAC GeoParquet)"
       },
       {
         "asset_id": "quads_fields",
-        "checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+        "checksum": "1220d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
         "href": "metadata/quads-field-dictionary.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 1536,
+        "size_bytes": 1607,
         "title": "quads field dictionary"
       },
       {
         "asset_id": "support-1",
-        "checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+        "checksum": "1220aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
         "href": "provenance/build-manifest.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 15637,
+        "size_bytes": 15894,
         "title": "Build commit, environment, input checksums and output facts"
       },
       {
         "asset_id": "support-2",
-        "checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+        "checksum": "1220286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
         "href": "provenance/check.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 9333,
-        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+        "size_bytes": 11285,
+        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
       },
       {
         "asset_id": "support-3",
@@ -383,14 +497,69 @@
       },
       {
         "asset_id": "support-4",
-        "checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+        "checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
         "href": "provenance/index-package-plan.md",
         "media_type": "text/markdown",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 9961,
+        "size_bytes": 15726,
         "title": "Checks written before the first build, with addenda"
+      },
+      {
+        "asset_id": "support-5",
+        "checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+        "href": "provenance/check-gti-open.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 4299,
+        "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+      },
+      {
+        "asset_id": "support-6",
+        "checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+        "href": "provenance/changes.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 129,
+        "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+      },
+      {
+        "asset_id": "support-7",
+        "checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+        "href": "metadata/gti/naip.gti",
+        "media_type": "application/xml",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 3858,
+        "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
+      },
+      {
+        "asset_id": "support-8",
+        "checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+        "href": "metadata/gti/naip-overviews.gti",
+        "media_type": "application/xml",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 957,
+        "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
+      },
+      {
+        "asset_id": "support-9",
+        "checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+        "href": "provenance/check-gti-open-on-r6.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 5501,
+        "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
       },
       {
         "asset_id": "thumbnail",
@@ -404,7 +573,7 @@
         "title": "Sampled display-only overview; not an analytic asset"
       }
     ],
-    "description": "The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+    "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that stac/naip.gti uses to open the index in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
     "extent": {
       "spatial": {
         "bbox": [
@@ -446,7 +615,7 @@
         "url": "https://github.com/nthh/data-publications"
       }
     ],
-    "title": "NAIP display copies"
+    "title": "NAIP visualization COGs"
   },
   "source_links": [
     {
@@ -473,19 +642,19 @@
         "retained": {
           "encoding": "identity",
           "kind": "git",
-          "path": "datasets/naip/releases/index-20261116-r5/build-manifest.json",
-          "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
-          "size_bytes": 15637,
-          "stored_sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
-          "stored_size_bytes": 15637,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/build-manifest.json"
+          "path": "datasets/naip/releases/index-20261117-r7/build-manifest.json",
+          "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+          "size_bytes": 15894,
+          "stored_sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+          "stored_size_bytes": 15894,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
-        "size_bytes": 15637,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/build-manifest.json",
+        "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+        "size_bytes": 15894,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/build-manifest.json",
         "title": "Build commit, environment, input checksums and output facts"
       },
       {
@@ -494,20 +663,20 @@
         "retained": {
           "encoding": "identity",
           "kind": "git",
-          "path": "datasets/naip/releases/index-20261116-r5/check.json",
-          "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
-          "size_bytes": 9333,
-          "stored_sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
-          "stored_size_bytes": 9333,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/check.json"
+          "path": "datasets/naip/releases/index-20261117-r7/check.json",
+          "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+          "size_bytes": 11285,
+          "stored_sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+          "stored_size_bytes": 11285,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
-        "size_bytes": 9333,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/check.json",
-        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+        "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+        "size_bytes": 11285,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check.json",
+        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
       },
       {
         "asset_id": "support-3",
@@ -520,14 +689,14 @@
           "size_bytes": 10566,
           "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
           "stored_size_bytes": 10566,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-env.lock.txt"
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt"
         },
         "roles": [
           "metadata"
         ],
         "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
         "size_bytes": 10566,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-env.lock.txt",
         "title": "Locked build environment (conda explicit list and one pip wheel)"
       },
       {
@@ -537,26 +706,89 @@
           "encoding": "identity",
           "kind": "git",
           "path": "datasets/naip/index-package-plan.md",
-          "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
-          "size_bytes": 9961,
-          "stored_sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
-          "stored_size_bytes": 9961,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-package-plan.md"
+          "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+          "size_bytes": 15726,
+          "stored_sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+          "stored_size_bytes": 15726,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
-        "size_bytes": 9961,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+        "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+        "size_bytes": 15726,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-package-plan.md",
         "title": "Checks written before the first build, with addenda"
+      },
+      {
+        "asset_id": "support-5",
+        "media_type": "application/json",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/releases/index-20261117-r7/check-gti-open.json",
+          "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+          "size_bytes": 4299,
+          "stored_sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+          "stored_size_bytes": 4299,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+        "size_bytes": 4299,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open.json",
+        "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+      },
+      {
+        "asset_id": "support-6",
+        "media_type": "application/json",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/releases/index-20261117-r7/changes.json",
+          "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+          "size_bytes": 129,
+          "stored_sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+          "stored_size_bytes": 129,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+        "size_bytes": 129,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/changes.json",
+        "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+      },
+      {
+        "asset_id": "support-9",
+        "media_type": "application/json",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
+          "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+          "size_bytes": 5501,
+          "stored_sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+          "stored_size_bytes": 5501,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+        "size_bytes": 5501,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open-on-r6.json",
+        "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
       }
     ],
-    "git_revision": "6723325fdbf6fc535ff871d80cf95a48235a8bc5",
+    "git_revision": "47fa8ef6a7e10ad766015b330150edb9cc21e617",
     "owner": "nthh",
     "product_id": "naip",
     "schema_version": 1,
-    "source_release": "index-20261116-r5"
+    "source_release": "index-20261117-r7"
   },
   "tags": [
     "naip",

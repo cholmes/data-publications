@@ -1,0 +1,477 @@
+{
+  "assets": {
+    "overviews": {
+      "file:checksum": "1220f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+      "file:size": 519918,
+      "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Overview file index (STAC GeoParquet)",
+      "type": "application/vnd.apache.parquet"
+    },
+    "overviews_fields": {
+      "file:checksum": "12201496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+      "file:size": 1776,
+      "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "overviews field dictionary",
+      "type": "application/json"
+    },
+    "quads": {
+      "file:checksum": "12202252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+      "file:size": 45445261,
+      "href": "https://data.source.coop/nthh/naip/stac/naip.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Quarter-quad index (STAC GeoParquet)",
+      "type": "application/vnd.apache.parquet"
+    },
+    "quads_fields": {
+      "file:checksum": "1220d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+      "file:size": 1607,
+      "href": "https://data.source.coop/nthh/naip/stac/naip.fields.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "quads field dictionary",
+      "type": "application/json"
+    },
+    "support-1": {
+      "file:checksum": "1220aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+      "file:size": 15894,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Build commit, environment, input checksums and output facts",
+      "type": "application/json"
+    },
+    "support-2": {
+      "file:checksum": "1220286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+      "file:size": 11285,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests",
+      "type": "application/json"
+    },
+    "support-3": {
+      "file:checksum": "12207ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "file:size": 10566,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Locked build environment (conda explicit list and one pip wheel)",
+      "type": "text/plain"
+    },
+    "support-4": {
+      "file:checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+      "file:size": 15726,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Checks written before the first build, with addenda",
+      "type": "text/markdown"
+    },
+    "support-5": {
+      "file:checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "file:size": 4299,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added",
+      "type": "application/json"
+    },
+    "support-6": {
+      "file:checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "file:size": 129,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build",
+      "type": "application/json"
+    },
+    "support-7": {
+      "file:checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+      "file:size": 3858,
+      "href": "https://data.source.coop/nthh/naip/stac/naip.gti",
+      "roles": [
+        "metadata"
+      ],
+      "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it",
+      "type": "application/xml"
+    },
+    "support-8": {
+      "file:checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+      "file:size": 957,
+      "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.gti",
+      "roles": [
+        "metadata"
+      ],
+      "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti",
+      "type": "application/xml"
+    },
+    "support-9": {
+      "file:checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+      "file:size": 5501,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)",
+      "type": "application/json"
+    },
+    "thumbnail": {
+      "href": "presentation/thumbnail.png",
+      "type": "image/png",
+      "roles": [
+        "thumbnail"
+      ],
+      "title": "National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif",
+      "file:size": 648798,
+      "file:checksum": "122093ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd"
+    },
+    "overview_national": {
+      "href": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "overview"
+      ],
+      "title": "National overview for drawing a map, latest flight of each state, about 306 m (not in the indexes package)",
+      "proj:code": "EPSG:3857",
+      "file:size": 38077264,
+      "file:checksum": "122085e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a"
+    }
+  },
+  "created": "2026-11-17T18:17:52Z",
+  "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that stac/naip.gti uses to open the index in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -125.15624999999999,
+          23.241346102386135,
+          -66.09375,
+          49.83798245308484
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-06-16T00:00:00Z",
+          "2025-11-17T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "id": "naip",
+  "license": "other",
+  "links": [
+    {
+      "href": "https://registry.opendata.aws/naip/",
+      "rel": "via",
+      "title": "National Agriculture Imagery Program (NAIP) on AWS, s3://naip-analytic",
+      "type": "text/html"
+    },
+    {
+      "href": "https://registry.opendata.aws/naip/",
+      "rel": "license",
+      "type": "text/html"
+    },
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "thumbnail",
+      "href": "presentation/thumbnail.png",
+      "type": "image/png",
+      "title": "National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/nthh/data-publications",
+      "title": "Repository",
+      "type": "text/html"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/nthh/data-publications/issues",
+      "title": "Issues",
+      "type": "text/html"
+    },
+    {
+      "rel": "about",
+      "href": "https://source.coop/nthh",
+      "title": "Hosting",
+      "type": "text/html"
+    },
+    {
+      "rel": "alternate",
+      "href": "https://browser.portolan-sdi.org/#/external/nthh.github.io/data-publications/naip/collection.json",
+      "title": "Browser view",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "USDA Farm Production and Conservation Business Center",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.fpacbc.usda.gov/"
+    },
+    {
+      "description": "Independent data processing and hosting on Source Cooperative.",
+      "name": "nthh",
+      "roles": [
+        "processor",
+        "host"
+      ],
+      "url": "https://source.coop/nthh/naip"
+    }
+  ],
+  "sci:citation": "USDA Farm Production and Conservation Business Center. National Agriculture Imagery Program (NAIP), 2021 to 2025 flights, from s3://naip-analytic on AWS.",
+  "stac_extensions": [
+    "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json",
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+  ],
+  "stac_version": "1.1.0",
+  "table:columns": [
+    {
+      "asset": "quads",
+      "name": "stac_version",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "stac_extensions",
+      "type": "list<element: string>"
+    },
+    {
+      "asset": "quads",
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "collection",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "quads",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "quads",
+      "name": "gsd",
+      "type": "double"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:state",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:year",
+      "type": "int64"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:code",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:epsg",
+      "type": "int64"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:bbox",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:shape",
+      "type": "list<element: int64>"
+    },
+    {
+      "asset": "quads",
+      "name": "proj:transform",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "quads",
+      "name": "links",
+      "type": "list<element: struct<href: string, rel: string, title: string>>"
+    },
+    {
+      "asset": "quads",
+      "name": "assets",
+      "type": "struct<image: struct<file:checksum: string, file:size: int64, href: string, roles: list<element: string>, title: string, type: string>>"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:run",
+      "type": "string"
+    },
+    {
+      "asset": "quads",
+      "name": "naip:gti_location",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "stac_version",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "stac_extensions",
+      "type": "list<element: string>"
+    },
+    {
+      "asset": "overviews",
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "collection",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "geometry",
+      "type": "binary"
+    },
+    {
+      "asset": "overviews",
+      "name": "bbox",
+      "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "start_datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "end_datetime",
+      "type": "timestamp[us, tz=UTC]"
+    },
+    {
+      "asset": "overviews",
+      "name": "gsd",
+      "type": "double"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:state",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:year",
+      "type": "int64"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:code",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:epsg",
+      "type": "int64"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:bbox",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:shape",
+      "type": "list<element: int64>"
+    },
+    {
+      "asset": "overviews",
+      "name": "proj:transform",
+      "type": "list<element: double>"
+    },
+    {
+      "asset": "overviews",
+      "name": "links",
+      "type": "list<element: struct<href: string, rel: string, title: string>>"
+    },
+    {
+      "asset": "overviews",
+      "name": "assets",
+      "type": "struct<image: struct<file:checksum: string, file:size: int64, href: string, roles: list<element: string>, title: string, type: string>>"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:gti_location",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
+      "name": "naip:quads",
+      "type": "int64"
+    }
+  ],
+  "title": "NAIP visualization COGs",
+  "type": "Collection",
+  "updated": "2026-11-17T00:00:00Z",
+  "version": "1.2.0"
+}

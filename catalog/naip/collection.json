@@ -1,8 +1,8 @@
 {
   "assets": {
     "overviews": {
-      "file:checksum": "12205c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
-      "file:size": 516248,
+      "file:checksum": "1220f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+      "file:size": 519918,
       "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.parquet",
       "roles": [
         "data"
@@ -11,8 +11,8 @@
       "type": "application/vnd.apache.parquet"
     },
     "overviews_fields": {
-      "file:checksum": "12202cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
-      "file:size": 1705,
+      "file:checksum": "12201496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+      "file:size": 1776,
       "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json",
       "roles": [
         "metadata"
@@ -21,8 +21,8 @@
       "type": "application/json"
     },
     "quads": {
-      "file:checksum": "12205d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
-      "file:size": 44289015,
+      "file:checksum": "12202252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+      "file:size": 45445261,
       "href": "https://data.source.coop/nthh/naip/stac/naip.parquet",
       "roles": [
         "data"
@@ -31,8 +31,8 @@
       "type": "application/vnd.apache.parquet"
     },
     "quads_fields": {
-      "file:checksum": "12205bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
-      "file:size": 1536,
+      "file:checksum": "1220d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+      "file:size": 1607,
       "href": "https://data.source.coop/nthh/naip/stac/naip.fields.json",
       "roles": [
         "metadata"
@@ -41,9 +41,9 @@
       "type": "application/json"
     },
     "support-1": {
-      "file:checksum": "1220703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
-      "file:size": 15637,
-      "href": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/build-manifest.json",
+      "file:checksum": "1220aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+      "file:size": 15894,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json",
       "roles": [
         "metadata"
       ],
@@ -51,19 +51,19 @@
       "type": "application/json"
     },
     "support-2": {
-      "file:checksum": "1220da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
-      "file:size": 9333,
-      "href": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/check.json",
+      "file:checksum": "1220286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+      "file:size": 11285,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json",
       "roles": [
         "metadata"
       ],
-      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests",
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests",
       "type": "application/json"
     },
     "support-3": {
       "file:checksum": "12207ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
       "file:size": 10566,
-      "href": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-env.lock.txt",
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt",
       "roles": [
         "metadata"
       ],
@@ -71,14 +71,64 @@
       "type": "text/plain"
     },
     "support-4": {
-      "file:checksum": "1220d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
-      "file:size": 9961,
-      "href": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-package-plan.md",
+      "file:checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+      "file:size": 15726,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md",
       "roles": [
         "metadata"
       ],
       "title": "Checks written before the first build, with addenda",
       "type": "text/markdown"
+    },
+    "support-5": {
+      "file:checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "file:size": 4299,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added",
+      "type": "application/json"
+    },
+    "support-6": {
+      "file:checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "file:size": 129,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build",
+      "type": "application/json"
+    },
+    "support-7": {
+      "file:checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+      "file:size": 3858,
+      "href": "https://data.source.coop/nthh/naip/stac/naip.gti",
+      "roles": [
+        "metadata"
+      ],
+      "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it",
+      "type": "application/xml"
+    },
+    "support-8": {
+      "file:checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+      "file:size": 957,
+      "href": "https://data.source.coop/nthh/naip/stac/naip-overviews.gti",
+      "roles": [
+        "metadata"
+      ],
+      "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti",
+      "type": "application/xml"
+    },
+    "support-9": {
+      "file:checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+      "file:size": 5501,
+      "href": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
+      "roles": [
+        "metadata"
+      ],
+      "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)",
+      "type": "application/json"
     },
     "thumbnail": {
       "href": "presentation/thumbnail.png",
@@ -102,8 +152,8 @@
       "file:checksum": "122085e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a"
     }
   },
-  "created": "2026-11-17T05:01:25Z",
-  "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+  "created": "2026-11-17T18:17:52Z",
+  "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that stac/naip.gti uses to open the index in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
   "extent": {
     "spatial": {
       "bbox": [
@@ -310,6 +360,11 @@
       "type": "string"
     },
     {
+      "asset": "quads",
+      "name": "naip:gti_location",
+      "type": "string"
+    },
+    {
       "asset": "overviews",
       "name": "stac_version",
       "type": "string"
@@ -406,6 +461,11 @@
     },
     {
       "asset": "overviews",
+      "name": "naip:gti_location",
+      "type": "string"
+    },
+    {
+      "asset": "overviews",
       "name": "naip:quads",
       "type": "int64"
     }
@@ -413,5 +473,5 @@
   "title": "NAIP visualization COGs",
   "type": "Collection",
   "updated": "2026-11-17T00:00:00Z",
-  "version": "1.0.0"
+  "version": "1.2.0"
 }
