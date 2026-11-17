@@ -33,8 +33,6 @@ window.draw=async(styleName,layer,bounds)=>{
  const map=new maplibregl.Map({container:'map',style,bounds,fitBoundsOptions:{padding:24},attributionControl:false});
  await new Promise(done=>map.once('idle',done));
  const middle=[map.getCanvas().clientWidth/2,map.getCanvas().clientHeight/2];
- style.layers.unshift({id:layer+'-fill',type:'fill',source:'data','source-layer':layer,paint:{'fill-color':'#f3d27a','fill-opacity':['case',['boolean',['feature-state','lit'],false],0.3,0.001]}});
- map.addLayer(style.layers[0]);await new Promise(done=>map.once('idle',done));
  const drawn=new Set(map.queryRenderedFeatures({layers:[layer+'-fill']}).map(f=>f.id)).size;
  const labels=map.queryRenderedFeatures({layers:[layer+'-label']}).length;
  // The pointer goes where the first drawn name is, since the middle of a county can be a city outside any township.

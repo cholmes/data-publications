@@ -478,6 +478,10 @@ class SourceProductTests(unittest.TestCase):
             ({}, {"style_changes": {"sources": {"data": {"type": "vector", "url": "wrong.pmtiles"}}}}, "does not resolve"),
             ({}, {"style_changes": {"layers": [{"id": "bad", "type": "line", "source": "data", "source-layer": "sample"}]}}, "matching source-layer/type"),
         ]
+        # A string ID kept as a property only is accepted, and need not be repeated in attribute_fields.
+        display = self.add_display_package(asset_changes={"id_encoding": "property", "attribute_fields": []})
+        self.write_draft()
+        self.assertEqual(products.stage(self.root, [("sample", self.package)], self.base / "property-id", [("sample", display)]), 0)
         for index, (asset_kwargs, style_kwargs, expected) in enumerate(cases):
             with self.subTest(expected=expected):
                 display = self.add_display_package(**asset_kwargs, **style_kwargs)

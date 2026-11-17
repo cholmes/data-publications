@@ -27,7 +27,7 @@ from source import digest
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-DATASET, ANALYTIC_RELEASE, DISPLAY_RELEASE = "us-census-places", "cb2023-r1", "cb2023-display-r2"
+DATASET, ANALYTIC_RELEASE, DISPLAY_RELEASE = "us-census-places", "cb2023-r1", "cb2023-display-r3"
 TIPPECANOE_LOCK = REPO / "datasets/grwl/tippecanoe.lock.json"
 MAX_ZOOM = 11
 KINDS = ["county", "incorporated", "unincorporated", "township"]
@@ -99,6 +99,8 @@ def style(layer: str, width: float) -> dict[str, Any]:  # one archive per layer
     return {"version": 8, "name": layer, "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
             "sources": {"data": {"type": "vector", "url": f"../assets/{layer}.pmtiles", "promoteId": "id"}},
             "layers": [
+                {"id": f"{layer}-fill", "type": "fill", "source": "data", "source-layer": layer,
+                 "paint": {"fill-color": LINE, "fill-opacity": ["case", ["boolean", ["feature-state", "lit"], False], 0.16, 0.03]}},
                 {"id": f"{layer}-line", "type": "line", "source": "data", "source-layer": layer,
                  "paint": {"line-color": LINE, "line-opacity": 0.75, "line-width": width}},
                 {"id": f"{layer}-label", "type": "symbol", "source": "data", "source-layer": f"{layer}_label",

@@ -113,3 +113,11 @@ same), and the archives were not byte-identical because they recorded temporary 
 builds with fixed relative names, and the repeat build is made from the same commit.
 
 The limits of checks 3, 4, 7, 8 and 9 are unchanged.
+
+## Addendum for r3 (2026-11-16)
+
+`cb2023-display-r2` passed all nine checks, but the shared upload stager refused it: it requires a
+polygon layer's style to hold a fill layer, and r2's styles drew lines and names only. r3 adds a
+faint fill to each style (it also lights up when a map marks an outline as chosen) and changes
+nothing else. Its tile files and names index must be byte-identical to r2's; the validator's
+checks are rerun on r3 all the same. r2 stays in the repository as history.

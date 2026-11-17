@@ -1573,7 +1573,9 @@ def stage_display_package(
         if not isinstance(id_field, str) or not id_field:
             raise ProductError(f"{dataset_id}: display asset id_field is required: {asset_id}")
         id_encoding = asset.get("id_encoding", "mvt_feature_id_and_property")
-        if id_encoding not in ("mvt_feature_id", "mvt_feature_id_and_property"):
+        # "property": the ID is a string property only, for IDs an integer feature ID cannot hold (a GEOID with
+        # leading zeros). id_field names that property and need not be repeated in attribute_fields.
+        if id_encoding not in ("mvt_feature_id", "mvt_feature_id_and_property", "property"):
             raise ProductError(f"{dataset_id}: invalid display asset id_encoding: {asset_id}")
         fields = asset.get("attribute_fields")
         if (not isinstance(fields, list) or any(not isinstance(field, str) or not field for field in fields)
