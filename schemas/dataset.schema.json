@@ -414,6 +414,12 @@
               "type": "string",
               "minLength": 1
             },
+            "file_layout": {
+              "description": "Lines for the product page saying where files the flat inventory does not list are kept.",
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            },
             "flat_layout": {
               "type": "object",
               "additionalProperties": false,

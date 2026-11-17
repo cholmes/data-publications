@@ -4,12 +4,12 @@
 
 - Dataset: `naip` (NAIP display copies)
 - Product ID: `naip`
-- Local publication status: `prepared`
+- Local publication status: `published`
 - Local readiness: `prepared`
 - Owner: `nthh` (confirmed)
 - Canonical publication review stage: `not recorded`
-- Creation readiness: `false`
-- Hosted: `false`
+- Creation readiness: `true`
+- Hosted: `true`
 
 ## Summary
 
@@ -25,8 +25,8 @@ The proposed Source Cooperative maintainer is separate from the immutable releas
 
 ## Sources and DOI references
 
-- [Host: nthh](https://github.com/nthh/data-publications)
 - [Dataset release](https://registry.opendata.aws/naip/)
+- [Processor: nthh](https://source.coop/nthh/naip)
 - [Producer: USDA Farm Production and Conservation Business Center](https://www.fpacbc.usda.gov/)
 
 ## Related datasets
@@ -64,8 +64,4 @@ No versioned display package is recorded.
 
 ## Source Cooperative route
 
-Planned source proxy: `s3://nthh/naip`. Check separate creation and hosting receipts for current state.
-
-## Blockers
-
-- Source Cooperative account verification is not recorded
+Hosted product: `s3://nthh/naip`. The published release is bound to a checksum-verified hosting report.

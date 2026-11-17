@@ -780,6 +780,12 @@ def draft_for(root: Path, record: dict[str, Any]) -> tuple[dict[str, Any], str, 
         "hosted": hosted,
         "blockers": sorted(set(blockers)),
     }
+    if config.get("file_layout"):
+        # Optional lines saying where a product keeps files the flat inventory does not list (NAIP's imagery).
+        layout = config["file_layout"]
+        if not isinstance(layout, list) or not all(isinstance(line, str) and line.strip() for line in layout):
+            raise ProductError(f"{record['id']}: file_layout must be a list of non-empty strings")
+        draft["file_layout"] = layout
     if config.get("flat_layout") is not None:
         from flat_publication import load_flat_layout
         try:
@@ -949,10 +955,17 @@ def render_flat_consumer_readme(draft: dict[str, Any]) -> str:
     """Render the small consumer inventory after flat object hosting is verified."""
     flat = draft["flat_layout"]
     base = f"https://data.source.coop/{draft['owner']}/{draft['product_id']}/"
-    lines = [f"# {draft['title']}", "", draft["summary"], "",
-             draft["temporal_note"], "", "## Files", "",
-             "Use GeoParquet for analysis and PMTiles for maps. Field dictionaries describe columns and units.", "",
-             "| File | Size |", "| --- | ---: |"]
+    names = [item["filename"] for item in flat["files"]]
+    has_tiles = any(name.endswith(".pmtiles") for name in names)
+    lines = [f"# {draft['title']}", "", draft["summary"], "", draft["temporal_note"], ""]
+    if draft.get("file_layout"):
+        lines.extend(["## Layout", ""])
+        lines.extend(f"- {line}" for line in draft["file_layout"])
+        lines.append("")
+    lines.extend(["## Files", "",
+                  ("Use GeoParquet for analysis and PMTiles for maps. Field dictionaries describe columns and units."
+                   if has_tiles else "Use GeoParquet for analysis. Field dictionaries describe columns and units."), "",
+                  "| File | Size |", "| --- | ---: |"])
     presentation = draft.get('presentation')
     replacements = {item['asset_id']: item for item in (presentation or {}).get('assets', [])}
     files = [item for item in flat['files'] if item.get('asset_id') not in replacements]
@@ -983,7 +996,8 @@ def render_flat_consumer_readme(draft: dict[str, Any]) -> str:
     lines.extend(["", "## Read with DuckDB", "", "Query the remote GeoParquet directly:", "", "```sql",
                   f"SELECT count(*) AS feature_count FROM read_parquet('{base}{parquet}');",
                   f"SELECT * FROM read_parquet('{base}{parquet}') LIMIT 5;", "```", "",
-                  "The `.style.json` files show the PMTiles in a MapLibre viewer with the PMTiles protocol installed. Preview images are generalized displays; they are not analytical geometry.", "",
+                  *(["The `.style.json` files show the PMTiles in a MapLibre viewer with the PMTiles protocol installed. Preview images are generalized displays; they are not analytical geometry.", ""]
+                    if has_tiles else []),
                   "## Attribution and license", "", draft["attribution"], "", draft["license_note"], "",
                   f"Independently maintained by [{draft['owner']}](https://source.coop/{draft['owner']}).", ""])
     for link in draft.get("source_links", []):
@@ -993,8 +1007,9 @@ def render_flat_consumer_readme(draft: dict[str, Any]) -> str:
     if draft.get("related_dataset_links"):
         lines.extend(["", "## Related datasets", ""])
         lines.extend(f"- [{item['title']}]({item['url']})" for item in draft["related_dataset_links"])
-    lines.extend(["", f"[Conversion scripts and validation](https://github.com/nthh/data-publications/tree/main/datasets/{draft['dataset_id']}) · [Portolan map](https://browser.portolan-sdi.org/#/external/nthh.github.io/data-publications/{draft['dataset_id']}/collection.json)", "",
-                  "Versioned filenames and checksum manifests identify the published data.", ""])
+    lines.extend(["", f"[Conversion scripts and validation](https://github.com/nthh/data-publications/tree/main/datasets/{draft['dataset_id']}) · [Portolan map](https://browser.portolan-sdi.org/#/external/nthh.github.io/data-publications/{draft['dataset_id']}/collection.json)", ""])
+    if any(PurePosixPath(name).name.startswith("manifest") for name in names) or has_tiles:
+        lines.extend(["Versioned filenames and checksum manifests identify the published data.", ""])
     for extra in [item['filename'] for item in flat['files'] if item['filename'].endswith('.parquet') and item['filename'] != parquet]:
         lines.extend(['', f"## Query {extra}", '', '```sql',
                       f"SELECT count(*) AS feature_count FROM read_parquet('{base}{extra}');",

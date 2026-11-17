@@ -2,42 +2,50 @@
 
 RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.
 
-**Selected release:** `index-20261116-r5`. This link structure describes the prepared package; public hosting and validation have not been checked by this generator.
+One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.
 
-## Scope and formats
+## Layout
 
-The two STAC GeoParquet index files of the NAIP display copies: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.
+- Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.
+- Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).
+- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns.
 
-Formats: `application/json`, `application/vnd.apache.parquet`, `image/png`, `text/markdown`, `text/plain`.
+## Files
 
-## Producer, source, and license
+Use GeoParquet for analysis. Field dictionaries describe columns and units.
 
-- Producer attribution: USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.
-- License: NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.
-- Temporal scope: One file per quarter quad per state-year, from flights of 2021 to 2025. Each file name holds the date it was flown; a 2023 name then holds a second date, the day the file was made. The quad index gives the flight date of every file.
+| File | Size |
+| --- | ---: |
+| [stac/naip.parquet](https://data.source.coop/nthh/naip/stac/naip.parquet) | 44.29 MB |
+| [stac/naip-overviews.parquet](https://data.source.coop/nthh/naip/stac/naip-overviews.parquet) | 516.2 kB |
+| [stac/naip.fields.json](https://data.source.coop/nthh/naip/stac/naip.fields.json) | 1.5 kB |
+| [stac/naip-overviews.fields.json](https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json) | 1.7 kB |
 
-- [Host: nthh](https://github.com/nthh/data-publications)
+## Schema
+
+[Column definitions in the catalog](https://nthh.github.io/data-publications/naip/collection.json) include names, storage types and descriptions. Use the field dictionaries and producer documentation above for units, coded values and limitations.
+
+
+## Read with DuckDB
+
+Query the remote GeoParquet directly:
+
+```sql
+SELECT count(*) AS feature_count FROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet');
+SELECT * FROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet') LIMIT 5;
+```
+
+## Attribution and license
+
+USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.
+
+NAIP imagery is produced by the USDA Farm Production and Conservation Business Center and is in the public domain. USDA asks for credit; these files are a format conversion, not a USDA product.
+
+Independently maintained by [nthh](https://source.coop/nthh).
+
 - [Dataset release](https://registry.opendata.aws/naip/)
+- [Processor: nthh](https://source.coop/nthh/naip)
 - [Producer: USDA Farm Production and Conservation Business Center](https://www.fpacbc.usda.gov/)
-
-## Release files
-
-- [overviews.parquet](releases/index-20261116-r5/assets/overviews.parquet) (asset)
-- [quads.parquet](releases/index-20261116-r5/assets/quads.parquet) (asset)
-- [thumbnail.png](releases/index-20261116-r5/display/thumbnail.png) (display_derivatives)
-- [data-license.json](releases/index-20261116-r5/licenses/data-license.json) (data_license)
-- [source-license.json](releases/index-20261116-r5/licenses/source-license.json) (source_license)
-- [overviews-field-dictionary.json](releases/index-20261116-r5/metadata/overviews-field-dictionary.json) (field_dictionary)
-- [quads-field-dictionary.json](releases/index-20261116-r5/metadata/quads-field-dictionary.json) (field_dictionary)
-- [build-manifest.json](releases/index-20261116-r5/provenance/build-manifest.json) (supporting_files)
-- [check.json](releases/index-20261116-r5/provenance/check.json) (supporting_files)
-- [index-env.lock.txt](releases/index-20261116-r5/provenance/index-env.lock.txt) (supporting_files)
-- [index-package-plan.md](releases/index-20261116-r5/provenance/index-package-plan.md) (supporting_files)
-- [attribution.json](releases/index-20261116-r5/source/attribution.json) (source_attribution)
-
-## Display package
-
-No versioned display package is recorded.
 
 ## Limitations
 
@@ -48,4 +56,12 @@ No versioned display package is recorded.
 - The overview files are for drawing a map, not for measurement. A state file holds one flight year of one state in one UTM zone at 9.6 m; the national file holds the latest flight of each state, so neighbouring states can differ in year and in tone.
 - Adjacent quarter quads overlap, as they do in the source.
 
-Public hosting and scientific validation status must be checked independently.
+[Conversion scripts and validation](https://github.com/nthh/data-publications/tree/main/datasets/naip) · [Portolan map](https://browser.portolan-sdi.org/#/external/nthh.github.io/data-publications/naip/collection.json)
+
+
+## Query stac/naip-overviews.parquet
+
+```sql
+SELECT count(*) AS feature_count FROM read_parquet('https://data.source.coop/nthh/naip/stac/naip-overviews.parquet');
+SELECT * FROM read_parquet('https://data.source.coop/nthh/naip/stac/naip-overviews.parquet') LIMIT 5;
+```

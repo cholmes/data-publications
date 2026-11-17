@@ -1,0 +1,135 @@
+{
+ "schema_version": 1,
+ "criteria": "research/naip-index-20261117/hosting-criteria.md",
+ "base": "https://data.source.coop/nthh/naip/",
+ "checks": {
+  "anonymous_access": "passed",
+  "asset_checksums": "passed",
+  "range_requests": "passed",
+  "cors": "passed",
+  "subset_query": "passed",
+  "catalog_links": "not_run"
+ },
+ "files": [
+  {
+   "filename": "stac/naip.parquet",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 44289015,
+   "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+   "ranges": [
+    {
+     "range": "0-3",
+     "status": 206,
+     "content_range": "bytes 0-3/44289015",
+     "passed": true
+    },
+    {
+     "range": "44289007-44289014",
+     "status": 206,
+     "content_range": "bytes 44289007-44289014/44289015",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip-overviews.parquet",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 516248,
+   "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+   "ranges": [
+    {
+     "range": "0-3",
+     "status": 206,
+     "content_range": "bytes 0-3/516248",
+     "passed": true
+    },
+    {
+     "range": "516240-516247",
+     "status": 206,
+     "content_range": "bytes 516240-516247/516248",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip.fields.json",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 1536,
+   "sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/1536",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  },
+  {
+   "filename": "stac/naip-overviews.fields.json",
+   "status": "verified",
+   "http_status": 200,
+   "size_bytes": 1705,
+   "sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+   "ranges": [
+    {
+     "range": "0-0",
+     "status": 206,
+     "content_range": "bytes 0-0/1705",
+     "passed": true
+    }
+   ],
+   "cors": {
+    "allow_origin": "*",
+    "expose_headers": "*",
+    "passed": true
+   }
+  }
+ ],
+ "subset_query": [
+  {
+   "filename": "stac/naip.parquet",
+   "window": [
+    -111.7,
+    40.5,
+    -111.5,
+    40.65
+   ],
+   "hosted_rows": 40,
+   "local_rows": 40,
+   "equal": true
+  },
+  {
+   "filename": "stac/naip-overviews.parquet",
+   "window": [
+    -114.1,
+    36.9,
+    -109.0,
+    42.1
+   ],
+   "hosted_rows": 12,
+   "local_rows": 12,
+   "equal": true
+  }
+ ],
+ "quad_rows_hosted": 245554,
+ "catalog_links": null
+}

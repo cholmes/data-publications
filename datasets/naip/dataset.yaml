@@ -14,7 +14,7 @@ triage:
     display copy matched its pixels. All 52 state-years (221,255 files, 11.03 TB) are hosted in the
     unlisted product as of 2026-11-14 and each passed the hosted checks.
 publication:
-  status: prepared
+  status: published
   release: index-20261116-r5
   manifest_path: datasets/naip/releases/index-20261116-r5/manifest.json
   manifest_sha256: 102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80
@@ -25,21 +25,33 @@ publication:
   catalog:
     snapshot_path: datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json
     snapshot_sha256: 31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9
-    package_base_url: null
-    hosting_report_path: null
-    hosting_report_sha256: null
+    package_base_url: https://data.source.coop/nthh/naip/releases/index-20261116-r5/
+    hosting_report_path: research/naip-index-20261117/hosting-report.json
+    hosting_report_sha256: 079c94fbb4b6e9fbadb188da291ee29f2d5adccd0f8e2a1c04571e294ff521c8
   limits:
-  - The package is the two STAC GeoParquet index files, not the imagery. The imagery and the index
-    files at stac/ are hosted in the unlisted product; this release, a versioned copy of the index
-    files, has not been uploaded.
-  - The release files differ from the hosted stac/ files only in their GeoParquet metadata (the CRS
-    is written out, and the quad index's first flight date is that of its earliest row). Replacing
-    the hosted stac/ files with them has not been done.
+  - The package is the two STAC GeoParquet index files, not the imagery. Its index files and field
+    dictionaries were put at stac/ in the unlisted product on 2026-11-17 (UTC), replacing index
+    files that differed only in GeoParquet metadata; the package was never hosted under releases/.
+    The hosted checks of the stac/ files passed the same day.
+  - The repository links in the catalogue (build manifest, validator report, environment, plan)
+    point at a commit that is readable on GitHub only once this branch is pushed.
   - Index releases r1 to r4 failed checks and are kept as failed evidence (index-package-plan.md).
   source_coop:
+    support_layout:
+      manifest_path: datasets/naip/source-coop/support-20261117.json
+      manifest_sha256: f9e070d1581bdf9a5370b954212cca04fe8c337c55b68311aecf98a89e30c735
+    flat_layout:
+      manifest_path: datasets/naip/source-coop/flat-20261117/manifest.json
+      manifest_sha256: 78753f2446cce647d8321cdb0ac6e7c0349d716757e1dcc53303b63297bcdc5f
+      hosting_report_path: research/naip-index-20261117/flat-hosting.json
+      hosting_report_sha256: ad9b2d12ae090d97a75311cdd94f88173a8bfe414b357fb8e2cccd8c40dd18ed
     owner: nthh
     owner_status: confirmed
-    account_verification: null
+    account_verification:
+      status: confirmed
+      owner: nthh
+      evidence_path: research/source-publication-20261106/account-verification.json
+      evidence_sha256: 5515f007abc95b38131ac42d95f358a07d4b6f8d950e38d1a202916635460cdc
     product_id: naip
     title: NAIP display copies
     summary: RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the
@@ -47,6 +59,14 @@ publication:
       naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and
       the latest flight of the four states last flown in 2023, with reduced pictures of each state
       and of the country for drawing a map.
+    file_layout:
+    - 'Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization
+      bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.'
+    - 'Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone,
+      9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).'
+    - 'Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview
+      file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the
+      files for a place by querying the index on its `bbox` columns.'
     tags:
     - naip
     - aerial-imagery

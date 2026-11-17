@@ -788,6 +788,18 @@ class SourceProductTests(unittest.TestCase):
         self.assertEqual(products.content_type("licenses/software/LICENSE"), "text/plain")
         self.assertEqual(products.content_type("licenses/software/NOTICE"), "text/plain")
 
+    def test_flat_readme_without_tiles_names_its_layout_and_no_pmtiles(self):
+        draft = {"title": "T", "summary": "S", "temporal_note": "N", "owner": "nthh", "product_id": "p",
+                 "dataset_id": "p", "attribution": "A", "license_note": "L", "limitations": ["X"],
+                 "file_layout": ["Images under `a/<b>.tif`."],
+                 "flat_layout": {"files": [{"filename": "stac/p.parquet", "size_bytes": 2000000},
+                                           {"filename": "stac/p.fields.json", "size_bytes": 1000}]}}
+        readme = products.render_flat_consumer_readme(draft)
+        self.assertIn("## Layout\n\n- Images under `a/<b>.tif`.", readme)
+        self.assertIn("(https://data.source.coop/nthh/p/stac/p.parquet)", readme)
+        self.assertNotIn("PMTiles", readme)
+        self.assertNotIn("checksum manifests", readme)
+
     def test_projjson_is_json(self):
         self.assertEqual(products.content_type("verification/workflow/crs84.projjson"), "application/json")
 

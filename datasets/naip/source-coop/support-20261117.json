@@ -1,0 +1,94 @@
+{
+ "dataset_id": "naip",
+ "files": [
+  {
+   "asset_id": "support-1",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261116-r5/build-manifest.json",
+    "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+    "size_bytes": 15637,
+    "stored_sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+    "stored_size_bytes": 15637,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/build-manifest.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+   "size_bytes": 15637,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/build-manifest.json",
+   "title": "Build commit, environment, input checksums and output facts"
+  },
+  {
+   "asset_id": "support-2",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261116-r5/check.json",
+    "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+    "size_bytes": 9333,
+    "stored_sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+    "stored_size_bytes": 9333,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/check.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+   "size_bytes": 9333,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/check.json",
+   "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+  },
+  {
+   "asset_id": "support-3",
+   "media_type": "text/plain",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-env.lock.txt",
+    "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "size_bytes": 10566,
+    "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "stored_size_bytes": 10566,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-env.lock.txt"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+   "size_bytes": 10566,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+   "title": "Locked build environment (conda explicit list and one pip wheel)"
+  },
+  {
+   "asset_id": "support-4",
+   "media_type": "text/markdown",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-package-plan.md",
+    "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+    "size_bytes": 9961,
+    "stored_sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+    "stored_size_bytes": 9961,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-package-plan.md"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+   "size_bytes": 9961,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+   "title": "Checks written before the first build, with addenda"
+  }
+ ],
+ "git_revision": "6723325fdbf6fc535ff871d80cf95a48235a8bc5",
+ "owner": "nthh",
+ "product_id": "naip",
+ "schema_version": 1,
+ "source_release": "index-20261116-r5"
+}

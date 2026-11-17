@@ -1,0 +1,33 @@
+{
+ "schema_version": 1,
+ "dataset_id": "naip",
+ "release": "index-20261116-r5",
+ "package_manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
+ "package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/",
+ "checked_at": "2026-11-17T05:45:17.424957+00:00",
+ "checks": {
+  "anonymous_access": "passed",
+  "range_requests": "passed",
+  "cors": "passed",
+  "asset_checksums": "passed",
+  "subset_query": "passed",
+  "catalog_links": "passed",
+  "browser_render": "passed"
+ },
+ "status": "passed",
+ "evidence": [
+  {
+   "path": "research/naip-index-20261117/hosted-checks/hosted-stac-r2.json",
+   "sha256": "7e620df325f3ce2389748f8ec9884f5a1452b07be09e8b127445053154313e4a"
+  },
+  {
+   "path": "research/naip-index-20261117/hosted-checks/hosted-explorer-r2.json",
+   "sha256": "f17d6b17dcc277481cf66070f9ec8ca7a5b7b0e45f03e13becc228ab4d21755c"
+  },
+  {
+   "path": "research/naip-index-20261117/replace-run-1/summary.json",
+   "sha256": "5188e19fc47a4400a37838dbd37547f6f12f18b6d3035249fe244dc4384a22cd"
+  }
+ ],
+ "note": "The package base names the release's package layout; that prefix was never hosted. Every catalogue address is rewritten to the files at stac/ (flat layout) or to the repository (support layout), and the support layout refuses a catalogue that still names a releases/ address. The checks are those of the stac/ files."
+}

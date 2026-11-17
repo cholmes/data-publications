@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "page": "https://experiments.folia.sh/stac-geoparquet/?lng=-111.64&lat=40.59&zoom=14&execution=browser",
+  "index_requests": [
+    {
+      "method": "GET",
+      "range": "bytes=-131072"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=43073230-43080940"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=43595979-43603246"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=43618148-43624210"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=15707440-15708340"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=15713354-15715436"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16037274-16044854"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16136903-16137896"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16185272-16186189"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16234237-16235227"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16282525-16283445"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16298433-16302814"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16829317-16838175"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16909743-16910698"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16949224-16950383"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16956985-16957025"
+    },
+    {
+      "method": "GET",
+      "range": "bytes=16962330-16968220"
+    }
+  ],
+  "index_response_statuses": [
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206,
+    206
+  ],
+  "quad_requests": 11,
+  "first_quads": [
+    "https://naip-range-cache.me-521.workers.dev/nthh/naip/ut/2024/60cm/rgb/40111/m_4011128_nw_12_060_20240830.tif",
+    "https://naip-range-cache.me-521.workers.dev/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+    "https://naip-range-cache.me-521.workers.dev/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+    "https://naip-range-cache.me-521.workers.dev/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+    "https://naip-range-cache.me-521.workers.dev/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif"
+  ],
+  "page_errors": [],
+  "cache_ranges": [
+    {
+      "range": "-131072",
+      "source": {
+        "status": 206,
+        "contentRange": "bytes 44157943-44289014/44289015",
+        "sha256": "ec3972a10e904be8c72acfbb814986e96c461fca1b5a8288cc9a1784b7f7c313"
+      },
+      "cache": {
+        "status": 206,
+        "contentRange": "bytes 44157943-44289014/44289015",
+        "sha256": "ec3972a10e904be8c72acfbb814986e96c461fca1b5a8288cc9a1784b7f7c313"
+      },
+      "passed": true
+    },
+    {
+      "range": "0-65535",
+      "source": {
+        "status": 206,
+        "contentRange": "bytes 0-65535/44289015",
+        "sha256": "86d5ea16874f5b3e20536bd6a47e4a6d39226e774e1deab21acb96c3f630aaa9"
+      },
+      "cache": {
+        "status": 206,
+        "contentRange": "bytes 0-65535/44289015",
+        "sha256": "86d5ea16874f5b3e20536bd6a47e4a6d39226e774e1deab21acb96c3f630aaa9"
+      },
+      "passed": true
+    },
+    {
+      "range": "20000000-20065535",
+      "source": {
+        "status": 206,
+        "contentRange": "bytes 20000000-20065535/44289015",
+        "sha256": "d4848b7e4c2ec09e8907ca333da865d6e147506b8e9e5852c6a90a38fdce0a4e"
+      },
+      "cache": {
+        "status": 206,
+        "contentRange": "bytes 20000000-20065535/44289015",
+        "sha256": "d4848b7e4c2ec09e8907ca333da865d6e147506b8e9e5852c6a90a38fdce0a4e"
+      },
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}

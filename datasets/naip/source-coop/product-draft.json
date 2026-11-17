@@ -101,16 +101,91 @@
     }
   ],
   "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP). Source files from the NAIP on AWS open data buckets maintained by Esri.",
-  "blockers": [
-    "Source Cooperative account verification is not recorded"
-  ],
-  "created": false,
-  "creation_ready": false,
+  "blockers": [],
+  "created": true,
+  "creation_ready": true,
   "dataset_id": "naip",
   "dataset_title": "NAIP display copies",
   "display_publication": null,
   "draft_type": "source_coop_product_draft",
-  "hosted": false,
+  "file_layout": [
+    "Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.",
+    "Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).",
+    "Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns."
+  ],
+  "flat_layout": {
+    "dataset_id": "naip",
+    "files": [
+      {
+        "asset_id": "quads",
+        "filename": "stac/naip.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "operation": "copy",
+        "roles": [
+          "data"
+        ],
+        "sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+        "size_bytes": 44289015,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/quads.parquet",
+        "source_sha256": "5d7d5404a0e8de0f67a1b41d6058640918396a62c1229c533505274b01f8eb12",
+        "source_size_bytes": 44289015,
+        "title": "Quarter-quad index (STAC GeoParquet)"
+      },
+      {
+        "asset_id": "overviews",
+        "filename": "stac/naip-overviews.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "operation": "copy",
+        "roles": [
+          "data"
+        ],
+        "sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+        "size_bytes": 516248,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/assets/overviews.parquet",
+        "source_sha256": "5c9d86db67043857c7c67981469c3cd4d31c6c6ad1dda369b62374feac134c2f",
+        "source_size_bytes": 516248,
+        "title": "Overview file index (STAC GeoParquet)"
+      },
+      {
+        "asset_id": "quads_fields",
+        "filename": "stac/naip.fields.json",
+        "media_type": "application/json",
+        "operation": "copy",
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+        "size_bytes": 1536,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/quads-field-dictionary.json",
+        "source_sha256": "5bbbe83a21aca1b145ab451fc09159bf63da03ad403d56b74ab211618a1e5184",
+        "source_size_bytes": 1536,
+        "title": "quads field dictionary"
+      },
+      {
+        "asset_id": "overviews_fields",
+        "filename": "stac/naip-overviews.fields.json",
+        "media_type": "application/json",
+        "operation": "copy",
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+        "size_bytes": 1705,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/metadata/overviews-field-dictionary.json",
+        "source_sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a",
+        "source_size_bytes": 1705,
+        "title": "overviews field dictionary"
+      }
+    ],
+    "layout_id": "flat-20261117",
+    "note": "The release package was never hosted under releases/; its index files and field dictionaries were put at these keys directly (research/naip-index-20261117/replace-run-1).",
+    "owner": "nthh",
+    "product_id": "naip",
+    "schema_version": 1,
+    "source_release": "index-20261116-r5",
+    "updated": "2026-11-17T00:00:00Z"
+  },
+  "hosted": true,
   "independent_maintainer_proposal": {
     "owner": "nthh",
     "relationship": "new Source Cooperative product proposal; immutable package metadata is unchanged",
@@ -130,11 +205,11 @@
   "owner_status": "confirmed",
   "product_id": "naip",
   "proposed_source_proxy": {
-    "status": "proposed",
+    "status": "hosted",
     "uri": "s3://nthh/naip"
   },
-  "publication_status": "prepared",
-  "ready_for_creation": false,
+  "publication_status": "published",
+  "ready_for_creation": true,
   "ready_for_review": true,
   "related_dataset_links": [],
   "release": "index-20261116-r5",
@@ -210,6 +285,7 @@
   "schema_version": 1,
   "snapshot_binding": {
     "bound_file_count": 10,
+    "hosted_package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/",
     "local_metadata_integrity": "passed",
     "manifest_path": "datasets/naip/releases/index-20261116-r5/manifest.json",
     "manifest_sha256": "102539c90b629220980def8716bf2e69e01f4f4a06420ed822aca773f93fec80",
@@ -368,12 +444,12 @@
   },
   "source_links": [
     {
-      "title": "Host: nthh",
-      "url": "https://github.com/nthh/data-publications"
-    },
-    {
       "title": "Dataset release",
       "url": "https://registry.opendata.aws/naip/"
+    },
+    {
+      "title": "Processor: nthh",
+      "url": "https://source.coop/nthh/naip"
     },
     {
       "title": "Producer: USDA Farm Production and Conservation Business Center",
@@ -382,6 +458,100 @@
   ],
   "summary": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA NAIP quarter quads, converted from the naip-analytic MRF files with the settings, file names and key layout of the AWS naip-visualization bucket. Every 2024 and 2025 state-year, which that bucket does not hold, and the latest flight of the four states last flown in 2023, with reduced pictures of each state and of the country for drawing a map.",
   "supplements": [],
+  "support_layout": {
+    "dataset_id": "naip",
+    "files": [
+      {
+        "asset_id": "support-1",
+        "media_type": "application/json",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/releases/index-20261116-r5/build-manifest.json",
+          "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+          "size_bytes": 15637,
+          "stored_sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+          "stored_size_bytes": 15637,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/build-manifest.json"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "703441414f085eaed8c3404962c07c73dbcd438e0f319f82602bb0944db08036",
+        "size_bytes": 15637,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/build-manifest.json",
+        "title": "Build commit, environment, input checksums and output facts"
+      },
+      {
+        "asset_id": "support-2",
+        "media_type": "application/json",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/releases/index-20261116-r5/check.json",
+          "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+          "size_bytes": 9333,
+          "stored_sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+          "stored_size_bytes": 9333,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/releases/index-20261116-r5/check.json"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "da531fd5084da8d61d4d076a908e3b703fbfcf48f309371fa0f4c2b7e16d2bf8",
+        "size_bytes": 9333,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/check.json",
+        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, fault tests"
+      },
+      {
+        "asset_id": "support-3",
+        "media_type": "text/plain",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/index-env.lock.txt",
+          "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+          "size_bytes": 10566,
+          "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+          "stored_size_bytes": 10566,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-env.lock.txt"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+        "size_bytes": 10566,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-env.lock.txt",
+        "title": "Locked build environment (conda explicit list and one pip wheel)"
+      },
+      {
+        "asset_id": "support-4",
+        "media_type": "text/markdown",
+        "retained": {
+          "encoding": "identity",
+          "kind": "git",
+          "path": "datasets/naip/index-package-plan.md",
+          "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+          "size_bytes": 9961,
+          "stored_sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+          "stored_size_bytes": 9961,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/6723325fdbf6fc535ff871d80cf95a48235a8bc5/datasets/naip/index-package-plan.md"
+        },
+        "roles": [
+          "metadata"
+        ],
+        "sha256": "d0e55ee83611b6c5ba2ae3d2a24b9dbc1b8e309e9197cfa2f774f11b2f31d34d",
+        "size_bytes": 9961,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261116-r5/provenance/index-package-plan.md",
+        "title": "Checks written before the first build, with addenda"
+      }
+    ],
+    "git_revision": "6723325fdbf6fc535ff871d80cf95a48235a8bc5",
+    "owner": "nthh",
+    "product_id": "naip",
+    "schema_version": 1,
+    "source_release": "index-20261116-r5"
+  },
   "tags": [
     "naip",
     "aerial-imagery",

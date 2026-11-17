@@ -49,6 +49,12 @@
     },
     {
       "rel": "child",
+      "href": "naip/collection.json",
+      "title": "NAIP display copies",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
       "href": "river-plastic-inputs/collection.json",
       "title": "Global river plastic inputs — Lebreton et al. (2017)",
       "type": "application/json"
