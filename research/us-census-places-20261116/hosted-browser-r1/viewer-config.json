@@ -1,0 +1,55 @@
+{
+  "dataset_id": "us-census-places",
+  "display_release": "cb2023-display-r3",
+  "object_origin": "https://data.source.coop",
+  "release": "cb2023-r1",
+  "schema_version": 1,
+  "viewport": {
+    "height": 900,
+    "width": 1440
+  },
+  "views": [
+    {
+      "bounds": [
+        -109.06,
+        36.99,
+        -102.04,
+        41
+      ],
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_counties.pmtiles",
+      "layer_id": "census-counties",
+      "least_outlines": 40,
+      "name": "colorado",
+      "source_layer": "census_counties",
+      "style_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_counties.json"
+    },
+    {
+      "bounds": [
+        -83.26,
+        39.81,
+        -82.77,
+        40.16
+      ],
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_places.pmtiles",
+      "layer_id": "census-places",
+      "least_outlines": 10,
+      "name": "franklin-county-oh",
+      "source_layer": "census_places",
+      "style_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_places.json"
+    },
+    {
+      "bounds": [
+        -83.26,
+        39.81,
+        -82.77,
+        40.16
+      ],
+      "display_object_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/assets/census_towns.pmtiles",
+      "layer_id": "census-towns",
+      "least_outlines": 5,
+      "name": "franklin-county-oh",
+      "source_layer": "census_towns",
+      "style_url": "https://data.source.coop/nthh/us-census-places/display/cb2023-display-r3/styles/census_towns.json"
+    }
+  ]
+}
