@@ -1,6 +1,8 @@
 <GDALTileIndexDataset>
   <!-- NAIP visualization COGs as one mosaic for GDAL and QGIS, newest flight of each place on top.
-       Open it as /vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti. The tile addresses are in
+       Open it as /vsicurl?empty_dir=yes&amp;url=https://data.source.coop/nthh/naip/stac/naip.gti
+       (empty_dir stops GDAL asking for side files of every quad, which QGIS does not stop on its own,
+       a 404 round trip each: 176 of them for one view at Alta). The tile addresses are in
        the naip:gti_location column of naip.parquet, relative to this folder, so GDAL reads each file
        by range through /vsicurl/. The mosaic is in NAD83 longitude and latitude (the quads' datum) at
        0.000005 degrees, about 0.5 m; QGIS reprojects it to the project CRS. Band 4 is alpha, so the

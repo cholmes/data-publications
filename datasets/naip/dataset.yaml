@@ -135,14 +135,19 @@ publication:
         Layer, with this address as the source) and in GDAL 3.9 or later:
 
         ```
-        /vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti
+        /vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti
         ```
+
+        `empty_dir=yes` tells GDAL not to look for side files (`.aux.xml`, `.msk`, `.ovr`) next to each
+        quad, which do not exist; without it a first view of a new area makes about 170 extra requests
+        and takes about four times as long. The plain `/vsicurl/https://...` address works too.
 
         It is a GDAL tile index (GTI) over `stac/naip.parquet`: newest flight on top, in NAD83 longitude
         and latitude at about 0.5 m, with an alpha band so the masked edge of each quad stays clear.
         Zoomed out it draws the 9.6 m state files and then the national file, through
-        `stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range.
-        Its reader needs the Parquet driver, which QGIS includes.
+        `stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range:
+        a first view of a new area is about 25 requests, a few seconds, and panning nearby is read from
+        what is already fetched. Its reader needs the Parquet driver, which QGIS includes.
     tags:
     - naip
     - aerial-imagery

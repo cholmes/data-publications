@@ -227,3 +227,10 @@ is new, and so do its two fault cases. Check 12 adds a third step that does what
 the layer (approximate statistics of band 1, then a 1,000-pixel draw of the whole extent) and must
 fetch no more than 8 MiB in all. Run on the r6 files it fails (28.5 MB fetched;
 `releases/index-20261117-r7/check-gti-open-on-r6.json`).
+
+Before any r7 check: a QGIS view also took several seconds. Measured with QGIS's GDAL, a first view
+of a new area is about 25 to 29 requests in sequence at about 0.25 s each; without
+`GDAL_DISABLE_READDIR_ON_OPEN`, which QGIS does not set, GDAL also asks for side files of each quad
+(176 404s for one Alta view, 20 s instead of 6 s). The address `/vsicurl?empty_dir=yes&url=...`
+stops that with no setting, so the comment in `gti/naip.gti` and the README give that address. r7
+is built again from the commit with this change; the index files are unchanged.
