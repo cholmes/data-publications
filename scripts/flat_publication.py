@@ -47,9 +47,11 @@ def _relpath(value: Any, label: str) -> str:
 
 
 def _basename(value: Any) -> str:
+    """A file at the product root, or in one folder below it (NAIP keeps its indexes in stac/)."""
     rel = _relpath(value, "flat filename")
-    if "/" in rel or not FLAT_FILENAME_RE.fullmatch(rel):
-        _fail(f"Flat filename must be a basename: {value!r}")
+    parts = rel.split("/")
+    if len(parts) > 2 or not all(FLAT_FILENAME_RE.fullmatch(part) for part in parts):
+        _fail(f"Flat filename must be a basename or one folder and a basename: {value!r}")
     return rel
 
 

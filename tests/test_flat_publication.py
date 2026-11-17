@@ -186,6 +186,14 @@ class FlatPublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "hosted proof mismatch"):
             apply_flat_layout(self.root, record, collection, tree)
 
+    def test_accepts_one_folder_but_not_two(self):
+        from scripts.flat_publication import _basename
+        self.assertEqual(_basename("stac/naip.parquet"), "stac/naip.parquet")
+        with self.assertRaisesRegex(ValueError, "one folder"):
+            _basename("a/b/c.parquet")
+        with self.assertRaisesRegex(ValueError, "one folder"):
+            _basename(".hidden/c.parquet")
+
     def test_rejects_unmapped_assets_and_nonidentity_copy(self):
         record, collection, tree, manifest = fixture(self.root)
         manifest["files"].pop(0)
