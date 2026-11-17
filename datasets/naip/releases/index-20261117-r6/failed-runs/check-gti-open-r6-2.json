@@ -1,0 +1,38 @@
+{
+ "schema_version": 1,
+ "plan": "datasets/naip/index-package-plan.md, addendum for r6, check 12",
+ "gdal": "3.12.4",
+ "release_files": {
+  "naip.gti": {
+   "sha256": "148aa0d389ed953f5c71389e03645afe25742925508652c10f049f3c0bb28dcd",
+   "size_bytes": 2807
+  },
+  "naip-overviews.gti": {
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "size_bytes": 957
+  },
+  "naip.parquet": {
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261
+  },
+  "naip-overviews.parquet": {
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918
+  }
+ },
+ "opened": "/vsicurl/http://127.0.0.1:<port>/nthh/naip/stac/naip.gti",
+ "reads": {
+  "alta_full_resolution": null,
+  "utah_600m": null
+ },
+ "errors": [
+  "alta_full_resolution: Invalid SRS\nMay be caused by: PROJ: proj_create_from_database: Cannot find proj.db",
+  "utah_600m: Invalid SRS\nMay be caused by: PROJ: proj_create_from_database: Cannot find proj.db"
+ ],
+ "imagery_files_read": [],
+ "index_files_read_whole": [],
+ "imagery_downloaded_whole": [],
+ "server_requests": 7,
+ "redirects": 0,
+ "status": "failed"
+}
