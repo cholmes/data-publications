@@ -23,17 +23,11 @@ publication:
   conversion_git_commit: 3f8b56eafd5bd35c946d0a427cb92e74aa7ce4a5
   local_bundle_directory: .local/naip/package/index-20261117-r6
   catalog:
-    snapshot_path: datasets/naip/releases/index-20261116-r5/catalog-input-r1/snapshot.json
-    snapshot_sha256: 31bcad3697e80b43f5dae6fa0c95da2efb39f50001e4b4d6c58a20da1d8211a9
-    package_base_url: https://data.source.coop/nthh/naip/releases/index-20261116-r5/
+    snapshot_path: datasets/naip/releases/index-20261117-r6/catalog-input-r1/snapshot.json
+    snapshot_sha256: d6dd6a511a523a72faeee99767903af92f389831c8cec8df793e001f86c2242d
+    package_base_url: https://data.source.coop/nthh/naip/releases/index-20261117-r6/
     hosting_report_path: research/naip-index-20261117/hosting-report.json
     hosting_report_sha256: 079c94fbb4b6e9fbadb188da291ee29f2d5adccd0f8e2a1c04571e294ff521c8
-    title_correction:
-      from: NAIP display copies
-      to: NAIP visualization COGs
-      reason: Renamed on 2026-11-17 after publication. The name follows the AWS naip-visualization
-        bucket whose settings and layout these files match. The release package, its snapshot and
-        the metadata inside the hosted index files keep the old name.
     map_assets:
     - asset_id: overview_national
       href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
@@ -50,20 +44,22 @@ publication:
       sha256: 93ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd
       title: National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif
   limits:
-  - The package is the two STAC GeoParquet index files, not the imagery. Its index files and field
-    dictionaries were put at stac/ in the unlisted product on 2026-11-17 (UTC), replacing index
-    files that differed only in GeoParquet metadata; the package was never hosted under releases/.
-    The hosted checks of the stac/ files passed the same day.
+  - The package is the two STAC GeoParquet index files, not the imagery. Its index files, field
+    dictionaries and two GDAL tile index files were put at stac/ on 2026-11-17 (UTC), replacing the
+    r5 files, which differed only in the naip:gti_location column and the collection names; the
+    package was never hosted under releases/. The hosted checks of the stac/ files passed the same
+    day.
   - The repository links in the catalogue (build manifest, validator report, environment, plan)
     point at a commit that is readable on GitHub only once this branch is pushed.
   - Index releases r1 to r4 failed checks and are kept as failed evidence (index-package-plan.md).
+    Release r5 was hosted at stac/ from 2026-11-17 until r6 replaced it the same day.
   source_coop:
     support_layout:
-      manifest_path: datasets/naip/source-coop/support-20261117.json
-      manifest_sha256: f9e070d1581bdf9a5370b954212cca04fe8c337c55b68311aecf98a89e30c735
+      manifest_path: datasets/naip/source-coop/support-20261117-r6.json
+      manifest_sha256: 799ffe1ecda32738de1a82e6727242cd66b79dd2dfee6090128802f39f42bde7
     flat_layout:
-      manifest_path: datasets/naip/source-coop/flat-20261117/manifest.json
-      manifest_sha256: 78753f2446cce647d8321cdb0ac6e7c0349d716757e1dcc53303b63297bcdc5f
+      manifest_path: datasets/naip/source-coop/flat-20261117-r6/manifest.json
+      manifest_sha256: bf2dcd156230fb0b7d4c26971fea698fb2208657d2c7c7c02d9b23562d6f3a44
       hosting_report_path: research/naip-index-20261117/flat-hosting.json
       hosting_report_sha256: ad9b2d12ae090d97a75311cdd94f88173a8bfe414b357fb8e2cccd8c40dd18ed
     owner: nthh
@@ -108,6 +104,9 @@ publication:
         - `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a
           multihash), `type` and `roles`.
         - `naip:run`: the conversion run that made the file.
+        - `naip:gti_location`: the file's address relative to `stac/`, for example
+          `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; it is
+          the location column of `stac/naip.gti` (below). Use `href` for anything else.
 
         `stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except
         `naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and
@@ -117,7 +116,7 @@ publication:
         Rows of the quad index are ordered along a Hilbert curve through the centre of each footprint,
         newest flight first at the same place, with states and years mixed. They are written in 30
         row groups of about 8,192 rows, with statistics and a page index, so a query for a small area
-        reads a few row groups instead of the whole 44 MB file. For the newest picture of a place, keep
+        reads a few row groups instead of the whole 45 MB file. For the newest picture of a place, keep
         the row with the latest `datetime`.
 
         The quarter quads around Alta, Utah, newest first:
@@ -129,6 +128,20 @@ publication:
           AND bbox.ymin < 40.60 AND bbox.ymax > 40.58
         ORDER BY datetime DESC;
         ```
+    - heading: Open in QGIS or GDAL
+      body: |-
+        `stac/naip.gti` opens every quarter quad as one mosaic in QGIS (Layer > Add Layer > Add Raster
+        Layer, with this address as the source) and in GDAL 3.9 or later:
+
+        ```
+        /vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti
+        ```
+
+        It is a GDAL tile index (GTI) over `stac/naip.parquet`: newest flight on top, in NAD83 longitude
+        and latitude at about 0.5 m, with an alpha band so the masked edge of each quad stays clear.
+        Zoomed out it draws the 9.6 m state files and then the national file, through
+        `stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range.
+        Its reader needs the Parquet driver, which QGIS includes.
     tags:
     - naip
     - aerial-imagery

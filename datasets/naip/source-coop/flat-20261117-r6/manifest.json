@@ -1,0 +1,102 @@
+{
+ "dataset_id": "naip",
+ "files": [
+  {
+   "asset_id": "quads",
+   "filename": "stac/naip.parquet",
+   "media_type": "application/vnd.apache.parquet",
+   "operation": "copy",
+   "roles": [
+    "data"
+   ],
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/assets/quads.parquet",
+   "source_sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "source_size_bytes": 45445261,
+   "title": "Quarter-quad index (STAC GeoParquet)"
+  },
+  {
+   "asset_id": "overviews",
+   "filename": "stac/naip-overviews.parquet",
+   "media_type": "application/vnd.apache.parquet",
+   "operation": "copy",
+   "roles": [
+    "data"
+   ],
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/assets/overviews.parquet",
+   "source_sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "source_size_bytes": 519918,
+   "title": "Overview file index (STAC GeoParquet)"
+  },
+  {
+   "asset_id": "quads_fields",
+   "filename": "stac/naip.fields.json",
+   "media_type": "application/json",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "size_bytes": 1607,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/metadata/quads-field-dictionary.json",
+   "source_sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "source_size_bytes": 1607,
+   "title": "quads field dictionary"
+  },
+  {
+   "asset_id": "overviews_fields",
+   "filename": "stac/naip-overviews.fields.json",
+   "media_type": "application/json",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "size_bytes": 1776,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/metadata/overviews-field-dictionary.json",
+   "source_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "source_size_bytes": 1776,
+   "title": "overviews field dictionary"
+  },
+  {
+   "asset_id": "support-7",
+   "filename": "stac/naip.gti",
+   "media_type": "application/xml",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "148aa0d389ed953f5c71389e03645afe25742925508652c10f049f3c0bb28dcd",
+   "size_bytes": 2807,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/metadata/gti/naip.gti",
+   "source_sha256": "148aa0d389ed953f5c71389e03645afe25742925508652c10f049f3c0bb28dcd",
+   "source_size_bytes": 2807,
+   "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
+  },
+  {
+   "asset_id": "support-8",
+   "filename": "stac/naip-overviews.gti",
+   "media_type": "application/xml",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "size_bytes": 957,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r6/metadata/gti/naip-overviews.gti",
+   "source_sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "source_size_bytes": 957,
+   "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
+  }
+ ],
+ "layout_id": "flat-20261117-r6",
+ "note": "The release package was never hosted under releases/; its index files, field dictionaries and GDAL tile index files were put at these keys directly (research/naip-index-r6-20261117/replace-run-1).",
+ "owner": "nthh",
+ "product_id": "naip",
+ "schema_version": 1,
+ "source_release": "index-20261117-r6",
+ "updated": "2026-11-17T00:00:00Z"
+}

@@ -1,6 +1,6 @@
 // Check 7 of research/naip-index-20261117/hosting-criteria.md: the production explorer reads the hosted index.
 //
-//   node hosted_explorer_check.mjs --modules NODE_MODULES --out NEW_FILE
+//   node hosted_explorer_check.mjs --modules NODE_MODULES --out NEW_FILE [--size BYTES]
 //
 // NODE_MODULES must hold playwright-core. Opens the explorer at Alta, Utah, reading in the browser, and records
 // every request to stac/naip.parquet (each must carry a Range header) and to quad COGs under nthh/naip/, and
@@ -19,7 +19,7 @@ const PAGE='https://experiments.folia.sh/stac-geoparquet/?lng=-111.64&lat=40.59&
 const HOSTS=['https://data.source.coop','https://naip-range-cache.me-521.workers.dev'];
 const isIndex=url=>HOSTS.some(host=>url===host+'/nthh/naip/stac/naip.parquet');
 const QUAD=/^https:\/\/(data\.source\.coop|naip-range-cache\.me-521\.workers\.dev)\/nthh\/naip\/[a-z]{2}\/\d{4}\/\d+cm\/rgb\/.+\.tif$/;
-const SIZE=44289015;
+const SIZE=Number(args.size||44289015);   // the hosted quad index's size, which the cache must report
 
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:900}});
