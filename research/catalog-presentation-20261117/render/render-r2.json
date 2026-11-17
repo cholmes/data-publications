@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "plan_sha256": "ca1616508931ccc6ed0c220027f461b3ee159f27a346c6f08b3a27d40fcd2f67",
+  "inputs": {
+    "renderer_sha256": "571cbfb6e5ee6daa19a866e0aeb6c41edc5983dbb4da33a70552f64c777f54f7",
+    "client_sha256": "3d5d73ce160be35ab0ef3665755a52de430f64feef861ff219ca52a001bb8219",
+    "package_lock_sha256": "c08d6ea58375a87a11982e7df58aa4f335343084aa8a7d1e7328eb7420f791d7",
+    "land_sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+    "plan_sha256": "ca1616508931ccc6ed0c220027f461b3ee159f27a346c6f08b3a27d40fcd2f67",
+    "naip_collection_sha256": "e5212a8e01f78ec523b62449cad413ee5eae916673c79714141182ad60fec67e",
+    "naip_image_sha256": "4abcb3327191df088127313c6ec650def456959c74e6242c8e5034b67302cb57",
+    "us-census-places_collection_sha256": "7200757576e9f4a8d6a5ce41048dada4cc36dd552e84c4a01dee74a899158389",
+    "us-census-places_style_sha256": "d6bb12a8cff8ccffcdf3e9f7586cc64ff7409bf410042c0975ec8b6be6deb8d2",
+    "worker_sha256": "0bf06492bdb7ba3d4132b78e435621bfba60d5250967991c02b1a73affea8cd5",
+    "bundle_sha256": "aa01d9919be6d0122f37829ddf80bf6e70c44fd87f172d5991ab80d5f06dc743"
+  },
+  "browser_version": "157.0.8103.79",
+  "cases": [
+    {
+      "dataset_id": "naip",
+      "status": "rendered_pending_visual_review",
+      "requests": [],
+      "total_bytes": 0,
+      "camera": {
+        "center": [
+          -95.65,
+          37.738849500053746
+        ],
+        "zoom": 3.5175382743157138,
+        "bounds": [
+          [
+            -132.4882727192167,
+            22.521110589242497
+          ],
+          [
+            -58.81172728078458,
+            50.372236360394055
+          ]
+        ]
+      },
+      "source_layer": null,
+      "rendered_features": 0,
+      "decoded_tile_count": 0,
+      "decoded_features": 0,
+      "opaque_image_pixels": 1311110,
+      "png_sha256": "7b808953af2c63a6e7e5ceeebb404cb259b5706ac8a2ea8e9496a058585b1e5e",
+      "png_size_bytes": 648031
+    },
+    {
+      "dataset_id": "us-census-places",
+      "status": "rendered_pending_visual_review",
+      "requests": [
+        {
+          "range": "bytes 0-16383",
+          "requested_bytes": 16384,
+          "status": 206,
+          "bytes": 16384,
+          "sha256": "3bf11d9e95e189d39d99c2bdf10f97fc0c982fcec02531eb4e93040bfd0d87e3"
+        },
+        {
+          "range": "bytes 231-4473",
+          "requested_bytes": 4243,
+          "status": 206,
+          "bytes": 4243,
+          "sha256": "e8f4432dcf609ce64faf50b567b56d8c6863a5ee7cd77779c161037c398ea701"
+        },
+        {
+          "range": "bytes 4474-12615",
+          "requested_bytes": 8142,
+          "status": 206,
+          "bytes": 8142,
+          "sha256": "5c22af81dd85a1c278b57ef92b9ccab2e2bbd1f9f79d9d07a5ade0cde6b45d93"
+        },
+        {
+          "range": "bytes 346370-472409",
+          "requested_bytes": 126040,
+          "status": 206,
+          "bytes": 126040,
+          "sha256": "8026bdc0f8c533f1a7b8e5eaee863561b9021c50fc20d3105e6c7bde2610bec2"
+        },
+        {
+          "range": "bytes 472410-554889",
+          "requested_bytes": 82480,
+          "status": 206,
+          "bytes": 82480,
+          "sha256": "e8541d49966e860b37d844bfabd27f873198a85c0c7388bbe476246ec363fd35"
+        },
+        {
+          "range": "bytes 182536-346369",
+          "requested_bytes": 163834,
+          "status": 206,
+          "bytes": 163834,
+          "sha256": "3b6624dd983f0fba4147a4421495f88a6295541c95f191699f799862a09b9c7a"
+        },
+        {
+          "range": "bytes 127677-182535",
+          "requested_bytes": 54859,
+          "status": 206,
+          "bytes": 54859,
+          "sha256": "d687bc5c7d2cca4f1e883afe0268d2ad4cf1b008545e8b5f902e39400c1d6ef2"
+        }
+      ],
+      "total_bytes": 455982,
+      "camera": {
+        "center": [
+          -95.75,
+          37.83944419590176
+        ],
+        "zoom": 3.5824671931705465,
+        "bounds": [
+          [
+            -130.96710940768315,
+            23.354953680906405
+          ],
+          [
+            -60.532890592315596,
+            49.95529751744371
+          ]
+        ]
+      },
+      "source_layer": "census_counties",
+      "rendered_features": 6514,
+      "decoded_tile_count": 0,
+      "decoded_features": 0,
+      "png_sha256": "d91c57c421b81db60fe65f9001ccd55135a74e956f03c33ae575340d587cf21f",
+      "png_size_bytes": 266718
+    }
+  ],
+  "status": "rendered_pending_visual_review"
+}

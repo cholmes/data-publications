@@ -25,6 +25,7 @@ window.thumbnailReady = (async () => {
     }
     legend.append(stops);
   }
+  if (card.image) return drawImage(card, plan);
   const sourceLayer = card.style.layers.find(layer => layer.source === 'data' && layer['source-layer'])?.['source-layer'];
   if (!sourceLayer) throw new Error('Catalog style has no data source layer');
   const archive = new PMTiles(card.pmtiles.url);
@@ -44,6 +45,10 @@ window.thumbnailReady = (async () => {
     }
   }
   const style = structuredClone(card.style);
+  // Labels cannot be read at card size and would fetch fonts from another host; cards draw
+  // geometry only. Styles without symbol layers are unchanged.
+  style.layers = style.layers.filter(layer => !(layer.source === 'data' && layer.type === 'symbol'));
+  delete style.glyphs;
   let decodedTileCount = 0, decodedFeatures = 0;
   if (card.source_tile_zoom != null) {
     // A source's minzoom hides data below that zoom. Instead, decode the fixed
@@ -88,6 +93,10 @@ window.thumbnailReady = (async () => {
   } else {
     style.sources.data.url = `pmtiles://${card.pmtiles.url}`;
   }
+  return drawMap(card, plan, style, {sourceLayer, decodedTileCount, decodedFeatures});
+})();
+
+function withLand(style) {
   style.sources.land = {type: 'geojson', data: '/land.geojson'};
   style.layers = [
     {id: 'ocean', type: 'background', paint: {'background-color': '#e9f1f2'}},
@@ -95,6 +104,31 @@ window.thumbnailReady = (async () => {
     {id: 'land-outline', type: 'line', source: 'land', paint: {'line-color': '#d5ddda', 'line-width': 0.55}},
     ...style.layers,
   ];
+  return style;
+}
+
+// An imagery case: the PNG made from a pinned COG, drawn where its corners say. The opaque pixel
+// count of the PNG stands in for a feature count: a blank image fails the render.
+async function drawImage(card, plan) {
+  const image = await new Promise((resolve, reject) => {
+    const element = new Image();
+    element.onload = () => resolve(element); element.onerror = () => reject(new Error('Image did not load'));
+    element.src = '/image.png';
+  });
+  const canvas = document.createElement('canvas');
+  canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
+  const context = canvas.getContext('2d');
+  context.drawImage(image, 0, 0);
+  const alpha = context.getImageData(0, 0, canvas.width, canvas.height).data;
+  let opaque = 0;
+  for (let i = 3; i < alpha.length; i += 4) if (alpha[i] > 0) opaque++;
+  const style = withLand({version: 8, sources: {data: {type: 'image', url: '/image.png', coordinates: card.image.coordinates}},
+    layers: [{id: 'data-image', type: 'raster', source: 'data', paint: {'raster-fade-duration': 0, 'raster-resampling': 'linear'}}]});
+  return drawMap(card, plan, style, {sourceLayer: null, decodedTileCount: 0, decodedFeatures: 0, opaque});
+}
+
+function drawMap(card, plan, style, extra) {
+  if (!card.image) withLand(style);
   const map = new maplibregl.Map({
     container: 'map', style, attributionControl: false, interactive: false,
     renderWorldCopies: false, maxPitch: 0,
@@ -109,17 +143,16 @@ window.thumbnailReady = (async () => {
     map.once('idle', () => {
       clearTimeout(timer);
       if (!map.isStyleLoaded() || !map.areTilesLoaded()) { reject(new Error('Map style or tiles are not fully loaded')); return; }
-      const layers = card.style.layers.filter(layer => layer.source === 'data').map(layer => layer.id);
-      const features = map.queryRenderedFeatures({layers});
+      const features = card.image ? [] : map.queryRenderedFeatures({layers: style.layers.filter(layer => layer.source === 'data').map(layer => layer.id)});
       const bounds = map.getBounds(), [[west, south], [east, north]] = plan.bounds;
       if (bounds.getWest() > west + 1e-6 || bounds.getEast() < east - 1e-6 ||
           bounds.getSouth() > south + 1e-6 || bounds.getNorth() < north - 1e-6) {
         reject(new Error('Rendered camera crops the planned geographic bounds')); return;
       }
-      resolve({feature_count: features.length, source_layer: sourceLayer,
-        decoded_tile_count: decodedTileCount, decoded_features: decodedFeatures,
+      resolve({feature_count: features.length, source_layer: extra.sourceLayer,
+        decoded_tile_count: extra.decodedTileCount, decoded_features: extra.decodedFeatures, opaque_pixels: extra.opaque ?? null,
         camera: {center: map.getCenter().toArray(), zoom: map.getZoom(), bounds: bounds.toArray()},
       });
     });
   });
-})();
+}

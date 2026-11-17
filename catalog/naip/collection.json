@@ -81,14 +81,26 @@
       "type": "text/markdown"
     },
     "thumbnail": {
-      "file:checksum": "12205401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
-      "file:size": 4826,
-      "href": "display/thumbnail.png",
+      "href": "presentation/thumbnail.png",
+      "type": "image/png",
       "roles": [
         "thumbnail"
       ],
-      "title": "Sampled display-only overview; not an analytic asset",
-      "type": "image/png"
+      "title": "National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif",
+      "file:size": 648031,
+      "file:checksum": "12207b808953af2c63a6e7e5ceeebb404cb259b5706ac8a2ea8e9496a058585b1e5e"
+    },
+    "overview_national": {
+      "href": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "visual",
+        "overview"
+      ],
+      "title": "National overview for drawing a map, latest flight of each state, about 306 m (not in the indexes package)",
+      "proj:code": "EPSG:3857",
+      "file:size": 38077264,
+      "file:checksum": "122085e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a"
     }
   },
   "created": "2026-11-17T05:01:25Z",
@@ -116,11 +128,6 @@
   "id": "naip",
   "license": "other",
   "links": [
-    {
-      "href": "display/thumbnail.png",
-      "rel": "thumbnail",
-      "type": "image/png"
-    },
     {
       "href": "https://registry.opendata.aws/naip/",
       "rel": "via",
@@ -151,6 +158,12 @@
       "rel": "agents",
       "href": "./AGENTS.md",
       "type": "text/markdown"
+    },
+    {
+      "rel": "thumbnail",
+      "href": "presentation/thumbnail.png",
+      "type": "image/png",
+      "title": "National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif"
     },
     {
       "rel": "vcs",
@@ -202,7 +215,8 @@
     "https://stac-extensions.github.io/file/v2.1.0/schema.json",
     "https://stac-extensions.github.io/table/v1.2.0/schema.json",
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/version/v1.2.0/schema.json"
+    "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
   ],
   "stac_version": "1.1.0",
   "table:columns": [

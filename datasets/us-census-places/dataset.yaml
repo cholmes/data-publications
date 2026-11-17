@@ -51,6 +51,10 @@ publication:
     package_base_url: https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/
     hosting_report_path: research/us-census-places-20261116/hosted-validation.json
     hosting_report_sha256: 16d6ae87b44c59a742968a0afa39bbf1e91251f6208f87f4db5076867da7fd54
+    thumbnail:
+      path: datasets/us-census-places/presentation/conus-v1/thumbnail.png
+      sha256: d91c57c421b81db60fe65f9001ccd55135a74e956f03c33ae575340d587cf21f
+      title: County boundaries of the lower 48 from the published display tiles
   display:
     release: cb2023-display-r3
     manifest_path: datasets/us-census-places/display/cb2023-display-r3/manifest.json

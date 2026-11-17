@@ -544,6 +544,45 @@ def _set_catalog_thumbnail(collection: dict, thumbnail: tuple[dict, bytes], data
     put(f"{dataset_id}/{href}", data)
 
 
+COG_TYPE = "image/tiff; application=geotiff; profile=cloud-optimized"
+FILE_SCHEMA = "https://stac-extensions.github.io/file/v2.1.0/schema.json"
+PROJECTION_SCHEMA = "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+
+
+def _add_map_assets(root: Path, dataset_id: str, record: dict, collection: dict) -> None:
+    """Add hosted COG map layers listed under publication.catalog.map_assets.
+
+    Each entry names a file already hosted outside the release package (for NAIP, the national
+    overview). Its size and SHA-256 must equal those of a passed, checksum-pinned evidence report on
+    that same address, so the catalogue never states bytes that were not read.
+    """
+    entries = ((record.get("publication") or {}).get("catalog") or {}).get("map_assets")
+    if entries is None:
+        return
+    assets = collection.setdefault("assets", {})
+    for entry in entries:
+        asset_id, href = entry["asset_id"], entry["href"]
+        https_url(href, f"{dataset_id} map asset href")
+        if asset_id in assets:
+            raise ValueError(f"Map asset ID already used: {dataset_id}/{asset_id}")
+        if entry["type"] != COG_TYPE or "visual" not in entry["roles"]:
+            raise ValueError(f"Map asset must be a visual Cloud-Optimized GeoTIFF: {dataset_id}/{asset_id}")
+        evidence_bytes = inside(root, entry["evidence_path"]).read_bytes()
+        if sha256_bytes(evidence_bytes) != entry["evidence_sha256"]:
+            raise ValueError(f"Map asset evidence SHA-256 mismatch: {dataset_id}/{asset_id}")
+        evidence = json.loads(evidence_bytes)
+        if (evidence.get("status") != "passed" or evidence.get("url") != href
+                or evidence.get("size_bytes") != entry["size_bytes"] or evidence.get("sha256") != entry["sha256"]):
+            raise ValueError(f"Map asset differs from its passed evidence: {dataset_id}/{asset_id}")
+        assets[asset_id] = {"href": href, "type": COG_TYPE, "roles": list(entry["roles"]), "title": entry["title"],
+                            "proj:code": entry["proj_code"], "file:size": entry["size_bytes"],
+                            "file:checksum": "1220" + entry["sha256"]}
+    extensions = collection.setdefault("stac_extensions", [])
+    for schema in (FILE_SCHEMA, PROJECTION_SCHEMA):
+        if schema not in extensions:
+            extensions.append(schema)
+
+
 def _add_display_publication(collection: dict, display: dict, display_base: str,
                              dataset_id: str, put) -> None:
     assets = collection.setdefault("assets", {})
@@ -1104,6 +1143,8 @@ def _generated(root: Path, config: dict) -> dict[str, bytes]:
         flat_layout = apply_flat_layout(root, record, out_collection, tree)
         from support_publication import apply_support_layout
         apply_support_layout(root, record, out_collection)
+        # After the flat layout, which accepts only package assets, add hosted map layers.
+        _add_map_assets(root, dataset_id, record, out_collection)
         from catalog_presentation import apply_presentation, apply_field_semantics
         apply_presentation(root, record, out_collection, tree)
         apply_field_semantics(root, record, out_collection)

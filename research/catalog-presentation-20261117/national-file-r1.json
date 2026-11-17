@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "url": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+ "checked_at": "2026-11-17T06:58:41.726142+00:00",
+ "size_bytes": 38077264,
+ "index_size_bytes": 38077264,
+ "sha256": "85e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a",
+ "details": {
+  "head": true,
+  "first_bytes": true,
+  "last_bytes": true,
+  "cors": false
+ },
+ "checks": {
+  "national_file_pinned": "passed",
+  "national_file_hosting": "failed"
+ },
+ "status": "failed"
+}

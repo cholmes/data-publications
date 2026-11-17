@@ -49,6 +49,7 @@ const report = {
   cases: [],
 };
 let serverOrigin;
+let currentImage = null;
 
 try {
   const landPath = underRoot(plan.land.path);
@@ -64,6 +65,22 @@ try {
   };
   const cases = [];
   for (const item of plan.cases) {
+    if (item.image) {
+      // An imagery case: a PNG made from a pinned hosted COG, placed by its corner coordinates.
+      // No remote request is made; the PNG and its source are both checked by SHA-256.
+      if (!/^[a-z0-9-]+$/.test(item.dataset_id) || cases.some(value => value.dataset_id === item.dataset_id) || !item.title || !item.subtitle || !item.attribution) throw new Error('Malformed case entry');
+      const {image} = item;
+      if (!Array.isArray(image.coordinates) || image.coordinates.length !== 4 || !image.source?.url || !/^[a-f0-9]{64}$/.test(image.source.sha256 || '')) throw new Error('Malformed image case');
+      const collectionBytes = await readFile(underRoot(`catalog/${item.dataset_id}/collection.json`));
+      const object = Object.values(JSON.parse(collectionBytes).assets).find(asset => asset.href === image.source.url);
+      if (!object || object['file:checksum'] !== '1220' + image.source.sha256 || object['file:size'] !== image.source.size_bytes) throw new Error('Image source pin differs from the generated catalog asset');
+      const imageBytes = await readFile(underRoot(image.path));
+      checkHash(sha(imageBytes), image.sha256, `${item.dataset_id} image`);
+      report.inputs[`${item.dataset_id}_collection_sha256`] = sha(collectionBytes);
+      report.inputs[`${item.dataset_id}_image_sha256`] = sha(imageBytes);
+      cases.push({...item, imageBytes});
+      continue;
+    }
     if (!/^[a-z0-9-]+$/.test(item.dataset_id) || cases.some(value => value.dataset_id === item.dataset_id) || !item.title || !item.subtitle || !item.attribution || !item.pmtiles?.url || !Number.isSafeInteger(item.pmtiles.size_bytes)) throw new Error('Malformed case entry');
     if (new URL(item.pmtiles.url).origin !== 'https://data.source.coop' || !/^[a-f0-9]{64}$/.test(item.pmtiles.sha256)) throw new Error('Expected a pinned public Source object');
     if (item.source_tile_zoom != null && (!Number.isInteger(item.source_tile_zoom) || item.source_tile_zoom < 3 || item.source_tile_zoom > 8)) throw new Error('Explicit preview source tiles must use zooms 3–8 within a bounded window');
@@ -101,6 +118,7 @@ try {
   server = createServer((req, res) => {
     const pathname = new URL(req.url, 'http://localhost').pathname;
     const rel = pathname === '/' ? 'index.html' : pathname.slice(1);
+    if (rel === 'image.png' && currentImage) { res.writeHead(200, {'content-type': 'image/png', 'cache-control': 'no-store'}); res.end(currentImage); return; }
     if (!['index.html', 'app.js', 'app.css', 'land.geojson', 'worker.mjs'].includes(rel)) { res.writeHead(404).end(); return; }
     res.writeHead(200, {'content-type': mime[extname(rel)] || 'application/octet-stream', 'cache-control': 'no-store'});
     createReadStream(join(buildDir, rel)).pipe(res);
@@ -117,6 +135,7 @@ try {
     let page;
     let reservedBytes = 0;
     try {
+      currentImage = item.imageBytes || null;
       const context = await browser.newContext({viewport: {width: 1200, height: 720}, deviceScaleFactor: 1, serviceWorkers: 'block'});
       page = await context.newPage();
       const errors = [];
@@ -125,6 +144,7 @@ try {
       await page.route('**/*', async route => {
         const request = route.request(), url = new URL(request.url());
         if (url.origin === serverOrigin) { await route.continue(); return; }
+        if (!item.pmtiles) { errors.push(`Denied network request in an imagery case: ${request.url()}`); await route.abort('blockedbyclient'); return; }
         const remote = new URL(item.pmtiles.url);
         if (url.origin !== remote.origin || url.pathname !== remote.pathname || url.search !== remote.search || request.method() !== 'GET') {
           errors.push(`Denied unexpected network request: ${request.url()}`); await route.abort('blockedbyclient'); return;
@@ -163,7 +183,8 @@ try {
         }
       });
       // Data is transferred through a compact encoded query, without a writable profile or disk cache.
-      await page.goto(`${serverOrigin}/?card=${encodeURIComponent(JSON.stringify(item))}&map=${encodeURIComponent(JSON.stringify(plan))}`, {waitUntil: 'domcontentloaded', timeout: 15000});
+      const {imageBytes: _bytes, ...cardItem} = item;
+      await page.goto(`${serverOrigin}/?card=${encodeURIComponent(JSON.stringify(cardItem))}&map=${encodeURIComponent(JSON.stringify(plan))}`, {waitUntil: 'domcontentloaded', timeout: 15000});
       await page.waitForFunction(() => Boolean(window.thumbnailReady), null, {timeout: 10000});
       const result = await page.evaluate(() => Promise.race([
         window.thumbnailReady,
@@ -171,12 +192,13 @@ try {
       ]));
       await page.waitForTimeout(250);
       if (errors.length) throw new Error(errors.join('; '));
-      if (!result.feature_count) throw new Error('No rendered features in the actual dataset source');
+      if (item.image ? !result.opaque_pixels : !result.feature_count) throw new Error('No rendered features in the actual dataset source');
       await page.screenshot({path: join(outDir, `${item.dataset_id}.png`), fullPage: false, animations: 'disabled'});
       entry.camera = result.camera; entry.source_layer = result.source_layer;
       entry.rendered_features = result.feature_count;
       entry.decoded_tile_count = result.decoded_tile_count;
       entry.decoded_features = result.decoded_features;
+      if (item.image) entry.opaque_image_pixels = result.opaque_pixels;
       await page.evaluate(() => {
         for (const layer of window.map.getStyle().layers) {
           if (layer.source === 'data') window.map.setLayoutProperty(layer.id, 'visibility', 'none');

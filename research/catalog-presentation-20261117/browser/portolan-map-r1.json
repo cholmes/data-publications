@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "page": "http://127.0.0.1:8149/#/external/http:/127.0.0.1:8151/naip/collection.json",
+ "file": "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+ "requests": [
+  {
+   "method": "GET",
+   "range": "bytes=0-65535"
+  },
+  {
+   "method": "GET",
+   "range": "bytes=39852-79571"
+  }
+ ],
+ "response_statuses": [
+  206,
+  206
+ ],
+ "page_errors": [],
+ "status": "rendered_pending_visual_review"
+}

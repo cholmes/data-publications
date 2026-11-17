@@ -1,0 +1,46 @@
+{
+ "schema_version": 1,
+ "criteria": "research/catalog-presentation-20261117/criteria.md",
+ "reviewed_on": "2026-11-17",
+ "marks": {
+  "national_file_pinned": {
+   "status": "passed",
+   "evidence": "national-file-r2.json",
+   "note": "r1 also passed this mark"
+  },
+  "national_file_hosting": {
+   "status": "passed",
+   "evidence": "national-file-r2.json",
+   "note": "r1 failed: the check looked up response headers case-sensitively and the server sends lower-case names; the server headers were correct (curl). Fixed in the check, kept as failed evidence."
+  },
+  "map_layer_in_catalogue": {
+   "status": "passed",
+   "evidence": "catalog/naip/collection.json asset overview_national; tests/test_publication_catalog_map_assets.py (6 tests)"
+  },
+  "map_layer_draws": {
+   "status": "passed",
+   "evidence": "browser/portolan-map-r1.json, browser/portolan-naip-map.png",
+   "note": "Local Portolan Browser at commit 51947ab against the local stage; 2 ranged GETs, all 206, no page errors. The white patch in southern Nevada has no quads in the source (0 index rows at -116.0, 37.3; 4 at -117.5, 38.5)."
+  },
+  "cards_render": {
+   "status": "passed",
+   "evidence": "render/render-r2.json",
+   "note": "render-r1 failed for Census: its style's label layer fetched fonts from another host, which the renderer blocks. Card renders now drop data symbol layers. render-r3-repeat reproduced both PNGs byte for byte."
+  },
+  "cards_reviewed": {
+   "status": "passed",
+   "note": "NAIP: imagery across the whole lower 48 over land context. Census: county lines across the whole lower 48, faint in the published catalogue style (unchanged)."
+  },
+  "catalogue_checks": {
+   "status": "passed",
+   "note": "publication_catalog.py check passed (7 collections); test_publication_catalog 25 OK; record tests 24 OK; source_products, flat and support layout tests OK. Only naip and us-census-places generated files changed."
+  },
+  "cards_in_browser": {
+   "status": "passed",
+   "evidence": "browser/portolan-cards-r1.json, browser/catalog-cards.png"
+  }
+ },
+ "not_done": [
+  "No upload, listing change, push or Pages deploy."
+ ]
+}

@@ -6,6 +6,8 @@ License: other.
 
 Immutable package: https://data.source.coop/nthh/us-census-places/releases/cb2023-r1/
 
+Catalog preview: County boundaries of the lower 48 from the published display tiles. Display only; use GeoParquet for analysis.
+
 Source producers: US Census Bureau
 
 Source provenance: https://www2.census.gov/geo/tiger/GENZ2023/shp/

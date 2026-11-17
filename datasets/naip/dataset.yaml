@@ -28,6 +28,21 @@ publication:
     package_base_url: https://data.source.coop/nthh/naip/releases/index-20261116-r5/
     hosting_report_path: research/naip-index-20261117/hosting-report.json
     hosting_report_sha256: 079c94fbb4b6e9fbadb188da291ee29f2d5adccd0f8e2a1c04571e294ff521c8
+    map_assets:
+    - asset_id: overview_national
+      href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      roles: [visual, overview]
+      title: National overview for drawing a map, latest flight of each state, about 306 m (not in the indexes package)
+      proj_code: EPSG:3857
+      size_bytes: 38077264
+      sha256: 85e9adc58c1aacddc637c6a6cbb1b2a03fcd758d33173f9778354c99b6c49f3a
+      evidence_path: research/catalog-presentation-20261117/national-file-r2.json
+      evidence_sha256: d0e500445411971d6f216d55097b312e4d5a7a8c2b148934a0fd15f7b128a841
+    thumbnail:
+      path: datasets/naip/presentation/conus-v1/thumbnail.png
+      sha256: 7b808953af2c63a6e7e5ceeebb404cb259b5706ac8a2ea8e9496a058585b1e5e
+      title: National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif
   limits:
   - The package is the two STAC GeoParquet index files, not the imagery. Its index files and field
     dictionaries were put at stac/ in the unlisted product on 2026-11-17 (UTC), replacing index
