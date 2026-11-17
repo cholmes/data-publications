@@ -1,0 +1,60 @@
+{
+ "schema_version": 1,
+ "plan": "research/naip-index-r6-20261117/hosting-criteria.md, check 8",
+ "gdal": "3.12.4",
+ "release_files": {
+  "naip.gti": {
+   "sha256": "148aa0d389ed953f5c71389e03645afe25742925508652c10f049f3c0bb28dcd",
+   "size_bytes": 2807
+  },
+  "naip-overviews.gti": {
+   "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+   "size_bytes": 957
+  },
+  "naip.parquet": {
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261
+  },
+  "naip-overviews.parquet": {
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918
+  }
+ },
+ "opened": "/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti",
+ "reads": {
+  "alta_full_resolution": {
+   "size": [
+    2800,
+    2200
+   ],
+   "band1_mean": 108.574,
+   "alpha_max": 255.0,
+   "index_requests": 8,
+   "index_bytes": 1580923
+  },
+  "utah_600m": {
+   "size": [
+    944,
+    963
+   ],
+   "band1_mean": 165.054,
+   "alpha_max": 255.0,
+   "index_requests": 1,
+   "index_bytes": 425984
+  }
+ },
+ "errors": [],
+ "imagery_files_read": [
+  "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+  "https://data.source.coop/nthh/naip/ut/2021/60cm/rgb/40111/m_4011127_ne_12_060_20211121.tif",
+  "https://data.source.coop/nthh/naip/ut/2021/60cm/rgb/40111/m_4011128_nw_12_060_20211121.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011128_nw_12_060_20240830.tif"
+ ],
+ "index_files_read_whole": [],
+ "imagery_downloaded_whole": [],
+ "server_requests": 0,
+ "index_requests": [],
+ "redirects": null,
+ "status": "passed"
+}

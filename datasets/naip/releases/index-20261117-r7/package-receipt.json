@@ -1,0 +1,25 @@
+{
+  "asset_count": 2,
+  "assets": [
+    {
+      "asset_id": "quads",
+      "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+      "size_bytes": 45445261
+    },
+    {
+      "asset_id": "overviews",
+      "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+      "size_bytes": 519918
+    }
+  ],
+  "dataset_id": "naip",
+  "final_verification_sha256": "4c52de620efb746ff3ebb467dc1842c1e18d1ae256c1d9867fec950c9dd0e872",
+  "manifest_sha256": "de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d",
+  "package_binding_sha256": "eb846e9b9b8b5ca98e8a01db1d2070e867bf6025cf4d20296fd8bfd484711745",
+  "package_dir": "index-20261117-r7",
+  "publicly_published": false,
+  "registry_submitted": false,
+  "release_id": "index-20261117-r7",
+  "release_version": "1.2.0",
+  "status": "packaged_locally_not_published"
+}

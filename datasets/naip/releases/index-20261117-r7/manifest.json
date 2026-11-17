@@ -1,0 +1,331 @@
+{
+  "assets": [
+    {
+      "asset_id": "quads",
+      "description": "One STAC item per hosted quarter-quad COG: 245,554 rows. Each row gives the file's address, size and checksum, its footprint in degrees, its CRS, bounds and transform, and the flight date from its name. Pennsylvania 2024 and West Virginia 2024, which cover part of each state, are not listed. Rows follow a Hilbert curve. Each row's naip:gti_location gives the file's address relative to stac/, for GDAL's GTI driver (stac/naip.gti).",
+      "field_dictionary": "metadata/quads-field-dictionary.json",
+      "field_dictionary_sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+      "geo_metadata_version": "1.1.0",
+      "geometry_column": "geometry",
+      "geometry_types": [
+        "Polygon"
+      ],
+      "href": "assets/quads.parquet",
+      "identifier_column": "id",
+      "media_type": "application/vnd.apache.parquet",
+      "row_count": 245554,
+      "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+      "size_bytes": 45445261,
+      "source_path": "naip.parquet",
+      "title": "Quarter-quad index (STAC GeoParquet)"
+    },
+    {
+      "asset_id": "overviews",
+      "description": "One STAC item per hosted overview file: 114 state files (one state, year and UTM zone at 9.6 m) and the national file (EPSG:3857, about 306 m). A state file's footprint is an outline of its quads. Coarsest first. Each row's naip:gti_location gives the file's address relative to stac/, for GDAL's GTI driver (stac/naip.gti).",
+      "field_dictionary": "metadata/overviews-field-dictionary.json",
+      "field_dictionary_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+      "geo_metadata_version": "1.1.0",
+      "geometry_column": "geometry",
+      "geometry_types": [
+        "MultiPolygon",
+        "Polygon"
+      ],
+      "href": "assets/overviews.parquet",
+      "identifier_column": "id",
+      "media_type": "application/vnd.apache.parquet",
+      "row_count": 115,
+      "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+      "size_bytes": 519918,
+      "source_path": "naip-overviews.parquet",
+      "title": "Overview file index (STAC GeoParquet)"
+    }
+  ],
+  "clean_rebuild_report": {
+    "path": "evidence/clean-rebuild.json",
+    "sha256": "6241a0c376ad025b39ff6b5bb633c3664017ce5e5f7a3ab24c3af2456e9c258d"
+  },
+  "code_revision": "a25cb217052c3ebbb51115834cf0993d3e130903",
+  "copied_data_modes": {
+    "overviews": "apfs_clone",
+    "quads": "apfs_clone"
+  },
+  "created": "2026-11-17T18:17:52Z",
+  "data_license": {
+    "path": "licenses/data-license.json",
+    "sha256": "fe172b925aac49de5c4670e6c3c650e7cd658ac8be4684cb1ab97cd9e9321f1f"
+  },
+  "dataset_id": "naip",
+  "dataset_record": {
+    "path": "dataset.yaml",
+    "sha256": "81e4eaff6d6fd110fd2935c1fa88310101e549526fe98cb23ec8872da3d410a5"
+  },
+  "display_derivatives": [
+    {
+      "display_only": true,
+      "format": "PNG",
+      "path": "display/thumbnail.png",
+      "role": "thumbnail",
+      "sampled_features": 50001,
+      "sampled_vertices": 250065,
+      "sampling_limit": {
+        "max_features": 50000,
+        "max_vertices": 500000
+      },
+      "sha256": "5401f8382dabdd91e777ba9f7d5ac56da263ed5ceb2e6598636c8d72c41676c0",
+      "size_bytes": 4826
+    }
+  ],
+  "manifest_version": "1.0",
+  "publicly_published": false,
+  "release_id": "index-20261117-r7",
+  "release_version": "1.2.0",
+  "scope_note": "Local package only; not uploaded, publicly hosted, or submitted to a registry.",
+  "source_attribution": {
+    "path": "source/attribution.json",
+    "sha256": "69165e5646183d3fbcb7f2f236541ead5542e54a1122ee129d695c3232b4485c"
+  },
+  "source_fidelity_report": {
+    "path": "evidence/source-fidelity.json",
+    "sha256": "27e1127b658643a2900eb54272f84ac1c72ee27dd3dbaa8cc9f1c80eb6424b2b"
+  },
+  "source_license": {
+    "path": "licenses/source-license.json",
+    "sha256": "23eff59f27ea503e7799931714f00da262af2b7056d9014b1ea01a4f2307b5dd"
+  },
+  "spatial_bbox": [
+    -125.15624999999999,
+    23.241346102386135,
+    -66.09375,
+    49.83798245308484
+  ],
+  "status": "local-candidate",
+  "supporting_files": [
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/build-manifest.json",
+      "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+      "size_bytes": 15894,
+      "source_basename": "build-manifest.json",
+      "title": "Build commit, environment, input checksums and output facts"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/check.json",
+      "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+      "size_bytes": 11285,
+      "source_basename": "check.json",
+      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "text/plain",
+      "path": "provenance/index-env.lock.txt",
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566,
+      "source_basename": "index-env.lock.txt",
+      "title": "Locked build environment (conda explicit list and one pip wheel)"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "text/markdown",
+      "path": "provenance/index-package-plan.md",
+      "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+      "size_bytes": 15726,
+      "source_basename": "index-package-plan.md",
+      "title": "Checks written before the first build, with addenda"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/check-gti-open.json",
+      "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "size_bytes": 4299,
+      "source_basename": "check-gti-open.json",
+      "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/changes.json",
+      "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "size_bytes": 129,
+      "source_basename": "changes.json",
+      "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/xml",
+      "path": "metadata/gti/naip.gti",
+      "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+      "size_bytes": 3858,
+      "source_basename": "naip.gti",
+      "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/xml",
+      "path": "metadata/gti/naip-overviews.gti",
+      "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+      "size_bytes": 957,
+      "source_basename": "naip-overviews.gti",
+      "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
+    },
+    {
+      "copy_mode": "apfs_clone",
+      "description": null,
+      "media_type": "application/json",
+      "path": "provenance/check-gti-open-on-r6.json",
+      "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+      "size_bytes": 5501,
+      "source_basename": "check-gti-open-on-r6.json",
+      "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
+    }
+  ],
+  "temporal_interval": [
+    "2021-06-16T00:00:00Z",
+    "2025-11-17T00:00:00Z"
+  ],
+  "title": "NAIP visualization COGs",
+  "workflow_files": {
+    "datasets/naip/build_index_release.py": {
+      "bytes": 4368,
+      "package_path": "verification/workflow/datasets/naip/build_index_release.py",
+      "sha256": "fc3eba7a4ff2bfe60d81f7c7bf013e9e56e68e895d543183b72c67ce4648e3fa"
+    },
+    "datasets/naip/build_overview_index.py": {
+      "bytes": 13576,
+      "package_path": "verification/workflow/datasets/naip/build_overview_index.py",
+      "sha256": "61cabdb498ade6559c844165a0cbde4735a3768eaa18de84a4def6257e7aac04"
+    },
+    "datasets/naip/build_stac_index.py": {
+      "bytes": 13827,
+      "package_path": "verification/workflow/datasets/naip/build_stac_index.py",
+      "sha256": "54d14c0ddc2c23a64ac40b3fda3486570e72af0a968ce3fa5311951c684fe487"
+    },
+    "datasets/naip/check_gti_open.py": {
+      "bytes": 10028,
+      "package_path": "verification/workflow/datasets/naip/check_gti_open.py",
+      "sha256": "55510702892f2225e88a844db75ed2461ab835cb179896fc1c8b7588360be0f9"
+    },
+    "datasets/naip/check_index_release.py": {
+      "bytes": 28392,
+      "package_path": "verification/workflow/datasets/naip/check_index_release.py",
+      "sha256": "9494892a0fa374a0f16a706d24daa90ef982f8075570728a53f58f5cb2068d50"
+    },
+    "datasets/naip/crs84.projjson": {
+      "bytes": 1903,
+      "package_path": "verification/workflow/datasets/naip/crs84.projjson",
+      "sha256": "2576eef69d139b270f7269bb7deea9302023416a6b5d9ac9589ae4765a10c8d2"
+    },
+    "datasets/naip/evidence/receipt-dirs-62.json": {
+      "bytes": 1934,
+      "package_path": "verification/workflow/datasets/naip/evidence/receipt-dirs-62.json",
+      "sha256": "20b0821e07dc0da9407b503c1662c81e24428646ad3b4a8e3f660bb122c993ff"
+    },
+    "datasets/naip/gti/naip-overviews.gti": {
+      "bytes": 957,
+      "package_path": "verification/workflow/datasets/naip/gti/naip-overviews.gti",
+      "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b"
+    },
+    "datasets/naip/gti/naip.gti": {
+      "bytes": 3858,
+      "package_path": "verification/workflow/datasets/naip/gti/naip.gti",
+      "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0"
+    },
+    "datasets/naip/index-env.lock.txt": {
+      "bytes": 10566,
+      "package_path": "verification/workflow/datasets/naip/index-env.lock.txt",
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d"
+    },
+    "datasets/naip/index-package-plan.md": {
+      "bytes": 15726,
+      "package_path": "verification/workflow/datasets/naip/index-package-plan.md",
+      "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2"
+    },
+    "datasets/naip/partial_years.py": {
+      "bytes": 1671,
+      "package_path": "verification/workflow/datasets/naip/partial_years.py",
+      "sha256": "92a67f2589b8865c6ef13b86d4a73b11de3fcb3c3275d195cadf0777ce63690e"
+    },
+    "datasets/naip/releases/index-20261117-r7/changes.json": {
+      "bytes": 129,
+      "package_path": "verification/workflow/datasets/naip/releases/index-20261117-r7/changes.json",
+      "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c"
+    },
+    "datasets/naip/releases/index-20261117-r7/package-spec.json": {
+      "bytes": 7321,
+      "package_path": "verification/workflow/datasets/naip/releases/index-20261117-r7/package-spec.json",
+      "sha256": "5a07378f7d2a35cf382befdc9e27e97afdbc6e2f39c06c117813227062709121"
+    },
+    "datasets/naip/write_index_reports.py": {
+      "bytes": 3311,
+      "package_path": "verification/workflow/datasets/naip/write_index_reports.py",
+      "sha256": "bf07c22c952bc32ea001408b86d0b41898dfc307c6bb0085b2a37b1bdd4ccace"
+    },
+    "scripts/release_tools/AGENTS.md": {
+      "bytes": 857,
+      "package_path": "verification/workflow/scripts/release_tools/AGENTS.md",
+      "sha256": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b"
+    },
+    "scripts/release_tools/README.md": {
+      "bytes": 15314,
+      "package_path": "verification/workflow/scripts/release_tools/README.md",
+      "sha256": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2"
+    },
+    "scripts/release_tools/add_spatial_bounds.py": {
+      "bytes": 21945,
+      "package_path": "verification/workflow/scripts/release_tools/add_spatial_bounds.py",
+      "sha256": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6"
+    },
+    "scripts/release_tools/package-lock.json": {
+      "bytes": 54306,
+      "package_path": "verification/workflow/scripts/release_tools/package-lock.json",
+      "sha256": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c"
+    },
+    "scripts/release_tools/package.json": {
+      "bytes": 142,
+      "package_path": "verification/workflow/scripts/release_tools/package.json",
+      "sha256": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470"
+    },
+    "scripts/release_tools/package_release.py": {
+      "bytes": 63322,
+      "package_path": "verification/workflow/scripts/release_tools/package_release.py",
+      "sha256": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8"
+    },
+    "scripts/release_tools/pyproject.toml": {
+      "bytes": 259,
+      "package_path": "verification/workflow/scripts/release_tools/pyproject.toml",
+      "sha256": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c"
+    },
+    "scripts/release_tools/serve.py": {
+      "bytes": 2789,
+      "package_path": "verification/workflow/scripts/release_tools/serve.py",
+      "sha256": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175"
+    },
+    "scripts/release_tools/test_package_release.py": {
+      "bytes": 10209,
+      "package_path": "verification/workflow/scripts/release_tools/test_package_release.py",
+      "sha256": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7"
+    },
+    "scripts/release_tools/test_spatial_bounds.py": {
+      "bytes": 8062,
+      "package_path": "verification/workflow/scripts/release_tools/test_spatial_bounds.py",
+      "sha256": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f"
+    },
+    "scripts/release_tools/uv.lock": {
+      "bytes": 134378,
+      "package_path": "verification/workflow/scripts/release_tools/uv.lock",
+      "sha256": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b"
+    }
+  }
+}

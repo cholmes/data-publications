@@ -1,0 +1,157 @@
+{
+ "dataset_id": "naip",
+ "files": [
+  {
+   "asset_id": "support-1",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/build-manifest.json",
+    "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+    "size_bytes": 15894,
+    "stored_sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+    "stored_size_bytes": 15894,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+   "size_bytes": 15894,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/build-manifest.json",
+   "title": "Build commit, environment, input checksums and output facts"
+  },
+  {
+   "asset_id": "support-2",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/check.json",
+    "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+    "size_bytes": 11285,
+    "stored_sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+    "stored_size_bytes": 11285,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+   "size_bytes": 11285,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check.json",
+   "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+  },
+  {
+   "asset_id": "support-3",
+   "media_type": "text/plain",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-env.lock.txt",
+    "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "size_bytes": 10566,
+    "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "stored_size_bytes": 10566,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+   "size_bytes": 10566,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-env.lock.txt",
+   "title": "Locked build environment (conda explicit list and one pip wheel)"
+  },
+  {
+   "asset_id": "support-4",
+   "media_type": "text/markdown",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-package-plan.md",
+    "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+    "size_bytes": 15726,
+    "stored_sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+    "stored_size_bytes": 15726,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+   "size_bytes": 15726,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-package-plan.md",
+   "title": "Checks written before the first build, with addenda"
+  },
+  {
+   "asset_id": "support-5",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/check-gti-open.json",
+    "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+    "size_bytes": 4299,
+    "stored_sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+    "stored_size_bytes": 4299,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+   "size_bytes": 4299,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open.json",
+   "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+  },
+  {
+   "asset_id": "support-6",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/changes.json",
+    "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+    "size_bytes": 129,
+    "stored_sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+    "stored_size_bytes": 129,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+   "size_bytes": 129,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/changes.json",
+   "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+  },
+  {
+   "asset_id": "support-9",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
+    "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+    "size_bytes": 5501,
+    "stored_sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+    "stored_size_bytes": 5501,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+   "size_bytes": 5501,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open-on-r6.json",
+   "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
+  }
+ ],
+ "git_revision": "47fa8ef6a7e10ad766015b330150edb9cc21e617",
+ "owner": "nthh",
+ "product_id": "naip",
+ "schema_version": 1,
+ "source_release": "index-20261117-r7"
+}

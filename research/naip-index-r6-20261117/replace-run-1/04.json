@@ -1,0 +1,11 @@
+{
+ "object_key": "naip/stac/naip.gti",
+ "before": {
+  "state": "absent"
+ },
+ "condition": "IfNoneMatch",
+ "written_sha256": "148aa0d389ed953f5c71389e03645afe25742925508652c10f049f3c0bb28dcd",
+ "size_bytes": 2807,
+ "anonymous_readback": "verified",
+ "finished_utc": "2026-11-17T17:36:22.835137+00:00"
+}

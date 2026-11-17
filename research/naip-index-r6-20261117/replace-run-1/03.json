@@ -1,0 +1,13 @@
+{
+ "object_key": "naip/stac/naip-overviews.fields.json",
+ "before": {
+  "state": "expected_old_bytes",
+  "size_bytes": 1705,
+  "sha256": "2cf40bd91c30f6137f6a11bd1e46e7070bed3a9c559490b1b132da7eb12efa6a"
+ },
+ "condition": "IfMatch",
+ "written_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+ "size_bytes": 1776,
+ "anonymous_readback": "verified",
+ "finished_utc": "2026-11-17T17:36:22.264215+00:00"
+}

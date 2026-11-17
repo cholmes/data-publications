@@ -1,0 +1,109 @@
+{
+  "asset_sha256": {
+    "overviews": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+    "quads": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055"
+  },
+  "bound_files": {
+    "AGENTS.md": {
+      "sha256": "f06991fd6c84d092dbf6b666d390c5863f7b9728232bd9fd98326ec6115d29e9",
+      "size_bytes": 496
+    },
+    "README.md": {
+      "sha256": "13abae0d973654c665a6e99d14021191123dbc7d66ced58e6bc5e55bd437de88",
+      "size_bytes": 1849
+    },
+    "catalog.json": {
+      "sha256": "c28a7826bb6dc14d198c548e69921b07b6310de9b057771dff7c764525b17fed",
+      "size_bytes": 1638
+    },
+    "collection.json": {
+      "sha256": "c1dae7c0ef4ff679316a4e028ef30f882d83eae70b5403d906aa035eb1a2858b",
+      "size_bytes": 12179
+    },
+    "licenses/software/LICENSE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358
+    },
+    "licenses/software/NOTICE": {
+      "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+      "size_bytes": 788
+    },
+    "metadata/gti/naip-overviews.gti": {
+      "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+      "size_bytes": 957
+    },
+    "metadata/gti/naip.gti": {
+      "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+      "size_bytes": 3858
+    },
+    "provenance/build-manifest.json": {
+      "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+      "size_bytes": 15894
+    },
+    "provenance/changes.json": {
+      "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "size_bytes": 129
+    },
+    "provenance/check-gti-open-on-r6.json": {
+      "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
+      "size_bytes": 5501
+    },
+    "provenance/check-gti-open.json": {
+      "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "size_bytes": 4299
+    },
+    "provenance/check.json": {
+      "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+      "size_bytes": 11285
+    },
+    "provenance/index-env.lock.txt": {
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566
+    },
+    "provenance/index-package-plan.md": {
+      "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+      "size_bytes": 15726
+    }
+  },
+  "clean_rebuild_report_sha256": "6241a0c376ad025b39ff6b5bb633c3664017ce5e5f7a3ab24c3af2456e9c258d",
+  "dataset_record_sha256": "81e4eaff6d6fd110fd2935c1fa88310101e549526fe98cb23ec8872da3d410a5",
+  "manifest_sha256": "de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d",
+  "source_attribution_sha256": "69165e5646183d3fbcb7f2f236541ead5542e54a1122ee129d695c3232b4485c",
+  "source_fidelity_report_sha256": "27e1127b658643a2900eb54272f84ac1c72ee27dd3dbaa8cc9f1c80eb6424b2b",
+  "verification_sha256": {
+    "clean-rebuild.json": "6241a0c376ad025b39ff6b5bb633c3664017ce5e5f7a3ab24c3af2456e9c258d",
+    "local-http-duckdb-validation.json": "47bf17f30c956c466ea5aa84526b35bbf4fe0078a8ac230bea34931329105781",
+    "package-integrity-validation.json": "4bf1155b650844ef8554b37a2c422191635561d1cd7e4f36dc5eb1bd766e85c8",
+    "portolan-validation.json": "1efd2996917fbaf0e1466a0c97b78ec0f6e1536a475a45b010d9c9f3f52e1be7",
+    "source-fidelity.json": "27e1127b658643a2900eb54272f84ac1c72ee27dd3dbaa8cc9f1c80eb6424b2b",
+    "stac-node-validation.json": "13eeddc3ab9cf7ccaf9dc0b3af3aa0b21ec3b342778abc8a5f6670cfe02bc9ba"
+  },
+  "workflow_sha256": {
+    "datasets/naip/build_index_release.py": "fc3eba7a4ff2bfe60d81f7c7bf013e9e56e68e895d543183b72c67ce4648e3fa",
+    "datasets/naip/build_overview_index.py": "61cabdb498ade6559c844165a0cbde4735a3768eaa18de84a4def6257e7aac04",
+    "datasets/naip/build_stac_index.py": "54d14c0ddc2c23a64ac40b3fda3486570e72af0a968ce3fa5311951c684fe487",
+    "datasets/naip/check_gti_open.py": "55510702892f2225e88a844db75ed2461ab835cb179896fc1c8b7588360be0f9",
+    "datasets/naip/check_index_release.py": "9494892a0fa374a0f16a706d24daa90ef982f8075570728a53f58f5cb2068d50",
+    "datasets/naip/crs84.projjson": "2576eef69d139b270f7269bb7deea9302023416a6b5d9ac9589ae4765a10c8d2",
+    "datasets/naip/evidence/receipt-dirs-62.json": "20b0821e07dc0da9407b503c1662c81e24428646ad3b4a8e3f660bb122c993ff",
+    "datasets/naip/gti/naip-overviews.gti": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
+    "datasets/naip/gti/naip.gti": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
+    "datasets/naip/index-env.lock.txt": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "datasets/naip/index-package-plan.md": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+    "datasets/naip/partial_years.py": "92a67f2589b8865c6ef13b86d4a73b11de3fcb3c3275d195cadf0777ce63690e",
+    "datasets/naip/releases/index-20261117-r7/changes.json": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+    "datasets/naip/releases/index-20261117-r7/package-spec.json": "5a07378f7d2a35cf382befdc9e27e97afdbc6e2f39c06c117813227062709121",
+    "datasets/naip/write_index_reports.py": "bf07c22c952bc32ea001408b86d0b41898dfc307c6bb0085b2a37b1bdd4ccace",
+    "scripts/release_tools/AGENTS.md": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+    "scripts/release_tools/README.md": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+    "scripts/release_tools/add_spatial_bounds.py": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+    "scripts/release_tools/package-lock.json": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+    "scripts/release_tools/package.json": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+    "scripts/release_tools/package_release.py": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+    "scripts/release_tools/pyproject.toml": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+    "scripts/release_tools/serve.py": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+    "scripts/release_tools/test_package_release.py": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+    "scripts/release_tools/test_spatial_bounds.py": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+    "scripts/release_tools/uv.lock": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b"
+  }
+}
