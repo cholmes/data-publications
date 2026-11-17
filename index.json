@@ -14841,6 +14841,38 @@
         "reference_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html",
         "added_on": "2026-11-16"
       },
+      "source_coop": {
+        "owner": "nthh",
+        "owner_status": "confirmed",
+        "account_verification": {
+          "status": "confirmed",
+          "owner": "nthh",
+          "evidence_path": "research/source-publication-20261106/account-verification.json",
+          "evidence_sha256": "5515f007abc95b38131ac42d95f358a07d4b6f8d950e38d1a202916635460cdc"
+        },
+        "product_id": "us-census-places",
+        "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+        "summary": "Shore-clipped outlines of US counties, cities and other places, and county subdivisions, from the Census Bureau's 2023 cartographic boundary files, as GeoParquet with government status and 2023 population estimates added, and a display package of outline tiles and a names index for choosing places on a map.",
+        "tags": [
+          "census",
+          "boundaries",
+          "counties",
+          "places",
+          "united-states",
+          "geoparquet",
+          "pmtiles"
+        ],
+        "license_note": "US Government work in the public domain. The Census Bureau asks to be cited as the source. These files are a format conversion, not a Census Bureau product.",
+        "attribution": "Source: US Census Bureau, 2023 cartographic boundary files, gazetteer files and vintage 2023 population estimates.",
+        "temporal_note": "Boundaries as of 1 January 2023. Population estimates are for 1 July 2023.",
+        "limitations": [
+          "Generalised boundaries for mapping at 1:500,000, not legal boundaries. The TIGER/Line files are the fuller source.",
+          "Census designated places, Puerto Rico and the island areas carry no population estimate.",
+          "Coordinates are NAD83 (EPSG:4269) and are not transformed.",
+          "The display tiles draw only county subdivisions that are active governments; all of them are in the GeoParquet."
+        ],
+        "supplements": []
+      },
       "related_datasets": [
         {
           "id": "cboettig-census-2024",

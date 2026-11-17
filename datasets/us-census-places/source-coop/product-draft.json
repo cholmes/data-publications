@@ -1,0 +1,432 @@
+{
+  "assets": [
+    {
+      "asset_id": "counties",
+      "checksum": "1220e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+      "href": "assets/counties.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "size_bytes": 7405880,
+      "title": "Counties and county equivalents"
+    },
+    {
+      "asset_id": "counties_fields",
+      "checksum": "1220844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+      "href": "metadata/counties-field-dictionary.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1198,
+      "title": "counties field dictionary"
+    },
+    {
+      "asset_id": "county-subdivisions",
+      "checksum": "12204176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+      "href": "assets/county-subdivisions.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "size_bytes": 26703829,
+      "title": "County subdivisions"
+    },
+    {
+      "asset_id": "county-subdivisions_fields",
+      "checksum": "12207b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+      "href": "metadata/county-subdivisions-field-dictionary.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1335,
+      "title": "county-subdivisions field dictionary"
+    },
+    {
+      "asset_id": "places",
+      "checksum": "1220485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+      "href": "assets/places.parquet",
+      "media_type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "size_bytes": 20737486,
+      "title": "Incorporated places and census designated places"
+    },
+    {
+      "asset_id": "places_fields",
+      "checksum": "122066fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+      "href": "metadata/places-field-dictionary.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1194,
+      "title": "places field dictionary"
+    },
+    {
+      "asset_id": "support-1",
+      "checksum": "122025e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+      "href": "provenance/source-manifest.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 1883,
+      "title": "Pinned Census inputs: address, size and SHA-256"
+    },
+    {
+      "asset_id": "support-2",
+      "checksum": "1220a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+      "href": "provenance/build-manifest.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 4442,
+      "title": "Build commit, tool versions and output facts"
+    },
+    {
+      "asset_id": "support-3",
+      "checksum": "12202a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+      "href": "provenance/validation-plan.md",
+      "media_type": "text/markdown",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 6388,
+      "title": "Checks written before the first build"
+    },
+    {
+      "asset_id": "thumbnail",
+      "checksum": "1220b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+      "href": "display/thumbnail.png",
+      "media_type": "image/png",
+      "roles": [
+        "thumbnail"
+      ],
+      "size_bytes": 6899,
+      "title": "Sampled display-only overview; not an analytic asset"
+    }
+  ],
+  "attribution": "Source: US Census Bureau, 2023 cartographic boundary files, gazetteer files and vintage 2023 population estimates.",
+  "blockers": [],
+  "created": false,
+  "creation_ready": true,
+  "dataset_id": "us-census-places",
+  "dataset_title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries",
+  "display_publication": null,
+  "draft_type": "source_coop_product_draft",
+  "hosted": false,
+  "independent_maintainer_proposal": {
+    "owner": "nthh",
+    "relationship": "new Source Cooperative product proposal; immutable package metadata is unchanged",
+    "status": "confirmed"
+  },
+  "license_note": "US Government work in the public domain. The Census Bureau asks to be cited as the source. These files are a format conversion, not a Census Bureau product.",
+  "limitations": [
+    "Generalised boundaries for mapping at 1:500,000, not legal boundaries. The TIGER/Line files are the fuller source.",
+    "Census designated places, Puerto Rico and the island areas carry no population estimate.",
+    "Coordinates are NAD83 (EPSG:4269) and are not transformed.",
+    "The display tiles draw only county subdivisions that are active governments; all of them are in the GeoParquet."
+  ],
+  "local_readiness": "prepared",
+  "owner": "nthh",
+  "owner_status": "confirmed",
+  "product_id": "us-census-places",
+  "proposed_source_proxy": {
+    "status": "proposed",
+    "uri": "s3://nthh/us-census-places"
+  },
+  "publication_status": "prepared",
+  "ready_for_creation": true,
+  "ready_for_review": true,
+  "related_dataset_links": [
+    {
+      "title": "Census TIGER/Line 2024 counties and places (cboettig/census)",
+      "url": "https://source.coop/cboettig/census"
+    },
+    {
+      "title": "HIFLD archive with Census TIGER 2024 counties, places and county subdivisions (seerai/hifld)",
+      "url": "https://source.coop/seerai/hifld"
+    }
+  ],
+  "release": "cb2023-r1",
+  "release_files": [
+    {
+      "kind": "asset",
+      "path": "assets/counties.parquet",
+      "size_bytes": 7405880
+    },
+    {
+      "kind": "asset",
+      "path": "assets/county-subdivisions.parquet",
+      "size_bytes": 26703829
+    },
+    {
+      "kind": "asset",
+      "path": "assets/places.parquet",
+      "size_bytes": 20737486
+    },
+    {
+      "kind": "display_derivatives",
+      "path": "display/thumbnail.png",
+      "size_bytes": 6899
+    },
+    {
+      "kind": "data_license",
+      "path": "licenses/data-license.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "source_license",
+      "path": "licenses/source-license.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "field_dictionary",
+      "path": "metadata/counties-field-dictionary.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "field_dictionary",
+      "path": "metadata/county-subdivisions-field-dictionary.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "field_dictionary",
+      "path": "metadata/places-field-dictionary.json",
+      "size_bytes": null
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/build-manifest.json",
+      "size_bytes": 4442
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/source-manifest.json",
+      "size_bytes": 1883
+    },
+    {
+      "kind": "supporting_files",
+      "path": "provenance/validation-plan.md",
+      "size_bytes": 6388
+    },
+    {
+      "kind": "source_attribution",
+      "path": "source/attribution.json",
+      "size_bytes": null
+    }
+  ],
+  "review_context": {
+    "asset_integrity": null,
+    "local_followup": [],
+    "public_followup": [],
+    "stage": null,
+    "status_basis": "canonical publication status plus local manifest/snapshot hashes; this tool does not rerun scientific or public-host validation"
+  },
+  "schema_version": 1,
+  "snapshot_binding": {
+    "bound_file_count": 9,
+    "local_metadata_integrity": "passed",
+    "manifest_path": "datasets/us-census-places/releases/cb2023-r1/manifest.json",
+    "manifest_sha256": "50ac55e92fa5277d9e4ce12c0a6c180ed529e6e7f0a6df96b42299986bfc045a",
+    "package_binding_sha256": "4d8cc92a252b6ffe2397f179af1508b2c5d356d21713eec615107c460dc72a4c",
+    "package_binding_status": "verified",
+    "release": "cb2023-r1",
+    "snapshot_file_count": 4,
+    "snapshot_path": "datasets/us-census-places/releases/cb2023-r1/catalog-input-r1/snapshot.json",
+    "snapshot_sha256": "38ce6bb615e7cf4a558205d6e8288fa2c888a3736ebfe6cd43ef1014943e75d4"
+  },
+  "snapshot_collection": {
+    "assets": [
+      {
+        "asset_id": "counties",
+        "checksum": "1220e5c1ccc121761bc2cf845262e0563f6ae507ea53d262314f9244eb8987f9c13f",
+        "href": "assets/counties.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "roles": [
+          "data"
+        ],
+        "size_bytes": 7405880,
+        "title": "Counties and county equivalents"
+      },
+      {
+        "asset_id": "counties_fields",
+        "checksum": "1220844719102dc388a0f69ff940ac4403d8a66d7b14ae06bb6a3124524a8c7aca08",
+        "href": "metadata/counties-field-dictionary.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1198,
+        "title": "counties field dictionary"
+      },
+      {
+        "asset_id": "county-subdivisions",
+        "checksum": "12204176013a9a35142d25e6f54170bf15ac2f2f463718ef42820f36b511326f1381",
+        "href": "assets/county-subdivisions.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "roles": [
+          "data"
+        ],
+        "size_bytes": 26703829,
+        "title": "County subdivisions"
+      },
+      {
+        "asset_id": "county-subdivisions_fields",
+        "checksum": "12207b4603ac8c7512cc627b49e7ecdc15ec55c1e1632410714da353ec68ab947aeb",
+        "href": "metadata/county-subdivisions-field-dictionary.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1335,
+        "title": "county-subdivisions field dictionary"
+      },
+      {
+        "asset_id": "places",
+        "checksum": "1220485aeee60f416eba6c1b63c244ee61914c6afca99e0d1581789371a02b1187fe",
+        "href": "assets/places.parquet",
+        "media_type": "application/vnd.apache.parquet",
+        "roles": [
+          "data"
+        ],
+        "size_bytes": 20737486,
+        "title": "Incorporated places and census designated places"
+      },
+      {
+        "asset_id": "places_fields",
+        "checksum": "122066fd340b6ef60146d15021637ae9fe0325c6b219d5b6cb169ec64b221c18c7d2",
+        "href": "metadata/places-field-dictionary.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1194,
+        "title": "places field dictionary"
+      },
+      {
+        "asset_id": "support-1",
+        "checksum": "122025e133161d43de8c42c329187f0ab2c432fb8e836fcd1f3d521e071856907e0e",
+        "href": "provenance/source-manifest.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 1883,
+        "title": "Pinned Census inputs: address, size and SHA-256"
+      },
+      {
+        "asset_id": "support-2",
+        "checksum": "1220a36f200748f89582843df586925d59509d2adb302f001f618cdcc9b14e9edad5",
+        "href": "provenance/build-manifest.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 4442,
+        "title": "Build commit, tool versions and output facts"
+      },
+      {
+        "asset_id": "support-3",
+        "checksum": "12202a966eb851b19b7b824a51934c7f9306f6b5b7f958066aff6a90226d46a84917",
+        "href": "provenance/validation-plan.md",
+        "media_type": "text/markdown",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 6388,
+        "title": "Checks written before the first build"
+      },
+      {
+        "asset_id": "thumbnail",
+        "checksum": "1220b5cecc97b410c7a68d038bc9233b03237b75d2d515f78d9ed3b3e438973821a2",
+        "href": "display/thumbnail.png",
+        "media_type": "image/png",
+        "roles": [
+          "thumbnail"
+        ],
+        "size_bytes": 6899,
+        "title": "Sampled display-only overview; not an analytic asset"
+      }
+    ],
+    "description": "The 2023 Census cartographic boundary files for counties, places and county subdivisions as three GeoParquet files. Every source row and field and the geometry GDAL decodes are kept, in NAD83 (EPSG:4269). Added columns: source_row, gaz_funcstat (functional status from the 2023 gazetteer), popest_2023 (1 July 2023 estimate) and bbox. Rows follow a Hilbert curve. These are boundaries generalised for mapping at 1:500,000, as of 1 January 2023, not legal boundaries.",
+    "extent": {
+      "spatial": {
+        "bbox": [
+          [
+            -179.146711,
+            -14.548699,
+            179.77847,
+            71.387815
+          ]
+        ]
+      },
+      "temporal": {
+        "interval": [
+          [
+            "2023-01-01T00:00:00Z",
+            "2023-07-01T00:00:00Z"
+          ]
+        ]
+      }
+    },
+    "id": "us-census-places",
+    "license": "other",
+    "providers": [
+      {
+        "name": "US Census Bureau",
+        "roles": [
+          "producer",
+          "licensor"
+        ],
+        "url": "https://www.census.gov/"
+      },
+      {
+        "description": "Local candidate package only; public hosting has not occurred.",
+        "name": "nthh",
+        "roles": [
+          "host",
+          "processor"
+        ],
+        "url": "https://github.com/nthh/data-publications"
+      }
+    ],
+    "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries"
+  },
+  "source_links": [
+    {
+      "title": "Host: nthh",
+      "url": "https://github.com/nthh/data-publications"
+    },
+    {
+      "title": "Producer: US Census Bureau",
+      "url": "https://www.census.gov/"
+    },
+    {
+      "title": "License terms",
+      "url": "https://www.census.gov/about/policies/citation.html"
+    },
+    {
+      "title": "Original download",
+      "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/"
+    }
+  ],
+  "summary": "Shore-clipped outlines of US counties, cities and other places, and county subdivisions, from the Census Bureau's 2023 cartographic boundary files, as GeoParquet with government status and 2023 population estimates added, and a display package of outline tiles and a names index for choosing places on a map.",
+  "supplements": [],
+  "tags": [
+    "census",
+    "boundaries",
+    "counties",
+    "places",
+    "united-states",
+    "geoparquet",
+    "pmtiles"
+  ],
+  "temporal_note": "Boundaries as of 1 January 2023. Population estimates are for 1 July 2023.",
+  "title": "US Census counties, places and county subdivisions, 2023 cartographic boundaries"
+}
