@@ -196,3 +196,9 @@ GDAL a QGIS user opens the file with. The pass marks are unchanged.
 The second run (`check-gti-open-r6-2.json`, kept) also failed before reading: started outside the
 app, QGIS's Python did not find PROJ's database. The third run sets `PROJ_DATA` and `GDAL_DATA` to
 the app's own folders, as QGIS does when it starts. Nothing else changes.
+
+The third run (`check-gti-open-r6-3.json`, kept) passed, but its count of index bytes per read
+included HEAD requests at the file's full size (47.5 MB for Alta). Counted as GET bytes, the Alta
+read takes about 1.5 MB of the quad index: the first 16 KiB, the footer, and one 1.36 MB range.
+The fourth run counts GET bytes only, records every index request, and adds a mark: neither read
+takes more than 8 MiB of the index files.

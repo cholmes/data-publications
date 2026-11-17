@@ -18,7 +18,8 @@ hosted imagery as it will once the files are at stac/. The script opens
 resolution and the whole of Utah at about 600 m, and records every request the server saw and
 every imagery request GDAL made (from its debug log). The check passes when both reads give a
 picture (band 1 mean between 60 and 200, alpha not all zero), every imagery request is a byte
-range, and no index file is read whole.
+range, no index file is read whole, and neither read takes more than 8 MiB of the index files
+(GET bytes; HEAD requests carry no body and are not counted).
 """
 import argparse
 import hashlib
@@ -38,6 +39,7 @@ STAC = "/nthh/naip/stac/"
 ALTA = (-111.632, 40.596, -111.618, 40.585)       # ulx, uly, lrx, lry, as -projwin takes them
 UTAH = (-114.1, 42.1, -109.0, 36.9)
 UTAH_RES = 0.0054                                  # degrees, about 600 m
+INDEX_BYTES_PER_READ = 8 << 20                     # GET bytes of the index files one read may take
 
 
 def sha256(path):
@@ -67,7 +69,7 @@ def serve(release, host, seen):
             size = os.path.getsize(data_path)
             want = re.match(r"bytes=(\d+)-(\d*)$", self.headers.get("Range") or "")
             start, end = (int(want[1]), min(int(want[2] or size - 1), size - 1)) if want else (0, size - 1)
-            seen.append({"method": self.command, "path": path, "status": 206 if want else 200, "bytes": end - start + 1, "size": size})
+            seen.append({"method": self.command, "path": path, "status": 206 if want else 200, "start": start, "bytes": end - start + 1, "size": size})
             self.send_response(206 if want else 200)
             self.send_header("Accept-Ranges", "bytes")
             self.send_header("Content-Length", str(end - start + 1))
@@ -128,7 +130,7 @@ def main():
             reads[name] = None
         reads.setdefault(name, None)
         if reads[name] is not None:
-            index = [s for s in seen[before:] if s.get("size")]
+            index = [s for s in seen[before:] if s.get("size") and s["method"] == "GET"]
             reads[name]["index_requests"] = len(index)
             reads[name]["index_bytes"] = sum(s["bytes"] for s in index)
     server.shutdown()
@@ -140,7 +142,8 @@ def main():
     whole = [s for s in seen if s.get("size") and s["status"] == 200 and s["method"] == "GET" and s["size"] > 1 << 20]
     downloads = re.findall(r"HTTP: Fetch\(https?://[^)]*\.tif", text)
     picture = lambda r: r is not None and 60 <= r["band1_mean"] <= 200 and r["alpha_max"] > 0
-    passed = not errors and all(picture(r) for r in reads.values()) and imagery and not whole and not downloads
+    small = all(r is not None and r["index_bytes"] <= INDEX_BYTES_PER_READ for r in reads.values())
+    passed = not errors and all(picture(r) for r in reads.values()) and small and imagery and not whole and not downloads
     report = {
         "schema_version": 1,
         "plan": "datasets/naip/index-package-plan.md, addendum for r6, check 12",
@@ -153,6 +156,7 @@ def main():
         "index_files_read_whole": whole,
         "imagery_downloaded_whole": downloads,
         "server_requests": len(seen),
+        "index_requests": [s for s in seen if s.get("size")],
         "redirects": sum(1 for s in seen if s["status"] == 302),
         "status": "passed" if passed else "failed",
     }
