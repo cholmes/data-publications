@@ -98,7 +98,7 @@ jobs:
           uv sync --locked --project scripts/display_tools --no-build
           uv sync --locked --project datasets/river-plastic-inputs --no-build
       - name: Check local renderer with synthetic fixtures
-        run: uv run --locked --project scripts/release_tools python -m unittest tests.test_render_preview -v
+        run: uv run --locked --project scripts/release_tools python -m unittest tests.test_render_preview tests.test_naip_gti -v
       - name: Check display conversion and independent geometry oracle
         run: uv run --locked --project scripts/display_tools python -m unittest tests.test_display_tools tests.test_validate_display tests.test_finalize_display tests.test_grwl_display_wrap tests.test_grwl_display_finalize -v
       - name: Check raw GRWL source fidelity and display controls offline

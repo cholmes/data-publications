@@ -3,12 +3,18 @@
 
     python check_index_release.py list --out NEW_FILE
     python check_index_release.py check --release DIR --hosted DIR --artifacts ROOT \
-        --listing FILE --out NEW_FILE
+        --listing FILE --out NEW_FILE [--changes FILE]
 
 `list` makes an anonymous listing of the hosted product through data.source.coop (key and
 size of every file under nthh/naip/). `check` runs checks 1b, 1c and 3 to 9 on the two files
 in DIR (`naip.parquet`, `naip-overviews.parquet`), comparing with the hosted files in --hosted
 (read anonymously beforehand) and with the receipts and overview build results under ROOT.
+
+--changes names the differences from the hosted files a release is meant to have, written down
+before the build: columns added (`added_columns`) and collection fields given new values
+(`collection_fields`, by collection id). Checks 1b and 1c compare with the hosted files with
+those changes made, and nothing else may differ. Check 11 tests the `naip:gti_location` column and
+the two .gti files in DIR, when the release has them.
 
 This program imports neither build_stac_index.py nor build_overview_index.py nor
 partial_years.py. It decodes footprints from WKB and tests outlines with its own code; the only
@@ -281,13 +287,19 @@ def geo_without_crs(table):
     return geo
 
 
+GTI_LOCATION = "naip:gti_location"
+NO_CHANGES = {"added_columns": [], "collection_fields": {}}
+
+
 def stac_meta(table):
     return json.loads(table.schema.metadata[b"stac-geoparquet"])
 
 
-def compare_meta(release, hosted, collection, first_date):
-    """Collection records equal except the temporal extent, whose first date must be first_date."""
+def compare_meta(release, hosted, collection, first_date, changes=NO_CHANGES):
+    """Collection records equal except the temporal extent, whose first date must be first_date,
+    and the fields the changes give new values."""
     a, b = stac_meta(release), stac_meta(hosted)
+    b["collections"][collection].update(changes["collection_fields"].get(collection, {}))
     ta = a["collections"][collection]["extent"]["temporal"]["interval"]
     tb = b["collections"][collection]["extent"]["temporal"]["interval"]
     a2, b2 = copy.deepcopy(a), copy.deepcopy(b)
@@ -299,18 +311,27 @@ def compare_meta(release, hosted, collection, first_date):
             "crs_is_crs84": json.loads(release.schema.metadata[b"geo"])["columns"]["geometry"].get("crs", {}).get("id") == {"authority": "OGC", "code": "CRS84"}}
 
 
-def check_quad_values(release, hosted):
-    meta = compare_meta(release, hosted, "naip", min(release.column("datetime").to_pylist()).strftime("%Y-%m-%d"))
-    schema_equal = release.schema.remove_metadata() == hosted.schema.remove_metadata()
+def without_added(table, changes):
+    keep = [n for n in table.column_names if n not in changes["added_columns"]]
+    return table.select(keep)
+
+
+def check_quad_values(release, hosted, changes=NO_CHANGES):
+    meta = compare_meta(release, hosted, "naip", min(release.column("datetime").to_pylist()).strftime("%Y-%m-%d"), changes)
+    added_present = all(n in release.column_names and n not in hosted.column_names for n in changes["added_columns"])
+    release = without_added(release, changes)
+    schema_equal = added_present and release.schema.remove_metadata() == hosted.schema.remove_metadata()
     differing = [n for n in release.column_names if n not in hosted.column_names or not release.column(n).equals(hosted.column(n))]
     passed = schema_equal and release.num_rows == hosted.num_rows and not differing and meta["rest_equal"] and meta["first_date_is_earliest_row"] and meta["geo_equal"] and meta["crs_is_crs84"]
     return {"passed": passed, "rows": [release.num_rows, hosted.num_rows], "schema_equal": schema_equal, "columns_differing": differing, "metadata": meta}
 
 
-def check_overview_values(release, hosted, quads, results):
+def check_overview_values(release, hosted, quads, results, changes=NO_CHANGES):
     first = min(release.column("start_datetime").to_pylist()[i] or release.column("datetime").to_pylist()[i] for i in range(release.num_rows))
-    meta = compare_meta(release, hosted, "naip-overviews", first.strftime("%Y-%m-%d"))
-    same_ids = release.column("id").to_pylist() == hosted.column("id").to_pylist()
+    meta = compare_meta(release, hosted, "naip-overviews", first.strftime("%Y-%m-%d"), changes)
+    added_present = all(n in release.column_names and n not in hosted.column_names for n in changes["added_columns"])
+    release = without_added(release, changes)
+    same_ids = added_present and release.column("id").to_pylist() == hosted.column("id").to_pylist()
     differing = [n for n in release.column_names if n != "geometry" and (n not in hosted.column_names or not release.column(n).equals(hosted.column(n)))]
     # outline covers its quads
     by_group = collections.defaultdict(list)
@@ -357,14 +378,55 @@ def check_overview_rows(overviews, quads, results, listed):
             "national_quads": national[0]["naip:quads"] if national else None, "quad_rows": quads.num_rows}
 
 
-def quad_checks(table, hosted, expected, left_hrefs):
+def check_gti_locations(table):
+    """Each row's naip:gti_location, taken from stac/, is the file its href names."""
+    if GTI_LOCATION not in table.column_names:
+        return {"passed": False, "reason": f"no {GTI_LOCATION} column"}
+    base = FILES + "stac/"
+    wrong = []
+    for a, location in zip(table.column("assets").to_pylist(), table.column(GTI_LOCATION).to_pylist()):
+        href = a["image"]["href"]
+        if not location or "://" in location or location.startswith("/") or urllib.parse.urljoin(base, location) != href:
+            wrong.append(f"{href} <- {location}")
+    return {"passed": not wrong, "rows": table.num_rows, "wrong": failure_list(wrong)}
+
+
+def check_gti_files(release_dir):
+    """naip.gti opens naip.parquet with the location column, and its overview levels open
+    naip-overviews.gti, which opens naip-overviews.parquet the same way; all four sit side by side."""
+    found, problems = {}, []
+    for name, index in (("naip.gti", "naip.parquet"), ("naip-overviews.gti", "naip-overviews.parquet")):
+        path = os.path.join(release_dir, name)
+        if not os.path.exists(path):
+            problems.append(f"{name} missing")
+            continue
+        root = ET.parse(path).getroot()
+        found[name] = {"sha256": sha256(path), "index": root.findtext("IndexDataset"), "location_field": root.findtext("LocationField"),
+                       "overviews": [o.findtext("Dataset") for o in root.findall("Overview") if o.findtext("Dataset")]}
+        if root.tag != "GDALTileIndexDataset":
+            problems.append(f"{name}: root is {root.tag}")
+        if found[name]["index"] != index:
+            problems.append(f"{name}: index {found[name]['index']}")
+        if found[name]["location_field"] != GTI_LOCATION:
+            problems.append(f"{name}: location field {found[name]['location_field']}")
+        if [b.findtext("ColorInterp") for b in root.findall("Band")] != ["Red", "Green", "Blue", "Alpha"]:
+            problems.append(f"{name}: bands are not red, green, blue and alpha")
+    if "naip.gti" in found and (not found["naip.gti"]["overviews"] or set(found["naip.gti"]["overviews"]) != {"naip-overviews.gti"}):
+        problems.append("naip.gti: overview levels do not all open naip-overviews.gti")
+    return {"passed": not problems, "files": found, "problems": problems}
+
+
+def quad_checks(table, hosted, expected, left_hrefs, changes=NO_CHANGES):
     """The checks a changed quad index must fail (used by the fault tests)."""
-    return {"1b": check_quad_values(table, hosted)["passed"], "3": check_accounting(table, expected, left_hrefs)["passed"],
-            "4": check_size_checksum(table, expected)["passed"], "6": check_footprints(table, corners=True)["passed"],
-            "7": check_dates(table)["passed"]}
+    out = {"1b": check_quad_values(table, hosted, changes)["passed"], "3": check_accounting(table, expected, left_hrefs)["passed"],
+           "4": check_size_checksum(table, expected)["passed"], "6": check_footprints(table, corners=True)["passed"],
+           "7": check_dates(table)["passed"]}
+    if GTI_LOCATION in changes["added_columns"]:
+        out["11"] = check_gti_locations(table)["passed"]
+    return out
 
 
-def fault_tests(table, hosted, expected, left_hrefs, left_receipt):
+def fault_tests(table, hosted, expected, left_hrefs, left_receipt, changes=NO_CHANGES):
     rows = table.to_pylist()
     schema = table.schema
 
@@ -399,9 +461,14 @@ def fault_tests(table, hosted, expected, left_hrefs, left_receipt):
         ("a datetime changed", change(i, lambda r: r.__setitem__("datetime", r["datetime"].replace(day=1 if r["datetime"].day != 1 else 2))), "7"),
         ("rows of a left-out year added back", rebuilt(rows + [add_back(r) or r for r in [copy.deepcopy(rows[i])]]), "3"),
     ]
+    if GTI_LOCATION in changes["added_columns"]:
+        cases += [
+            ("a gti location pointing at another file", change(i, lambda r: r.__setitem__(GTI_LOCATION, rows[i + 1][GTI_LOCATION])), "11"),
+            ("a gti location made absolute", change(i, lambda r: r.__setitem__(GTI_LOCATION, r["assets"]["image"]["href"])), "11"),
+        ]
     out = []
     for name, changed, reason in cases:
-        result = quad_checks(changed, hosted, expected, left_hrefs)
+        result = quad_checks(changed, hosted, expected, left_hrefs, changes)
         out.append({"change": name, "expected_failing_check": reason, "checks_passed": result,
                     "rejected_for_stated_reason": result[reason] is False})
     return {"passed": all(c["rejected_for_stated_reason"] for c in out), "cases": out}
@@ -415,6 +482,7 @@ def main():
     checker = sub.add_parser("check")
     for name in ("release", "hosted", "artifacts", "listing", "out"):
         checker.add_argument("--" + name, required=True)
+    checker.add_argument("--changes", help="JSON of the differences from the hosted files this release is meant to have")
     args = parser.parse_args()
     if os.path.exists(args.out):
         sys.exit("Use a new output path; earlier results are kept.")
@@ -422,6 +490,10 @@ def main():
         make_listing(args.out)
         return
 
+    changes = NO_CHANGES
+    if args.changes:
+        with open(args.changes) as f:
+            changes = {**NO_CHANGES, **json.load(f)}
     paths = {name: os.path.join(args.release, name) for name in ("naip.parquet", "naip-overviews.parquet")}
     hosted_paths = {name: os.path.join(args.hosted, name) for name in paths}
     read = lambda p: pq.read_table(p)
@@ -443,21 +515,27 @@ def main():
         results[r["name"]] = r
 
     checks = {
-        "1b_quad_values_equal_hosted": check_quad_values(quads, hosted_quads),
-        "1c_overview_values_equal_hosted": check_overview_values(overviews, hosted_overviews, quads, results),
+        "1b_quad_values_equal_hosted": check_quad_values(quads, hosted_quads, changes),
+        "1c_overview_values_equal_hosted": check_overview_values(overviews, hosted_overviews, quads, results, changes),
         "3_accounting_against_receipts": check_accounting(quads, expected, left_hrefs),
         "4_size_and_checksum": check_size_checksum(quads, expected),
         "5_hosted_listing": {"quads": check_listing(quads, listing, "quads"), "overviews": check_listing(overviews, listing, "overviews")},
         "6_footprint": {"quads": check_footprints(quads, corners=True), "overviews": check_footprints(overviews, corners=False)},
         "7_flight_date": check_dates(quads),
         "8_overview_index": check_overview_rows(overviews, quads, results, listed),
-        "9_fault_tests": fault_tests(quads, hosted_quads, expected, left_hrefs, left_receipts[0]),
+        "9_fault_tests": fault_tests(quads, hosted_quads, expected, left_hrefs, left_receipts[0], changes),
     }
-    for key in ("5_hosted_listing", "6_footprint"):
+    if GTI_LOCATION in changes["added_columns"]:
+        checks["11_gti"] = {"quads": check_gti_locations(quads), "overviews": check_gti_locations(overviews),
+                            "files": check_gti_files(args.release)}
+    for key in ("5_hosted_listing", "6_footprint", "11_gti"):
+        if key not in checks:
+            continue
         checks[key]["passed"] = all(v["passed"] for v in checks[key].values() if isinstance(v, dict))
     report = {
         "schema_version": 1,
         "plan": "datasets/naip/index-package-plan.md",
+        "changes": changes,
         "release_files": {name: {"sha256": sha256(p), "size_bytes": os.path.getsize(p)} for name, p in paths.items()},
         "hosted_files": {name: {"sha256": sha256(p), "size_bytes": os.path.getsize(p)} for name, p in hosted_paths.items()},
         "listing": {"sha256": sha256(args.listing), "files": len(listing), "pages": listing_doc["pages"], "listed_from": listing_doc["listed_from"]},

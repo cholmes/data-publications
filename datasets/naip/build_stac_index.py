@@ -18,6 +18,14 @@ index-read-cost.mjs):
   * Only columns with few distinct values keep a dictionary. A dictionary is one block per row
     group, and a reader taking one page would have to take all of it.
 
+Each row also has `naip:gti_location`: the file's address relative to the folder of the index,
+`stac/` (for example `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`). It is not a
+STAC field and STAC readers can ignore it; `assets.image.href` stays the absolute address. It is
+for GDAL's GTI driver: `stac/naip.gti` names this column as its location field, and GDAL resolves
+a relative location against the folder the .gti was opened from. Opened as
+`/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti`, each location becomes a `/vsicurl/`
+address that GDAL reads by range. An absolute `https://` location would be read whole.
+
 --from-index writes an existing index again in this layout: the same schema and metadata.
 
 A year in which only part of a state was flown again is not listed (partial_years.py), so a
@@ -44,6 +52,10 @@ from pyproj import Transformer
 
 from build_index import footprint, wkb_polygon
 from partial_years import counts_of, partial
+
+# The column GDAL's GTI driver reads tile addresses from, and where they are relative to.
+GTI_LOCATION = "naip:gti_location"
+GTI_FROM = "../"      # the index sits in stac/, one folder below the state folders
 
 EXTENSIONS = [
     "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
@@ -96,7 +108,7 @@ def collection(rows, links):
     days = [r["datetime"] for r in rows]
     return {
         "type": "Collection", "stac_version": "1.1.0", "stac_extensions": [], "id": "naip",
-        "title": "NAIP display copies",
+        "title": "NAIP visualization COGs",
         "description": "RGB JPEG Cloud-Optimized GeoTIFFs of USDA National Agriculture Imagery Program quarter "
                        "quads, one item per file, converted from the four-band files in s3://naip-analytic. "
                        "NAIP imagery is in the public domain and USDA asks for credit; these files are a format "
@@ -187,6 +199,7 @@ def item(receipt, base_url, transformers):
             "file:checksum": None if not sha else "1220" + sha,
         }},
         "naip:run": receipt["run_id"],
+        GTI_LOCATION: GTI_FROM + path,
     }
 
 

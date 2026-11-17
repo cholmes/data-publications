@@ -1,0 +1,16 @@
+{
+ "release": "index-20261117-r6",
+ "from_hosted_release": "index-20261116-r5",
+ "added_columns": [
+  "naip:gti_location"
+ ],
+ "collection_fields": {
+  "naip": {
+   "title": "NAIP visualization COGs"
+  },
+  "naip-overviews": {
+   "title": "NAIP visualization COGs, overview files",
+   "description": "Reduced pictures made from the NAIP visualization COGs, for drawing a map before the quarter quads are worth reading: one file per state, year and UTM zone at 9.6 m, and one file of the country with the latest flight of each state on top. RGB JPEG Cloud-Optimized GeoTIFFs with a mask where there is no picture. NAIP imagery is in the public domain and USDA asks for credit; these files are not a USDA product."
+  }
+ }
+}

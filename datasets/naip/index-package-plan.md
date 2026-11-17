@@ -153,3 +153,35 @@ else changes. Both files therefore differ from the hosted ones in their `geo` me
 hosted files are to be replaced (each on Nathan's go). Checks 1b and 1c now compare `geo` without
 its `crs`, and require the release's `crs` to carry the id OGC:CRS84. The other marks are
 unchanged.
+
+## Addendum for r6 (2026-11-17 UTC, written after r5 was published and before any r6 build)
+
+`index-20261116-r5` passed every check and is the hosted release. r6 makes the index open in
+QGIS and GDAL as one mosaic, through GDAL's tile index driver (GTI), and puts the product's new
+name in the files. The intended differences from the hosted r5 files are written in
+`releases/index-20261117-r6/changes.json` before the build, and are these only:
+
+- Both files gain a column, `naip:gti_location`: the file's address relative to `stac/`
+  (`../<state>/<year>/...tif`, `../overviews/<name>.tif`). `assets.image.href` is unchanged.
+- The collection records in the `stac-geoparquet` metadata take the name NAIP visualization COGs
+  (title of both, and the overview collection's description where it named the old one).
+- The release adds two GTI files, `naip.gti` and `naip-overviews.gti`, copied from `gti/`.
+
+Checks 1b and 1c compare with the hosted r5 files with those changes made; anything else that
+differs fails them. Check 9 adds two fault cases (a location naming another file, a location made
+absolute), which check 11 must reject. New checks:
+
+11. **GTI locations and files.** In both files every row's `naip:gti_location` is relative, and
+    resolved against `https://data.source.coop/nthh/naip/stac/` it is the row's `href`. `naip.gti`
+    names `naip.parquet` and the location column, has red, green, blue and alpha bands, and every
+    overview level opens `naip-overviews.gti`, which names `naip-overviews.parquet` the same way.
+12. **Opens in GDAL as QGIS 4.2.1 would.** With GDAL 3.12.4 (`~/.cache/folia/envs/naip-index`),
+    the release's `naip.gti` opened through `/vsicurl/` from a loopback server that serves the
+    release's four files under `/nthh/naip/stac/` and sends every other path to
+    `data.source.coop`: the Alta window [-111.632, 40.585, -111.618, 40.596] read at full
+    resolution and the whole of Utah read at about 600 m both give a picture (mean of band 1
+    between 60 and 200, alpha not all zero), every request for an imagery file is a byte range,
+    and no index file is read whole.
+
+Check 1 (bytes equal the hosted files) does not apply to r6: its files are meant to differ. Check
+2 (clean checkout gives the same bytes) and checks 3 to 10 are unchanged.

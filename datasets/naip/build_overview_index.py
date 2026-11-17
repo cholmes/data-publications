@@ -26,6 +26,9 @@ A state file whose state and year the quad index does not list is left out, and 
 file's dates and quad count do not include it: the quad index leaves out the years that cover
 only part of a state (partial_years.py), and this index follows it.
 
+Each row also has `naip:gti_location`, the file's address relative to `stac/`
+(`../overviews/<name>.tif`), for GDAL's GTI driver; see build_stac_index.py.
+
 The collection is kept in the file's `stac-geoparquet` metadata, with a link to the quad
 index the files were made from (QUAD_INDEX_URL).
 """
@@ -44,6 +47,7 @@ ogr.UseExceptions()
 EDGE_POINTS = 16
 GROW = 0.002        # degrees an outline is widened by before it is simplified, about 200 m
 HOLE = 0.001        # square degrees: the smallest hole kept in an outline. A quarter quad is 0.0625 degrees a side (0.0039)
+FILES = "https://data.source.coop/nthh/naip/"      # the product root; gti locations are relative to its stac/ folder
 QUAD_INDEX_URL = os.environ.get("QUAD_INDEX_URL", "https://data.source.coop/nthh/naip/stac/naip.parquet")
 TYPE = "image/tiff; application=geotiff; profile=cloud-optimized"
 EXTENSIONS = ["https://stac-extensions.github.io/projection/v2.0.0/schema.json",
@@ -59,8 +63,8 @@ def collection(rows):
     days = lambda key, pick: pick(r[key] for r in rows).strftime("%Y-%m-%dT%H:%M:%SZ")
     return {
         "type": "Collection", "stac_version": "1.1.0", "stac_extensions": [], "id": "naip-overviews",
-        "title": "NAIP display copies, overview files",
-        "description": "Reduced pictures made from the NAIP display copies, for drawing a map before the quarter quads "
+        "title": "NAIP visualization COGs, overview files",
+        "description": "Reduced pictures made from the NAIP visualization COGs, for drawing a map before the quarter quads "
                        "are worth reading: one file per state, year and UTM zone at 9.6 m, and one file of the "
                        "country with the latest flight of each state on top. RGB JPEG Cloud-Optimized GeoTIFFs "
                        "with a mask where there is no picture. NAIP imagery is in the public domain and USDA asks "
@@ -191,6 +195,9 @@ def main():
             dates = sorted(q["datetime"] for s in states for zone in s["zones"]
                            for q in by_group[s["name"].split("-")[0], int(s["name"].split("-")[1]), zone])
         href = base.rstrip("/") + f"/{r['name']}.tif"
+        if not href.startswith(FILES):
+            sys.exit(f"the files must be under {FILES}, for their gti locations")
+        location = "../" + href[len(FILES):]
         width, height = r["file"]["size"]
         rows.append({
             "stac_version": "1.1.0", "stac_extensions": EXTENSIONS,
@@ -203,6 +210,7 @@ def main():
             "links": [],
             "assets": {"image": {"file:checksum": None, "file:size": r["bytes"], "href": href,
                                  "roles": ["overview", "visual"], "title": "RGB JPEG Cloud-Optimized GeoTIFF with a mask", "type": TYPE}},
+            "naip:gti_location": location,
         })
     fields = [f for f in schema if f.name != "naip:run"]
     at = [f.name for f in fields].index("datetime") + 1
