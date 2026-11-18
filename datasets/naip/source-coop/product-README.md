@@ -8,7 +8,7 @@ One file per quarter quad per state-year, from flights of 2021 to 2025. Each fil
 
 - Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.
 - Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).
-- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti` opens the index in QGIS or GDAL as one mosaic (GDAL tile index), with `stac/naip-overviews.gti` for zoomed-out views.
+- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti.fgb` opens the newest flight of every place in QGIS or GDAL as one mosaic (GDAL tile index in FlatGeobuf), with `stac/naip-overviews.gti.fgb` for zoomed-out views; `stac/naip.gti` does the same over the GeoParquet index.
 
 ## How the two indexes are organized
 
@@ -56,23 +56,41 @@ ORDER BY datetime DESC;
 
 ## Open in QGIS or GDAL
 
-`stac/naip.gti` opens every quarter quad as one mosaic in QGIS (Layer > Add Layer > Add Raster
-Layer, with this address as the source) and in GDAL 3.9 or later:
+`stac/naip.gti.fgb` opens the newest flight of every place as one mosaic in QGIS (Layer > Add
+Layer > Add Raster Layer, with this address as the source) and in GDAL 3.9 or later:
+
+```
+GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb
+```
+
+For example `gdal_translate -projwin -111.66 40.60 -111.60 40.57 GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb alta.tif`.
+The `GTI:` prefix tells GDAL the FlatGeobuf file is a tile index; keep it. The file is a GDAL
+tile index (GTI): one row per 3.75-minute cell of the quarter-quad grid, holding the newest
+quarter quad there, with the cell as its footprint, and the mosaic's settings in the
+FlatGeobuf layer metadata. Because no two footprints overlap, GDAL reads the files of a view at
+the same time instead of one after another. The mosaic is in NAD83 longitude and latitude at
+about 0.5 m, with an alpha band so the masked edge of each quad stays clear. Zoomed out it draws
+the 9.6 m state files and then the national file, through `stac/naip-overviews.gti.fgb`. Each
+file's address in the index is absolute and tells GDAL not to look for side files, so opening
+it needs no other setting and no Parquet driver. GDAL reads only the part of the 70 MB index in
+view: in one test session at Alta, Utah, opening took 0.4 s and a first 1 m view 2.3 s, with
+22 file reads, against 1.4 s and 8.5 s with 40 file reads through `stac/naip.gti`.
+
+Each quarter quad covers a little more than its cell, and GDAL draws all of it, so where two
+neighbours overlap either may be on top. Where the newest file of a cell has no picture, the
+mosaic is empty rather than showing an older flight.
+
+`stac/naip.gti` opens the same mosaic over `stac/naip.parquet`, drawing every listed file with
+the newest flight on top, so an older flight shows wherever the newest has no picture. Its
+reader needs the Parquet driver, which QGIS includes, and it is slower: GDAL reads overlapping
+files one at a time. Open it as
 
 ```
 /vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti
 ```
 
 `empty_dir=yes` tells GDAL not to look for side files (`.aux.xml`, `.msk`, `.ovr`) next to each
-quad, which do not exist; without it a first view of a new area makes about 170 extra requests
-and takes about four times as long. The plain `/vsicurl/https://...` address works too.
-
-It is a GDAL tile index (GTI) over `stac/naip.parquet`: newest flight on top, in NAD83 longitude
-and latitude at about 0.5 m, with an alpha band so the masked edge of each quad stays clear.
-Zoomed out it draws the 9.6 m state files and then the national file, through
-`stac/naip-overviews.gti`. GDAL reads only the part of the index in view and each file by range:
-a first view of a new area is about 25 requests, a few seconds, and panning nearby is read from
-what is already fetched. Its reader needs the Parquet driver, which QGIS includes.
+quad, which do not exist; without it a first view of a new area makes about 170 extra requests.
 
 ## Files
 
