@@ -1,0 +1,157 @@
+{
+ "dataset_id": "naip",
+ "files": [
+  {
+   "asset_id": "support-1",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/build-manifest.json",
+    "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+    "size_bytes": 15894,
+    "stored_sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+    "stored_size_bytes": 15894,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261117-r7/build-manifest.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+   "size_bytes": 15894,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/build-manifest.json",
+   "title": "Build commit, environment, input checksums and output facts (release r7, whose bytes this package holds)"
+  },
+  {
+   "asset_id": "support-2",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261117-r7/check.json",
+    "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+    "size_bytes": 11285,
+    "stored_sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+    "stored_size_bytes": 11285,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261117-r7/check.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+   "size_bytes": 11285,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check.json",
+   "title": "Validator report of release r7, whose bytes this package holds: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+  },
+  {
+   "asset_id": "support-3",
+   "media_type": "text/plain",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-env.lock.txt",
+    "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "size_bytes": 10566,
+    "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "stored_size_bytes": 10566,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/index-env.lock.txt"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+   "size_bytes": 10566,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/index-env.lock.txt",
+   "title": "Locked build environment (conda explicit list and one pip wheel)"
+  },
+  {
+   "asset_id": "support-4",
+   "media_type": "text/markdown",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/index-package-plan.md",
+    "sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+    "size_bytes": 18871,
+    "stored_sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+    "stored_size_bytes": 18871,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/index-package-plan.md"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+   "size_bytes": 18871,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/index-package-plan.md",
+   "title": "Checks written before the first build, with addenda"
+  },
+  {
+   "asset_id": "support-5",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261118-r8/check-repackage.json",
+    "sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+    "size_bytes": 3209,
+    "stored_sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+    "stored_size_bytes": 3209,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/check-repackage.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+   "size_bytes": 3209,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check-repackage.json",
+   "title": "Checks 1 and 13: the index files are r7's bytes and the hosted stac/naip.gti.fgb pair matches them"
+  },
+  {
+   "asset_id": "support-6",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261118-r8/check-gti-open.json",
+    "sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+    "size_bytes": 2104,
+    "stored_sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+    "stored_size_bytes": 2104,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/check-gti-open.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+   "size_bytes": 2104,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check-gti-open.json",
+   "title": "Check 12: stac/naip.gti.fgb opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+  },
+  {
+   "asset_id": "support-7",
+   "media_type": "application/json",
+   "retained": {
+    "encoding": "identity",
+    "kind": "git",
+    "path": "datasets/naip/releases/index-20261118-r8/changes.json",
+    "sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+    "size_bytes": 129,
+    "stored_sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+    "stored_size_bytes": 129,
+    "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/changes.json"
+   },
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+   "size_bytes": 129,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/changes.json",
+   "title": "Differences from the hosted r7 files this release is meant to have (none in the index files), written before the package"
+  }
+ ],
+ "git_revision": "81fa06a2e08bc8e77dacc92e89efb99e2b42f630",
+ "owner": "nthh",
+ "product_id": "naip",
+ "schema_version": 1,
+ "source_release": "index-20261118-r8"
+}

@@ -1,0 +1,102 @@
+{
+  "asset_sha256": {
+    "overviews": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+    "quads": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055"
+  },
+  "bound_files": {
+    "AGENTS.md": {
+      "sha256": "d691f3fb9be30811f760f6711137a3fa90c2f4130bf171f5426f4c0a9336bd30",
+      "size_bytes": 496
+    },
+    "README.md": {
+      "sha256": "ae8820a1cb55b28115a81ea08ae19a38ca6d4076d3e314dd2241e316d8a00bdb",
+      "size_bytes": 1849
+    },
+    "catalog.json": {
+      "sha256": "13fa221b46a55990d8c546b163c2441cdc0794edc6293a3f806f4aec5dd33200",
+      "size_bytes": 1664
+    },
+    "collection.json": {
+      "sha256": "0cf3000404374023ddedd726fc726e394a441e07bf62ff27f00ae503e877f206",
+      "size_bytes": 11563
+    },
+    "licenses/software/LICENSE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358
+    },
+    "licenses/software/NOTICE": {
+      "sha256": "273740377ed351e78af85e88f5466171492fb4b8a8a45ae2c3fadc676159b157",
+      "size_bytes": 788
+    },
+    "provenance/build-manifest.json": {
+      "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
+      "size_bytes": 15894
+    },
+    "provenance/changes.json": {
+      "sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+      "size_bytes": 129
+    },
+    "provenance/check-gti-open.json": {
+      "sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+      "size_bytes": 2104
+    },
+    "provenance/check-repackage.json": {
+      "sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+      "size_bytes": 3209
+    },
+    "provenance/check.json": {
+      "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
+      "size_bytes": 11285
+    },
+    "provenance/index-env.lock.txt": {
+      "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+      "size_bytes": 10566
+    },
+    "provenance/index-package-plan.md": {
+      "sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+      "size_bytes": 18871
+    }
+  },
+  "clean_rebuild_report_sha256": "6241a0c376ad025b39ff6b5bb633c3664017ce5e5f7a3ab24c3af2456e9c258d",
+  "dataset_record_sha256": "67ae41b1aa69f313baaa957a9699cd6b78a22e2717a44c50a7010eb90c409d6d",
+  "manifest_sha256": "bfac64c6aaefd58181535e7922b54e0a2cfe5c6fb857df075a94bc4e3bc822a3",
+  "source_attribution_sha256": "69165e5646183d3fbcb7f2f236541ead5542e54a1122ee129d695c3232b4485c",
+  "source_fidelity_report_sha256": "27e1127b658643a2900eb54272f84ac1c72ee27dd3dbaa8cc9f1c80eb6424b2b",
+  "verification_sha256": {
+    "clean-rebuild.json": "6241a0c376ad025b39ff6b5bb633c3664017ce5e5f7a3ab24c3af2456e9c258d",
+    "local-http-duckdb-validation.json": "70b9a33fe011311c5215d92e516cc93cc367232df4defe4610a31eaa99b167f6",
+    "package-integrity-validation.json": "0b486b81e727cf12f651cfe2768fe516677fa5766a1dfc5240591b11ef29229c",
+    "portolan-validation.json": "0dc1133af91a932013c5fd78e16a5a36f88ae212ee44b5d1149fffe374f8d5e7",
+    "source-fidelity.json": "27e1127b658643a2900eb54272f84ac1c72ee27dd3dbaa8cc9f1c80eb6424b2b",
+    "stac-node-validation.json": "d6cc5eb7da5c1f12f00f06d104e6673b55908ea71b636591c8f2e27b01aebf83"
+  },
+  "workflow_sha256": {
+    "datasets/naip/build_gti_fgb.py": "38f25ebbe4c0f44750b5b729c0567c876d8b295cfd8d2cb4187b4464453ab0c8",
+    "datasets/naip/build_index_release.py": "c6e83d313d6e4b45c78fae5279c573da3d6cb7c126a330342f188754269100af",
+    "datasets/naip/build_overview_index.py": "61cabdb498ade6559c844165a0cbde4735a3768eaa18de84a4def6257e7aac04",
+    "datasets/naip/build_stac_index.py": "33218a5f4e798566abf1bf32f63c96f36a2260097dff8c42af797eaa872c21c5",
+    "datasets/naip/check_gti_fgb.py": "73a63b8b9fb3a8eb9d6a1c9352a229e21d293b163855d87c4c9a15a8b7a17119",
+    "datasets/naip/check_gti_open.py": "da5a15df396aa020acec05ae706405b385d9ba42d37cec18c95ba6005842214e",
+    "datasets/naip/check_index_release.py": "7384323a1412bd03c31fb2599f0060574214a34292d6e32ecc71204bd31ea733",
+    "datasets/naip/check_repackage.py": "aa91b5e221bd4c67a5e35df90050d7d5eeff045f1fcb05f34ed26a34d1987d04",
+    "datasets/naip/crs84.projjson": "2576eef69d139b270f7269bb7deea9302023416a6b5d9ac9589ae4765a10c8d2",
+    "datasets/naip/evidence/receipt-dirs-62.json": "20b0821e07dc0da9407b503c1662c81e24428646ad3b4a8e3f660bb122c993ff",
+    "datasets/naip/index-env.lock.txt": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
+    "datasets/naip/index-package-plan.md": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+    "datasets/naip/partial_years.py": "92a67f2589b8865c6ef13b86d4a73b11de3fcb3c3275d195cadf0777ce63690e",
+    "datasets/naip/releases/index-20261118-r8/changes.json": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+    "datasets/naip/releases/index-20261118-r8/package-spec.json": "541a0266b84438300a456c007e8f2e1552ac1434a5ce3714afa8f047f56d297a",
+    "datasets/naip/write_index_reports.py": "bf07c22c952bc32ea001408b86d0b41898dfc307c6bb0085b2a37b1bdd4ccace",
+    "scripts/release_tools/AGENTS.md": "4aa3ee027c7ad8f56209e5c948ab30ad126cd0dfd8e80408590df060db03dc3b",
+    "scripts/release_tools/README.md": "8699fa9bed5fcee01a5222d9fd201e60e2282afbf55b8b14fbbbaf22588065f2",
+    "scripts/release_tools/add_spatial_bounds.py": "035fc480d2a5f7d09b190d65d734c3d5ae18495314f2a01834b8438f302a23e6",
+    "scripts/release_tools/package-lock.json": "8f19898156a139859a49d15238a92a5204a7d61b909ee5ac54080e8110a2cc3c",
+    "scripts/release_tools/package.json": "8eebc2fd826cf22f6008ee889293d7880952ea19ddac557ae905821489108470",
+    "scripts/release_tools/package_release.py": "a5dba007c3d71058e3ab2c44976788bce06175817484c3b342cf533101b065f8",
+    "scripts/release_tools/pyproject.toml": "a6d5a4c17612a98645ce60b3b581caf316707f2b92265e5a3c1ca9a319f6da3c",
+    "scripts/release_tools/serve.py": "dab2eef0199f839aac9a14d9802cb7b339e9732573bd659d5837867f1f5da175",
+    "scripts/release_tools/test_package_release.py": "4bb9bf6b77e2261886abc7e5cee2f4cbd06ea006d7bc8b1367f3f31a953b5ba7",
+    "scripts/release_tools/test_spatial_bounds.py": "ed403df9cbe89adfe2766f5e14610affd34b2a35f4968c647852e0606b9ce30f",
+    "scripts/release_tools/uv.lock": "fe1b9d58a17429f2649a24fbd8299b5d616ca4ab68806e768cd2caac31b8ec1b"
+  }
+}

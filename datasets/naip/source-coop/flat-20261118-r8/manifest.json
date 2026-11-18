@@ -1,0 +1,72 @@
+{
+ "dataset_id": "naip",
+ "files": [
+  {
+   "asset_id": "quads",
+   "filename": "stac/naip.parquet",
+   "media_type": "application/vnd.apache.parquet",
+   "operation": "copy",
+   "roles": [
+    "data"
+   ],
+   "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "size_bytes": 45445261,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/assets/quads.parquet",
+   "source_sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+   "source_size_bytes": 45445261,
+   "title": "Quarter-quad index (STAC GeoParquet)"
+  },
+  {
+   "asset_id": "overviews",
+   "filename": "stac/naip-overviews.parquet",
+   "media_type": "application/vnd.apache.parquet",
+   "operation": "copy",
+   "roles": [
+    "data"
+   ],
+   "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "size_bytes": 519918,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/assets/overviews.parquet",
+   "source_sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+   "source_size_bytes": 519918,
+   "title": "Overview file index (STAC GeoParquet)"
+  },
+  {
+   "asset_id": "quads_fields",
+   "filename": "stac/naip.fields.json",
+   "media_type": "application/json",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "size_bytes": 1607,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/metadata/quads-field-dictionary.json",
+   "source_sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
+   "source_size_bytes": 1607,
+   "title": "quads field dictionary"
+  },
+  {
+   "asset_id": "overviews_fields",
+   "filename": "stac/naip-overviews.fields.json",
+   "media_type": "application/json",
+   "operation": "copy",
+   "roles": [
+    "metadata"
+   ],
+   "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "size_bytes": 1776,
+   "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/metadata/overviews-field-dictionary.json",
+   "source_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
+   "source_size_bytes": 1776,
+   "title": "overviews field dictionary"
+  }
+ ],
+ "layout_id": "flat-20261118-r8",
+ "note": "The release package was never hosted under releases/. Its index files and field dictionaries are r7's bytes, put at these keys on 2026-11-17 (research/naip-index-r7-20261117/replace-run-1).",
+ "owner": "nthh",
+ "product_id": "naip",
+ "schema_version": 1,
+ "source_release": "index-20261118-r8",
+ "updated": "2026-11-18T00:00:00Z"
+}
