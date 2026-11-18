@@ -53,7 +53,7 @@
         "metadata"
       ],
       "size_bytes": 15894,
-      "title": "Build commit, environment, input checksums and output facts"
+      "title": "Build commit, environment, input checksums and output facts (release r7, whose bytes this package holds)"
     },
     {
       "asset_id": "support-2",
@@ -64,7 +64,7 @@
         "metadata"
       ],
       "size_bytes": 11285,
-      "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+      "title": "Validator report of release r7, whose bytes this package holds: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
     },
     {
       "asset_id": "support-3",
@@ -79,69 +79,47 @@
     },
     {
       "asset_id": "support-4",
-      "checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+      "checksum": "122089dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
       "href": "provenance/index-package-plan.md",
       "media_type": "text/markdown",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 15726,
+      "size_bytes": 18871,
       "title": "Checks written before the first build, with addenda"
     },
     {
       "asset_id": "support-5",
-      "checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+      "checksum": "122070fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+      "href": "provenance/check-repackage.json",
+      "media_type": "application/json",
+      "roles": [
+        "metadata"
+      ],
+      "size_bytes": 3209,
+      "title": "Checks 1 and 13: the index files are r7's bytes and the hosted stac/naip.gti.fgb pair matches them"
+    },
+    {
+      "asset_id": "support-6",
+      "checksum": "1220fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
       "href": "provenance/check-gti-open.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
-      "size_bytes": 4299,
-      "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+      "size_bytes": 2104,
+      "title": "Check 12: stac/naip.gti.fgb opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
     },
     {
-      "asset_id": "support-6",
-      "checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+      "asset_id": "support-7",
+      "checksum": "1220106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
       "href": "provenance/changes.json",
       "media_type": "application/json",
       "roles": [
         "metadata"
       ],
       "size_bytes": 129,
-      "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
-    },
-    {
-      "asset_id": "support-7",
-      "checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
-      "href": "metadata/gti/naip.gti",
-      "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ],
-      "size_bytes": 3858,
-      "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
-    },
-    {
-      "asset_id": "support-8",
-      "checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
-      "href": "metadata/gti/naip-overviews.gti",
-      "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ],
-      "size_bytes": 957,
-      "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
-    },
-    {
-      "asset_id": "support-9",
-      "checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
-      "href": "provenance/check-gti-open-on-r6.json",
-      "media_type": "application/json",
-      "roles": [
-        "metadata"
-      ],
-      "size_bytes": 5501,
-      "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
+      "title": "Differences from the hosted r7 files this release is meant to have (none in the index files), written before the package"
     },
     {
       "asset_id": "thumbnail",
@@ -181,7 +159,7 @@
         ],
         "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
         "size_bytes": 45445261,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/assets/quads.parquet",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/assets/quads.parquet",
         "source_sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
         "source_size_bytes": 45445261,
         "title": "Quarter-quad index (STAC GeoParquet)"
@@ -196,7 +174,7 @@
         ],
         "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
         "size_bytes": 519918,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/assets/overviews.parquet",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/assets/overviews.parquet",
         "source_sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
         "source_size_bytes": 519918,
         "title": "Overview file index (STAC GeoParquet)"
@@ -211,7 +189,7 @@
         ],
         "sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
         "size_bytes": 1607,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/quads-field-dictionary.json",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/metadata/quads-field-dictionary.json",
         "source_sha256": "d17314e53b2ae01da694325ed17e374f30c10c940ffa44065e5fc4efceeba9b3",
         "source_size_bytes": 1607,
         "title": "quads field dictionary"
@@ -226,49 +204,19 @@
         ],
         "sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
         "size_bytes": 1776,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/overviews-field-dictionary.json",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/metadata/overviews-field-dictionary.json",
         "source_sha256": "1496f5f48a734902d8a62a8e6111981f1a0cd82cc451afec1c3f332a0f9f3887",
         "source_size_bytes": 1776,
         "title": "overviews field dictionary"
-      },
-      {
-        "asset_id": "support-7",
-        "filename": "stac/naip.gti",
-        "media_type": "application/xml",
-        "operation": "copy",
-        "roles": [
-          "metadata"
-        ],
-        "sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
-        "size_bytes": 3858,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/gti/naip.gti",
-        "source_sha256": "d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
-        "source_size_bytes": 3858,
-        "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
-      },
-      {
-        "asset_id": "support-8",
-        "filename": "stac/naip-overviews.gti",
-        "media_type": "application/xml",
-        "operation": "copy",
-        "roles": [
-          "metadata"
-        ],
-        "sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
-        "size_bytes": 957,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/metadata/gti/naip-overviews.gti",
-        "source_sha256": "b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
-        "source_size_bytes": 957,
-        "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
       }
     ],
-    "layout_id": "flat-20261117-r7",
-    "note": "The release package was never hosted under releases/; its files were put at these keys directly (research/naip-index-r7-20261117/replace-run-1).",
+    "layout_id": "flat-20261118-r8",
+    "note": "The release package was never hosted under releases/. Its index files and field dictionaries are r7's bytes, put at these keys on 2026-11-17 (research/naip-index-r7-20261117/replace-run-1).",
     "owner": "nthh",
     "product_id": "naip",
     "schema_version": 1,
-    "source_release": "index-20261117-r7",
-    "updated": "2026-11-17T00:00:00Z"
+    "source_release": "index-20261118-r8",
+    "updated": "2026-11-18T00:00:00Z"
   },
   "hosted": true,
   "independent_maintainer_proposal": {
@@ -294,10 +242,6 @@
     "uri": "s3://nthh/naip"
   },
   "publication_status": "published",
-  "readme_omit_files": [
-    "stac/naip.gti",
-    "stac/naip-overviews.gti"
-  ],
   "readme_sections": [
     {
       "body": "Each index is a single GeoParquet file in the STAC GeoParquet layout: one row per STAC Item, with\nthe file's address in the `image` asset. There are no Item JSON files and no partitions. The\nSTAC Collection is stored in the file's own metadata under the `stac-geoparquet` key, and the\nGeoParquet metadata under `geo`.\n\n`stac/naip.parquet` has 245,554 rows, one per quarter quad file, covering 213,436 places; a place\nflown in more than one listed year has a row for each. Its columns:\n\n- `id`: state and file name, for example `ut_m_4011127_ne_12_060_20240816`.\n- `geometry`: the footprint polygon, WKB in longitude and latitude; `bbox`: its extent as\n  `xmin`, `ymin`, `xmax`, `ymax`.\n- `datetime`: the flight date, at 00:00 UTC.\n- `gsd` (0.3 or 0.6 m), `naip:state`, `naip:year`.\n- `proj:code`, `proj:epsg`, `proj:bbox`, `proj:shape`, `proj:transform`: the file's UTM grid.\n- `assets.image`: `href` (the file's address), `file:size`, `file:checksum` (SHA-256 as a\n  multihash), `type` and `roles`.\n- `naip:run`: the conversion run that made the file.\n- `naip:gti_location`: the file's address relative to `stac/`, for example\n  `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; use\n  `href` instead.\n\n`stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except\n`naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and\n`naip:quads` (how many quarter quads it was made from). The national file's row has no state\nor year.\n\nRows of the quad index are ordered along a Hilbert curve through the centre of each footprint,\nnewest flight first at the same place, with states and years mixed. They are written in 30\nrow groups of about 8,192 rows, with statistics and a page index, so a query for a small area\nreads a few row groups instead of the whole 45 MB file. For the newest picture of a place, keep\nthe row with the latest `datetime`.\n\nThe quarter quads around Alta, Utah, newest first:\n\n```sql\nSELECT id, datetime, assets.image.href AS href\nFROM read_parquet('https://data.source.coop/nthh/naip/stac/naip.parquet')\nWHERE bbox.xmin < -111.60 AND bbox.xmax > -111.65\n  AND bbox.ymin < 40.60 AND bbox.ymax > 40.58\nORDER BY datetime DESC;\n```",
@@ -311,7 +255,7 @@
   "ready_for_creation": true,
   "ready_for_review": true,
   "related_dataset_links": [],
-  "release": "index-20261117-r7",
+  "release": "index-20261118-r8",
   "release_files": [
     {
       "kind": "asset",
@@ -339,16 +283,6 @@
       "size_bytes": null
     },
     {
-      "kind": "supporting_files",
-      "path": "metadata/gti/naip-overviews.gti",
-      "size_bytes": 957
-    },
-    {
-      "kind": "supporting_files",
-      "path": "metadata/gti/naip.gti",
-      "size_bytes": 3858
-    },
-    {
       "kind": "field_dictionary",
       "path": "metadata/overviews-field-dictionary.json",
       "size_bytes": null
@@ -370,13 +304,13 @@
     },
     {
       "kind": "supporting_files",
-      "path": "provenance/check-gti-open-on-r6.json",
-      "size_bytes": 5501
+      "path": "provenance/check-gti-open.json",
+      "size_bytes": 2104
     },
     {
       "kind": "supporting_files",
-      "path": "provenance/check-gti-open.json",
-      "size_bytes": 4299
+      "path": "provenance/check-repackage.json",
+      "size_bytes": 3209
     },
     {
       "kind": "supporting_files",
@@ -391,7 +325,7 @@
     {
       "kind": "supporting_files",
       "path": "provenance/index-package-plan.md",
-      "size_bytes": 15726
+      "size_bytes": 18871
     },
     {
       "kind": "source_attribution",
@@ -408,17 +342,17 @@
   },
   "schema_version": 1,
   "snapshot_binding": {
-    "bound_file_count": 15,
-    "hosted_package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/",
+    "bound_file_count": 13,
+    "hosted_package_base_url": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/",
     "local_metadata_integrity": "passed",
-    "manifest_path": "datasets/naip/releases/index-20261117-r7/manifest.json",
-    "manifest_sha256": "de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d",
-    "package_binding_sha256": "eb846e9b9b8b5ca98e8a01db1d2070e867bf6025cf4d20296fd8bfd484711745",
+    "manifest_path": "datasets/naip/releases/index-20261118-r8/manifest.json",
+    "manifest_sha256": "bfac64c6aaefd58181535e7922b54e0a2cfe5c6fb857df075a94bc4e3bc822a3",
+    "package_binding_sha256": "9f13dbfb36da88f621f155f613bceae6197e61addf40038e9fb08a9f1c1a23c3",
     "package_binding_status": "verified",
-    "release": "index-20261117-r7",
+    "release": "index-20261118-r8",
     "snapshot_file_count": 4,
-    "snapshot_path": "datasets/naip/releases/index-20261117-r7/catalog-input-r1/snapshot.json",
-    "snapshot_sha256": "b811cc8f9e231f08d1b3281a62878f518ebaf8557e9072d9b1d247d31512d744"
+    "snapshot_path": "datasets/naip/releases/index-20261118-r8/catalog-input-r1/snapshot.json",
+    "snapshot_sha256": "370f5a10a3939daffb5f8add9d5323ea25c06064f051adcd850fd7faa32856dc"
   },
   "snapshot_collection": {
     "assets": [
@@ -475,7 +409,7 @@
           "metadata"
         ],
         "size_bytes": 15894,
-        "title": "Build commit, environment, input checksums and output facts"
+        "title": "Build commit, environment, input checksums and output facts (release r7, whose bytes this package holds)"
       },
       {
         "asset_id": "support-2",
@@ -486,7 +420,7 @@
           "metadata"
         ],
         "size_bytes": 11285,
-        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+        "title": "Validator report of release r7, whose bytes this package holds: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
       },
       {
         "asset_id": "support-3",
@@ -501,69 +435,47 @@
       },
       {
         "asset_id": "support-4",
-        "checksum": "1220704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
+        "checksum": "122089dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
         "href": "provenance/index-package-plan.md",
         "media_type": "text/markdown",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 15726,
+        "size_bytes": 18871,
         "title": "Checks written before the first build, with addenda"
       },
       {
         "asset_id": "support-5",
-        "checksum": "1220f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
+        "checksum": "122070fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+        "href": "provenance/check-repackage.json",
+        "media_type": "application/json",
+        "roles": [
+          "metadata"
+        ],
+        "size_bytes": 3209,
+        "title": "Checks 1 and 13: the index files are r7's bytes and the hosted stac/naip.gti.fgb pair matches them"
+      },
+      {
+        "asset_id": "support-6",
+        "checksum": "1220fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
         "href": "provenance/check-gti-open.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
-        "size_bytes": 4299,
-        "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+        "size_bytes": 2104,
+        "title": "Check 12: stac/naip.gti.fgb opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
       },
       {
-        "asset_id": "support-6",
-        "checksum": "1220136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
+        "asset_id": "support-7",
+        "checksum": "1220106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
         "href": "provenance/changes.json",
         "media_type": "application/json",
         "roles": [
           "metadata"
         ],
         "size_bytes": 129,
-        "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
-      },
-      {
-        "asset_id": "support-7",
-        "checksum": "1220d0ba24366656b29ca5cc44d065dbc095c111b0b68387eb247f6646b9ac2c2ca0",
-        "href": "metadata/gti/naip.gti",
-        "media_type": "application/xml",
-        "roles": [
-          "metadata"
-        ],
-        "size_bytes": 3858,
-        "title": "GDAL tile index file, a copy of stac/naip.gti; it opens the index there, where the parquet files sit beside it"
-      },
-      {
-        "asset_id": "support-8",
-        "checksum": "1220b9e42fa42bc42d1291338f195c483651ebf9e9c99df551599ded5b708009d35b",
-        "href": "metadata/gti/naip-overviews.gti",
-        "media_type": "application/xml",
-        "roles": [
-          "metadata"
-        ],
-        "size_bytes": 957,
-        "title": "GDAL tile index file of the overview files, a copy of stac/naip-overviews.gti"
-      },
-      {
-        "asset_id": "support-9",
-        "checksum": "1220d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
-        "href": "provenance/check-gti-open-on-r6.json",
-        "media_type": "application/json",
-        "roles": [
-          "metadata"
-        ],
-        "size_bytes": 5501,
-        "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
+        "title": "Differences from the hosted r7 files this release is meant to have (none in the index files), written before the package"
       },
       {
         "asset_id": "thumbnail",
@@ -577,7 +489,7 @@
         "title": "Sampled display-only overview; not an analytic asset"
       }
     ],
-    "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that stac/naip.gti uses to open the index in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+    "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that the GDAL tile index stac/naip.gti.fgb uses to open the imagery in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
     "extent": {
       "spatial": {
         "bbox": [
@@ -651,15 +563,15 @@
           "size_bytes": 15894,
           "stored_sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
           "stored_size_bytes": 15894,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/build-manifest.json"
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261117-r7/build-manifest.json"
         },
         "roles": [
           "metadata"
         ],
         "sha256": "aaef062acdeb7d1f4f977a83abf7720148cea65859a4e0a4e97597666566eeb0",
         "size_bytes": 15894,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/build-manifest.json",
-        "title": "Build commit, environment, input checksums and output facts"
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/build-manifest.json",
+        "title": "Build commit, environment, input checksums and output facts (release r7, whose bytes this package holds)"
       },
       {
         "asset_id": "support-2",
@@ -672,15 +584,15 @@
           "size_bytes": 11285,
           "stored_sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
           "stored_size_bytes": 11285,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check.json"
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261117-r7/check.json"
         },
         "roles": [
           "metadata"
         ],
         "sha256": "286609f7e015f79646dae24a61bfa4d526d53656131f562be0ac5975fe23ec34",
         "size_bytes": 11285,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check.json",
-        "title": "Validator report: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check.json",
+        "title": "Validator report of release r7, whose bytes this package holds: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests"
       },
       {
         "asset_id": "support-3",
@@ -693,14 +605,14 @@
           "size_bytes": 10566,
           "stored_sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
           "stored_size_bytes": 10566,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-env.lock.txt"
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/index-env.lock.txt"
         },
         "roles": [
           "metadata"
         ],
         "sha256": "7ba64197571867164137fbc3caeec4a6329fdb0dbb39c00a151519b0267c499d",
         "size_bytes": 10566,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-env.lock.txt",
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/index-env.lock.txt",
         "title": "Locked build environment (conda explicit list and one pip wheel)"
       },
       {
@@ -710,18 +622,18 @@
           "encoding": "identity",
           "kind": "git",
           "path": "datasets/naip/index-package-plan.md",
-          "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
-          "size_bytes": 15726,
-          "stored_sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
-          "stored_size_bytes": 15726,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/index-package-plan.md"
+          "sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+          "size_bytes": 18871,
+          "stored_sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+          "stored_size_bytes": 18871,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/index-package-plan.md"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "704af541e17ec1d2f865f251ca39ecbb8a3dfdfe98d1856763513eb051efc7e2",
-        "size_bytes": 15726,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/index-package-plan.md",
+        "sha256": "89dc423d8001c9608823cfca16525dc68f0cf1b45272dffd931dd14ca8455695",
+        "size_bytes": 18871,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/index-package-plan.md",
         "title": "Checks written before the first build, with addenda"
       },
       {
@@ -730,20 +642,20 @@
         "retained": {
           "encoding": "identity",
           "kind": "git",
-          "path": "datasets/naip/releases/index-20261117-r7/check-gti-open.json",
-          "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
-          "size_bytes": 4299,
-          "stored_sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
-          "stored_size_bytes": 4299,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open.json"
+          "path": "datasets/naip/releases/index-20261118-r8/check-repackage.json",
+          "sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+          "size_bytes": 3209,
+          "stored_sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+          "stored_size_bytes": 3209,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/check-repackage.json"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "f5ab7900c81b86fbb1826209003efed0e46cc385874f864d5f0b0fbbcaa7f42a",
-        "size_bytes": 4299,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open.json",
-        "title": "Check 12: naip.gti opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
+        "sha256": "70fae61977926d94c3b273190f7891f4f3954caf985783dc96e5cc178f0d93ad",
+        "size_bytes": 3209,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check-repackage.json",
+        "title": "Checks 1 and 13: the index files are r7's bytes and the hosted stac/naip.gti.fgb pair matches them"
       },
       {
         "asset_id": "support-6",
@@ -751,48 +663,48 @@
         "retained": {
           "encoding": "identity",
           "kind": "git",
-          "path": "datasets/naip/releases/index-20261117-r7/changes.json",
-          "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
-          "size_bytes": 129,
-          "stored_sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
-          "stored_size_bytes": 129,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/changes.json"
+          "path": "datasets/naip/releases/index-20261118-r8/check-gti-open.json",
+          "sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+          "size_bytes": 2104,
+          "stored_sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+          "stored_size_bytes": 2104,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/check-gti-open.json"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "136572f7b75c0c9ed365e38382cf7106f85b73279449eb0a8dd9c3a9683ead3c",
-        "size_bytes": 129,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/changes.json",
-        "title": "Differences from the hosted r6 files this release is meant to have (none in the index files), written before the build"
+        "sha256": "fdb9a8789e6592d230c5160772ca268851b6acdb9b6fb64fa06869cc7cbd99fa",
+        "size_bytes": 2104,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/check-gti-open.json",
+        "title": "Check 12: stac/naip.gti.fgb opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added"
       },
       {
-        "asset_id": "support-9",
+        "asset_id": "support-7",
         "media_type": "application/json",
         "retained": {
           "encoding": "identity",
           "kind": "git",
-          "path": "datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json",
-          "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
-          "size_bytes": 5501,
-          "stored_sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
-          "stored_size_bytes": 5501,
-          "url": "https://raw.githubusercontent.com/nthh/data-publications/47fa8ef6a7e10ad766015b330150edb9cc21e617/datasets/naip/releases/index-20261117-r7/check-gti-open-on-r6.json"
+          "path": "datasets/naip/releases/index-20261118-r8/changes.json",
+          "sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+          "size_bytes": 129,
+          "stored_sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+          "stored_size_bytes": 129,
+          "url": "https://raw.githubusercontent.com/nthh/data-publications/81fa06a2e08bc8e77dacc92e89efb99e2b42f630/datasets/naip/releases/index-20261118-r8/changes.json"
         },
         "roles": [
           "metadata"
         ],
-        "sha256": "d2f00acad98b01d82678465d47ad9087b4d5977ead3f68c34557bf03e01d16a1",
-        "size_bytes": 5501,
-        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261117-r7/provenance/check-gti-open-on-r6.json",
-        "title": "Check 12's add-layer step run on the r6 files, which it fails (28.5 MB fetched)"
+        "sha256": "106f124389d48e59a321ef66cfbc0a524279cec1054be148ff688c98e96d2639",
+        "size_bytes": 129,
+        "source_href": "https://data.source.coop/nthh/naip/releases/index-20261118-r8/provenance/changes.json",
+        "title": "Differences from the hosted r7 files this release is meant to have (none in the index files), written before the package"
       }
     ],
-    "git_revision": "47fa8ef6a7e10ad766015b330150edb9cc21e617",
+    "git_revision": "81fa06a2e08bc8e77dacc92e89efb99e2b42f630",
     "owner": "nthh",
     "product_id": "naip",
     "schema_version": 1,
-    "source_release": "index-20261117-r7"
+    "source_release": "index-20261118-r8"
   },
   "tags": [
     "naip",

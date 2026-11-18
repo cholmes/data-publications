@@ -10,3 +10,8 @@ Check 8 is check 12 of the r8 addendum: `check_gti_open.py` opening the hosted
 `GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb`
 (`datasets/naip/releases/index-20261118-r8/check-gti-open.json`). The quad index is unchanged, so
 check 7 does not wait for the range cache.
+
+Amendment (after checks 1 to 6 and 8 passed): the hosting reports cite r7's check 7 record
+(`research/naip-index-r7-20261117/hosted-checks/hosted-explorer-r1.json`), since the quad index the
+explorer reads has the same bytes. Check 7 was also run again for r8 on 2026-11-18 and passed (17
+index requests, all ranged; 11 quad COGs; no page errors); that record is kept outside the repository.

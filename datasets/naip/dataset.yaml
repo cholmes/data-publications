@@ -15,19 +15,19 @@ triage:
     unlisted product as of 2026-11-14 and each passed the hosted checks.
 publication:
   status: published
-  release: index-20261117-r7
-  manifest_path: datasets/naip/releases/index-20261117-r7/manifest.json
-  manifest_sha256: de46c35f6e164627ed0a40e3a83368d5dbbbc80d59a27a2f6225e4b5d0bcc42d
+  release: index-20261118-r8
+  manifest_path: datasets/naip/releases/index-20261118-r8/manifest.json
+  manifest_sha256: bfac64c6aaefd58181535e7922b54e0a2cfe5c6fb857df075a94bc4e3bc822a3
   validation_path: datasets/naip/releases/index-20261117-r7/source-fidelity.json
-  release_receipt_path: datasets/naip/releases/index-20261117-r7/package-receipt.json
+  release_receipt_path: datasets/naip/releases/index-20261118-r8/package-receipt.json
   conversion_git_commit: d88994f6b939888a03dff24307ec4ec452dba4c7
-  local_bundle_directory: .local/naip/package/index-20261117-r7
+  local_bundle_directory: .local/naip/package/index-20261118-r8
   catalog:
-    snapshot_path: datasets/naip/releases/index-20261117-r7/catalog-input-r1/snapshot.json
-    snapshot_sha256: b811cc8f9e231f08d1b3281a62878f518ebaf8557e9072d9b1d247d31512d744
-    package_base_url: https://data.source.coop/nthh/naip/releases/index-20261117-r7/
-    hosting_report_path: research/naip-index-r7-20261117/hosting-report.json
-    hosting_report_sha256: 50ef582304140566bd6e753048e27bb386db321c001952e8ed1a9a693b31217d
+    snapshot_path: datasets/naip/releases/index-20261118-r8/catalog-input-r1/snapshot.json
+    snapshot_sha256: 370f5a10a3939daffb5f8add9d5323ea25c06064f051adcd850fd7faa32856dc
+    package_base_url: https://data.source.coop/nthh/naip/releases/index-20261118-r8/
+    hosting_report_path: research/naip-index-r8-20261118/hosting-report.json
+    hosting_report_sha256: 3dd9ff908680451b15b4a5f4d08df081dc9ce2d250811a1dc16105adad39ce95
     map_assets:
     - asset_id: overview_national
       href: https://data.source.coop/nthh/naip/overviews/national-latest.tif
@@ -57,13 +57,13 @@ publication:
     index froze QGIS when the layer was added and r7 replaced it the same day.
   source_coop:
     support_layout:
-      manifest_path: datasets/naip/source-coop/support-20261117-r7.json
-      manifest_sha256: 2e1ad0b49d64b550a98fc22e2d58398cdf31ed5916f85fc382e6fd87b90e5cb0
+      manifest_path: datasets/naip/source-coop/support-20261118-r8.json
+      manifest_sha256: c31d65887bb76b145a7565ea4276388aec821fcd2e8ba88cd1a6b549f766ff5a
     flat_layout:
-      manifest_path: datasets/naip/source-coop/flat-20261117-r7/manifest.json
-      manifest_sha256: 313e3b2097bd2f2c5391269ad1d8fb30934a56fb39ab2c7a675bca92adadcf22
-      hosting_report_path: research/naip-index-r7-20261117/flat-hosting.json
-      hosting_report_sha256: 181ba1d39e03360c91c0e0a156cfb0e3375f963b54daf70cfcae661840ca0f98
+      manifest_path: datasets/naip/source-coop/flat-20261118-r8/manifest.json
+      manifest_sha256: 8ef3a0ada4b33cff6d965c584c4aaecf056017f4f64228ec1ae43afedcefe439
+      hosting_report_path: research/naip-index-r8-20261118/flat-hosting.json
+      hosting_report_sha256: 793c0e0cd157ac65999531bf641275129cb6012872f5be3298625a7bda45705c
     owner: nthh
     owner_status: confirmed
     account_verification:

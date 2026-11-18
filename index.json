@@ -10691,14 +10691,14 @@
       },
       "source_coop": {
         "support_layout": {
-          "manifest_path": "datasets/naip/source-coop/support-20261117-r7.json",
-          "manifest_sha256": "2e1ad0b49d64b550a98fc22e2d58398cdf31ed5916f85fc382e6fd87b90e5cb0"
+          "manifest_path": "datasets/naip/source-coop/support-20261118-r8.json",
+          "manifest_sha256": "c31d65887bb76b145a7565ea4276388aec821fcd2e8ba88cd1a6b549f766ff5a"
         },
         "flat_layout": {
-          "manifest_path": "datasets/naip/source-coop/flat-20261117-r7/manifest.json",
-          "manifest_sha256": "313e3b2097bd2f2c5391269ad1d8fb30934a56fb39ab2c7a675bca92adadcf22",
-          "hosting_report_path": "research/naip-index-r7-20261117/flat-hosting.json",
-          "hosting_report_sha256": "181ba1d39e03360c91c0e0a156cfb0e3375f963b54daf70cfcae661840ca0f98"
+          "manifest_path": "datasets/naip/source-coop/flat-20261118-r8/manifest.json",
+          "manifest_sha256": "8ef3a0ada4b33cff6d965c584c4aaecf056017f4f64228ec1ae43afedcefe439",
+          "hosting_report_path": "research/naip-index-r8-20261118/flat-hosting.json",
+          "hosting_report_sha256": "793c0e0cd157ac65999531bf641275129cb6012872f5be3298625a7bda45705c"
         },
         "owner": "nthh",
         "owner_status": "confirmed",
@@ -10715,10 +10715,6 @@
           "Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.",
           "Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).",
           "Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti.fgb` opens the newest flight of every place in QGIS or GDAL as one mosaic (GDAL tile index in FlatGeobuf), with `stac/naip-overviews.gti.fgb` for zoomed-out views."
-        ],
-        "readme_omit_files": [
-          "stac/naip.gti",
-          "stac/naip-overviews.gti"
         ],
         "readme_sections": [
           {
