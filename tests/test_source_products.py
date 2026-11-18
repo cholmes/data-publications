@@ -809,6 +809,16 @@ class SourceProductTests(unittest.TestCase):
         readme = products.render_flat_consumer_readme(draft)
         self.assertIn("- Images under `a/<b>.tif`.\n\n## How the index is organized\n\nOne row per item.\n\n## Files", readme)
 
+    def test_flat_readme_leaves_out_omitted_files(self):
+        draft = {"title": "T", "summary": "S", "temporal_note": "N", "owner": "nthh", "product_id": "p",
+                 "dataset_id": "p", "attribution": "A", "license_note": "L", "limitations": ["X"],
+                 "readme_omit_files": ["stac/p.old"],
+                 "flat_layout": {"files": [{"filename": "stac/p.parquet", "size_bytes": 2000000},
+                                           {"filename": "stac/p.old", "size_bytes": 1000}]}}
+        readme = products.render_flat_consumer_readme(draft)
+        self.assertIn("stac/p.parquet", readme)
+        self.assertNotIn("stac/p.old", readme)
+
     def test_projjson_is_json(self):
         self.assertEqual(products.content_type("verification/workflow/crs84.projjson"), "application/json")
 

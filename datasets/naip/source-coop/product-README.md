@@ -8,7 +8,7 @@ One file per quarter quad per state-year, from flights of 2021 to 2025. Each fil
 
 - Quarter quads: `<state>/<year>/<resolution>/rgb/<block>/<name>.tif`, as in the AWS naip-visualization bucket, for example `ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`.
 - Overview files: `overviews/<state>-<year>-utm<zone>.tif` (one flight year of one state in one UTM zone, 9.6 m) and `overviews/national-latest.tif` (the latest flight of each state, EPSG:3857, about 306 m).
-- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti.fgb` opens the newest flight of every place in QGIS or GDAL as one mosaic (GDAL tile index in FlatGeobuf), with `stac/naip-overviews.gti.fgb` for zoomed-out views; `stac/naip.gti` does the same over the GeoParquet index.
+- Indexes: `stac/naip.parquet` lists every quarter quad and `stac/naip-overviews.parquet` every overview file, as STAC GeoParquet: address, size, SHA-256, footprint, CRS and flight date. A reader finds the files for a place by querying the index on its `bbox` columns. `stac/naip.gti.fgb` opens the newest flight of every place in QGIS or GDAL as one mosaic (GDAL tile index in FlatGeobuf), with `stac/naip-overviews.gti.fgb` for zoomed-out views.
 
 ## How the two indexes are organized
 
@@ -30,8 +30,8 @@ flown in more than one listed year has a row for each. Its columns:
   multihash), `type` and `roles`.
 - `naip:run`: the conversion run that made the file.
 - `naip:gti_location`: the file's address relative to `stac/`, for example
-  `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; it is
-  the location column of `stac/naip.gti` (below). Use `href` for anything else.
+  `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; use
+  `href` instead.
 
 `stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except
 `naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and
@@ -74,23 +74,11 @@ the 9.6 m state files and then the national file, through `stac/naip-overviews.g
 file's address in the index is absolute and tells GDAL not to look for side files, so opening
 it needs no other setting and no Parquet driver. GDAL reads only the part of the 70 MB index in
 view: in one test session at Alta, Utah, opening took 0.4 s and a first 1 m view 2.3 s, with
-22 file reads, against 1.4 s and 8.5 s with 40 file reads through `stac/naip.gti`.
+22 file reads.
 
 Each quarter quad covers a little more than its cell, and GDAL draws all of it, so where two
 neighbours overlap either may be on top. Where the newest file of a cell has no picture, the
 mosaic is empty rather than showing an older flight.
-
-`stac/naip.gti` opens the same mosaic over `stac/naip.parquet`, drawing every listed file with
-the newest flight on top, so an older flight shows wherever the newest has no picture. Its
-reader needs the Parquet driver, which QGIS includes, and it is slower: GDAL reads overlapping
-files one at a time. Open it as
-
-```
-/vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti
-```
-
-`empty_dir=yes` tells GDAL not to look for side files (`.aux.xml`, `.msk`, `.ovr`) next to each
-quad, which do not exist; without it a first view of a new area makes about 170 extra requests.
 
 ## Files
 
@@ -102,8 +90,6 @@ Use GeoParquet for analysis. Field dictionaries describe columns and units.
 | [stac/naip-overviews.parquet](https://data.source.coop/nthh/naip/stac/naip-overviews.parquet) | 519.9 kB |
 | [stac/naip.fields.json](https://data.source.coop/nthh/naip/stac/naip.fields.json) | 1.6 kB |
 | [stac/naip-overviews.fields.json](https://data.source.coop/nthh/naip/stac/naip-overviews.fields.json) | 1.8 kB |
-| [stac/naip.gti](https://data.source.coop/nthh/naip/stac/naip.gti) | 3.9 kB |
-| [stac/naip-overviews.gti](https://data.source.coop/nthh/naip/stac/naip-overviews.gti) | 1.0 kB |
 
 ## Schema
 
