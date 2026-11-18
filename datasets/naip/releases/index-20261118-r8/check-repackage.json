@@ -1,0 +1,139 @@
+{
+ "schema_version": 1,
+ "plan": "datasets/naip/index-package-plan.md, addendum for r8, checks 1 and 13",
+ "commit": "7c26d12fca6d1dc0fb151690d1815b06efdc9405",
+ "gdal": "3.13.1",
+ "1_same_bytes": {
+  "files": {
+   "naip.parquet": {
+    "local": {
+     "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+     "size_bytes": 45445261
+    },
+    "hosted": {
+     "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+     "size_bytes": 45445261
+    },
+    "reference": {
+     "sha256": "2252a109c699c24ac016fa86040f1322a1c9c312fbfb9c050d54bc74cbc90055",
+     "size_bytes": 45445261
+    },
+    "passed": true
+   },
+   "naip-overviews.parquet": {
+    "local": {
+     "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+     "size_bytes": 519918
+    },
+    "hosted": {
+     "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+     "size_bytes": 519918
+    },
+    "reference": {
+     "sha256": "f7778e5f098e1f9e406543c45dab1330c09384c54e8b29db09a638ae3804fcb6",
+     "size_bytes": 519918
+    },
+    "passed": true
+   }
+  },
+  "passed": true
+ },
+ "13_fgb_pair": {
+  "check_gti_fgb": {
+   "quad_rows_in_release": 245554,
+   "cells_expected": 212705,
+   "rows": 212705,
+   "one_row_per_cell": {
+    "ok": true,
+    "detail": {
+     "rows": 212705,
+     "cells": 212705,
+     "missing": 0,
+     "extra": 0,
+     "duplicated": 0
+    }
+   },
+   "footprint_is_the_cell": {
+    "ok": true,
+    "detail": {
+     "not_a_cell": 0
+    }
+   },
+   "newest_file_of_each_cell": {
+    "ok": true,
+    "detail": {
+     "wrong": 0,
+     "examples": []
+    }
+   },
+   "addresses_absolute": {
+    "ok": true
+   },
+   "quad_fields": [
+    "datetime",
+    "naip:gti_location"
+   ],
+   "quad_rows_left_out": 32849,
+   "overviews_every_file_once": {
+    "ok": true,
+    "detail": {
+     "rows": 115,
+     "release": 115
+    }
+   },
+   "overviews_newest_and_address": {
+    "ok": true
+   },
+   "overviews_footprint_is_bbox": {
+    "ok": true
+   },
+   "overview_ids_used_by_filters": {
+    "ok": true
+   },
+   "quad_settings": {
+    "ok": true,
+    "detail": {
+     "LOCATION_FIELD": "naip:gti_location",
+     "SORT_FIELD": "datetime",
+     "SORT_FIELD_ASC": "YES",
+     "BAND_COUNT": "4",
+     "DATA_TYPE": "Byte",
+     "COLOR_INTERPRETATION": "red,green,blue,alpha",
+     "MINX": "-125.2",
+     "MINY": "23.2",
+     "MAXX": "-66.0",
+     "MAXY": "49.92"
+    }
+   },
+   "overview_settings": {
+    "ok": true
+   },
+   "overview_levels": {
+    "ok": true,
+    "detail": {
+     "levels": 13,
+     "matching": 13
+    }
+   },
+   "files": {
+    "naip-overviews.gti.fgb": 38576,
+    "naip.gti.fgb": 70411920
+   },
+   "failures": []
+  },
+  "rebuild_byte_identical": {
+   "naip.gti.fgb": {
+    "rebuilt": "d2301e5bf7f7f6a18692c1e79db09ebf423ea44af59f3a19a903c07f04673e09",
+    "hosted": "d2301e5bf7f7f6a18692c1e79db09ebf423ea44af59f3a19a903c07f04673e09",
+    "passed": true
+   },
+   "naip-overviews.gti.fgb": {
+    "rebuilt": "7971058a5ed61a97c465a35aee67267d9a2ff581bbf732ce7f1e25b9d9571a1c",
+    "hosted": "7971058a5ed61a97c465a35aee67267d9a2ff581bbf732ce7f1e25b9d9571a1c",
+    "passed": true
+   }
+  },
+  "passed": true
+ },
+ "status": "passed"
+}

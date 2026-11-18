@@ -1,0 +1,102 @@
+{
+ "schema_version": 1,
+ "plan": "datasets/naip/index-package-plan.md, check 12 (addendum of 2026-11-18)",
+ "gdal": "3.12.4",
+ "release_files": {
+  "naip.gti.fgb": {
+   "sha256": "d2301e5bf7f7f6a18692c1e79db09ebf423ea44af59f3a19a903c07f04673e09",
+   "size_bytes": 70411920
+  },
+  "naip-overviews.gti.fgb": {
+   "sha256": "7971058a5ed61a97c465a35aee67267d9a2ff581bbf732ce7f1e25b9d9571a1c",
+   "size_bytes": 38576
+  }
+ },
+ "opened": "GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb",
+ "reads": {
+  "alta_full_resolution": {
+   "size": [
+    2800,
+    2200
+   ],
+   "band1_mean": 108.574,
+   "alpha_max": 255.0,
+   "all_bytes": 2381589,
+   "index_requests": 6,
+   "index_bytes": 131072
+  },
+  "utah_600m": {
+   "size": [
+    944,
+    963
+   ],
+   "band1_mean": 164.967,
+   "alpha_max": 255.0,
+   "all_bytes": 2322173,
+   "index_requests": 2,
+   "index_bytes": 22192
+  },
+  "add_layer_whole_extent": {
+   "size": [
+    1000,
+    451
+   ],
+   "band1_mean": 130.857,
+   "alpha_max": 255.0,
+   "all_bytes": 573440,
+   "index_requests": 0,
+   "index_bytes": 0
+  }
+ },
+ "errors": [],
+ "imagery_files_read": [
+  "https://data.source.coop/nthh/naip/overviews/national-latest.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif",
+  "https://data.source.coop/nthh/naip/ut/2024/60cm/rgb/40111/m_4011128_nw_12_060_20240830.tif"
+ ],
+ "index_files_read_whole": [],
+ "imagery_downloaded_whole": [],
+ "index_requests": [
+  {
+   "file": "naip.gti.fgb",
+   "start": 0,
+   "bytes": 16384
+  },
+  {
+   "file": "naip-overviews.gti.fgb",
+   "start": 0,
+   "bytes": 16384
+  },
+  {
+   "file": "naip.gti.fgb",
+   "start": 16384,
+   "bytes": 32768
+  },
+  {
+   "file": "naip.gti.fgb",
+   "start": 425984,
+   "bytes": 32768
+  },
+  {
+   "file": "naip.gti.fgb",
+   "start": 6995968,
+   "bytes": 16384
+  },
+  {
+   "file": "naip.gti.fgb",
+   "start": 55508992,
+   "bytes": 16384
+  },
+  {
+   "file": "naip-overviews.gti.fgb",
+   "start": 16384,
+   "bytes": 16384
+  },
+  {
+   "file": "naip-overviews.gti.fgb",
+   "start": 32768,
+   "bytes": 5808
+  }
+ ],
+ "status": "passed"
+}

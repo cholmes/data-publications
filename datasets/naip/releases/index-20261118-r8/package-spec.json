@@ -1,0 +1,152 @@
+{
+ "dataset_record_path": "../../dataset.yaml",
+ "dataset_id": "naip",
+ "title": "NAIP visualization COGs",
+ "release_id": "index-20261118-r8",
+ "release_version": "1.3.0",
+ "output_dir": "../../../../.local/naip/package/index-20261118-r8",
+ "catalog_id": "naip",
+ "processor": {
+  "name": "nthh",
+  "roles": [
+   "host",
+   "processor"
+  ],
+  "url": "https://github.com/nthh/data-publications",
+  "description": "Local candidate package only; the package has not been hosted."
+ },
+ "source_attribution": {
+  "url": "https://registry.opendata.aws/naip/",
+  "title": "National Agriculture Imagery Program (NAIP) on AWS, s3://naip-analytic",
+  "version": "2021 to 2025 flights",
+  "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP)",
+  "license": {
+   "identifier": "other",
+   "url": "https://registry.opendata.aws/naip/"
+  }
+ },
+ "producers": [
+  {
+   "name": "USDA Farm Production and Conservation Business Center",
+   "roles": [
+    "producer",
+    "licensor"
+   ],
+   "url": "https://www.fpacbc.usda.gov/"
+  }
+ ],
+ "source_fidelity_report_path": "../index-20261117-r7/source-fidelity.json",
+ "clean_rebuild_report_path": "../index-20261117-r7/clean-rebuild.json",
+ "assets": [
+  {
+   "asset_id": "quads",
+   "path": "../../../../../../data-publications-naip/.local/naip/index-r7-build-a/naip.parquet",
+   "identifier_column": "id",
+   "title": "Quarter-quad index (STAC GeoParquet)",
+   "description": "One STAC item per hosted quarter-quad COG: 245,554 rows. Each row gives the file's address, size and checksum, its footprint in degrees, its CRS, bounds and transform, and the flight date from its name. Pennsylvania 2024 and West Virginia 2024, which cover part of each state, are not listed. Rows follow a Hilbert curve. Each row's naip:gti_location gives the file's address relative to stac/, the location field of the GDAL tile index stac/naip.gti.fgb."
+  },
+  {
+   "asset_id": "overviews",
+   "path": "../../../../../../data-publications-naip/.local/naip/index-r7-build-a/naip-overviews.parquet",
+   "identifier_column": "id",
+   "title": "Overview file index (STAC GeoParquet)",
+   "description": "One STAC item per hosted overview file: 114 state files (one state, year and UTM zone at 9.6 m) and the national file (EPSG:3857, about 306 m). A state file's footprint is an outline of its quads. Coarsest first. Each row's naip:gti_location gives the file's address relative to stac/, the location field of the GDAL tile index stac/naip.gti.fgb."
+  }
+ ],
+ "supporting_files": [
+  {
+   "path": "../index-20261117-r7/build-manifest.json",
+   "package_path": "provenance/build-manifest.json",
+   "title": "Build commit, environment, input checksums and output facts (release r7, whose bytes this package holds)",
+   "media_type": "application/json"
+  },
+  {
+   "path": "../index-20261117-r7/check.json",
+   "package_path": "provenance/check.json",
+   "title": "Validator report of release r7, whose bytes this package holds: accounting against receipts, hosted listing, footprints, dates, gti locations, fault tests",
+   "media_type": "application/json"
+  },
+  {
+   "path": "../../index-env.lock.txt",
+   "package_path": "provenance/index-env.lock.txt",
+   "title": "Locked build environment (conda explicit list and one pip wheel)",
+   "media_type": "text/plain"
+  },
+  {
+   "path": "../../index-package-plan.md",
+   "package_path": "provenance/index-package-plan.md",
+   "title": "Checks written before the first build, with addenda",
+   "media_type": "text/markdown"
+  },
+  {
+   "path": "check-repackage.json",
+   "package_path": "provenance/check-repackage.json",
+   "title": "Checks 1 and 13: the index files are r7's bytes and the hosted stac/naip.gti.fgb pair matches them",
+   "media_type": "application/json"
+  },
+  {
+   "path": "check-gti-open.json",
+   "package_path": "provenance/check-gti-open.json",
+   "title": "Check 12: stac/naip.gti.fgb opened with GDAL 3.12.4 (QGIS 4.2.1) through /vsicurl/: Alta, Utah, and what QGIS reads when the layer is added",
+   "media_type": "application/json"
+  },
+  {
+   "path": "changes.json",
+   "package_path": "provenance/changes.json",
+   "title": "Differences from the hosted r7 files this release is meant to have (none in the index files), written before the package",
+   "media_type": "application/json"
+  }
+ ],
+ "data_license": {
+  "license": "other",
+  "url": "https://registry.opendata.aws/naip/",
+  "attribution": "USDA Farm Production and Conservation Business Center, Geospatial Enterprise Operations (NAIP)",
+  "note": "NAIP imagery is in the public domain. USDA asks for credit. These index files describe a format conversion, not a USDA product.",
+  "stac_license": "other"
+ },
+ "source_license": {
+  "identifier": "other",
+  "url": "https://registry.opendata.aws/naip/"
+ },
+ "stac_license": "other",
+ "citation": "USDA Farm Production and Conservation Business Center. National Agriculture Imagery Program (NAIP), 2021 to 2025 flights, from s3://naip-analytic on AWS.",
+ "description": "The two STAC GeoParquet index files of the NAIP visualization COGs: one item per hosted RGB JPEG Cloud-Optimized GeoTIFF quarter quad, and one per overview file. Each item gives the file's address, size, SHA-256, footprint, CRS and flight date, and the address relative to stac/ that the GDAL tile index stac/naip.gti.fgb uses to open the imagery in GDAL or QGIS as one mosaic. The imagery is not in this package; the indexes point to it at data.source.coop/nthh/naip/.",
+ "temporal_interval": [
+  "2021-06-16T00:00:00Z",
+  "2025-11-17T00:00:00Z"
+ ],
+ "validation_bbox": [
+  -111.7,
+  40.5,
+  -111.5,
+  40.65
+ ],
+ "code_revision": "7c26d12fca6d1dc0fb151690d1815b06efdc9405",
+ "workflow_paths": [
+  "datasets/naip/build_stac_index.py",
+  "datasets/naip/build_overview_index.py",
+  "datasets/naip/partial_years.py",
+  "datasets/naip/crs84.projjson",
+  "datasets/naip/build_index_release.py",
+  "datasets/naip/check_index_release.py",
+  "datasets/naip/check_gti_open.py",
+  "datasets/naip/build_gti_fgb.py",
+  "datasets/naip/check_gti_fgb.py",
+  "datasets/naip/check_repackage.py",
+  "datasets/naip/write_index_reports.py",
+  "datasets/naip/index-env.lock.txt",
+  "datasets/naip/index-package-plan.md",
+  "datasets/naip/evidence/receipt-dirs-62.json",
+  "datasets/naip/releases/index-20261118-r8/package-spec.json",
+  "datasets/naip/releases/index-20261118-r8/changes.json",
+  "scripts/release_tools/package_release.py",
+  "scripts/release_tools/serve.py",
+  "scripts/release_tools/pyproject.toml",
+  "scripts/release_tools/uv.lock",
+  "scripts/release_tools/package.json",
+  "scripts/release_tools/package-lock.json",
+  "scripts/release_tools/README.md",
+  "scripts/release_tools/AGENTS.md",
+  "scripts/release_tools/test_package_release.py"
+ ]
+}
