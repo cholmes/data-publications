@@ -13,8 +13,8 @@ in DIR (`naip.parquet`, `naip-overviews.parquet`), comparing with the hosted fil
 --changes names the differences from the hosted files a release is meant to have, written down
 before the build: columns added (`added_columns`) and collection fields given new values
 (`collection_fields`, by collection id). Checks 1b and 1c compare with the hosted files with
-those changes made, and nothing else may differ. Check 11 tests the `naip:gti_location` column and
-the two .gti files in DIR, when the release has them.
+those changes made, and nothing else may differ. Check 11 tests the `naip:gti_location` column,
+when the release has it.
 
 This program imports neither build_stac_index.py nor build_overview_index.py nor
 partial_years.py. It decodes footprints from WKB and tests outlines with its own code; the only
@@ -392,31 +392,6 @@ def check_gti_locations(table):
     return {"passed": not wrong, "rows": table.num_rows, "wrong": failure_list(wrong)}
 
 
-def check_gti_files(release_dir):
-    """naip.gti opens naip.parquet with the location column, and its overview levels open
-    naip-overviews.gti, which opens naip-overviews.parquet the same way; all four sit side by side."""
-    found, problems = {}, []
-    for name, index in (("naip.gti", "naip.parquet"), ("naip-overviews.gti", "naip-overviews.parquet")):
-        path = os.path.join(release_dir, name)
-        if not os.path.exists(path):
-            problems.append(f"{name} missing")
-            continue
-        root = ET.parse(path).getroot()
-        found[name] = {"sha256": sha256(path), "index": root.findtext("IndexDataset"), "location_field": root.findtext("LocationField"),
-                       "overviews": [o.findtext("Dataset") for o in root.findall("Overview") if o.findtext("Dataset")]}
-        if root.tag != "GDALTileIndexDataset":
-            problems.append(f"{name}: root is {root.tag}")
-        if found[name]["index"] != index:
-            problems.append(f"{name}: index {found[name]['index']}")
-        if found[name]["location_field"] != GTI_LOCATION:
-            problems.append(f"{name}: location field {found[name]['location_field']}")
-        if [b.findtext("ColorInterp") for b in root.findall("Band")] != ["Red", "Green", "Blue", "Alpha"]:
-            problems.append(f"{name}: bands are not red, green, blue and alpha")
-    if "naip.gti" in found and (not found["naip.gti"]["overviews"] or set(found["naip.gti"]["overviews"]) != {"naip-overviews.gti"}):
-        problems.append("naip.gti: overview levels do not all open naip-overviews.gti")
-    return {"passed": not problems, "files": found, "problems": problems}
-
-
 def quad_checks(table, hosted, expected, left_hrefs, changes=NO_CHANGES):
     """The checks a changed quad index must fail (used by the fault tests)."""
     out = {"1b": check_quad_values(table, hosted, changes)["passed"], "3": check_accounting(table, expected, left_hrefs)["passed"],
@@ -527,8 +502,7 @@ def main():
         "9_fault_tests": fault_tests(quads, hosted_quads, expected, left_hrefs, left_receipts[0], changes),
     }
     if GTI_LOCATION in quads.column_names or GTI_LOCATION in changes["added_columns"]:
-        checks["11_gti"] = {"quads": check_gti_locations(quads), "overviews": check_gti_locations(overviews),
-                            "files": check_gti_files(args.release)}
+        checks["11_gti"] = {"quads": check_gti_locations(quads), "overviews": check_gti_locations(overviews)}
     for key in ("5_hosted_listing", "6_footprint", "11_gti"):
         if key not in checks:
             continue

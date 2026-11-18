@@ -2,12 +2,11 @@
 """Checks 1 to 6 of research/naip-index-20261117/hosting-criteria.md on the hosted stac/ files.
 
     python check_hosted_stac.py --release-dir DIR --out NEW_FILE [--collection catalog/naip/collection.json] \
-        [--gti] [--criteria PATH]
+        [--criteria PATH]
 
 DIR holds the release's files (assets/quads.parquet, assets/overviews.parquet and the two field
 dictionaries under metadata/). Reads only anonymously through data.source.coop. Without
---collection, check 6 is reported as not run. --gti adds stac/naip.gti and stac/naip-overviews.gti
-(the package's metadata/gti/) to the files of checks 1 to 4, each read like a JSON file.
+--collection, check 6 is reported as not run.
 """
 import argparse
 import hashlib
@@ -53,11 +52,8 @@ def main():
     parser.add_argument("--release-dir", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--collection")
-    parser.add_argument("--gti", action="store_true")
     parser.add_argument("--criteria", default="research/naip-index-20261117/hosting-criteria.md")
     args = parser.parse_args()
-    if args.gti:
-        FILES.update({"stac/naip.gti": "metadata/gti/naip.gti", "stac/naip-overviews.gti": "metadata/gti/naip-overviews.gti"})
     if os.path.exists(args.out):
         sys.exit("Use a new output path; earlier results are kept.")
     files, checks = [], {}

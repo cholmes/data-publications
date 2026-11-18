@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """The GDAL tile index pair for QGIS and GDAL: stac/naip.gti.fgb and stac/naip-overviews.gti.fgb.
 
-    python build_gti_fgb.py <dir with naip.parquet, naip-overviews.parquet, naip.gti, naip-overviews.gti> <out dir>
+    python build_gti_fgb.py <dir with naip.parquet and naip-overviews.parquet> <out dir>
         [--host https://data.source.coop] [--prefix nthh/naip]
 
-Two FlatGeobuf files, each a GDAL tile index (GTI) on its own: the raster settings that the XML files
-stac/naip.gti and stac/naip-overviews.gti hold are written into the layer metadata, so a reader opens
-`GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb` with no XML file and no Parquet
-driver. The settings are copied from the two .gti files of the same index release, so both open the same
-mosaic at the same resolutions.
+Two FlatGeobuf files, each a GDAL tile index (GTI) on its own: the raster settings are written into the
+layer metadata, so a reader opens `GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb`
+with no XML file and no Parquet driver. The mosaic is in NAD83 longitude and latitude (the quads' datum)
+at 0.000005 degrees, about 0.5 m, with red, green, blue and alpha bands. Zoomed out it reads the 9.6 m
+state overview files (0.00008 to 0.00128 degrees) and then the national file (0.00256 to 0.04096
+degrees); the coarsest levels keep a whole-country read, such as the statistics QGIS takes when the layer
+is added, to a few hundred kilobytes of the national file's own overviews.
 
 naip.gti.fgb has one row per 3.75-minute cell of the quarter-quad grid (0.0625 degrees a side), holding
 the newest file of the quad index whose footprint centre lies in that cell (the latest `datetime`, then
@@ -33,7 +35,6 @@ copy on another server.
 import argparse
 import json
 import math
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pyarrow as pa
@@ -55,36 +56,29 @@ def vsicurl(url):
     return f"/vsicurl?empty_dir=yes&url={url}"
 
 
-def gti_settings(path):
-    """The GTI layer-metadata keys equivalent to one .gti XML file, without its IndexDataset."""
-    root = ET.parse(path).getroot()
-    text = {tag: root.find(tag).text for tag in ("LocationField", "SortField", "SortFieldAsc", "SRS",
-                                                 "ResX", "ResY", "MinX", "MinY", "MaxX", "MaxY")}
-    bands = root.findall("Band")
-    assert {b.get("dataType") for b in bands} == {"Byte"}, "every band is Byte"
-    meta = {
-        "LOCATION_FIELD": text["LocationField"], "SORT_FIELD": text["SortField"],
-        "SORT_FIELD_ASC": "YES" if text["SortFieldAsc"] == "true" else "NO",
-        "RESX": text["ResX"], "RESY": text["ResY"],
-        "MINX": text["MinX"], "MINY": text["MinY"], "MAXX": text["MaxX"], "MAXY": text["MaxY"],
-        "BAND_COUNT": str(len(bands)), "DATA_TYPE": "Byte",
-        "COLOR_INTERPRETATION": ",".join(b.find("ColorInterp").text.lower() for b in bands),
+def gti_settings(res):
+    """GTI layer-metadata keys of one index at `res` degrees: CRS EPSG:4269 (the layer's), the lower 48."""
+    return {
+        "LOCATION_FIELD": "naip:gti_location", "SORT_FIELD": "datetime", "SORT_FIELD_ASC": "YES",
+        "RESX": res, "RESY": res, "MINX": "-125.2", "MINY": "23.2", "MAXX": "-66.0", "MAXY": "49.92",
+        "BAND_COUNT": "4", "DATA_TYPE": "Byte", "COLOR_INTERPRETATION": "red,green,blue,alpha",
     }
-    assert text["SRS"] == "EPSG:4269", text["SRS"]
-    return meta, root.findall("Overview")
 
 
-def overview_settings(overviews, overview_dataset):
-    meta = {}
-    for i, ov in enumerate(overviews):
-        if ov.find("Factor") is not None:
-            meta[f"OVERVIEW_{i}_FACTOR"] = ov.find("Factor").text
-            continue
-        assert ov.find("Dataset").text == "naip-overviews.gti", ov.find("Dataset").text
-        options = [f"{o.get('key')}={o.text}" for o in ov.find("OpenOptions")]
-        assert not any("," in o for o in options), options      # GDAL splits the list on commas
+QUAD_RES = "0.000005"
+OVERVIEW_RES = "0.00008"
+FACTORS = ("2", "4", "8")                                               # from the quads themselves
+STATE_LEVELS = ("0.00008", "0.00016", "0.00032", "0.00064", "0.00128")  # the 9.6 m state files
+NATIONAL_LEVELS = ("0.00256", "0.00512", "0.01024", "0.02048", "0.04096")  # the national file
+
+
+def overview_settings(overview_dataset):
+    """naip.gti.fgb's overview levels: three factors, then naip-overviews.gti.fgb filtered and resampled."""
+    meta = {f"OVERVIEW_{i}_FACTOR": factor for i, factor in enumerate(FACTORS)}
+    levels = [("id <> 'national-latest'", r) for r in STATE_LEVELS] + [("id = 'national-latest'", r) for r in NATIONAL_LEVELS]
+    for i, (where, res) in enumerate(levels, start=len(FACTORS)):
         meta[f"OVERVIEW_{i}_DATASET"] = overview_dataset
-        meta[f"OVERVIEW_{i}_OPEN_OPTIONS"] = ",".join(options)
+        meta[f"OVERVIEW_{i}_OPEN_OPTIONS"] = f"FILTER={where},RESX={res},RESY={res}"   # GDAL splits on commas
     return meta
 
 
@@ -159,10 +153,9 @@ def main():
     base = f"{args.host.rstrip('/')}/{args.prefix.strip('/')}/"
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    quad_meta, overviews = gti_settings(args.release_dir / "naip.gti")
-    overview_meta, nested = gti_settings(args.release_dir / "naip-overviews.gti")
-    assert not nested, "naip-overviews.gti has no overviews of its own"
-    quad_meta.update(overview_settings(overviews, "GTI:" + vsicurl(f"{base}{args.index_dir.strip('/')}/naip-overviews.gti.fgb")))
+    quad_meta = gti_settings(QUAD_RES)
+    overview_meta = gti_settings(OVERVIEW_RES)
+    quad_meta.update(overview_settings("GTI:" + vsicurl(f"{base}{args.index_dir.strip('/')}/naip-overviews.gti.fgb")))
 
     def address(href):
         return vsicurl(base + href[len(PUBLISHED):])

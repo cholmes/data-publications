@@ -8,8 +8,8 @@ CHECK.json is check_hosted_stac.py's report (checks 1 to 6), EXPLORER.json is
 hosted_explorer_check.mjs's (check 7). Writes DIR/flat-hosting.json, which the flat layout pins
 (flat_publication.py), and DIR/hosting-report.json, which the catalogue pins
 (publication_catalog.py). Each check is passed only where the source report says passed. The
-defaults are those of release index-20261116-r5. With --gti, check 8 (check_gti_open.py --hosted)
-is added and must pass too.
+defaults are those of release index-20261116-r5. With --gti, check 8 (a check_gti_open.py report) is
+added and must pass too.
 """
 import argparse
 import hashlib

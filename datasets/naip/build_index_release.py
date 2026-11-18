@@ -5,23 +5,22 @@
 
 Run with the Python of the environment in index-env.lock.txt. ROOT is the folder of the
 national run's captures (it holds `runs/` and `overviews/`); the inputs are named relative to
-it, so the report holds no local path. Writes `naip.parquet`, `naip-overviews.parquet`, the two
-GDAL tile index files that open them as a mosaic (`naip.gti`, `naip-overviews.gti`, copied from
-gti/) and `build.json` (commit, environment, every input's SHA-256, each output's size and SHA-256).
+it, so the report holds no local path. Writes `naip.parquet`, `naip-overviews.parquet` and
+`build.json` (commit, environment, every input's SHA-256, each output's size and SHA-256). The GDAL
+tile index pair for QGIS and GDAL is built from these two files by build_gti_fgb.py. Releases r6 and
+r7 also held two XML tile index files over the GeoParquet files; they are no longer made.
 """
 import argparse
 import glob
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FILES = "https://data.source.coop/nthh/naip/"
 OVERVIEW_RESULTS = "overviews/national/results/*-result.json"
-GTI_FILES = ("naip.gti", "naip-overviews.gti")
 NATIONAL_RESULT = "colour-balance/years/national/national-result.json"
 
 
@@ -65,9 +64,6 @@ def main():
         "--overviews", FILES + "stac/naip-overviews.parquet")
     run("build_overview_index.py", quads, FILES + "overviews/", overviews,
         *[os.path.join(root, r) for r in results])
-    gti = [os.path.join(out, name) for name in GTI_FILES]
-    for name, path in zip(GTI_FILES, gti):
-        shutil.copyfile(os.path.join(HERE, "gti", name), path)
     digest, count = receipts_digest(root, dirs)
     commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=HERE, capture_output=True, text=True, check=True).stdout.strip()
     dirty = subprocess.run(["git", "status", "--porcelain", "--", "."], cwd=HERE, capture_output=True, text=True, check=True).stdout
@@ -77,12 +73,12 @@ def main():
     report = {
         "schema_version": 1,
         "commit": commit,
-        "builders_changed_since_commit": any(name in dirty for name in ("build_stac_index.py", "build_overview_index.py", "partial_years.py", "build_index_release.py", "gti/")),
+        "builders_changed_since_commit": any(name in dirty for name in ("build_stac_index.py", "build_overview_index.py", "partial_years.py", "build_index_release.py")),
         "environment": {"lock_sha256": sha256(os.path.join(HERE, "index-env.lock.txt")), "python": sys.version.split()[0],
                         "gdal": osgeo.__version__, "pyarrow": pyarrow.__version__, "pyproj": pyproj.__version__},
         "inputs": {"receipt_dirs": len(dirs), "receipts": count, "receipts_sha256": digest,
                    "overview_results": {r: sha256(os.path.join(root, r)) for r in results}},
-        "outputs": {os.path.basename(p): {"size_bytes": os.path.getsize(p), "sha256": sha256(p)} for p in (quads, overviews, *gti)},
+        "outputs": {os.path.basename(p): {"size_bytes": os.path.getsize(p), "sha256": sha256(p)} for p in (quads, overviews)},
     }
     with open(os.path.join(out, "build.json"), "w") as f:
         json.dump(report, f, indent=1)

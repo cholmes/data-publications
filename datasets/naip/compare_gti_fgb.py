@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Compare the pixels of the FlatGeobuf tile index with those of stac/naip.gti, window by window.
+"""Compare the pixels of the FlatGeobuf tile index with those of the r7 tile index, window by window.
 
     python compare_gti_fgb.py <r7 address> <fgb address> <release dir with naip.parquet> <out.json> [--seed 8] [--samples 6]
 
-Run it in a Python whose GDAL reads Parquet (QGIS's own), for the r7 side. Addresses as GDAL opens them,
-for example `/vsicurl?empty_dir=yes&url=https://data.source.coop/nthh/naip/stac/naip.gti` and
+Run it in a Python whose GDAL reads Parquet (QGIS's own), for the r7 side. The r7 side is the XML tile
+index over naip.parquet that releases r6 and r7 held (no longer hosted; give a local copy next to the
+parquet files). Addresses as GDAL opens them, for example a local path for r7 and
 `GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb`.
 
 Each window is 1600 x 1000 pixels, read the way QGIS draws a view (one ReadRaster at the view's

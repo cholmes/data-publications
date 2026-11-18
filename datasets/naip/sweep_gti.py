@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""How much the hosted naip.gti reads at each zoom level: one fresh GDAL process per level.
+"""How much the hosted naip.gti.fgb reads at each zoom level: one fresh GDAL process per level.
 
-    python sweep_gti.py --out NEW_FILE [--url /vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti]
+    python sweep_gti.py --out NEW_FILE [--url GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb]
         [--center -111.625,40.59] [--pixels 800x600]
 
 Run with the Python inside QGIS 4.2.1 (see check_gti_open.py for the command). Each level reads a
@@ -21,7 +21,7 @@ import tempfile
 import time
 
 LEVELS = [0.000005, 0.00001, 0.00002, 0.00004, 0.00008, 0.00016, 0.00032, 0.00064, 0.00128, 0.00256, 0.00512, 0.01]
-INDEX = ("/stac/naip.parquet", "/stac/naip-overviews.parquet")
+INDEX = ("/stac/naip.gti.fgb", "/stac/naip-overviews.gti.fgb")
 
 CHILD = r'''
 import sys
@@ -48,7 +48,7 @@ def kind(url):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--out", required=True)
-    p.add_argument("--url", default="/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti")
+    p.add_argument("--url", default="GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb")
     p.add_argument("--center", default="-111.625,40.59")
     p.add_argument("--pixels", default="800x600")
     a = p.parse_args()

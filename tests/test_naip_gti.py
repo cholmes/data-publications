@@ -1,11 +1,9 @@
-"""NAIP index: the naip:gti_location column and the GTI files that open the index in GDAL/QGIS."""
+"""NAIP index: the naip:gti_location column, the tile address of the GDAL tile index for GDAL/QGIS."""
 from __future__ import annotations
 
 from pathlib import Path
 import os
-import shutil
 import sys
-import tempfile
 import unittest
 
 import pyarrow as pa
@@ -48,28 +46,6 @@ class LocationColumnTest(unittest.TestCase):
             with self.subTest(location=location):
                 self.assertFalse(cir.check_gti_locations(table([(href, location)]))["passed"])
         self.assertFalse(cir.check_gti_locations(pa.Table.from_pylist([{"assets": {"image": {"href": href}}}]))["passed"])
-
-
-class GtiFilesTest(unittest.TestCase):
-    def setUp(self):
-        self.dir = tempfile.mkdtemp()
-        self.addCleanup(shutil.rmtree, self.dir)
-        for name in ("naip.gti", "naip-overviews.gti"):
-            shutil.copyfile(NAIP / "gti" / name, os.path.join(self.dir, name))
-
-    def test_checked_in_files_pass(self):
-        result = cir.check_gti_files(self.dir)
-        self.assertTrue(result["passed"], result["problems"])
-        self.assertEqual(set(result["files"]["naip.gti"]["overviews"]), {"naip-overviews.gti"})
-
-    def test_wrong_location_field_or_missing_overview_file_fails(self):
-        path = os.path.join(self.dir, "naip.gti")
-        text = Path(path).read_text()
-        Path(path).write_text(text.replace("<LocationField>naip:gti_location</LocationField>", "<LocationField>location</LocationField>"))
-        self.assertFalse(cir.check_gti_files(self.dir)["passed"])
-        Path(path).write_text(text)
-        os.remove(os.path.join(self.dir, "naip-overviews.gti"))
-        self.assertFalse(cir.check_gti_files(self.dir)["passed"])
 
 
 def bsi_base():

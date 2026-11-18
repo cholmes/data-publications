@@ -235,3 +235,48 @@ of a new area is about 25 to 29 requests in sequence at about 0.25 s each; witho
 stops that with no setting, so the README gives that address. (`gti/naip.gti` itself cannot carry
 it: it is an option of the address the file is opened with.) The r7 files are those built at
 d88994f; nothing that goes into them changes.
+
+## Addendum for r8 (2026-11-18 UTC, written before the r8 package is made)
+
+r7's two XML tile index files, `naip.gti` and `naip-overviews.gti`, are dropped. Through GDAL 3.12.3
+and later they leave out about a quarter of the quarter quads at full resolution, with no warning:
+GDAL skips a reprojected file whose footprint is the reprojection of its four corners. The tile index
+offered to QGIS and GDAL users is now the FlatGeobuf pair at `stac/naip.gti.fgb` and
+`stac/naip-overviews.gti.fgb`, built from the two index files by `build_gti_fgb.py` and checked by
+`check_gti_fgb.py`. The FlatGeobuf files are not part of the package; they sit beside it at `stac/`
+like the imagery.
+
+`index-20261118-r8` is a new package of r7's index files, not a rebuild. Its two files are the bytes
+built at d88994f and hosted at `stac/` since r7 (the SHA-256 in r7's `source-fidelity.json`), so r7's
+build manifest, validator report (checks 1b to 9 and 11), source-fidelity and clean-rebuild reports
+apply to them unchanged and are reused, not run again. `releases/index-20261118-r8/changes.json` states
+no changes against hosted r7. What differs is package metadata only:
+
+- The package no longer holds `metadata/gti/naip.gti` or `metadata/gti/naip-overviews.gti`, nor r7's
+  check 12 reports, which opened them.
+- The two asset descriptions and the package description name the FlatGeobuf pair where they named
+  `stac/naip.gti`; the `naip:gti_location` column is unchanged and is the pair's location field.
+- `build_index_release.py` no longer copies the XML files, and check 11 tests the location column
+  only.
+
+Checks for r8:
+
+1. **Same bytes.** Both package files equal r7's by SHA-256 and size, and the hosted `stac/` files
+   read anonymously have that SHA-256.
+12. **Opens in GDAL as QGIS 4.2.1 would, replacing r7's check 12.** With the GDAL inside QGIS 4.2.1
+    (3.12.4), the hosted `GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb`: the Alta
+    window read at full resolution and the whole of Utah at about 600 m both give a picture (mean of
+    band 1 between 60 and 200, alpha not all zero), every imagery request is a byte range, no index
+    file is read whole, neither read takes more than 8 MiB of the index files, and the add-layer step
+    (approximate statistics of band 1, then a 1,000-pixel draw of the whole extent) fetches no more
+    than 8 MiB in all. Every address in the FlatGeobuf files is absolute, so this check opens the
+    hosted files and has no loopback copy.
+13. **The FlatGeobuf pair matches the index.** `check_gti_fgb.py` passes on the hosted pair against
+    the package's two files, and `build_gti_fgb.py` run on them gives the hosted pair byte for byte.
+10. **Shared packager.** As before.
+
+The hosted checks of the `stac/` files (anonymous access, checksums, ranges, CORS, subset query,
+catalogue links, explorer render) are run again for r8's flat layout, which lists the four `stac/`
+files of the package and no XML tile index. After r8 is bound, `stac/naip.gti` and
+`stac/naip-overviews.gti` are deleted from Source (Nathan's go of 2026-11-18); local copies are kept
+outside the repository.
