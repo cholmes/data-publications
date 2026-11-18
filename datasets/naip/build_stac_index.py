@@ -21,10 +21,8 @@ index-read-cost.mjs):
 Each row also has `naip:gti_location`: the file's address relative to the folder of the index,
 `stac/` (for example `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`). It is not a
 STAC field and STAC readers can ignore it; `assets.image.href` stays the absolute address. It is
-for GDAL's GTI driver: `stac/naip.gti` names this column as its location field, and GDAL resolves
-a relative location against the folder the .gti was opened from. Opened as
-`/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti`, each location becomes a `/vsicurl/`
-address that GDAL reads by range. An absolute `https://` location would be read whole.
+for GDAL's GTI driver: build_gti_fgb.py turns it into the absolute `/vsicurl?empty_dir=yes&url=...`
+address of each file in the tile index `stac/naip.gti.fgb`, which GDAL reads by range.
 
 --from-index writes an existing index again in this layout: the same schema and metadata.
 

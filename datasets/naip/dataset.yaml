@@ -44,17 +44,17 @@ publication:
       sha256: 93ac55f4e88847d3f96d377b8ca1c0a8cebe9a2bcb7fdc4fcac1ab18e973a5fd
       title: National overview of the lower 48, latest flight of each state, downsampled from overviews/national-latest.tif
   limits:
-  - The package is the two STAC GeoParquet index files, not the imagery. Its index files, field
-    dictionaries and two GDAL tile index files were put at stac/ on 2026-11-17 (UTC), replacing the
-    r5 files, which differed only in the naip:gti_location column and the collection names; r7
-    then replaced stac/naip.gti alone, adding coarse overview levels; the
-    package was never hosted under releases/. The hosted checks of the stac/ files passed the same
-    day.
+  - The package is the two STAC GeoParquet index files, not the imagery. Its index files and field
+    dictionaries were put at stac/ on 2026-11-17 (UTC), replacing the r5 files, which differed only in
+    the naip:gti_location column and the collection names. Release r8 (2026-11-18) packages r7's index
+    bytes again without the two XML GDAL tile index files that r6 and r7 held, which leave quads out
+    in GDAL 3.12.3 and later; the FlatGeobuf tile index pair at stac/ replaces them and is not part of
+    the package. The package was never hosted under releases/.
   - The repository links in the catalogue (build manifest, validator report, environment, plan)
     point at a commit that is readable on GitHub only once this branch is pushed.
   - Index releases r1 to r4 failed checks and are kept as failed evidence (index-package-plan.md).
-    Release r5 was hosted at stac/ from 2026-11-17 until r6 replaced it the same day; r6's naip.gti
-    froze QGIS when the layer was added and r7 replaced it the same day.
+    Release r5 was hosted at stac/ from 2026-11-17 until r6 replaced it the same day; r6's XML tile
+    index froze QGIS when the layer was added and r7 replaced it the same day.
   source_coop:
     support_layout:
       manifest_path: datasets/naip/source-coop/support-20261117-r7.json
@@ -88,9 +88,6 @@ publication:
       files for a place by querying the index on its `bbox` columns. `stac/naip.gti.fgb` opens the newest
       flight of every place in QGIS or GDAL as one mosaic (GDAL tile index in FlatGeobuf), with
       `stac/naip-overviews.gti.fgb` for zoomed-out views.'
-    readme_omit_files:
-    - stac/naip.gti
-    - stac/naip-overviews.gti
     readme_sections:
     - heading: How the two indexes are organized
       body: |-

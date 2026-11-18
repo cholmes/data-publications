@@ -806,13 +806,6 @@ def draft_for(root: Path, record: dict[str, Any]) -> tuple[dict[str, Any], str, 
                 draft["support_layout"] = support
         except ValueError as exc:
             raise ProductError(str(exc)) from exc
-    if config.get("readme_omit_files"):
-        # Optional hosted files the README's Files table leaves out, such as an index file superseded by another.
-        omit = config["readme_omit_files"]
-        listed = {item["filename"] for item in (draft.get("flat_layout") or {}).get("files", [])}
-        if not isinstance(omit, list) or not all(isinstance(name, str) and name in listed for name in omit):
-            raise ProductError(f"{record['id']}: readme_omit_files must name files of the flat layout")
-        draft["readme_omit_files"] = omit
     from catalog_presentation import load_presentation
     presentation = load_presentation(root, record)
     if presentation is not None:
@@ -987,8 +980,7 @@ def render_flat_consumer_readme(draft: dict[str, Any]) -> str:
                   "| File | Size |", "| --- | ---: |"])
     presentation = draft.get('presentation')
     replacements = {item['asset_id']: item for item in (presentation or {}).get('assets', [])}
-    omit = set(draft.get('readme_omit_files') or [])
-    files = [item for item in flat['files'] if item.get('asset_id') not in replacements and item['filename'] not in omit]
+    files = [item for item in flat['files'] if item.get('asset_id') not in replacements]
     files.extend(replacements.values())
     for item in (draft.get("support_layout") or {}).get("files", []):
         target = item["retained"]
