@@ -34,6 +34,10 @@ anonymous SHA-256 readback. [Live demo](https://experiments.folia.sh/weather-sta
 
 ## Workflow
 
+The [standalone pipeline](pipeline/README.md) runs directly against NOAA. It
+includes the 41-column Parquet schema, historical and current-hour
+ingestion, the Arrow checks, and the range packager.
+
 1. Fetch NOAA's public Integrated Mesonet files in one fixed half-open window,
    **2026-11-09 00:00 UTC to 2026-11-16 00:00 UTC**. The archive URL pattern is
    `madisPublic1/data/archive/YYYY/MM/DD/LDAD/mesonet/netCDF/YYYYMMDD_HH00.gz`.
