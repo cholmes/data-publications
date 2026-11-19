@@ -17,3 +17,5 @@ Rebuilding the original availability search would require those source snapshots
 Canonical triage decisions now live only in `datasets/<id>/dataset.yaml`.
 The frozen audit and citation files must not be edited to make a candidate look
 better; record new evidence in a separate dated snapshot and update its links.
+
+- [MADIS weather station release workflow](madis-weather-stations-20261118/README.md) describes the independently hosted week, cloud access, and a reproducible range read.
