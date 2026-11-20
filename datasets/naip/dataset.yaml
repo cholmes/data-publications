@@ -109,8 +109,8 @@ publication:
           multihash), `type` and `roles`.
         - `naip:run`: the conversion run that made the file.
         - `naip:gti_location`: the file's address relative to `stac/`, for example
-          `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`. It is not a STAC field; use
-          `href` instead.
+          `../ut/2024/60cm/rgb/40111/m_4011127_ne_12_060_20240816.tif`, left from an earlier tile index
+          that has been removed. It is not a STAC field; use `href` instead.
 
         `stac/naip-overviews.parquet` has 115 rows, one per overview file, with the same columns except
         `naip:run`, plus `start_datetime` and `end_datetime` (the flights drawn into the file) and
@@ -134,25 +134,35 @@ publication:
         ```
     - heading: Open in QGIS or GDAL
       body: |-
-        `stac/naip.gti.fgb` opens the newest flight of every place as one mosaic in QGIS (Layer > Add
-        Layer > Add Raster Layer, with this address as the source) and in GDAL 3.9 or later:
+        The whole collection opens as one map layer, showing the newest flight of every place. Use
+        this address:
 
         ```
         GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb
         ```
 
-        For example `gdal_translate -projwin -111.66 40.60 -111.60 40.57 GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb alta.tif`.
-        The `GTI:` prefix tells GDAL the FlatGeobuf file is a tile index; keep it. The file is a GDAL
-        tile index (GTI): one row per 3.75-minute cell of the quarter-quad grid, holding the newest
-        quarter quad there, with the cell as its footprint, and the mosaic's settings in the
-        FlatGeobuf layer metadata. Because no two footprints overlap, GDAL reads the files of a view at
-        the same time instead of one after another. The mosaic is in NAD83 longitude and latitude at
-        about 0.5 m, with an alpha band so the masked edge of each quad stays clear. Zoomed out it draws
-        the 9.6 m state files and then the national file, through `stac/naip-overviews.gti.fgb`. Each
-        file's address in the index is absolute and tells GDAL not to look for side files, so opening
-        it needs no other setting and no Parquet driver. GDAL reads only the part of the 70 MB index in
-        view: in one test session at Alta, Utah, opening took 0.4 s and a first 1 m view 2.3 s, with
-        22 file reads.
+        - QGIS: Layer > Add Layer > Add Raster Layer, leave Source type as File, paste the address
+          into the source box and click Add. QGIS needs GDAL 3.9 or later (Help > About shows it).
+        - GDAL 3.9 or later: for example, to save the picture around Alta, Utah:
+
+          ```
+          gdal_translate -projwin -111.66 40.60 -111.60 40.57 \
+            GTI:/vsicurl/https://data.source.coop/nthh/naip/stac/naip.gti.fgb alta.tif
+          ```
+
+        The `GTI:` prefix selects GDAL's tile index driver.
+
+        What you get: RGB in NAD83 longitude and latitude at about 0.5 m, with an alpha band so the
+        masked edge of each quad stays clear. Zoomed out, the layer draws the 9.6 m state files and then
+        the national file, listed in `stac/naip-overviews.gti.fgb`.
+
+        How it works: `naip.gti.fgb` is a GDAL tile index (GTI) stored as FlatGeobuf. It has one row
+        per 3.75-minute cell of the quarter-quad grid, pointing at the newest quarter quad in that cell,
+        with the cell as its footprint. GDAL reads only the rows in view, not the whole 70 MB file, and
+        because no two footprints overlap it fetches a view's files in parallel. Measured with GDAL
+        3.12.4 from a home connection on 2026-11-19, median of three fresh sessions: opening takes
+        0.6 s, a 1.2 km view at Alta at full resolution 4.8 s (31 reads), a 6 by 4.5 km view at 1 m
+        17 s (94 reads), and all of Utah at 600 m 3.2 s (17 reads).
 
         Each quarter quad covers a little more than its cell, and GDAL draws all of it, so where two
         neighbours overlap either may be on top. Where the newest file of a cell has no picture, the
