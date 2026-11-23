@@ -565,6 +565,20 @@ def _apply_title_correction(snapshot_collection: dict, collection: dict, dataset
         collection["description"] = collection["description"].replace(old, new)
 
 
+def _set_primary_geometry(collection: dict) -> None:
+    """Name the geometry column of a GeoParquet data asset when it is not `geometry`.
+
+    The column is the one `binary` column that table:columns declares for the asset. Readers find a
+    column named `geometry` without help, so that name gets no table:primary_geometry.
+    """
+    for asset_id, asset in collection.get("assets", {}).items():
+        if asset.get("type") != "application/vnd.apache.parquet" or "data" not in asset.get("roles", []):
+            continue
+        binary = [column["name"] for column in collection.get("table:columns", [])
+                  if column.get("asset") == asset_id and column.get("type") == "binary"]
+        if len(binary) == 1 and binary[0] != "geometry":
+            asset["table:primary_geometry"] = binary[0]
+
 COG_TYPE = "image/tiff; application=geotiff; profile=cloud-optimized"
 FILE_SCHEMA = "https://stac-extensions.github.io/file/v2.1.0/schema.json"
 PROJECTION_SCHEMA = "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
@@ -1172,6 +1186,7 @@ def _generated(root: Path, config: dict) -> dict[str, bytes]:
         from catalog_presentation import apply_presentation, apply_field_semantics
         apply_presentation(root, record, out_collection, tree)
         apply_field_semantics(root, record, out_collection)
+        _set_primary_geometry(out_collection)
         _navigation_links(out_collection, config, f"{dataset_id}/collection.json")
         children.append({"rel": "child", "href": f"{dataset_id}/collection.json", "title": record["title"], "type": "application/json"})
         put(f"{dataset_id}/collection.json", canonical_json(out_collection))

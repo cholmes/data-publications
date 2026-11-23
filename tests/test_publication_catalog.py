@@ -657,6 +657,16 @@ class PublicationCatalogTests(unittest.TestCase):
         self.assertEqual(collection["providers"][1]["roles"], ["processor", "host"])
         self.assertEqual(collection["providers"][1]["url"], "https://source.coop/nthh/demo")
 
+    def test_primary_geometry_names_a_binary_column_that_is_not_geometry(self):
+        parquet = {"type": "application/vnd.apache.parquet", "roles": ["data"]}
+        collection = {"assets": {"a": dict(parquet), "b": dict(parquet)}, "table:columns": [
+            {"name": "Shape", "type": "binary", "asset": "a"},
+            {"name": "geometry", "type": "binary", "asset": "b"},
+        ]}
+        pc._set_primary_geometry(collection)
+        self.assertEqual(collection["assets"]["a"]["table:primary_geometry"], "Shape")
+        self.assertNotIn("table:primary_geometry", collection["assets"]["b"])
+
     def test_hosting_report_requires_timezone_and_passing_checks(self):
         package = self.make_package()
         self.export(package)
